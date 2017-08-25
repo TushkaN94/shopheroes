@@ -1,0 +1,320 @@
+﻿<!--?xml version="1.0"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Shop Heroes Team Builder</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=uft-8"/>
+    <meta name="Description" content=""/>
+    <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css?v=1" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="select2/css/select2.css?v=1" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=1" media="screen"/>
+  </head>
+  <body>
+    <div id="tabs">
+      <ul>
+        <li>
+          <a href="#tabs-teams">Teams</a>
+        </li>
+        <li>
+          <a href="#tabs-heroes">Heroes</a>
+        </li>
+        <li>
+          <a href="#tabs-items">Items</a>
+        </li>
+        <li>
+          <a href="#tabs-data">Data</a>
+        </li>
+      </ul>
+      <div id="tabs-data">
+        <div>
+          <select id="tabs-data-type">
+            <option value="supplementaries">Supplementaries</option>
+            <option value="heroes">Heroes</option>
+            <option value="items">Items</option>
+            <option value="teams">Teams</option>
+          </select>
+          <input id="tabs-data-load" type="button" value="Load"></input>
+          <input id="tabs-data-remove" type="button" value="Remove"></input>
+        </div>
+      </div>
+      <div id="tabs-heroes">
+      </div>
+      <div id="tabs-items">
+      </div>
+      <div id="tabs-teams">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="select2/js/select2.min.js"></script>
+  <script type="text/javascript" src="vue/js/vue.js"></script>
+  <script type="text/javascript" src="js/cache.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/x-template" id="templates-heroes">
+    <div>
+      <div>
+        <table class="hero">
+          <tbody>
+            <tr class="header">
+              <th colspan="2">Name</th>
+              <th>Class</th>
+              <th>Tier</th>
+              <th>Sex</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div>
+                  <input v-model="filter.name"/>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <select v-model="filter.type" multiple="multiple">
+                    <option value="Fighters">Fighters</option>
+                    <option value="Rogues">Rogues</option>
+                    <option value="Spellcasters">Spellcasters</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <select v-model="filter.tier" multiple="multiple">
+                    <option value="1">Tier 1</option>
+                    <option value="2">Tier 2</option>
+                    <option value="3">Tier 3</option>
+                    <option value="4">Tier 4</option>
+                    <option value="5">Tier 5</option>
+                    <option value="6">Tier 6</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <select v-model="filter.sex" multiple="multiple">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr class="header">
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <hero v-for="( hero, i ) in heroes" :hero="hero" :key="i" v-if="visible( hero )"/>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-skill">
+    <div>
+      <div class="skill" :class="{inactive:!skill.active}">
+        {{skill.name}}
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-hero">
+    <div>
+      <table class="hero">
+        <tbody>
+          <tr class="header">
+            <th class="name" rowspan="2" colspan="2">{{hero.name}}</th>
+            <th>Class</th>
+            <th>Tier</th>
+            <th>Sex</th>
+            <th>Lv</th>
+            <th>Power</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>{{hero.type}}</td>
+            <td>Tier {{hero.tier}}</td>
+            <td>{{hero.sex}}</td>
+            <td>
+              <div class="lv">
+                <span><input v-model="hero.lv"/>&nbsp;/&nbsp;{{hero.cap}}</span>
+              </div>
+            </td>
+            <td>
+              {{parseInt(summary.power).toLocaleString()}}
+            </td>
+            <td></td>
+          </tr>
+          <tr class="header">
+            <th>Weapon</th>
+            <th>Body</th>
+            <th>Head</th>
+            <th>Arms</th>
+            <th>Legs</th>
+            <th>Accessory&nbsp;1</th>
+            <th>Accessory&nbsp;2</th>
+            <th>Skills</th>
+          </tr>
+          <tr>
+            <td v-for="( slot, key ) in hero.slots">
+              <div>
+                <div class="power">
+                  {{parseInt(summary.slots[key].power).toLocaleString()}}
+                </div>
+                <div class="break">
+                  {{(summary.slots[key].break*100).toFixed(1)}}%
+                </div>
+              </div>
+            </td>
+            <td>
+              <skill :skill="summary.skills[0]"/>
+            </td>
+          </tr>
+          <tr>
+            <td v-for="( slot, key ) in hero.slots">
+              <div>
+                <select v-model="slot.item">
+                  <option value=""></option>
+                  <optgroup v-for="( items, name ) in equippables[key]" :label="name">
+                    <option v-for="equip in items" :value="equip.name">{{equip.name}}</option>
+                  </optgroup>
+                </select>
+              </div>
+            </td>
+            <td>
+              <skill :skill="summary.skills[1]"/>
+            </td>
+          </tr>
+          <tr>
+            <td v-for="( slot, key ) in hero.slots">
+              <div>
+                <select v-model="slot.q">
+                  <option value=""></option>
+                  <option value="" v-for="( q, q_key ) in qualities" :value="q_key">{{q_key}}</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <skill :skill="summary.skills[2]"/>
+            </td>
+          </tr>
+          <tr>
+            <td v-for="( slot, key ) in hero.slots">
+              <skill :skill="summary.slots[key].skill"/>
+            </td>
+            <th>Skills</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-teams">
+    <div>
+      <div>
+        <input type="button" @click="add" value="Add Team"/>
+      </div>
+      <div>
+        <team v-for="( team, i ) in teams" :team="team" :key="i"/>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-team">
+    <div>
+      <table class="hero">
+        <tbody>
+          <tr class="header">
+            <th rowspan="2" colspan="2" class="name">
+              <input class="remove" type="button" value="X" @click="remove( team )"/>
+              {{team.name}}
+            </th>
+            <th>Power</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>{{parseInt(summary.power).toLocaleString()}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="slot">Slot</th>
+            <th>Hero</th>
+            <th>Weapon</th>
+            <th>Body</th>
+            <th>Head</th>
+            <th>Arms</th>
+            <th>Legs</th>
+            <th>Accessory 1</th>
+            <th>Accessory 2</th>
+          </tr>
+          <tr v-for="( slot, i ) in team.slots">
+            <td>#{{i+1}}</td>
+            <td>
+              <select v-model="team.slots[i]">
+                <option value=""></option>
+                <option v-for="option in options( slot )" :value="option.name">{{option.name}}</option>
+              </select>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.weapon.q">
+                {{slots[i].slots.weapon.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.body.q">
+                {{slots[i].slots.body.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.head.q">
+                {{slots[i].slots.head.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.arms.q">
+                {{slots[i].slots.arms.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.legs.q">
+                {{slots[i].slots.legs.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.aux1.q">
+                {{slots[i].slots.aux1.item}}
+              </div>
+            </td>
+            <td>
+              <div v-if="slots[i]" :class="slots[i].slots.aux2.q">
+                {{slots[i].slots.aux2.item}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+</html>
