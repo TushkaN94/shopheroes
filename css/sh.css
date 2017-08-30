@@ -1,46 +1,108 @@
+#tabs {
+  height: 100%;
+}
 .ui-tabs .ui-tabs-panel {
-  padding: 0.2em 0.2em; !important
+  padding: 0.2em 0.2em !important; 
 }
-table.hero {
-  width: 100%;
+table.shopheroes {
+  font-size: 1em;
+  font-family: Arial Tahoma Calibri;
+  width: flex;
 }
-table.hero th {
-  font-size: 12px;
+table.shopheroes tr {
+  line-height: 1.5em;
+  min-height: 1.5em;
+}
+table.shopheroes th {
   text-align: center;
-  color: white;
+  /*color: white;*/
   font-weight: bold;
-  background-color: #4EBDE5;
-  width: 12%;
+  /*background-color: #4EBDE5;*/
+  background-color: #E9E9E9;
 }
-table.hero th.name {
-  text-transform: uppercase;
+table.shopheroes td {
+  font-size: 0.9em;
+  text-align: center;
+  /*background-color: #8CD7F2;*/
+  background-color: #F6F6F6;
+}
+
+table.shopheroes th.item {
+  min-width: 140px;
+}
+table.shopheroes th.name {
+  min-width: 160px;
+}
+table.shopheroes th.type {
+  min-width: 110px;
+}
+table.shopheroes th.power {
+  min-width: 80px;
+}
+table.shopheroes th.lv {
+  min-width: 80px;
+}
+table.shopheroes th.skill.name {
+  min-width: 140px;
+}
+table.shopheroes th.skill.quality {
+  min-width: 80px;
+}
+
+table.shopheroes th.hero.name,
+table.shopheroes th.item.name {
   background-color: #1588B2;
 }
-table.hero th.slot {
-  width: 20px; !important
+
+table.shopheroes .select2-container .select2-selection--multiple,
+table.shopheroes .select2-container .select2-selection--single {
+  line-height: 1.5em !important;
+  min-height: 1.5em !important;
+  height: auto !important;
+  font-size: 100% !important;
 }
-table.hero td {
-  font-size: 11px;
-  font-width: bold;
-  text-align: center;
-  background-color: #8CD7F2;
-  //width: 12%;
+table.shopheroes .select2-container .select2-selection--multiple .select2-selection__choice,
+table.shopheroes .select2-container .select2-search--inline .select2-search__field {
+  margin: 1px 2px !important;
 }
-table.hero select {
-  width: 100%;
+
+
+table.shopheroes .select2-container .select2-selection--single .select2-selection__arrow,
+table.shopheroes .select2-container .select2-selection--single .select2-selection__clear {
+  min-height: 1.5em !important;
+  height: 1.5em !important;
 }
-table.hero input {
-  width: 100%;
+table.shopheroes .select2-container .select2-selection--single .select2-selection__rendered {
+  min-height: 1.5em !important;
+  line-height: 1.5em !important;
+}
+
+table.shopheroes select {
   box-sizing: border-box;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  min-height: 1.5em;
 }
-table.hero .power {
+table.shopheroes input.name {
+  width: 100%;
+}
+table.shopheroes input {
+  box-sizing: border-box;
+  line-height: 1.5em;
+  min-height: 1.5em;
+}
+table.shopheroes input.lv {
+  width: 2em;
+  text-align: center;
+}
+table.shopheroes .power {
   display: inline-block;
   text-align: left;
   margin-left: 0.2em;
   float: left;
   width: 45%;
 }
-table.hero .break {
+table.shopheroes .break {
   display: inline-block;
   text-align: right;
   margin-right: 0.2em;
@@ -48,39 +110,23 @@ table.hero .break {
   width: 45%;
 }
 
-table.hero .remove {
+table.shopheroes .remove {
   display: inline;
   text-align: left;
   margin-left: 0.2em;
   float: left;
-  width: auto; !important
+  width: auto !important; 
 }
 
-table.hero .collapse {
+table.shopheroes .collapse {
   display: inline;
   text-align: left;
   margin-left: 0.2em;
   float: left;
-  width: auto; !important
+  width: auto !important; 
 }
 
-table.hero div.inactive {
+table.shopheroes .skill.inactive {
   color: gray;
-}
-
-table.hero div.lv {
-  display: flex;
-  text-align: center;
-}
-table.hero div.lv span {
-  margin: 0 auto;
-}
-table.hero div.lv input {
-  width: 20px;
-}
-table.hero div.item {
-  display: flex;
-}
-table.hero div.quality {
-  display: flex;
+  text-decoration: line-through;
 }
