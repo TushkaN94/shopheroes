@@ -82,17 +82,17 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filter.type" :options="options.type" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+                <select2 v-model="filter.type" :options="options.type" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.tier" :options="options.tier" :placeholder="'Choose tier'" :style="'width: 100%;'"/>
+                <select2 v-model="filter.tier" :options="options.tier" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.sex" :options="options.sex" :placeholder="'Choose sex'" :style="'width: 100%;'"/>
+                <select2 v-model="filter.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
@@ -105,7 +105,7 @@
             <td/>
             <td>
               <div>
-                <select2 v-model="filter.skill" :options="options.skill" :placeholder="'Choose skill'" :search="true" :style="'width: 100%;'"/>
+                <select2 v-model="filter.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
           </tr>
@@ -171,7 +171,7 @@
           <tr>
             <td v-for="( slot, key ) in hero.slots">
               <div>
-                <select2 v-model="slot.item" :options="equippables[key]" :search="'1'" :placeholder="'Choose item'"/>
+                <select2 v-model="slot.item" :options="equippables[key]" :placeholder="'Choose item'"/>
               </div>
             </td>
             <td>
@@ -181,7 +181,7 @@
           <tr>
             <td v-for="( slot, key ) in hero.slots">
               <div>
-                <select2 v-if="slot.item" v-model="slot.q" :options="qualities" :placeholder="'Choose quality'"/>
+                <select2 v-if="slot.item" v-model="slot.q" :options="qualities" :placeholder="'Choose quality'" :nosearch="true"/>
               </div>
             </td>
             <td>
@@ -329,7 +329,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filter.type" :search="true" :options="options.type" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+                <select2 v-model="filter.type" :options="options.type" :placeholder="'Choose type'" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
@@ -342,7 +342,7 @@
             <td/>
             <td colspan="2">
               <div>
-                <select2 v-model="filter.skill" :search="true" :options="options.skill" :placeholder="'Choose skill'" :style="'width: 100%;'"/>
+                <select2 v-model="filter.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
           </tr>

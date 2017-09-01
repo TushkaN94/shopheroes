@@ -1,4 +1,7 @@
 ﻿$( function() {
+  String.prototype.capitalize = function( lower ) {
+    return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
+  };
   $.loadScript = function( url, options ) {
     options = $.extend( options || {}, {
       dataType: "script",
@@ -113,7 +116,7 @@
   
   Vue.component( 'select2', {
     template: '#templates-select2',
-    props: [ 'options', 'value', 'search', 'placeholder' ],
+    props: [ 'options', 'value', 'nosearch', 'tags', 'placeholder' ],
     data: function() {
       return {
         settings: { 
@@ -122,6 +125,23 @@
           allowClear: true,
           minimumResultsForSearch: Infinity,
           placeholder: " ",
+          tags: false,
+          createTag: function( params ) {
+            return {
+              id: params.term,
+              text: params.term.capitalize( true ),
+              custom: true
+            }
+          },
+          templateResult: function( data ) {
+            var $result = $( "<span></span>" );
+            $result.text( data.text );
+            if ( data.custom ) {
+              $result.prepend( "Contains \"" );
+              $result.append( "\"" );
+            }
+            return $result;
+          }
         }
       };
     },
@@ -129,8 +149,9 @@
       var vm = this;
       $.extend( true, this.settings, {
         data: this.options,
-        minimumResultsForSearch: !!this.search || Infinity,
+        minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
         placeholder: this.placeholder || " ",
+        tags: !!this.tags
       } );
       $( this.$el )
         .select2( this.settings )
@@ -145,18 +166,23 @@
         $( this.$el ).val( value ).trigger( 'change' );
       },
       options: function( options ) {
-        $.extend( true, this.settings, {
-          data: options,
+        $.extend( true, this.settings, { 
+          data: options 
         } );
       },
-      search: function( search ) {
+      nosearch: function( nosearch ) {
         $.extend( true, this.settings, {
-          minimumResultsForSearch: !!search || Infinity,
+          minimumResultsForSearch: nosearch ? Infinity : 3
         } );
       },
       placeholder: function( placeholder ) {
         $.extend( true, this.settings, {
-          placeholder: !!placeholder || Infinity,
+          placeholder: !!placeholder || " "
+        } );
+      },
+      tags: function( tags ) {
+        $.extend( true, this.settings, {
+          tags: !!tags
         } );
       },
       settings: function( settings ) {
@@ -311,7 +337,7 @@
           var fn_name, fn_type, fn_tier, fn_sex, fn_skill, fn_lv;
           if ( !!filter.name ) {
             fn_name = function( obj ) {
-              return obj.name.includes( filter.name );
+              return obj.name.toUpperCase().includes( filter.name.toUpperCase() );
             };
           } else {
             fn_name = function( obj ) {
@@ -320,7 +346,7 @@
           }
           if ( !!filter.type ) {
             fn_type = function( obj ) {
-              return ( filter.type == obj.type );
+              return ( obj.type.toUpperCase() == filter.type.toUpperCase() );
             };
           } else {
             fn_type = function( obj ) {
@@ -329,7 +355,7 @@
           }
           if ( !!filter.tier ) {
             fn_tier = function( obj ) {
-              return ( filter.tier == obj.tier );
+              return ( obj.tier == filter.tier );
             };
           } else {
             fn_tier = function( obj ) {
@@ -338,7 +364,7 @@
           }
           if ( !!filter.sex ) {
             fn_sex = function( obj ) {
-              return ( filter.sex == obj.sex );
+              return ( obj.sex.toUpperCase() == filter.sex.toUpperCase() );
             };
           } else {
             fn_sex = function( obj ) {
@@ -349,7 +375,7 @@
             fn_skill = function( obj ) {
               var res = false;
               $.each( obj.skills, function( k, v ) { 
-                if ( filter.skill == v.name ) {
+                if ( v.name.toUpperCase().includes( filter.skill.toUpperCase() ) ) {
                   res = true;
                 }
               } )
@@ -423,7 +449,7 @@
           var fn_name, fn_type, fn_skill, fn_lv;
           if ( !!filter.name ) {
             fn_name = function( obj ) {
-              return obj.name.includes( filter.name );
+              return obj.name.toUpperCase().includes( filter.name.toUpperCase() );
             };
           } else {
             fn_name = function( obj ) {
@@ -432,7 +458,7 @@
           }
           if ( !!filter.type ) {
             fn_type = function( obj ) {
-              return ( filter.type == obj.type );
+              return ( obj.type.toUpperCase() == filter.type.toUpperCase() );
             };
           } else {
             fn_type = function( obj ) {
@@ -441,7 +467,7 @@
           }
           if ( !!filter.skill ) {
             fn_skill = function( obj ) {
-              return ( obj.skill && filter.skill == obj.skill.name );
+              return ( !!obj.skill && obj.skill.name.toUpperCase().includes( filter.skill.toUpperCase() ) );
             };
           } else {
             fn_skill = function( obj ) {
