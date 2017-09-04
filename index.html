@@ -56,9 +56,12 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-skill">
-    <div>
+    <div v-if="!!skill">
       <span class="float-left" v-if="skill.lv">{{skill.lv}}</span>
       <span class="skill" :class="{inactive:!skill.active}">{{skill.name}}</span>
+    </div>
+    <div v-else>
+      <span class="skill">None</span>
     </div>
   </script>
   <script type="text/x-template" id="templates-heroes">
@@ -165,7 +168,7 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[0]"/>
+              <skill :skill="summary.skills.hero[0]"/>
             </td>
           </tr>
           <tr>
@@ -175,7 +178,7 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[1]"/>
+              <skill :skill="summary.skills.hero[1]"/>
             </td>
           </tr>
           <tr>
@@ -185,12 +188,12 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[2]"/>
+              <skill :skill="summary.skills.hero[2]"/>
             </td>
           </tr>
           <tr>
-            <td v-for="( slot, key ) in hero.slots">
-              <skill :skill="summary.slots[key].skill"/>
+            <td v-for="skill in summary.skills.items">
+              <skill :skill="skill"/>
             </td>
             <th/>
           </tr>
@@ -245,21 +248,19 @@
           <tr>
             <th class="slot">Slot</th>
             <th>Hero</th>
-            <th>Weapon</th>
-            <th>Body</th>
-            <th>Head</th>
-            <th>Arms</th>
-            <th>Legs</th>
-            <th>Accessory 1</th>
-            <th>Accessory 2</th>
+            <th class="item">Weapon</th>
+            <th class="item">Body</th>
+            <th class="item">Head</th>
+            <th class="item">Arms</th>
+            <th class="item">Legs</th>
+            <th class="item">Accessory 1</th>
+            <th class="item">Accessory 2</th>
           </tr>
-          <tr v-for="( slot, i ) in team.slots">
+          <tr v-for="( slot, i ) in team.slots" v-if="i < summary.max">
             <td>#{{i+1}}</td>
             <td>
               <div>
-                <select2 v-model="team.slots[i]">
-                  <option v-for="option in options( slot )" :value="option.name">{{option.name}}</option>
-                </select2>
+                <select2 v-model="team.slots[i]" :options="options( slot )"/>
               </div>
             </td>
             <td>

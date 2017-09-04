@@ -249,33 +249,34 @@
     },
     methods: {
       summary: function( hero ) {
-        var power = hero.power.base + hero.power.m * ( c_data.powers.lv[hero.lv] || 0 );
-        var skills = $.map( hero.skills, function( skill, skill_lv ) {
-          return { 
-            name: skill.name,
-            active: ( hero.lv >= skill_lv )
-          };
-        } );
+        var skills = {
+          hero: [],
+          items: []
+        };
         var slots = {};
         var optimals = 0;
+        var power = hero.power.base + hero.power.m * ( c_data.powers.lv[hero.lv] || 0 );
+        skills.hero = $.map( hero.skills, function( skill, skill_lv ) {
+          return { 
+            name: skill.name,
+            active: ( parseInt( hero.lv ) >= parseInt( skill_lv ) )
+          };
+        } );
         $.each( hero.slots, function( slot_key, slot ) {
+          var skill;
           var res = {
             power: 0,
             a: 0,
-            break: 0.00,
-            skill: {
-              name: 'None',
-              active: false
-            }
+            break: 0.00
           };
           var found = c_data.items.filter( function( item ) {
-            return ( item.name == slot.item );
+            return ( !!slot.item && item.name.toUpperCase() == slot.item.toUpperCase() );
           } );
           if ( found.length == 1 ) {
             $.extend( true, res, found[0], {
               q: slot.q
             } );
-            var lv_difference = Math.abs( res.lv - hero.lv );
+            var lv_difference = Math.abs( parseInt( res.lv ) - parseInt( hero.lv ) );
             res.optimal = ( lv_difference <= 6 );
             res.power = ( res.power || 0 ) * ( c_data.powers.q[res.q] || 1.0 );
             res.a = slot.list[res.type].a;
@@ -284,12 +285,18 @@
               chance = 0;
             }
             res.break = chance || 0;
-            var q1 = c_data.qualities[slot.q];
-            var q2 = c_data.qualities[res.skill.q];
-            res.skill.active = ( !!q1 && !!q2 && q1.i >= q2.i );
+            if ( !!res.skill ) {
+              var q1 = c_data.qualities[slot.q];
+              var q2 = c_data.qualities[res.skill.q];
+              skill = {
+                name: res.skill.name,
+                active: ( !!q1 && !!q2 && q1.i >= q2.i )
+              };
+            }
             optimals += res.optimal;
           }
           slots[slot_key] = res;
+          skills.items.push( skill );
         } );
         $.each( slots, function( slot_key, slot ) {
           power += ( optimals == 7 ? 1.25 : 1.0 ) * slot.power;
@@ -307,7 +314,7 @@
           $.each( slot.list, function( item_type, item ) {
             var items = c_data.items
               .filter( function( item ) {
-                return ( item.type == item_type );
+                return ( item.type.toUpperCase() == item_type.toUpperCase() );
               } )
               .map( function( item ) {
                 return {
@@ -355,7 +362,7 @@
           }
           if ( !!filter.tier ) {
             fn_tier = function( obj ) {
-              return ( obj.tier == filter.tier );
+              return ( parseInt( obj.tier ) == parseInt( filter.tier ) );
             };
           } else {
             fn_tier = function( obj ) {
@@ -388,15 +395,15 @@
           }
           if ( !!filter.lv.min && !!filter.lv.max ) {
             fn_lv = function( obj ) {
-              return ( obj.lv >= filter.lv.min && obj.lv <= filter.lv.max );
+              return ( parseInt( obj.lv ) >= parseInt( filter.lv.min ) && parseInt( obj.lv ) <= parseInt( filter.lv.max ) );
             };
           } else if ( !!filter.lv.min ) {
             fn_lv = function( obj ) {
-              return ( obj.lv >= filter.lv.min );
+              return ( parseInt( obj.lv ) >= parseInt( filter.lv.min ) );
             };
           } else if ( !!filter.lv.max ) {
             fn_lv = function( obj ) {
-              return ( obj.lv <= filter.lv.max );
+              return ( parseInt( obj.lv ) <= parseInt( filter.lv.max ) );
             };
           } else {
             fn_lv = function( obj ) {
@@ -520,16 +527,35 @@
       },
       summary: function() {
         var power = 0;
+        var max = 4;
+        var leader = this.slots[0]
+        if ( !!leader  ) {
+          if ( parseInt( leader.lv ) >= 30 ) {
+            max += 1;
+          }
+          var summary = vm_heroes.summary( leader );
+          summary.skills.items
+            .filter( function( skill ) {
+              return !!skill;
+            } )
+            .concat( summary.skills.hero )
+            .map( function( skill ) {
+              if ( skill.name.toUpperCase().includes( "LEADER I" ) ) {
+                max += 1;
+              }
+            } );
+        }
         this.slots
-        .filter( function( hero ) {
-          return ( !!hero );
-        } )
-        .map( function( hero ) {
-          var summary = vm_heroes.summary( hero );
-          power += summary.power;
-        } );
+          .filter( function( hero ) {
+            return ( !!hero );
+          } )
+          .map( function( hero ) {
+            var summary = vm_heroes.summary( hero );
+            power += summary.power;
+          } );
         return {
           power: power,
+          max: max,
           skills: []
         };
       }
@@ -546,6 +572,12 @@
             return !( selected.indexOf( hero.name ) > -1 );
           } );
         }
+        res = res.map( function( hero ) {
+          return {
+            id: hero.name,
+            text: hero.name
+          };
+        } );
         return res;
       },
       remove: function( team ) {
