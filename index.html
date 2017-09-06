@@ -306,7 +306,7 @@
             <td></td>
             <td></td>
           </tr>
-          <tr v-for="( summary, i ) in roster">
+          <tr v-for="( summary, i ) in roster" v-show="i < max">
             <td>#{{i+1}}</td>
             <td>
               <div>

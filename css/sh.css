@@ -43,10 +43,10 @@ table.shopheroes th.lv {
   min-width: 80px;
   max-width: 80px;
 }
-table.shopheroes th.skill.name {
+table.shopheroes th.name {
   min-width: 140px;
 }
-table.shopheroes th.skill.quality {
+table.shopheroes th.quality {
   min-width: 80px;
 }
 

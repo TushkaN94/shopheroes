@@ -33,6 +33,16 @@
     items: [],
     heroes: [],
     teams: [],
+    extend: function( key, value ) {
+      var self = this;
+      switch ( key ) {
+        case 'heroes':
+          $.extend( true, self.heroes, value );
+          break;
+        default:
+          break;
+      }
+    },
     set: function( key, value ) {
       var self = this;
       switch ( key ) {
@@ -110,6 +120,7 @@
   c_data.set( "breaks", cache.get( "breaks" ) || {} );
   c_data.set( "items", cache.get( "items" ) || [] );
   c_data.set( "heroes", cache.get( "heroes" ) || [] );
+  c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
   c_data.set( "teams", cache.get( "teams" ) || [] );
 
   $( '#tabs' ).tabs();
@@ -333,7 +344,21 @@
     watch: {
       heroes: { 
         handler: function( heroes ) {
-          cache.set( 'heroes', heroes, true );
+          var custom = heroes
+            .map( hero => {
+              var slots = hero.slots
+                .map( slot => {
+                  return {
+                    item: slot.item,
+                    q: slot.q
+                  };
+                } );
+              return {
+                lv: hero.lv,
+                slots: slots
+              };
+            } );
+          cache.set( 'heroes_custom', custom, true );
         },
         deep: true
       },
@@ -467,6 +492,9 @@
           .filter( n => !!n.hero )
           .reduce( ( p, i ) => p + i.power, 0 );
       },
+      max: function() {
+        return this.roster[0].max;
+      },
       roster: function() {
         var roster = this.team.roster
           .map( function( name, i ) {
@@ -545,7 +573,7 @@
       add: function() {
         var team = {
           name: 'Team ' + ( this.teams.length + 1 ),
-          roster: new Array(6)
+          roster: [undefined,undefined,undefined,undefined,undefined,undefined]
         }
         this.teams.push( team );
       },
@@ -586,6 +614,7 @@
           )
           .then( function( res1 ) {
             c_data.set( "heroes", cache.get( "heroes" ) || [] );
+            c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
           } );
           break;
       }
