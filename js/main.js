@@ -122,8 +122,6 @@ $( function() {
   c_data.set( "heroes", cache.get( "heroes" ) || [] );
   c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
   c_data.set( "teams", cache.get( "teams" ) || [] );
-
-  $( '#tabs' ).tabs();
   
   Vue.component( 'select2', {
     template: '#templates-select2',
