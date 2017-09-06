@@ -143,7 +143,7 @@
             <th></th>
           </tr>
         </tbody>
-        <hero v-for="( hero, i ) in list" :hero="hero" :key="i"/>
+        <hero v-for="( hero, i ) in heroes" v-show="visible( hero )" :hero="hero" :key="i"/>
       </table>
     </div>
   </script>
@@ -392,7 +392,7 @@
             <th></th>
             <th></th>
           </tr>
-          <item v-for="( item, i ) in list" :item="item" :key="i"/>
+          <item v-for="( item, i ) in items" v-show="visible( item )" :item="item" :key="i"/>
           <tr class="header">
             <th></th>
             <th></th>

@@ -7,6 +7,7 @@
       type: "Fighter",
       sex: "F",
       tier: 1,
+      lv: 1,
       cap: 25,
       power: {
         base: 100,
@@ -79,6 +80,7 @@
       type: "Fighter",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 30,
       power: {
         base: 50,
@@ -151,6 +153,7 @@
       type: "Fighter",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 35,
       power: {
         base: 100,
@@ -223,6 +226,7 @@
       type: "Fighter",
       sex: "M",
       tier: 2,
+      lv: 1,
       cap: 40,
       power: {
         base: 500,
@@ -295,6 +299,7 @@
       type: "Fighter",
       sex: "M",
       tier: 3,
+      lv: 1,
       cap: 45,
       power: {
         base: 1000,
@@ -367,6 +372,7 @@
       type: "Fighter",
       sex: "F",
       tier: 4,
+      lv: 1,
       cap: 50,
       power: {
         base: 2500,
@@ -439,6 +445,7 @@
       type: "Fighter",
       sex: "M",
       tier: 4,
+      lv: 1,
       cap: 50,
       power: {
         base: 2500,
@@ -511,6 +518,7 @@
       type: "Fighter",
       sex: "M",
       tier: 5,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -583,6 +591,7 @@
       type: "Fighter",
       sex: "F",
       tier: 5,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -655,6 +664,7 @@
       type: "Rogue",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 30,
       power: {
         base: 50,
@@ -727,6 +737,7 @@
       type: "Rogue",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 40,
       power: {
         base: 100,
@@ -799,6 +810,7 @@
       type: "Rogue",
       sex: "F",
       tier: 2,
+      lv: 1,
       cap: 40,
       power: {
         base: 500,
@@ -871,6 +883,7 @@
       type: "Rogue",
       sex: "F",
       tier: 2,
+      lv: 1,
       cap: 45,
       power: {
         base: 500,
@@ -943,6 +956,7 @@
       type: "Rogue",
       sex: "M",
       tier: 3,
+      lv: 1,
       cap: 45,
       power: {
         base: 1000,
@@ -1015,6 +1029,7 @@
       type: "Rogue",
       sex: "F",
       tier: 3,
+      lv: 1,
       cap: 45,
       power: {
         base: 1000,
@@ -1087,6 +1102,7 @@
       type: "Rogue",
       sex: "F",
       tier: 5,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -1159,6 +1175,7 @@
       type: "Rogue",
       sex: "F",
       tier: 5,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -1231,6 +1248,7 @@
       type: "Rogue",
       sex: "F",
       tier: 6,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -1303,6 +1321,7 @@
       type: "Spellcaster",
       sex: "F",
       tier: 1,
+      lv: 1,
       cap: 25,
       power: {
         base: 50,
@@ -1375,6 +1394,7 @@
       type: "Spellcaster",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 35,
       power: {
         base: 50,
@@ -1447,6 +1467,7 @@
       type: "Spellcaster",
       sex: "M",
       tier: 1,
+      lv: 1,
       cap: 40,
       power: {
         base: 100,
@@ -1519,6 +1540,7 @@
       type: "Spellcaster",
       sex: "F",
       tier: 2,
+      lv: 1,
       cap: 40,
       power: {
         base: 500,
@@ -1591,6 +1613,7 @@
       type: "Spellcaster",
       sex: "F",
       tier: 3,
+      lv: 1,
       cap: 45,
       power: {
         base: 1000,
@@ -1663,6 +1686,7 @@
       type: "Spellcaster",
       sex: "F",
       tier: 4,
+      lv: 1,
       cap: 50,
       power: {
         base: 2500,
@@ -1735,6 +1759,7 @@
       type: "Spellcaster",
       sex: "F",
       tier: 4,
+      lv: 1,
       cap: 50,
       power: {
         base: 2500,
@@ -1807,6 +1832,7 @@
       type: "Spellcaster",
       sex: "M",
       tier: 5,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,
@@ -1879,6 +1905,7 @@
       type: "Spellcaster",
       sex: "M",
       tier: 6,
+      lv: 1,
       cap: 55,
       power: {
         base: 5000,

@@ -213,7 +213,7 @@
       }
     },
     watch: {
-      "hero": { 
+      hero: { 
         handler: function( next, prev ) {
           if ( next.lv != prev.lv ) {
             if ( isNaN( next.lv ) ) {
@@ -224,7 +224,8 @@
               next.lv = next.cap;
             }
           }
-        }
+        },
+        deep: true
       }
     }
   } );
@@ -249,13 +250,10 @@
         },
       }
     },
-    computed: {
-      list: function() {
-        var filter = this.filter; 
-        return this.heroes.filter( h => filter( h ) );
-      }
-    },
     methods: {
+      visible: function( hero ) {
+        return this.filter( hero );
+      },
       summary: function( hero ) {
         var skills = {
           hero: [],
@@ -413,6 +411,11 @@
       list: function() {
         var filter = this.filter;
         return this.items.filter( i => filter( i ) );
+      }
+    },
+    methods: {
+      visible: function( item ) {
+        return this.filter( item );
       }
     },
     watch: {
