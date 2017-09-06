@@ -214,15 +214,13 @@
     },
     watch: {
       hero: { 
-        handler: function( next, prev ) {
-          if ( next.lv != prev.lv ) {
-            if ( isNaN( next.lv ) ) {
-              next.lv = 1;
-            } else if ( next.lv < 1 ) {
-              next.lv = 1;
-            } else if ( next.lv > next.cap ) {
-              next.lv = next.cap;
-            }
+        handler: function( hero ) {
+          if ( isNaN( hero.lv ) ) {
+            hero.lv = 1;
+          } else if ( hero.lv < 1 ) {
+            hero.lv = 1;
+          } else if ( hero.lv > hero.cap ) {
+            hero.lv = hero.cap;
           }
         },
         deep: true
