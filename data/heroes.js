@@ -1,4 +1,4 @@
-﻿$( function() {
+$( function() {
   var cache = $.cache._();
 
   var heroes = [
