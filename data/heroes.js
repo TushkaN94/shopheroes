@@ -4,1785 +4,1947 @@
   var heroes = [
     {
       name: "Karal",
-      type: "Fighters",
+      type: "Fighter",
       sex: "F",
       tier: 1,
       cap: 25,
-      lv: null,
       power: {
         base: 100,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Axes": { a: 1 }, "Maces": { a: 0 }, "Spears": { a: -1 }
-          }
+          list: [
+            { type: "Axes", a: 1 }, { type: "Maces", a: 0 }, { type: "Spears", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Vests": { a: -1 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Vests", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }, "Pendants": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }, { type: "Pendants", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }, "Projectiles": { a: -1 }
-          }
+          list: [
+            { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "1": { name: "Amazon I" }, "18": { name: "Resilient II" }, "21": { name: "Crush" }
-      }
+      ],
+      skills: [
+        { name: "Amazon I", lv: 1 }, { name: "Resilient II", lv: 18 }, { name: "Crush", lv: 21 }
+      ]
     },
     {
       name: "Theor",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 1,
       cap: 30,
-      lv: null,
       power: {
         base: 50,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Swords": { a: 1 }, "Axes": { a: 0 }, "Maces": { a: 0 }, "Spears": { a: -2 }
-          }
+          list: [
+            { type: "Swords", a: 1 }, { type: "Axes", a: 0 }, { type: "Maces", a: 0 }, { type: "Spears", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armors": { a: 0 }, "Vests": { a: -1 }
-          }
+          list: [
+            { type: "Armors", a: 0 }, { type: "Vests", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Remedies": { a: 0 }
-          }
+          list: [
+            { type: "Remedies", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "5": { name: "Energetic I" }, "10": { name: "Cleave" }, "15": { name: "Brothers-in-arms I" }
-      }
+      ],
+      skills: [
+        { name: "Energetic I", lv: 5 }, { name: "Cleave", lv: 10 }, { name: "Brothers-in-arms I", lv: 15 }
+      ]
     },
     {
       name: "Clovis",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 1,
       cap: 35,
-      lv: null,
       power: {
         base: 100,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Spears": { a: 1 }, "Axes": { a: 0 }, "Swords": { a: -1 }, "Maces": { a: -2 }
-          }
+          list: [
+            { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Remedies": { a: 0 }, "Potions": { a: -1 }
-          }
+          list: [
+            { type: "Remedies", a: 0 }, { type: "Potions", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "4": { name: "Leader I" }, "14": { name: "Brothers-in-arms I" }, "18": { name: "Resilient II" }
-      }
+      ],
+      skills: [
+        { name: "Parry", lv: 5 }, { name: "Protector I", lv: 10 }, { name: "Commander I", lv: 15 }
+      ]
     },
     {
       name: "Gauvin",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 2,
       cap: 40,
-      lv: null,
       power: {
         base: 500,
         m: 1.50
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Spears": { a: 1 }, "Axes": { a: 0 }, "Swords": { a: -1 }, "Maces": { a: -2 }
-          }
+          list: [
+            { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }, "Pendants": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }, { type: "Pendants", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Potions", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "4": { name: "Leader I" }, "14": { name: "Brothers-in-arms I" }, "18": { name: "Resilient II" }
-      }
+      ],
+      skills: [
+        { name: "Leader I", lv: 4 }, { name: "Brothers-in-arms I", lv: 14 }, { name: "Resilient II", lv: 18 }
+      ]
     },
     {
       name: "Lancaster",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 3,
       cap: 45,
-      lv: null,
       power: {
         base: 1000,
         m: 2.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Axes": { a: 1 }, "Swords": { a: 0 }, "Spears": { a: 0 }, "Maces": { a: -2 }
-          }
+          list: [
+            { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: 0 }, { type: "Maces", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Remedies": { a: 0 }, "Potions": { a: -1 }
-          }
+          list: [
+            { type: "Remedies", a: 0 }, { type: "Potions", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "7": { name: "Brothers-in-arms II" }, "12": { name: "Protector II" }, "26": { name: "Resourceful II" }
-      }
+      ],
+      skills: [
+        { name: "Brothers-in-arms II", lv: 7 }, { name: "Protector II", lv: 12 }, { name: "Resourceful II", lv: 26 }
+      ]
     },
     {
       name: "Fiora",
-      type: "Fighters",
+      type: "Fighter",
       sex: "F",
       tier: 4,
       cap: 50,
-      lv: null,
       power: {
         base: 2500,
         m: 3.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Maces": { a: 1 }, "Swords": { a: 0 }, "Spears": { a: -1 }, "Staves": { a: -1 }
-          }
+          list: [
+            { type: "Maces", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: -1 }, { type: "Staves", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Clothes": { a: -1 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Clothes", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }, "Rings": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }, { type: "Rings", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }
-          }
+          list: [
+            { type: "Potions", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "8": { name: "Commander II" }, "15": { name: "Gold Digger II" }, "30": { name: "Revive II" }
-      }
+      ],
+      skills: [
+        { name: "Commander II", lv: 8 }, { name: "Gold Digger II", lv: 15 }, { name: "Revive II", lv: 30 }
+      ]
     },
     {
       name: "Kurul",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 4,
       cap: 50,
-      lv: null,
       power: {
         base: 2500,
         m: 3.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Maces": { a: 1 }, "Axes": { a: 0 }, "Spears": { a: -1 }
-          }
+          list: [
+            { type: "Maces", a: 1 }, { type: "Axes", a: 0 }, { type: "Spears", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Vests": { a: -1 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Vests", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Pendants": { a: 0 }, "Shields": { a: -1 }
-          }
+          list: [
+            { type: "Pendants", a: 0 }, { type: "Shields", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Remedies": { a: 0 }
-          }
+          list: [
+            { type: "Remedies", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "12": { name: "Energetic II" }, "20": { name: "Scavenger II" }, "25": { name: "Leader II" }
-      }
+      ],
+      skills: [
+        { name: "Energetic II", lv: 12 }, { name: "Scavenger II", lv: 20 }, { name: "Leader II", lv: 25 }
+      ]
     },
     {
       name: "Edward",
-      type: "Fighters",
+      type: "Fighter",
       sex: "M",
       tier: 5,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 4.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Spears": { a: 1 }, "Maces": { a: 0 }, "Swords": { a: -1 }, "Axes": { a: -1 }
-          }
+          list: [
+            { type: "Spears", a: 1 }, { type: "Maces", a: 0 }, { type: "Swords", a: -1 }, { type: "Axes", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Clothes": { a: -1 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Clothes", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }, "Spells": { a: -1 }
-          }
+          list: [
+            { type: "Potions", a: 0 }, { type: "Spells", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "12": { name: "Leader III" }, "26": { name: "Revive III" }, "34": { name: "Protector III" }
-      }
+      ],
+      skills: [
+        { name: "Leader III", lv: 12 }, { name: "Revive III", lv: 26 }, { name: "Protector III", lv: 34 }
+      ]
     },
     {
       name: "Alicia",
-      type: "Fighters",
+      type: "Fighter",
       sex: "F",
       tier: 5,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 4.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Axes": { a: 1 }, "Swords": { a: 0 }, "Maces": { a: -1 }, "Spears": { a: -1 }
-          }
+          list: [
+            { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Maces", a: -1 }, { type: "Spears", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Shields": { a: 0 }, "Instruments": { a: 0 }
-          }
+          list: [
+            { type: "Shields", a: 0 }, { type: "Instruments", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }, "Remedies": { a: 0 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }, { type: "Remedies", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "14": { name: "Amazon III" }, "24": { name: "Energetic III" }, "32": { name: "Lucky III" }
-      }
+      ],
+      skills: [
+        { name: "Amazon III", lv: 14 }, { name: "Energetic III", lv: 24 }, { name: "Lucky III", lv: 32 }
+      ]
     },
     {
       name: "Garreth",
-      type: "Rogues",
+      type: "Rogue",
       sex: "M",
       tier: 1,
       cap: 30,
-      lv: null,
       power: {
         base: 50,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Daggers": { a: 1 }, "Bows": { a: -1 }, "Guns": { a: -2 }
-          }
+          list: [
+            { type: "Daggers", a: 1 }, { type: "Bows", a: -1 }, { type: "Guns", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Pendants": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Pendants", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "5": { name: "Lucky I" }, "14": { name: "Treasure Hunter I" }, "20": { name: "Scavenger I" }
-      }
+      ],
+      skills: [
+        { name: "Lucky I", lv: 5 }, { name: "Treasure Hunter I", lv: 14 }, { name: "Scavenger I", lv: 20 }
+      ]
     },
     {
       name: "Palash",
-      type: "Rogues",
+      type: "Rogue",
       sex: "M",
       tier: 1,
       cap: 40,
-      lv: null,
       power: {
         base: 100,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Bows": { a: 1 }, "Axes": { a: 0 }, "Guns": { a: -1 }
-          }
+          list: [
+            { type: "Bows", a: 1 }, { type: "Axes", a: 0 }, { type: "Guns", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Instruments": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Instruments", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: -1 }, "Remedies": { a: 0 }
-          }
+          list: [
+            { type: "Projectiles", a: -1 }, { type: "Remedies", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "3": { name: "Resilient I" }, "16": { name: "Scavenger I" }, "22": { name: "Supplier I" }
-      }
+      ],
+      skills: [
+        { name: "Resilient I", lv: 3 }, { name: "Scavenger I", lv: 16 }, { name: "Supplier I", lv: 22 }
+      ]
     },
     {
       name: "Mila",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 2,
       cap: 40,
-      lv: null,
       power: {
         base: 500,
         m: 1.50
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Dagges": { a: 1 }, "Maces": { a: -1 }, "Bows": { a: -1 }
-          }
+          list: [
+            { type: "Dagges", a: 1 }, { type: "Maces", a: -1 }, { type: "Bows", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Pendants": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Pendants", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "7": { name: "Gold Digger I" }, "14": { name: "Treasure Hunter II" }, "22": { name: "Lucky II" }
-      }
+      ],
+      skills: [
+        { name: "Gold Digger I", lv: 7 }, { name: "Treasure Hunter II", lv: 14 }, { name: "Lucky II", lv: 22 }
+      ]
     },
     {
       name: "Irene",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 2,
       cap: 45,
-      lv: null,
       power: {
         base: 500,
         m: 1.50
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Swords": { a: 1 }, "Guns": { a: 0 }, "Daggers": { a: -1 }
-          }
+          list: [
+            { type: "Swords", a: 1 }, { type: "Guns", a: 0 }, { type: "Daggers", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Shields": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Shields", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }, "Projectiles": { a: -1 }
-          }
+          list: [
+            { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "9": { name: "Gangster I" }, "20": { name: "Resourceful I" }, "28": { name: "Supplier II" }
-      }
+      ],
+      skills: [
+        { name: "Gangster I", lv: 9 }, { name: "Resourceful I", lv: 20 }, { name: "Supplier II", lv: 28 }
+      ]
     },
     {
       name: "Darthos",
-      type: "Rogues",
+      type: "Rogue",
       sex: "M",
       tier: 3,
       cap: 45,
-      lv: null,
       power: {
         base: 1000,
         m: 2.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Guns": { a: 1 }, "Swords": { a: 0 }, "Daggers": { a: -1 }
-          }
+          list: [
+            { type: "Guns", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }, "Helmets": { a: -1 }
-          }
+          list: [
+            { type: "Hats", a: 0 }, { type: "Helmets", a: -1 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Shields": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Shields", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "8": { name: "Wise II" }, "12": { name: "Speed Runner II" }, "22": { name: "Brothers-in-arms III" }
-      }
+      ],
+      skills: [
+        { name: "Wise II", lv: 8 }, { name: "Speed Runner II", lv: 12 }, { name: "Brothers-in-arms III", lv: 22 }
+      ]
     },
     {
       name: "Odette",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 3,
       cap: 45,
-      lv: null,
       power: {
         base: 1000,
         m: 2.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Bows": { a: 1 }, "Swords": { a: 0 }, "Daggers": { a: 0 }, "Guns": { a: -1 }
-          }
+          list: [
+            { type: "Bows", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: 0 }, { type: "Guns", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }, "Clothes": { a: -1 }
-          }
+          list: [
+            { type: "Vests", a: 0 }, { type: "Clothes", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Pendants": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Pendants", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "8": { name: "Fastidious II" }, "18": { name: "Amazon II" }, "24": { name: "Support II" }
-      }
+      ],
+      skills: [
+        { name: "Fastidious II", lv: 8 }, { name: "Amazon II", lv: 18 }, { name: "Support II", lv: 24 }
+      ]
     },
     {
       name: "Louca",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 5,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 4.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Guns": { a: 1 }, "Maces": { a: 0 }
-          }
+          list: [
+            { type: "Guns", a: 1 }, { type: "Maces", a: 0 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }, "Boots": { a: -1 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }, { type: "Boots", a: -1 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Shields": { a: -1 }, "Pendants": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Shields", a: -1 }, { type: "Pendants", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Remedies": { a: 0 }, "Projectiles": { a: -1 }
-          }
+          list: [
+            { type: "Remedies", a: 0 }, { type: "Projectiles", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "18": { name: "Scavenger III" }, "25": { name: "Treasure Hunter III" }, "35": { name: "Support III" }
-      }
+      ],
+      skills: [
+        { name: "Scavenger III", lv: 18 }, { name: "Treasure Hunter III", lv: 25 }, { name: "Support III", lv: 35 }
+      ]
     },
     {
       name: "Kuro Shobi",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 5,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 4.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Swords": { a: 1 }, "Daggers": { a: 0 }, "Bows": { a: 0 }, "Guns": { a: -1 }
-          }
+          list: [
+            { type: "Swords", a: 1 }, { type: "Daggers", a: 0 }, { type: "Bows", a: 0 }, { type: "Guns", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }, "Clothes": { a: -1 }
-          }
+          list: [
+            { type: "Vests", a: 0 }, { type: "Clothes", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }, "Instruments": { a: -1 }
-          }
+          list: [
+            { type: "Rings", a: 0 }, { type: "Instruments", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "14": { name: "Gangster III" }, "26": { name: "Resourceful III" }, "34": { name: "Speed Runner III" }
-      }
+      ],
+      skills: [
+        { name: "Gangster III", lv: 14 }, { name: "Resourceful III", lv: 26 }, { name: "Speed Runner III", lv: 34 }
+      ]
     },
     {
       name: "Lorelei",
-      type: "Rogues",
+      type: "Rogue",
       sex: "F",
       tier: 6,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 5.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Daggers": { a: 1 }, "Guns": { a: 0 }
-          }
+          list: [
+            { type: "Daggers", a: 1 }, { type: "Guns", a: 0 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Rings": { a: 0 }
-          }
+          list: [
+            { type: "Rings", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Projectiles": { a: 0 }
-          }
+          list: [
+            { type: "Projectiles", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "20": { name: "Lucky III" }, "25": { name: "Backstab" }, "30": { name: "Scavenger III" }
-      }
+      ],
+      skills: [
+        { name: "Lucky III", lv: 20 }, { name: "Backstab", lv: 25 }, { name: "Scavenger III", lv: 30 }
+      ]
     },
     {
       name: "Melina",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "F",
       tier: 1,
       cap: 25,
-      lv: null,
       power: {
         base: 50,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Staves": { a: 1 }, "Daggers": { a: -1 }, "Bows": { a: -2 }
-          }
+          list: [
+            { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Bows", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Pendants": { a: 0 }, "Rings": { a: 0 }
-          }
+          list: [
+            { type: "Pendants", a: 0 }, { type: "Rings", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "6": { name: "Fireball" }, "10": { name: "Wise I" }, "18": { name: "Speed Runner I" }
-      }
+      ],
+      skills: [
+        { name: "Fireball", lv: 6 }, { name: "Wise I", lv: 10 }, { name: "Speed Runner I", lv: 18 }
+      ]
     },
     {
       name: "Minh",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "M",
       tier: 1,
       cap: 35,
-      lv: null,
       power: {
         base: 50,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Maces": { a: 1 }, "Staves": { a: 0 }, "Bows": { a: -1 }
-          }
+          list: [
+            { type: "Maces", a: 1 }, { type: "Staves", a: 0 }, { type: "Bows", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Pendants": { a: 0 }, "Instruments": { a: -1 }
-          }
+          list: [
+            { type: "Pendants", a: 0 }, { type: "Instruments", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Potions": { a: 0 }, "Spells": { a: -1 }
-          }
+          list: [
+            { type: "Potions", a: 0 }, { type: "Spells", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "6": { name: "Wise I" }, "15": { name: "Healer I" }, "22": { name: "Revive I" }
-      }
+      ],
+      skills: [
+        { name: "Wise I", lv: 6 }, { name: "Healer I", lv: 15 }, { name: "Revive I", lv: 22 }
+      ]
     },
     {
       name: "Albert",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "M",
       tier: 1,
       cap: 40,
-      lv: null,
       power: {
         base: 100,
         m: 1.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Bows": { a: 1 }, "Staves": { a: 0 }, "Daggers": { a: -1 }
-          }
+          list: [
+            { type: "Bows", a: 1 }, { type: "Staves", a: 0 }, { type: "Daggers", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }, "Vests": { a: -1 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }, { type: "Vests", a: -1 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }, "Pendants": { a: -1 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Potions": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Potions", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "8": { name: "Fastidious I" }, "12": { name: "Supplier I" }, "20": { name: "Support I" }
-      }
+      ],
+      skills: [
+        { name: "Fastidious I", lv: 8 }, { name: "Supplier I", lv: 12 }, { name: "Support I", lv: 20 }
+      ]
     },
     {
       name: "Nya",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "F",
       tier: 2,
       cap: 40,
-      lv: null,
       power: {
         base: 500,
         m: 1.50
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Staves": { a: 1 }, "Daggers": { a: -1 }, "Spears": { a: -2 }
-          }
+          list: [
+            { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Spears", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }, "Rings": { a: -1 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }, { type: "Rings", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "12": { name: "Revive I" }, "17": { name: "Arch Wizard I" }, "25": { name: "Cone-of-cold" }
-      }
+      ],
+      skills: [
+        { name: "Revive I", lv: 12 }, { name: "Arch Wizard I", lv: 17 }, { name: "Cone-of-cold", lv: 25 }
+      ]
     },
     {
       name: "Oneira",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "F",
       tier: 3,
       cap: 45,
-      lv: null,
       power: {
         base: 1000,
         m: 2.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Daggers": { a: 1 }, "Staves": { a: -1 }, "Bows": { a: -2 }
-          }
+          list: [
+            { type: "Daggers", a: 1 }, { type: "Staves", a: -1 }, { type: "Bows", a: -2 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }, "Pendants": { a: 0 }, "Rings": { a: -1 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }, { type: "Pendants", a: 0 }, { type: "Rings", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Potions": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Potions", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "6": { name: "Gold Digger III" }, "18": { name: "Healer II" }, "24": { name: "Support II" }
-      }
+      ],
+      skills: [
+        { name: "Gold Digger III", lv: 6 }, { name: "Healer II", lv: 18 }, { name: "Support II", lv: 24 }
+      ]
     },
     {
       name: "Azula",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "F",
       tier: 4,
       cap: 50,
-      lv: null,
       power: {
         base: 2500,
         m: 3.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Staves": { a: 1 }, "Spears": { a: 0 }, "Daggers": { a: -1 }
-          }
+          list: [
+            { type: "Staves", a: 1 }, { type: "Spears", a: 0 }, { type: "Daggers", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }, "Pendants": { a: -1 }, "Rings": { a: -1 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 }, { type: "Rings", a: -1 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Remedies": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Remedies", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "8": { name: "Arch Wizard II" }, "12": { name: "Healer III" }, "20": { name: "Wise III" }
-      }
+      ],
+      skills: [
+        { name: "Arch Wizard II", lv: 8 }, { name: "Healer III", lv: 12 }, { name: "Wise III", lv: 20 }
+      ]
     },
     {
       name: "Francesca",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "F",
       tier: 4,
       cap: 50,
-      lv: null,
       power: {
         base: 2500,
         m: 3.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Guns": { a: 1 }, "Staves": { a: 0 }, "Swords": { a: -1 }, "Spears": { a: -1 }
-          }
+          list: [
+            { type: "Guns", a: 1 }, { type: "Staves", a: 0 }, { type: "Swords", a: -1 }, { type: "Spears", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Potions": { a: 0 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Potions", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "13": { name: "Fastidious III" }, "20": { name: "Resilient III" }, "28": { name: "Supplier III" }
-      }
+      ],
+      skills: [
+        { name: "Fastidious III", lv: 13 }, { name: "Resilient III", lv: 20 }, { name: "Supplier III", lv: 28 }
+      ]
     },
     {
       name: "Mojian",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "M",
       tier: 5,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 4.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Staves": { a: 1 }, "Guns": { a: 0 }, "Bows": { a: -1 }
-          }
+          list: [
+            { type: "Staves", a: 1 }, { type: "Guns", a: 0 }, { type: "Bows", a: -1 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Armor": { a: 0 }, "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Armor", a: 0 }, { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Helmets": { a: 0 }
-          }
+          list: [
+            { type: "Helmets", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Gauntlets": { a: 0 }
-          }
+          list: [
+            { type: "Gauntlets", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Boots": { a: 0 }
-          }
+          list: [
+            { type: "Boots", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Pendants": { a: 0 }
-          }
+          list: [
+            { type: "Pendants", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }, "Potions": { a: -1 }
-          }
+          list: [
+            { type: "Spells", a: 0 }, { type: "Potions", a: -1 }
+          ]
         }
-      },
-      skills: {
-        "15": { name: "Commander III" }, "22": { name: "Arch Wizard III" }, "35": { name: "Thunderbolt" }
-      }
+      ],
+      skills: [
+        { name: "Commander III", lv: 15 }, { name: "Arch Wizard III", lv: 22 }, { name: "Thunderbolt", lv: 35 }
+      ]
     },
     {
       name: "Charles",
-      type: "Spellcasters",
+      type: "Spellcaster",
       sex: "M",
       tier: 6,
       cap: 55,
-      lv: null,
       power: {
         base: 5000,
         m: 5.00
       },
-      slots: {
-        weapon: {
+      slots: [
+        {
+          slot: "Weapon",
           item: null,
           q: null,
-          list: {
-            "Bows": { a: 1 }, "Staves": { a: 0 }
-          }
+          list: [
+            { type: "Bows", a: 1 }, { type: "Staves", a: 0 }
+          ]
         },
-        body: {
+        {
+          slot: "Body",
           item: null,
           q: null,
-          list: {
-            "Vests": { a: 0 }, "Clothes": { a: 0 }
-          }
+          list: [
+            { type: "Vests", a: 0 }, { type: "Clothes", a: 0 }
+          ]
         },
-        head: {
+        {
+          slot: "Head",
           item: null,
           q: null,
-          list: {
-            "Hats": { a: 0 }
-          }
+          list: [
+            { type: "Hats", a: 0 }
+          ]
         },
-        arms: {
+        {
+          slot: "Arms",
           item: null,
           q: null,
-          list: {
-            "Bracers": { a: 0 }
-          }
+          list: [
+            { type: "Bracers", a: 0 }
+          ]
         },
-        legs: {
+        {
+          slot: "Legs",
           item: null,
           q: null,
-          list: {
-            "Footwear": { a: 0 }
-          }
+          list: [
+            { type: "Footwear", a: 0 }
+          ]
         },
-        aux1: {
+        {
+          slot: "Accessory 1",
           item: null,
           q: null,
-          list: {
-            "Instruments": { a: 0 }
-          }
+          list: [
+            { type: "Instruments", a: 0 }
+          ]
         },
-        aux2: {
+        {
+          slot: "Accessory 2",
           item: null,
           q: null,
-          list: {
-            "Spells": { a: 0 }
-          }
+          list: [
+            { type: "Spells", a: 0 }
+          ]
         }
-      },
-      skills: {
-        "17": { name: "Mage Armor" }, "28": { name: "Detect Secrets" }, "36": { name: "Magic Find" }
-      }
+      ],
+      skills: [
+        { name: "Mage Armor", lv: 17 }, { name: "Detect Secrets", lv: 28 }, { name: "Magic Find", lv: 36 }
+      ]
     }
   ];
   cache.set( "heroes", heroes, true );

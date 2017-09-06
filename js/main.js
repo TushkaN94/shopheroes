@@ -213,17 +213,18 @@
       }
     },
     watch: {
-      hero: { 
-        handler: function( hero ) {
-          if ( isNaN( hero.lv ) ) {
-            hero.lv = 1;
-          } else if ( hero.lv < 1 ) {
-            hero.lv = 1;
-          } else if ( hero.lv > hero.cap ) {
-            hero.lv = hero.cap;
+      "hero": { 
+        handler: function( next, prev ) {
+          if ( next.lv != prev.lv ) {
+            if ( isNaN( next.lv ) ) {
+              next.lv = 1;
+            } else if ( next.lv < 1 ) {
+              next.lv = 1;
+            } else if ( next.lv > next.cap ) {
+              next.lv = next.cap;
+            }
           }
-        },
-        deep: true
+        }
       }
     }
   } );
@@ -233,7 +234,9 @@
     data: function() { 
       return {
         options: c_data.options.heroes,
-        filter: {
+        heroes: c_data.heroes,
+        filter: () => true,
+        filters: {
           name: null,
           type: null,
           tier: null,
@@ -244,7 +247,12 @@
             max: null
           }
         },
-        heroes: c_data.heroes
+      }
+    },
+    computed: {
+      list: function() {
+        var filter = this.filter; 
+        return this.heroes.filter( h => filter( h ) );
       }
     },
     methods: {
@@ -253,54 +261,53 @@
           hero: [],
           items: []
         };
-        var slots = {};
         var optimals = 0;
         var power = hero.power.base + hero.power.m * ( c_data.powers.lv[hero.lv] || 0 );
-        skills.hero = $.map( hero.skills, function( skill, skill_lv ) {
-          return { 
-            name: skill.name,
-            active: ( parseInt( hero.lv ) >= parseInt( skill_lv ) )
-          };
-        } );
-        $.each( hero.slots, function( slot_key, slot ) {
-          var skill;
-          var res = {
-            power: 0,
-            a: 0,
-            break: 0.00
-          };
-          var found = c_data.items.filter( function( item ) {
-            return ( !!slot.item && item.name.toUpperCase() == slot.item.toUpperCase() );
+        skills.hero = hero.skills.map( s => {
+          return $.extend( true, {}, s, {
+            active: ( hero.lv >= s.lv )
           } );
-          if ( found.length == 1 ) {
-            $.extend( true, res, found[0], {
-              q: slot.q
-            } );
-            var lv_difference = Math.abs( parseInt( res.lv ) - parseInt( hero.lv ) );
-            res.optimal = ( lv_difference <= 6 );
-            res.power = ( res.power || 0 ) * ( c_data.powers.q[res.q] || 1.0 );
-            res.a = slot.list[res.type].a;
-            var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[res.a] ), 0.85 ) ) * c_data.breaks.q[res.q];
-            if ( chance < 0.005 ) {
-              chance = 0;
-            }
-            res.break = chance || 0;
-            if ( !!res.skill ) {
-              var q1 = c_data.qualities[slot.q];
-              var q2 = c_data.qualities[res.skill.q];
-              skill = {
-                name: res.skill.name,
-                active: ( !!q1 && !!q2 && q1.i >= q2.i )
-              };
-            }
-            optimals += res.optimal;
-          }
-          slots[slot_key] = res;
-          skills.items.push( skill );
         } );
-        $.each( slots, function( slot_key, slot ) {
-          power += ( optimals == 7 ? 1.25 : 1.0 ) * slot.power;
-        } );
+        var slots = hero.slots
+          .map( function( slot ) {
+            var skill;
+            var res = {
+              power: 0,
+              a: 0,
+              break: 0.0
+            };
+            if ( !!slot.item ) {
+              var found = c_data.items.find( i => i.name.toUpperCase() == slot.item.toUpperCase() );
+              if ( !!found ) {
+                $.extend( true, res, found, {
+                  q: slot.q
+                } );
+                var lv_difference = Math.abs( res.lv - hero.lv );
+                res.optimal = ( lv_difference <= 6 );
+                res.power = Math.round( ( res.power || 0 ) * ( c_data.powers.q[res.q] || 1.0 ), 0 );
+                res.a = slot.list.find( s => s.type == res.type ).a;
+                var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[res.a] ), 0.85 ) ) * c_data.breaks.q[res.q];
+                if ( chance < 0.005 ) {
+                  chance = 0;
+                }
+                res.break = chance || 0; 
+                if ( !!res.skill ) {
+                  var q1 = c_data.qualities[slot.q];
+                  var q2 = c_data.qualities[res.skill.q];
+                  skill = $.extend( true, {}, res.skill, {
+                    active: ( !!q1 && !!q2 && q1.i >= q2.i )
+                  } );
+                }
+                optimals += res.optimal;
+              }
+            }
+            skills.items.push( skill );
+            return res;
+          } );
+        power += ( optimals == 7 ? 1.25 : 1.0 ) * 
+          slots
+            .filter( n => !!n )
+            .reduce( ( p, i ) => p + i.power, 0 );
         return {
           power: power,
           slots: slots,
@@ -308,26 +315,21 @@
         };
       },
       equippables: function( hero ) {
-        var result = {};
-        $.each( hero.slots, function( slot_key, slot ) {
-          var list = [];
-          $.each( slot.list, function( item_type, item ) {
+        var result = hero.slots.map( s => {
+          return s.list.map( t => {
             var items = c_data.items
-              .filter( function( item ) {
-                return ( item.type.toUpperCase() == item_type.toUpperCase() );
-              } )
-              .map( function( item ) {
+              .filter( i => i.type.toUpperCase() == t.type.toUpperCase() )
+              .map( i => {
                 return {
-                  id: item.name,
-                  text: item.name
+                  id: i.name,
+                  text: i.name
                 };
               } );
-            list.push( {
-              text: item_type,
+            return {
+              text: t.type,
               children: items
-            } );
-          } );
-          result[slot_key] = list;
+            };
+          } )
         } );
         return result;
       }
@@ -339,82 +341,44 @@
         },
         deep: true
       },
-      filter: {
-        handler: function( filter ) {
+      filters: {
+        handler: function( filters ) {
           var fn_name, fn_type, fn_tier, fn_sex, fn_skill, fn_lv;
-          if ( !!filter.name ) {
-            fn_name = function( obj ) {
-              return obj.name.toUpperCase().includes( filter.name.toUpperCase() );
-            };
+          if ( !!filters.name ) {
+            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
           } else {
-            fn_name = function( obj ) {
-              return true;
-            };
+            fn_name = () => true;
           }
-          if ( !!filter.type ) {
-            fn_type = function( obj ) {
-              return ( obj.type.toUpperCase() == filter.type.toUpperCase() );
-            };
+          if ( !!filters.type ) {
+            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
           } else {
-            fn_type = function( obj ) {
-              return true;
-            };
+            fn_type = () => true;
           }
-          if ( !!filter.tier ) {
-            fn_tier = function( obj ) {
-              return ( parseInt( obj.tier ) == parseInt( filter.tier ) );
-            };
+          if ( !!filters.tier ) {
+            fn_tier = ( h ) => h.tier == filters.tier;
           } else {
-            fn_tier = function( obj ) {
-              return true;
-            };
+            fn_tier = () => true;
           }
-          if ( !!filter.sex ) {
-            fn_sex = function( obj ) {
-              return ( obj.sex.toUpperCase() == filter.sex.toUpperCase() );
-            };
+          if ( !!filters.sex ) {
+            fn_sex = ( h ) => h.sex.toUpperCase() == filters.sex.toUpperCase();
           } else {
-            fn_sex = function( obj ) {
-              return true;
-            };
+            fn_sex = () => true;
           }
-          if ( !!filter.skill ) {
-            fn_skill = function( obj ) {
-              var res = false;
-              $.each( obj.skills, function( k, v ) { 
-                if ( v.name.toUpperCase().includes( filter.skill.toUpperCase() ) ) {
-                  res = true;
-                }
-              } )
-              return res;
-            };
+          if ( !!filters.skill ) {
+            fn_skill = ( h ) => h.skills.any( s => s.name.toUpperCase().includes( filters.skill.toUpperCase() ) );
           } else {
-            fn_skill = function( obj ) {
-              return true;
-            };
+            fn_skill = () => true;
           }
-          if ( !!filter.lv.min && !!filter.lv.max ) {
-            fn_lv = function( obj ) {
-              return ( parseInt( obj.lv ) >= parseInt( filter.lv.min ) && parseInt( obj.lv ) <= parseInt( filter.lv.max ) );
-            };
-          } else if ( !!filter.lv.min ) {
-            fn_lv = function( obj ) {
-              return ( parseInt( obj.lv ) >= parseInt( filter.lv.min ) );
-            };
-          } else if ( !!filter.lv.max ) {
-            fn_lv = function( obj ) {
-              return ( parseInt( obj.lv ) <= parseInt( filter.lv.max ) );
-            };
+          if ( !!filters.lv.min && !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+          } else if ( !!filters.lv.min ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min;
+          } else if ( !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv <= filters.lv.max;
           } else {
-            fn_lv = function( obj ) {
-              return true;
-            };
+            fn_lv = () => true;
           }
-          $.each( this.heroes, function() {
-            this.hidden = !( 
-              fn_name( this ) && fn_type( this ) && fn_tier( this ) && fn_sex( this ) && fn_skill( this ) && fn_lv( this )
-            );
-          } );
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_skill( h ) && fn_lv( h );
         },
         deep: true
       }
@@ -432,7 +396,9 @@
     data: function() { 
       return {
         options: c_data.options.items,
-        filter: {
+        items: c_data.items,
+        filter: () => true,
+        filters: {
           name: null,
           type: null,
           skill: null,
@@ -441,7 +407,12 @@
             max: null
           }
         },
-        items: c_data.items
+      }
+    },
+    computed: {
+      list: function() {
+        var filter = this.filter;
+        return this.items.filter( i => filter( i ) );
       }
     },
     watch: {
@@ -451,58 +422,34 @@
         },
         deep: true
       },
-      filter: {
-        handler: function( filter ) {
+      filters: {
+        handler: function( filters ) {
           var fn_name, fn_type, fn_skill, fn_lv;
-          if ( !!filter.name ) {
-            fn_name = function( obj ) {
-              return obj.name.toUpperCase().includes( filter.name.toUpperCase() );
-            };
+          if ( !!filters.name ) {
+            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
           } else {
-            fn_name = function( obj ) {
-              return true;
-            };
+            fn_name = () => true;
           }
-          if ( !!filter.type ) {
-            fn_type = function( obj ) {
-              return ( obj.type.toUpperCase() == filter.type.toUpperCase() );
-            };
+          if ( !!filters.type ) {
+            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
           } else {
-            fn_type = function( obj ) {
-              return true;
-            };
+            fn_type = () => true;
           }
-          if ( !!filter.skill ) {
-            fn_skill = function( obj ) {
-              return ( !!obj.skill && obj.skill.name.toUpperCase().includes( filter.skill.toUpperCase() ) );
-            };
+          if ( !!filters.skill ) {
+            fn_skill = ( h ) => h.skill && h.skill.name.toUpperCase().includes( filters.skill.toUpperCase() );
           } else {
-            fn_skill = function( obj ) {
-              return true;
-            };
+            fn_skill = () => true;
           }
-          if ( !!filter.lv.min && !!filter.lv.max ) {
-            fn_lv = function( obj ) {
-              return ( obj.lv >= lv.min && obj.lv <= lv.max );
-            };
-          } else if ( !!filter.lv.min ) {
-            fn_lv = function( obj ) {
-              return ( obj.lv >= lv.min );
-            };
-          } else if ( !!filter.lv.min ) {
-            fn_lv = function( obj ) {
-              return ( obj.lv <= lv.max );
-            };
+          if ( !!filters.lv.min && !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+          } else if ( !!filters.lv.min ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min;
+          } else if ( !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv <= filters.lv.max;
           } else {
-            fn_lv = function( obj ) {
-              return true;
-            };
+            fn_lv = () => true;
           }
-          $.each( this.items, function() {
-            this.hidden = !( 
-              fn_name( this ) && fn_type( this ) && fn_skill( this ) && fn_lv( this ) 
-            )
-          } );
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_skill( h ) && fn_lv( h );
         },
         deep: true
       }
@@ -514,71 +461,59 @@
     template: '#templates-team',
     props: ['team'],
     computed: {
-      slots: function() {
-        var slots = Array(6);
-        for( var i = 0; i < 6; i++ ) {
-          var name = this.team.slots[i];
-          var found = c_data.heroes.filter( function( hero ) {
-            return ( hero.name == name );
-          } );
-          slots[i] = found[0];
-        }
-        return slots;
+      power: function() {
+        return this.roster
+          .filter( n => !!n.hero )
+          .reduce( ( p, i ) => p + i.power, 0 );
       },
-      summary: function() {
-        var power = 0;
-        var max = 4;
-        var leader = this.slots[0]
-        if ( !!leader  ) {
-          if ( parseInt( leader.lv ) >= 30 ) {
-            max += 1;
-          }
-          var summary = vm_heroes.summary( leader );
-          summary.skills.items
-            .filter( function( skill ) {
-              return !!skill;
-            } )
-            .concat( summary.skills.hero )
-            .map( function( skill ) {
-              if ( skill.name.toUpperCase().includes( "LEADER I" ) ) {
-                max += 1;
+      roster: function() {
+        var roster = this.team.roster
+          .map( function( name, i ) {
+            var hero = c_data.heroes.find( n => !!name && n.name.toUpperCase() == name.toUpperCase() );
+            var skills = []
+            var power = 0;
+            var max = 1;
+            if ( !!hero ) {
+              var summary = vm_heroes.summary( hero );
+              var power = summary.power;
+              skills = skills
+                .concat( summary.skills.hero )
+                .concat( summary.skills.items.filter( s => !!s ) );
+              if ( i == 0 ) {
+                max = 4 + ( hero.lv >= 30 ? 1 : 0 );
+                max += skills
+                  .filter( s => s.name.toUpperCase().includes( "LEADER I" ) )
+                  .length;
               }
-            } );
-        }
-        this.slots
-          .filter( function( hero ) {
-            return ( !!hero );
-          } )
-          .map( function( hero ) {
-            var summary = vm_heroes.summary( hero );
-            power += summary.power;
+            }
+            return {
+              max: max,
+              hero: hero,
+              power: power,
+              skills: skills
+            };
           } );
-        return {
-          power: power,
-          max: max,
-          skills: []
+          
+        for ( i = roster[0].max, m = this.team.roster.length; i < m; i++ ) {
+          this.team.roster[i] = undefined;
         };
+        return roster;
       }
     },
     methods: {
       options: function( name ) {
-        var selected = this.team.slots
-          .filter( function( res ) {
-            return ( !!res && res != name );
-          } );
+        var selected = this.team.roster
+          .filter( n => !!n && n != name );
         var res = c_data.heroes;
         if ( selected.length > 0 ) {
-          res = res.filter( function( hero ) {
-            return !( selected.indexOf( hero.name ) > -1 );
-          } );
+          res = res.filter( hero => !( selected.indexOf( hero.name ) > -1 ) );
         }
-        res = res.map( function( hero ) {
+        return res.map( function( hero ) {
           return {
             id: hero.name,
             text: hero.name
           };
         } );
-        return res;
       },
       remove: function( team ) {
         this.$parent.remove( team );
@@ -591,6 +526,10 @@
     data: function() { 
       return {
         teams: c_data.teams,
+        filter: () => true,
+        filters: {
+          name: null,
+        }
       }
     },
     watch: {
@@ -604,8 +543,8 @@
     methods: {
       add: function() {
         var team = {
-          name: 'New Team ' + ( this.teams.length + 1 ),
-          slots: new Array(6)
+          name: 'Team ' + ( this.teams.length + 1 ),
+          roster: new Array(6)
         }
         this.teams.push( team );
       },

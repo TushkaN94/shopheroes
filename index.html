@@ -28,8 +28,8 @@
         <div>
           <select id="tabs-data-type">
             <option value="supplementaries">Supplementaries</option>
-            <option value="heroes">Heroes</option>
             <option value="items">Items</option>
+            <option value="heroes">Heroes</option>
             <option value="teams">Teams</option>
           </select>
           <input id="tabs-data-load" type="button" value="Load"></input>
@@ -69,6 +69,16 @@
       <table class="shopheroes hero filter">
         <tbody>
           <tr class="header">
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="skill name"></th>
+          </tr>
+          <tr class="header">
             <th class="name" colspan="2">Name</th>
             <th>Type</th>
             <th>Tier</th>
@@ -80,40 +90,40 @@
           <tr>
             <td colspan="2">
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filter.name"/>
+                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.type" :options="options.type" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.tier" :options="options.tier" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.tier" :options="options.tier" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <input type="search" class="lv" v-model="filter.lv.min"/>
+                <input class="lv" v-model="filters.lv.min"/>
                 <span>&nbsp;-&nbsp</span>
-                <input type="search" class="lv" v-model="filter.lv.max"/>
+                <input class="lv" v-model="filters.lv.max"/>
               </div>
             </td>
             <td/>
             <td>
               <div>
-                <select2 v-model="filter.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
           </tr>
           <tr>
-            <th class="item">Weapon</th>
+            <th class="item name">Weapon</th>
             <th class="item">Body</th>
             <th class="item">Head</th>
             <th class="item">Arms</th>
@@ -133,7 +143,7 @@
             <th></th>
           </tr>
         </tbody>
-        <hero v-for="( hero, i ) in heroes" v-if="!hero.hidden" :hero="hero" :key="i"/>
+        <hero v-for="( hero, i ) in list" :hero="hero" :key="i"/>
       </table>
     </div>
   </script>
@@ -157,13 +167,13 @@
             <td></td>
           </tr>
           <tr>
-            <td v-for="( slot, key ) in hero.slots">
-              <div>
-                <div class="power">
-                  {{parseInt(summary.slots[key].power).toLocaleString()}}
+            <td v-for="slot in summary.slots">
+              <div v-if="!!slot">
+                <div class="float-left power">
+                  {{parseInt(slot.power).toLocaleString()}}
                 </div>
-                <div class="break">
-                  {{(summary.slots[key].break*100).toFixed(1)}}%
+                <div class="float-right break">
+                  {{(slot.break*100).toFixed(1)}}%
                 </div>
               </div>
             </td>
@@ -172,9 +182,9 @@
             </td>
           </tr>
           <tr>
-            <td v-for="( slot, key ) in hero.slots">
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <div>
-                <select2 v-model="slot.item" :options="equippables[key]" :placeholder="'Choose item'"/>
+                <select2 v-model="hero.slots[j].item" :options="equippables[j]" :placeholder="'Choose item'"/>
               </div>
             </td>
             <td>
@@ -182,9 +192,9 @@
             </td>
           </tr>
           <tr>
-            <td v-for="( slot, key ) in hero.slots">
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <div>
-                <select2 v-if="slot.item" v-model="slot.q" :options="qualities" :placeholder="'Choose quality'" :nosearch="true"/>
+                <select2 v-if="hero.slots[j].item" v-model="hero.slots[j].q" :options="qualities" :placeholder="'Choose quality'" :nosearch="true"/>
               </div>
             </td>
             <td>
@@ -211,24 +221,25 @@
   </script>
   <script type="text/x-template" id="templates-teams">
     <div>
-      <div>
-        <input type="button" @click="add" value="Add Team"/>
-      </div>
-      <div>
-        <team v-for="( team, i ) in teams" :team="team" :key="i"/>
-      </div>
-    </div>
-  </script>
-  <script type="text/x-template" id="templates-team">
-    <div>
-      <table class="shopheroes team">
+      <table class="shopheroes team filter">
         <tbody>
           <tr class="header">
-            <th rowspan="2" colspan="2" class="name">
-              <input class="remove" type="button" value="X" @click="remove( team )"/>
-              {{team.name}}
-            </th>
+            <th class="slot"></th>
+            <th class="name"></th>
+            <th class="power"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+            <th class="item"></th>
+          </tr>
+          <tr class="header">
+            <th><input type="button" @click="add" value="+"/></th>
+            <th>Name</th>
             <th>Power</th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -237,7 +248,14 @@
             <th></th>
           </tr>
           <tr>
-            <td>{{parseInt(summary.power).toLocaleString()}}</td>
+            <td></td>
+            <td>
+              <div>
+                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+              </div>
+            </td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -247,57 +265,76 @@
           </tr>
           <tr>
             <th class="slot">Slot</th>
-            <th>Hero</th>
+            <th class="name">Hero</th>
+            <th class="power">Power</th>
             <th class="item">Weapon</th>
             <th class="item">Body</th>
             <th class="item">Head</th>
             <th class="item">Arms</th>
             <th class="item">Legs</th>
-            <th class="item">Accessory 1</th>
-            <th class="item">Accessory 2</th>
+            <th class="item">Accessory&nbsp;1</th>
+            <th class="item">Accessory&nbsp;2</th>
           </tr>
-          <tr v-for="( slot, i ) in team.slots" v-if="i < summary.max">
+          <tr class="header">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+        <team v-for="( team, i ) in teams" :team="team" :key="i"/>
+      </table>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-team">
+        <tbody>
+          <tr>
+            <th><input type="button" value="x" @click="remove( team )"/></th>
+            <th>{{team.name}}</th>
+            <td>{{parseInt(power).toLocaleString()}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr v-for="( summary, i ) in roster">
             <td>#{{i+1}}</td>
             <td>
               <div>
-                <select2 v-model="team.slots[i]" :options="options( slot )"/>
+                <select2 v-model="team.roster[i]" :options="options( team.roster[i] )"/>
               </div>
             </td>
             <td>
-              <div v-if="slots[i]" :class="slots[i].slots.weapon.q">
-                {{slots[i].slots.weapon.item}}
+              <div v-if="summary.hero">
+                {{parseInt(summary.power).toLocaleString()}}
               </div>
             </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.body.q">
-                {{slots[i].slots.body.item}}
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
+              <div v-if="summary.hero && summary.hero.slots[j]" :class="summary.hero.slots[j].q">
+                {{summary.hero.slots[j].item}}
               </div>
             </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.head.q">
-                {{slots[i].slots.head.item}}
-              </div>
-            </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.arms.q">
-                {{slots[i].slots.arms.item}}
-              </div>
-            </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.legs.q">
-                {{slots[i].slots.legs.item}}
-              </div>
-            </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.aux1.q">
-                {{slots[i].slots.aux1.item}}
-              </div>
-            </td>
-            <td>
-              <div v-if="slots[i]" :class="slots[i].slots.aux2.q">
-                {{slots[i].slots.aux2.item}}
-              </div>
-            </td>
+          </tr>
+          <tr class="header">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </tbody>
       </table>
@@ -325,25 +362,25 @@
           <tr>
             <td>
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filter.name"/>
+                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filter.type" :options="options.type" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type" :placeholder="'Choose type'" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <input type="search" class="lv" v-model="filter.lv.min"/>
+                <input class="lv" v-model="filters.lv.min"/>
                 <span>&nbsp;-&nbsp;</span>
-                <input type="search" class="lv" v-model="filter.lv.max"/>
+                <input class="lv" v-model="filters.lv.max"/>
               </div>
             </td>
             <td/>
             <td colspan="2">
               <div>
-                <select2 v-model="filter.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
           </tr>
@@ -355,7 +392,7 @@
             <th></th>
             <th></th>
           </tr>
-          <item v-for="( item, i ) in items" v-if="!item.hidden" :item="item" :key="i"/>
+          <item v-for="( item, i ) in list" :item="item" :key="i"/>
           <tr class="header">
             <th></th>
             <th></th>
@@ -371,16 +408,16 @@
   <script type="text/x-template" id="templates-item">
       <tr>
         <td>
-          {{item.name}}
+          <span>{{item.name}}</span>
         </td>
         <td>
-          {{item.type}}
+          <span>{{item.type}}</span>
         </td>
         <td>
-          {{item.lv}}
+          <span>{{item.lv}}</span>
         </td>
         <td>
-          {{item.power}}
+          <span>{{parseInt(item.power).toLocaleString()}}</span>
         </td>
         <td>
           <span v-if="item.skill">
