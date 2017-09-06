@@ -13,6 +13,10 @@ table.shopheroes tr {
   line-height: 1.5em;
   min-height: 1.5em;
 }
+table.shopheroes tr.split {
+  line-height: 1px;
+  max-height: 1px;
+}
 table.shopheroes th {
   text-align: center;
   font-weight: bold;
