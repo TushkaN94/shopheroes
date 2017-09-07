@@ -1,9 +1,25 @@
-#tabs {
+﻿#tabs {
   height: 100%;
+}
+#tabs-data div {
+  padding: 2px 5px;
+}
+#tabs-data-type {
+  min-width: 150px;
+}
+#tabs-data-json {
+  width: 100%;
+  min-height: 200px;
+}
+input,
+select,
+textarea {
+  box-sizing: border-box;
 }
 .ui-tabs .ui-tabs-panel {
   padding: 0.2em 0.2em !important; 
 }
+
 table.shopheroes {
   font-size: 1em;
   font-family: Arial Tahoma Calibri;
@@ -79,13 +95,11 @@ table.shopheroes .select2-container .select2-selection--single .select2-selectio
 }
 
 table.shopheroes select {
-  box-sizing: border-box;
   font-size: 0.8em;
   line-height: 1.5em;
   min-height: 1.5em;
 }
 table.shopheroes input {
-  box-sizing: border-box;
   min-height: 1.5em;
 }
 table.shopheroes input.name {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Shop Heroes Team Builder</title>
@@ -40,8 +40,13 @@
             <option value="heroes">Heroes</option>
             <option value="teams">Teams</option>
           </select>
-          <input id="tabs-data-load" type="button" value="Load"/>
-          <input id="tabs-data-remove" type="button" value="Remove"/>
+          <input id="tabs-data-load" type="button" value="Load Base"/>
+          <input id="tabs-data-clean" type="button" value="Clean Customs"/>
+          <input id="tabs-data-get" type="button" value="Get Customs"/>
+          <input id="tabs-data-set" type="button" value="Set Customs"/>
+        </div>
+        <div>
+          <textarea id="tabs-data-json"></textarea>
         </div>
       </div>
       <div id="tabs-heroes">
@@ -422,6 +427,9 @@
           <span>{{parseInt(item.power).toLocaleString()}}</span>
         </td>
         <td>
+          <span v-if="item.skill">
+            <input type="checkbox" class="float-left" v-model="item.skill.m"/>
+          </span>
           <span v-if="item.skill">
             {{item.skill.name}}
           </span>

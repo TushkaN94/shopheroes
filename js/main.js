@@ -1,4 +1,4 @@
-$( function() {
+﻿$( function() {
   String.prototype.capitalize = function( lower ) {
     return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
   };
@@ -38,6 +38,9 @@ $( function() {
       switch ( key ) {
         case 'heroes':
           $.extend( true, self.heroes, value );
+          break;
+        case 'items':
+          $.extend( true, self.items, value );
           break;
         default:
           break;
@@ -119,6 +122,7 @@ $( function() {
   c_data.set( "powers", cache.get( "powers" ) || {} );
   c_data.set( "breaks", cache.get( "breaks" ) || {} );
   c_data.set( "items", cache.get( "items" ) || [] );
+  c_data.extend( "items", cache.get( "items_custom" ) || [] );
   c_data.set( "heroes", cache.get( "heroes" ) || [] );
   c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
   c_data.set( "teams", cache.get( "teams" ) || [] );
@@ -300,7 +304,7 @@ $( function() {
                   var q1 = c_data.qualities[slot.q];
                   var q2 = c_data.qualities[res.skill.q];
                   skill = $.extend( true, {}, res.skill, {
-                    active: ( !!q1 && !!q2 && q1.i >= q2.i )
+                    active: res.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i )
                   } );
                 }
                 optimals += res.optimal;
@@ -428,12 +432,6 @@ $( function() {
         },
       }
     },
-    computed: {
-      list: function() {
-        var filter = this.filter;
-        return this.items.filter( i => filter( i ) );
-      }
-    },
     methods: {
       visible: function( item ) {
         return this.filter( item );
@@ -442,7 +440,20 @@ $( function() {
     watch: {
       items: { 
         handler: function( items ) {
-          cache.set( 'items', items, true );
+          var custom = items
+            .map( item => {
+              if ( item.skill ) {
+                return {
+                  skill: {
+                    m: item.skill.m
+                  }
+                };
+              }
+              else {
+                return {};
+              };
+            } );
+          cache.set( 'items_custom', custom, true );
         },
         deep: true
       },
@@ -582,7 +593,16 @@ $( function() {
   } );
   $( '#tabs-teams' ).append( vm_teams.$el );
 
-  var $data = $( '#tabs-data-type' );
+  var $data = $( '#tabs-data-type' )
+    .select2( { 
+      width: 'auto',
+      dropdownAutoWidth: true,
+      allowClear: false,
+      minimumResultsForSearch: Infinity,
+      placeholder: "Choose data type",
+      tags: false,
+    } );
+  var $json = $( '#tabs-data-json' );
 
   $( '#tabs-data-load' )
     .on( 'click', function() {
@@ -603,7 +623,8 @@ $( function() {
             $.loadScript( 'data/items.js' )
           )
           .then( function( res1 ) {
-            c_data.set( "items", cache.get( "items" ) || [] );
+            vm_items.items = cache.get( "items" ) || [];
+            //$.extend( true, vm_items.items, cache.get( "items_custom" ) || [] );
           } );
           break;
         case "heroes":
@@ -611,14 +632,14 @@ $( function() {
             $.loadScript( 'data/heroes.js' )
           )
           .then( function( res1 ) {
-            c_data.set( "heroes", cache.get( "heroes" ) || [] );
-            c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
+            vm_heroes.heroes = cache.get( "heroes" ) || [];
+            //$.extend( true, vm_heroes.heroes, cache.get( "heroes_custom" ) || [] );
           } );
           break;
       }
     } );
 
-  $( '#tabs-data-remove' )
+  $( '#tabs-data-clean' )
     .on( 'click', function() {
       var type = $data.val();
       switch ( type ) {
@@ -631,18 +652,55 @@ $( function() {
           c_data.set( "breaks", {} );
           break;
         case "heroes":
-          cache.remove( "heroes" );
-          c_data.set( "heroes", [] );
+          vm_heroes.heroes.splice();
           break;
         case "items":
-          cache.remove( "items" );
-          c_data.set( "items", [] );
+          vm_items.items.splice();
           break;
         case "teams":
-          cache.remove( "teams" );
-          c_data.set( "teams", [] );
+          vm_teams.teams.splice();
           break;
       }
+    } );
+
+  $( '#tabs-data-get' )
+    .on( 'click', function() {
+      var type = $data.val();
+      var res = "";
+      switch ( type ) {
+        case "heroes":
+          res += JSON.stringify( cache.get( "heroes_custom" ) || [] );
+          break;
+        case "items":
+          res += JSON.stringify( cache.get( "items_custom" ) || [] );
+          break;
+        case "teams":
+          res += JSON.stringify( cache.get( "teams" ) || [] );
+          break;
+        default:
+          break;
+      }
+      $json.text( res );
+    } );
+
+  $( '#tabs-data-set' )
+    .on( 'click', function() {
+      var type = $data.val();
+      var res = JSON.parse( $json.val() );
+      switch ( type ) {
+        case "heroes":
+          $.extend( true, vm_heroes.heroes, res || [] );
+          break;
+        case "items":
+          $.extend( true, vm_items.items, res || [] );
+          break;
+        case "teams":
+          $.extend( true, vm_teams.teams, res || [] );
+          break;
+        default:
+          break;
+      }
+      $json.text( "" );
     } );
 
 } );
