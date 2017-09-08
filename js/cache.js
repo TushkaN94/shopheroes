@@ -1,4 +1,4 @@
-﻿$( function() {
+$( function() {
   $.cache = ( function(){
     var instance;
     var cache;

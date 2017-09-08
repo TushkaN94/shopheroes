@@ -1,14 +1,14 @@
-﻿$( function() {
+$( function() {
   String.prototype.capitalize = function( lower ) {
     return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
   };
   $.loadScript = function( url, options ) {
-    options = $.extend( options || {}, {
+    var opts = $.extend( true, {
       dataType: "script",
       cache: false,
       url: url
-    } );
-    return $.ajax( options );
+    }, options );
+    return $.ajax( opts );
   };
 
   var cache = $.cache._();
@@ -30,35 +30,107 @@
     qualities: {},
     powers: {},
     breaks: {},
+    skills: [],
+    skills_effects: [],
     items: [],
     heroes: [],
     teams: [],
-    extend: function( key, value ) {
+    json: function( key ) {
+      var res = "";
+      switch ( key ) {
+        case "heroes":
+          res = JSON.stringify( cache.get( "heroes_custom" ) || [] );
+          break;
+        case "items":
+          res = JSON.stringify( cache.get( "items_custom" ) || [] );
+          break;
+        case "teams":
+          res = JSON.stringify( cache.get( "teams" ) || [] );
+          break;
+        default:
+          break;
+      }
+      return res;
+    },
+    load: function( key ) {
+      var self = this;
+      switch ( key ) {
+        case "supplementaries":
+          /*$.ajax( {
+            url: 'data/supplementaries.json',
+            dataType: 'json',
+            cache: false,
+            complete: function( res ) {
+              cache.set( "qualities", res.qualities || {} );
+              cache.set( "powers", res.powers || {} );
+              cache.set( "breaks", res.breaks || {} );
+              self.set( "qualities", res.qualities || {} );
+              self.set( "powers", res.powers || {} );
+              self.set( "breaks", res.breaks || {} );
+            }
+          } );*/
+          $.loadScript( 'data/supplementaries.js', {
+            success: function() {
+              self.set( "qualities", cache.get( "qualities" ) || [] );
+              self.set( "powers", cache.get( "powers" ) || [] );
+              self.set( "breaks", cache.get( "breaks" ) || [] );
+            }
+          } );
+          break;
+        case "items":
+          $.loadScript( 'data/items.js', {
+            success: function() {
+              self.set( "items", cache.get( "items" ) || [] );
+            }
+          } );
+          break;
+        case "heroes":
+          $.loadScript( 'data/heroes.js', {
+            success: function() {
+              self.set( "heroes", cache.get( "heroes" ) || [] );
+            }
+          } );
+          break;
+        case "skills":
+          $.loadScript( 'data/skills.js', {
+            success: function() {
+              self.set( "skills", cache.get( "skills" ) || [] );
+              self.set( "skills_effects", cache.get( "skills_effects" ) || [] );
+            }
+          } );
+          break;
+      }
+    },
+    extend: function( key ) {
       var self = this;
       switch ( key ) {
         case 'heroes':
-          $.extend( true, self.heroes, value );
+          $.extend( true, self.heroes, cache.get( "heroes_custom" ) || [] );
           break;
         case 'items':
-          $.extend( true, self.items, value );
+          $.extend( true, self.items, cache.get( "items_custom" ) || [] );
+          break;
+        case 'teams':
+          $.extend( true, self.teams, cache.get( "teams" ) || [] );
           break;
         default:
           break;
       }
     },
-    set: function( key, value ) {
+    set: function( key ) {
       var self = this;
+      var value = cache.get( key );
       switch ( key ) {
         case 'heroes':
           var ids_type = [];
           var ids_tier = [];
           var ids_sex = [];
           var ids_skill = [];
-          self.heroes.length = 0;
-          self.options.heroes.type.length = 0;
-          self.options.heroes.tier.length = 0;
-          self.options.heroes.sex.length = 0;
-          self.options.heroes.skill.length = 0;
+          self.heroes.splice(0);
+          self.options.heroes.type.splice(0);
+          self.options.heroes.tier.splice(0);
+          self.options.heroes.sex.splice(0);
+          self.options.heroes.skill.splice(0);
           self.options.heroes.type.push( { id: "", text: "" } );
           $.each( value, function( k, v ) {
             self.heroes.push( v );
@@ -85,9 +157,9 @@
         case 'items':
           var ids_type = [];
           var ids_skill = [];
-          self.items.length = 0;
-          self.options.items.type.length = 0;
-          self.options.items.skill.length = 0;
+          self.items.splice(0);
+          self.options.items.type.splice(0);
+          self.options.items.skill.splice(0);
           $.each( value, function( k, v ) {
             self.items.push( v );
             if ( ids_type.indexOf( v.type ) < 0 ) {
@@ -101,12 +173,12 @@
           } );
           break;
         case 'teams':
-          self.teams.length = 0;
+          self.teams.splice(0);
           self.teams.push.apply( self.teams, value );
           break;
         case 'qualities':
           self.qualities = value;
-          self.options.qualities.length = 0;
+          self.options.qualities.splice(0);
           $.each( value, function( k, v ) {
             self.options.qualities.push( { id: k, text: k } );
           } );
@@ -118,14 +190,17 @@
     }
   };
 
-  c_data.set( "qualities", cache.get( "qualities" ) || {} );
-  c_data.set( "powers", cache.get( "powers" ) || {} );
-  c_data.set( "breaks", cache.get( "breaks" ) || {} );
-  c_data.set( "items", cache.get( "items" ) || [] );
-  c_data.extend( "items", cache.get( "items_custom" ) || [] );
-  c_data.set( "heroes", cache.get( "heroes" ) || [] );
-  c_data.extend( "heroes", cache.get( "heroes_custom" ) || [] );
-  c_data.set( "teams", cache.get( "teams" ) || [] );
+  c_data.set( "qualities" );
+  c_data.set( "powers" );
+  c_data.set( "breaks" );
+  c_data.set( "items" );
+  c_data.extend( "items" );
+  c_data.set( "heroes" );
+  c_data.extend( "heroes" );
+  c_data.set( "teams" );
+  c_data.extend( "teams" );
+  c_data.set( "skills" );
+  c_data.set( "skills_effects" );
   
   Vue.component( 'select2', {
     template: '#templates-select2',
@@ -211,6 +286,7 @@
     template: '#templates-skill',
     props:[ 'skill' ]
   } );
+  
   Vue.component( 'hero', {
     template: '#templates-hero',
     props: [ 'hero' ],
@@ -266,24 +342,32 @@
         return this.filter( hero );
       },
       summary: function( hero ) {
-        var skills = {
-          hero: [],
-          items: []
+        var result = {
+          companions: 1,
+          power: { 
+            hero: 0,
+            items: 0
+          },
+          items: Array(7),
+          skills: Array(3)
         };
+        if ( !hero ) {
+          return result;
+        }
         var optimals = 0;
-        var power = hero.power.base + hero.power.m * ( c_data.powers.lv[hero.lv] || 0 );
-        skills.hero = hero.skills.map( s => {
+        result.companions = 4 + ( hero.lv >= 30 ? 1 : 0 );
+        result.power.hero += hero.power.base + hero.power.m * ( c_data.powers.lv[hero.lv] || 0 );
+        result.skills = hero.skills.map( s => {
           return $.extend( true, {}, s, {
             active: ( hero.lv >= s.lv )
           } );
         } );
-        var slots = hero.slots
+        result.items = hero.slots
           .map( function( slot ) {
-            var skill;
             var res = {
               power: 0,
               a: 0,
-              break: 0.0
+              chance: 0.0
             };
             if ( !!slot.item ) {
               var found = c_data.items.find( i => i.name.toUpperCase() == slot.item.toUpperCase() );
@@ -299,29 +383,50 @@
                 if ( chance < 0.005 ) {
                   chance = 0;
                 }
-                res.break = chance || 0; 
+                res.chance = chance || 0; 
                 if ( !!res.skill ) {
                   var q1 = c_data.qualities[slot.q];
                   var q2 = c_data.qualities[res.skill.q];
-                  skill = $.extend( true, {}, res.skill, {
+                  $.extend( true, res.skill, {
                     active: res.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i )
                   } );
                 }
+                result.power.items += res.power;
                 optimals += res.optimal;
               }
             }
-            skills.items.push( skill );
             return res;
           } );
-        power += ( optimals == 7 ? 1.25 : 1.0 ) * 
-          slots
-            .filter( n => !!n )
-            .reduce( ( p, i ) => p + i.power, 0 );
-        return {
-          power: power,
-          slots: slots,
-          skills: skills
-        };
+        result.power.items = ( optimals == 7 ? 1.25 : 1.0 ) * result.power.items;
+
+        var skills1 = result.skills
+          .filter( s => s.active );
+        var skills2 = result.items
+          .filter( i => i.skill )
+          .map( i => { return i.skill; } )
+          .filter( s => s.active );
+        var skills = [].concat( skills1, skills2 )
+          .map( s => {
+            var si = c_data.skills.find( ss => ss.name == s.name );
+            if ( si == undefined ) {
+              console.log( s.name );
+            }
+            var sb = c_data.skills_effects.find( se => se.name == si.base );
+            if ( sb == undefined ) {
+              console.log( si.name );
+            }
+            return $.extend( true, {}, sb, si );
+          } )
+          .reduce( ( p, s ) => {
+            if ( p[s.applies][s.base] == undefined ) {
+              p[s.applies][s.base] == s;
+            } else {
+              value = p[s.applies][s.base].value || 0;
+              p[s.applies][s.base].value = s.stacks ? value + s.value : Math.max( value, s.value );
+            }
+            return p;
+          }, { team: {}, hero: {} } );
+        return result;
       },
       equippables: function( hero ) {
         var result = hero.slots.map( s => {
@@ -496,46 +601,24 @@
     template: '#templates-team',
     props: ['team'],
     computed: {
-      power: function() {
-        return this.roster
-          .filter( n => !!n.hero )
-          .reduce( ( p, i ) => p + i.power, 0 );
-      },
-      max: function() {
-        return this.roster[0].max;
-      },
-      roster: function() {
+      summary: function() {
         var roster = this.team.roster
           .map( function( name, i ) {
             var hero = c_data.heroes.find( n => !!name && n.name.toUpperCase() == name.toUpperCase() );
-            var skills = []
-            var power = 0;
-            var max = 1;
-            if ( !!hero ) {
-              var summary = vm_heroes.summary( hero );
-              var power = summary.power;
-              skills = skills
-                .concat( summary.skills.hero )
-                .concat( summary.skills.items.filter( s => !!s ) );
-              if ( i == 0 ) {
-                max = 4 + ( hero.lv >= 30 ? 1 : 0 );
-                max += skills
-                  .filter( s => s.name.toUpperCase().includes( "LEADER I" ) )
-                  .length;
-              }
-            }
-            return {
-              max: max,
-              hero: hero,
-              power: power,
-              skills: skills
-            };
+            var summary = vm_heroes.summary( hero );
           } );
-          
-        for ( i = roster[0].max, m = this.team.roster.length; i < m; i++ ) {
+        var companions = roster[0].companions || 1;
+        for ( i = companions, m = this.team.roster.length; i < m; i++ ) {
           this.team.roster[i] = undefined;
         };
-        return roster;
+        var power = roster
+          .filter( n => !!n )
+          .reduce( ( v, h ) => v + h.power.hero + h.power.items, 0 );
+        return {
+          companions: companions,
+          power: power,
+          roster: roster
+        };
       }
     },
     methods: {
@@ -593,6 +676,7 @@
   } );
   $( '#tabs-teams' ).append( vm_teams.$el );
 
+  var $json = $( '#tabs-data-json' );
   var $data = $( '#tabs-data-type' )
     .select2( { 
       width: 'auto',
@@ -602,41 +686,11 @@
       placeholder: "Choose data type",
       tags: false,
     } );
-  var $json = $( '#tabs-data-json' );
 
   $( '#tabs-data-load' )
     .on( 'click', function() {
       var type = $data.val();
-      switch ( type ) {
-        case "supplementaries":
-          $.when(
-            $.loadScript( 'data/supplementaries.js' )
-          )
-          .then( function( res1 ) {
-            c_data.set( "qualities", cache.get( "qualities" ) || {} );
-            c_data.set( "powers", cache.get( "powers" ) || {} );
-            c_data.set( "breaks", cache.get( "breaks" ) || {} );
-          } );
-          break;
-        case "items":
-          $.when(
-            $.loadScript( 'data/items.js' )
-          )
-          .then( function( res1 ) {
-            vm_items.items = cache.get( "items" ) || [];
-            //$.extend( true, vm_items.items, cache.get( "items_custom" ) || [] );
-          } );
-          break;
-        case "heroes":
-          $.when(
-            $.loadScript( 'data/heroes.js' )
-          )
-          .then( function( res1 ) {
-            vm_heroes.heroes = cache.get( "heroes" ) || [];
-            //$.extend( true, vm_heroes.heroes, cache.get( "heroes_custom" ) || [] );
-          } );
-          break;
-      }
+      c_data.load( type );
     } );
 
   $( '#tabs-data-clean' )
@@ -652,13 +706,13 @@
           c_data.set( "breaks", {} );
           break;
         case "heroes":
-          vm_heroes.heroes.splice();
+          c_data.heroes.splice(0);
           break;
         case "items":
-          vm_items.items.splice();
+          c_data.items.splice(0);
           break;
         case "teams":
-          vm_teams.teams.splice();
+          c_data.teams.splice(0);
           break;
       }
     } );
@@ -666,21 +720,8 @@
   $( '#tabs-data-get' )
     .on( 'click', function() {
       var type = $data.val();
-      var res = "";
-      switch ( type ) {
-        case "heroes":
-          res += JSON.stringify( cache.get( "heroes_custom" ) || [] );
-          break;
-        case "items":
-          res += JSON.stringify( cache.get( "items_custom" ) || [] );
-          break;
-        case "teams":
-          res += JSON.stringify( cache.get( "teams" ) || [] );
-          break;
-        default:
-          break;
-      }
-      $json.text( res );
+      var res = c_data.json( type );
+      $json.val( res );
     } );
 
   $( '#tabs-data-set' )
@@ -689,18 +730,21 @@
       var res = JSON.parse( $json.val() );
       switch ( type ) {
         case "heroes":
-          $.extend( true, vm_heroes.heroes, res || [] );
+          cache.set( "heroes_custom", res, true );
+          c_data.extend( "heroes" );
           break;
         case "items":
-          $.extend( true, vm_items.items, res || [] );
+          cache.set( "items_custom", res, true );
+          c_data.extend( "items" );
           break;
         case "teams":
-          $.extend( true, vm_teams.teams, res || [] );
+          cache.set( "teams", res, true );
+          c_data.set( "teams" )
           break;
         default:
           break;
       }
-      $json.text( "" );
+      $json.val( "" );
     } );
 
 } );
