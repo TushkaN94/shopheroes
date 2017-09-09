@@ -44,6 +44,9 @@ $( function() {
         case "items":
           res = JSON.stringify( cache.get( "items_custom" ) || [] );
           break;
+        case "buildings":
+          res = JSON.stringify( cache.get( "buildings_custom" ) || [] );
+          break;
         case "teams":
           res = JSON.stringify( cache.get( "teams" ) || [] );
           break;
@@ -99,6 +102,13 @@ $( function() {
             }
           } );
           break;
+        case "buildings":
+          $.loadScript( 'data/buildings.js', {
+            success: function() {
+              self.set( "buildings", cache.get( "buildings" ) || [] );
+            }
+          } );
+          break;
       }
     },
     extend: function( key ) {
@@ -109,6 +119,9 @@ $( function() {
           break;
         case 'items':
           $.extend( true, self.items, cache.get( "items_custom" ) || [] );
+          break;
+        case 'buildings':
+          $.extend( true, self.buildings, cache.get( "buildings_custom" ) || [] );
           break;
         case 'teams':
           $.extend( true, self.teams, cache.get( "teams" ) || [] );
@@ -122,66 +135,16 @@ $( function() {
       var value = cache.get( key );
       switch ( key ) {
         case 'heroes':
-          var ids_type = [];
-          var ids_tier = [];
-          var ids_sex = [];
-          var ids_skill = [];
           self.heroes.splice(0);
-          self.options.heroes.type.splice(0);
-          self.options.heroes.tier.splice(0);
-          self.options.heroes.sex.splice(0);
-          self.options.heroes.skill.splice(0);
-          self.options.heroes.type.push( { id: "", text: "" } );
-          $.each( value, function( k, v ) {
-            self.heroes.push( v );
-            if ( ids_type.indexOf( v.type ) < 0 ) {
-              ids_type.push( v.type );
-              self.options.heroes.type.push( { id: v.type, text: v.type } );
-            }
-            if ( ids_tier.indexOf( v.tier ) < 0 ) {
-              ids_tier.push( v.tier );
-              self.options.heroes.tier.push( { id: v.tier, text: v.tier } );
-            }
-            if ( ids_sex.indexOf( v.sex ) < 0 ) {
-              ids_sex.push( v.sex );
-              self.options.heroes.sex.push( { id: v.sex, text: v.sex } );
-            }
-            $.each( v.skills, function( sk, sv ) {
-              if ( ids_skill.indexOf( sv.name ) < 0 ) {
-                ids_skill.push( sv.name );
-                self.options.heroes.skill.push( { id: sv.name, text: sv.name } );
-              }
-            } );
-          } );
+          [].push.apply( self.heroes, value );
           break;
         case 'items':
-          var ids_type = [];
-          var ids_skill = [];
           self.items.splice(0);
-          self.options.items.type.splice(0);
-          self.options.items.skill.splice(0);
-          $.each( value, function( k, v ) {
-            self.items.push( v );
-            if ( ids_type.indexOf( v.type ) < 0 ) {
-              ids_type.push( v.type );
-              self.options.items.type.push( { id: v.type, text: v.type } );
-            }
-            if ( v.skill && ids_skill.indexOf( v.skill.name ) < 0 ) {
-              ids_skill.push( v.skill.name );
-              self.options.items.skill.push( { id: v.skill.name, text: v.skill.name } );
-            }
-          } );
+          [].push.apply( self.items, value );
           break;
         case 'teams':
           self.teams.splice(0);
-          self.teams.push.apply( self.teams, value );
-          break;
-        case 'qualities':
-          self.qualities = value;
-          self.options.qualities.splice(0);
-          $.each( value, function( k, v ) {
-            self.options.qualities.push( { id: k, text: k } );
-          } );
+          [].push.apply( self.teams, value );
           break;
         default:
           self[key] = value;
@@ -193,14 +156,16 @@ $( function() {
   c_data.set( "qualities" );
   c_data.set( "powers" );
   c_data.set( "breaks" );
+  c_data.set( "skills" );
+  c_data.set( "skills_effects" );
+  c_data.set( "buildings" );
+  c_data.extend( "buildings" );
   c_data.set( "items" );
   c_data.extend( "items" );
   c_data.set( "heroes" );
   c_data.extend( "heroes" );
   c_data.set( "teams" );
   c_data.extend( "teams" );
-  c_data.set( "skills" );
-  c_data.set( "skills_effects" );
   
   Vue.component( 'select2', {
     template: '#templates-select2',
@@ -284,9 +249,236 @@ $( function() {
 
   Vue.component( 'skill', {
     template: '#templates-skill',
-    props:[ 'skill' ]
+    props:[ 'skill', 'm' ],
+    computed: {
+      summary: function() {
+        var title = this.skill.name;
+        if ( !!this.skill.q ) {
+          title += ' @ ' + this.skill.q;
+        }
+        if ( !!this.skill.lv ) {
+          title += ' @ level ' + this.skill.lv;
+        }
+        return {
+          title: title
+        };
+      }
+    }
   } );
   
+  Vue.component( 'item', {
+    template: '#templates-item',
+    props: [ 'item' ]
+  } );
+  var vm_items = new Vue( {
+    el: $( '<div/>' )[0],
+    template: '#templates-items',
+    data: function() { 
+      return {
+        items: c_data.items,
+        filter: () => true,
+        filters: {
+          name: null,
+          type: null,
+          skill: null,
+          lv: {
+            min: null,
+            max: null
+          }
+        },
+      }
+    },
+    computed: {
+      options: function() {
+        var options = {
+          type: { ids: [], list: [] },
+          skill:  { ids: [], list: [] }
+        };
+        c_data.items.map( i => {
+          if ( options.type.ids.indexOf( i.type ) < 0 ) {
+            options.type.ids.push( i.type );
+            options.type.list.push( { id: i.type, text: i.type } );
+          }
+        } );
+        options.skill.list = c_data.skills.map( s => {
+          return { id: s.name, text: s.name };
+        } );
+        return options;
+      }
+    },
+    methods: {
+      visible: function( item ) {
+        return this.filter( item );
+      }
+    },
+    watch: {
+      items: { 
+        handler: function( items ) {
+          var custom = items
+            .map( item => {
+              if ( item.skill ) {
+                return {
+                  skill: {
+                    m: item.skill.m
+                  }
+                };
+              }
+              else {
+                return {};
+              };
+            } );
+          cache.set( 'items_custom', custom, true );
+        },
+        deep: true
+      },
+      filters: {
+        handler: function( filters ) {
+          var 
+            fn_name = () => true,
+            fn_type = () => true,
+            fn_skill = () => true,
+            fn_lv = () => true;
+          if ( !!filters.name ) {
+            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
+          }
+          if ( !!filters.type ) {
+            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
+          }
+          if ( !!filters.skill ) {
+            fn_skill = ( h ) => h.skill && h.skill.name.toUpperCase().includes( filters.skill.toUpperCase() );
+          }
+          if ( !!filters.lv.min && !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+          } else if ( !!filters.lv.min ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min;
+          } else if ( !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv <= filters.lv.max;
+          }
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_skill( h ) && fn_lv( h );
+        },
+        deep: true
+      }
+    }
+  } );
+  $( '#tabs-items' ).append( vm_items.$el );
+
+  Vue.component( 'building', {
+    template: '#templates-building',
+    props: [ 'building' ],
+    watch: {
+      building: { 
+        handler: function( building ) {
+          if ( isNaN( building.lv ) ) {
+            building.lv = 1;
+          } else if ( building.lv < 1 ) {
+            building.lv = 1;
+          } else if ( building.lv > building.cap ) {
+            building.lv = building.cap;
+          }
+          if ( isNaN( building.cj.lv ) ) {
+            building.cj.lv = 1;
+          } else if ( building.cj.lv < 1 ) {
+            building.cj.lv = 1;
+          } else if ( building.cj.lv > building.cj.cap ) {
+            building.cj.lv = building.cj.cap;
+          }
+        },
+        deep: true
+      }
+    }
+  } );
+  var vm_buildings = new Vue( {
+    el: $( '<div/>' )[0],
+    template: '#templates-buildings',
+    data: function() { 
+      return {
+        buildings: c_data.buildings,
+        filter: () => true,
+        filters: {
+          name: null,
+          type: null,
+          lv: {
+            min: null,
+            max: null
+          },
+          cj: {
+            min: null,
+            max: null
+          }
+        },
+      }
+    },
+    computed: {
+      options: function() {
+        var options = {
+          type: { ids: [], list: [] }
+        };
+        c_data.buildings.map( b => {
+          if ( options.type.ids.indexOf( b.type ) < 0 ) {
+            options.type.ids.push( b.type );
+            options.type.list.push( { id: b.type, text: b.type } );
+          }
+        } );
+        return options;
+      }
+    },
+    methods: {
+      visible: function( building ) {
+        return this.filter( building );
+      }
+    },
+    watch: {
+      buildings: { 
+        handler: function( buildings ) {
+          var custom = buildings
+            .map( b => {
+              return {
+                m: b.m,
+                lv: b.lv,
+                cj: {
+                  lv: b.cj.lv
+                }
+              };
+            } );
+          cache.set( 'buildings_custom', custom, true );
+        },
+        deep: true
+      },
+      filters: {
+        handler: function( filters ) {
+          var 
+            fn_name = () => true,
+            fn_type = () => true,
+            fn_lv = () => true,
+            fn_cj = () => true;
+          if ( !!filters.name ) {
+            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
+          }
+          if ( !!filters.type ) {
+            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
+          }
+          if ( !!filters.lv.min && !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+          } else if ( !!filters.lv.min ) {
+            fn_lv = ( h ) => h.lv >= filters.lv.min;
+          } else if ( !!filters.lv.max ) {
+            fn_lv = ( h ) => h.lv <= filters.lv.max;
+          }
+          if ( !!filters.cj.min && !!filters.cj.max ) {
+            fn_cj = ( h ) => h.cj.lv >= filters.cj.min && h.cj.lv <= filters.cj.max;
+          } else if ( !!filters.cj.min ) {
+            fn_cj = ( h ) => h.cj.lv >= filters.cj.min;
+          } else if ( !!filters.cj.max ) {
+            fn_cj = ( h ) => h.cj.lv <= filters.cj.max;
+          }
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_cj( h ) && fn_lv( h );
+        },
+        deep: true
+      }
+    }
+  } );
+  $( '#tabs-buildings' ).append( vm_buildings.$el );
+
   Vue.component( 'hero', {
     template: '#templates-hero',
     props: [ 'hero' ],
@@ -297,8 +489,8 @@ $( function() {
       equippables: function() {
         return this.$parent.equippables( this.hero );
       },
-      qualities: function() {
-        return c_data.options.qualities;
+      quality: function() {
+        return this.$parent.options.quality;
       }
     },
     watch: {
@@ -321,7 +513,6 @@ $( function() {
     template: '#templates-heroes',
     data: function() { 
       return {
-        options: c_data.options.heroes,
         heroes: c_data.heroes,
         filter: () => true,
         filters: {
@@ -337,10 +528,45 @@ $( function() {
         },
       }
     },
+    computed: {
+      options: function() {
+        var options = {
+          name: { ids: [], list: [] },
+          type: { ids: [], list: [] },
+          tier: { ids: [], list: [] },
+          sex: { ids: [], list: [] },
+          building: { ids: [], list: [] },
+          skill:  { ids: [], list: [] },
+          quality:  { ids: [], list: [] }
+        };
+        c_data.heroes.map( h => {
+          options.name.list.push( h.name );
+          if ( options.type.ids.indexOf( h.type ) < 0 ) {
+            options.type.ids.push( h.type );
+            options.type.list.push( { id: h.type, text: h.type } );
+          }
+          if ( options.tier.ids.indexOf( h.tier ) < 0 ) {
+            options.tier.ids.push( h.tier );
+            options.tier.list.push( { id: h.tier, text: h.tier } );
+          }
+          if ( options.sex.ids.indexOf( h.sex ) < 0 ) {
+            options.sex.ids.push( h.sex );
+            options.sex.list.push( { id: h.sex, text: h.sex } );
+          }
+        } );
+        options.building.list = c_data.buildings.map( b => {
+          return { id: b.name, text: b.name };
+        } );
+        options.skill.list = c_data.skills.map( s => {
+          return { id: s.name, text: s.name };
+        } );
+        options.quality.list = $.map( c_data.qualities, ( q, k ) => {
+          return { id: k, text: k };
+        } );
+        return options;
+      }
+    },
     methods: {
-      power: function( power ) {
-        return Math.round( power, 0 ).toLocaleString();
-      },
       visible: function( hero ) {
         return this.filter( hero );
       },
@@ -431,8 +657,8 @@ $( function() {
             }
             return res;
           } );
-        result.power.items *= ( optimals == 7 ? 1.25 : 1.0 );
 
+        result.power.items *= ( optimals == 7 ? 1.25 : 1.0 );
         var skills = this.skills( result );
         $.each( skills.hero, function( n, s ) {
           switch ( s.affects ) {
@@ -449,6 +675,13 @@ $( function() {
               break;
           };
         } );
+        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == hero.building.toUpperCase() );
+        if ( !bldng ) {
+          console.log( hero.building )
+        }
+        var m = 1.0 + bldng.cj.value * ( bldng.cj.lv - 1 );
+        result.power.items *= m;
+        result.power.hero *= m;
         return result;
       },
       equippables: function( hero ) {
@@ -494,31 +727,27 @@ $( function() {
       },
       filters: {
         handler: function( filters ) {
-          var fn_name, fn_type, fn_tier, fn_sex, fn_skill, fn_lv;
+          var 
+            fn_name = () => true,
+            fn_type = () => true,
+            fn_tier = () => true,
+            fn_sex = () => true,
+            fn_bldng = () => true,
+            fn_lv = () => true;
           if ( !!filters.name ) {
             fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
-          } else {
-            fn_name = () => true;
           }
           if ( !!filters.type ) {
             fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
-          } else {
-            fn_type = () => true;
           }
           if ( !!filters.tier ) {
             fn_tier = ( h ) => h.tier == filters.tier;
-          } else {
-            fn_tier = () => true;
           }
           if ( !!filters.sex ) {
             fn_sex = ( h ) => h.sex.toUpperCase() == filters.sex.toUpperCase();
-          } else {
-            fn_sex = () => true;
           }
-          if ( !!filters.skill ) {
-            fn_skill = ( h ) => h.skills.any( s => s.name.toUpperCase().includes( filters.skill.toUpperCase() ) );
-          } else {
-            fn_skill = () => true;
+          if ( !!filters.building ) {
+            fn_bldng = ( b ) => h.building.toUpperCase() == filters.building.toUpperCase();
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
             fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
@@ -526,99 +755,14 @@ $( function() {
             fn_lv = ( h ) => h.lv >= filters.lv.min;
           } else if ( !!filters.lv.max ) {
             fn_lv = ( h ) => h.lv <= filters.lv.max;
-          } else {
-            fn_lv = () => true;
           }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_skill( h ) && fn_lv( h );
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_bldng( h ) && fn_lv( h );
         },
         deep: true
       }
     }
   } );
   $( '#tabs-heroes' ).append( vm_heroes.$el );
-
-  Vue.component( 'item', {
-    template: '#templates-item',
-    props: [ 'item' ]
-  } );
-  var vm_items = new Vue( {
-    el: $( '<div/>' )[0],
-    template: '#templates-items',
-    data: function() { 
-      return {
-        options: c_data.options.items,
-        items: c_data.items,
-        filter: () => true,
-        filters: {
-          name: null,
-          type: null,
-          skill: null,
-          lv: {
-            min: null,
-            max: null
-          }
-        },
-      }
-    },
-    methods: {
-      visible: function( item ) {
-        return this.filter( item );
-      }
-    },
-    watch: {
-      items: { 
-        handler: function( items ) {
-          var custom = items
-            .map( item => {
-              if ( item.skill ) {
-                return {
-                  skill: {
-                    m: item.skill.m
-                  }
-                };
-              }
-              else {
-                return {};
-              };
-            } );
-          cache.set( 'items_custom', custom, true );
-        },
-        deep: true
-      },
-      filters: {
-        handler: function( filters ) {
-          var fn_name, fn_type, fn_skill, fn_lv;
-          if ( !!filters.name ) {
-            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
-          } else {
-            fn_name = () => true;
-          }
-          if ( !!filters.type ) {
-            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
-          } else {
-            fn_type = () => true;
-          }
-          if ( !!filters.skill ) {
-            fn_skill = ( h ) => h.skill && h.skill.name.toUpperCase().includes( filters.skill.toUpperCase() );
-          } else {
-            fn_skill = () => true;
-          }
-          if ( !!filters.lv.min && !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
-          } else if ( !!filters.lv.min ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min;
-          } else if ( !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv <= filters.lv.max;
-          } else {
-            fn_lv = () => true;
-          }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_skill( h ) && fn_lv( h );
-        },
-        deep: true
-      }
-    }
-  } );
-  $( '#tabs-items' ).append( vm_items.$el );
 
   Vue.component( 'team', {
     template: '#templates-team',

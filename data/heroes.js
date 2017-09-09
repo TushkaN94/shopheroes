@@ -5,7 +5,8 @@
     {
       name: "Karal",
       type: "Fighter",
-      sex: "F",
+      sex: "Female",
+      building: "Hunter's Lodge",
       tier: 1,
       lv: 1,
       cap: 25,
@@ -78,7 +79,8 @@
     {
       name: "Theor",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Training Hall",
       tier: 1,
       lv: 1,
       cap: 30,
@@ -151,7 +153,8 @@
     {
       name: "Clovis",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Temple",
       tier: 1,
       lv: 1,
       cap: 35,
@@ -224,7 +227,8 @@
     {
       name: "Gauvin",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Training Hall",
       tier: 2,
       lv: 1,
       cap: 40,
@@ -297,7 +301,8 @@
     {
       name: "Lancaster",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Fighter's Guild",
       tier: 3,
       lv: 1,
       cap: 45,
@@ -370,7 +375,8 @@
     {
       name: "Fiora",
       type: "Fighter",
-      sex: "F",
+      sex: "Female",
+      building: "Cathedral",
       tier: 4,
       lv: 1,
       cap: 50,
@@ -443,7 +449,8 @@
     {
       name: "Kurul",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Hunter's Lodge",
       tier: 4,
       lv: 1,
       cap: 50,
@@ -516,7 +523,8 @@
     {
       name: "Edward",
       type: "Fighter",
-      sex: "M",
+      sex: "Male",
+      building: "Cathedral",
       tier: 5,
       lv: 1,
       cap: 55,
@@ -589,7 +597,8 @@
     {
       name: "Alicia",
       type: "Fighter",
-      sex: "F",
+      sex: "Female",
+      building: "War College",
       tier: 5,
       lv: 1,
       cap: 55,
@@ -662,7 +671,8 @@
     {
       name: "Garreth",
       type: "Rogue",
-      sex: "M",
+      sex: "Male",
+      building: "Thief's Hideout",
       tier: 1,
       lv: 1,
       cap: 30,
@@ -735,7 +745,8 @@
     {
       name: "Palash",
       type: "Rogue",
-      sex: "M",
+      sex: "Male",
+      building: "Hunter's Lodge",
       tier: 1,
       lv: 1,
       cap: 40,
@@ -808,7 +819,8 @@
     {
       name: "Mila",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Thief's Hideout",
       tier: 2,
       lv: 1,
       cap: 40,
@@ -881,7 +893,8 @@
     {
       name: "Irene",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Fountain",
       tier: 2,
       lv: 1,
       cap: 45,
@@ -954,7 +967,8 @@
     {
       name: "Darthos",
       type: "Rogue",
-      sex: "M",
+      sex: "Male",
+      building: "Theater",
       tier: 3,
       lv: 1,
       cap: 45,
@@ -1027,7 +1041,8 @@
     {
       name: "Odette",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Thief's Hideout",
       tier: 3,
       lv: 1,
       cap: 45,
@@ -1100,7 +1115,8 @@
     {
       name: "Louca",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Port",
       tier: 5,
       lv: 1,
       cap: 55,
@@ -1173,7 +1189,8 @@
     {
       name: "Kuro Shobi",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Port",
       tier: 5,
       lv: 1,
       cap: 55,
@@ -1246,7 +1263,8 @@
     {
       name: "Lorelei",
       type: "Rogue",
-      sex: "F",
+      sex: "Female",
+      building: "Heroic Package #2",
       tier: 6,
       lv: 1,
       cap: 55,
@@ -1319,7 +1337,8 @@
     {
       name: "Melina",
       type: "Spellcaster",
-      sex: "F",
+      sex: "Female",
+      building: "School of Magic",
       tier: 1,
       lv: 1,
       cap: 25,
@@ -1392,7 +1411,8 @@
     {
       name: "Minh",
       type: "Spellcaster",
-      sex: "M",
+      sex: "Male",
+      building: "Temple",
       tier: 1,
       lv: 1,
       cap: 35,
@@ -1465,7 +1485,8 @@
     {
       name: "Albert",
       type: "Spellcaster",
-      sex: "M",
+      sex: "Male",
+      building: "Fountain",
       tier: 1,
       lv: 1,
       cap: 40,
@@ -1538,7 +1559,8 @@
     {
       name: "Nya",
       type: "Spellcaster",
-      sex: "F",
+      sex: "Female",
+      building: "School of Magic",
       tier: 2,
       lv: 1,
       cap: 40,
@@ -1611,7 +1633,8 @@
     {
       name: "Oneira",
       type: "Spellcaster",
-      sex: "F",
+      sex: "Female",
+      building: "Theater",
       tier: 3,
       lv: 1,
       cap: 45,
@@ -1684,7 +1707,8 @@
     {
       name: "Azula",
       type: "Spellcaster",
-      sex: "F",
+      sex: "Female",
+      building: "School of Magic",
       tier: 4,
       lv: 1,
       cap: 50,
@@ -1757,7 +1781,8 @@
     {
       name: "Francesca",
       type: "Spellcaster",
-      sex: "F",
+      sex: "Female",
+      building: "Fighter's Guild",
       tier: 4,
       lv: 1,
       cap: 50,
@@ -1830,7 +1855,8 @@
     {
       name: "Mojian",
       type: "Spellcaster",
-      sex: "M",
+      sex: "Male",
+      building: "War College",
       tier: 5,
       lv: 1,
       cap: 55,
@@ -1903,7 +1929,8 @@
     {
       name: "Charles",
       type: "Spellcaster",
-      sex: "M",
+      sex: "Male",
+      building: "Heroic Package #1",
       tier: 6,
       lv: 1,
       cap: 55,

@@ -35,11 +35,13 @@ table.shopheroes tr.split {
   min-height: 2px;
 }
 table.shopheroes th {
+  padding: 1px 3px;
   text-align: center;
   font-weight: bold;
   background-color: #E9E9E9;
 }
 table.shopheroes td {
+  padding: 1px 3px;
   font-size: 0.9em;
   text-align: center;
   background-color: #F6F6F6;

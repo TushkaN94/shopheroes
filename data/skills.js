@@ -461,7 +461,7 @@ $( function() {
       applies: "team",
       value: 0.05,
       activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "F" == hero.sex; }
+      filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
       name: "Amazon II",
@@ -469,7 +469,7 @@ $( function() {
       applies: "team",
       value: 0.10,
       activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "F" == hero.sex; }
+      filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
       name: "Amazon III",
@@ -477,7 +477,7 @@ $( function() {
       applies: "team",
       value: 0.25,
       activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "F" == hero.sex; }
+      filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
       name: "Brothers-in-arms I",

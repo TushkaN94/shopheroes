@@ -20,13 +20,16 @@
     <div id="tabs">
       <ul>
         <li>
-          <a href="#tabs-items">Items</a>
-        </li>
-        <li>
           <a href="#tabs-heroes">Heroes</a>
         </li>
         <li>
           <a href="#tabs-teams">Teams</a>
+        </li>
+        <li>
+          <a href="#tabs-items">Items</a>
+        </li>
+        <li>
+          <a href="#tabs-buildings">Buildings</a>
         </li>
         <li>
           <a href="#tabs-data">Data</a>
@@ -37,6 +40,7 @@
           <select id="tabs-data-type">
             <option value="supplementaries">Supplementaries</option>
             <option value="skills">Skills</option>
+            <option value="buildings">Buildings</option>
             <option value="items">Items</option>
             <option value="heroes">Heroes</option>
             <option value="teams">Teams</option>
@@ -52,9 +56,11 @@
       </div>
       <div id="tabs-heroes">
       </div>
+      <div id="tabs-teams">
+      </div>
       <div id="tabs-items">
       </div>
-      <div id="tabs-teams">
+      <div id="tabs-buildings">
       </div>
     </div>
   </body>
@@ -65,11 +71,10 @@
   </script>
   <script type="text/x-template" id="templates-skill">
     <div v-if="!!skill">
-      <span class="float-left" v-if="skill.lv">{{skill.lv}}</span>
-      <span class="skill" :class="{inactive:!skill.active}">{{skill.name}}</span>
-    </div>
-    <div v-else>
-      <span class="skill">None</span>
+      <input v-if="m" type="checkbox" class="float-right" v-model="skill.m"/>
+      <span class="skill" :class="{inactive: !m && !skill.active}" :title="summary.title">
+        {{skill.name}}
+      </span>
     </div>
   </script>
   <script type="text/x-template" id="templates-items">
@@ -157,14 +162,94 @@
           </div>
         </td>
         <td>
-          <div v-if="item.skill">
-            <input type="checkbox" class="float-right" v-model="item.skill.m"/>
-            <span>
-              {{item.skill.name}}
-            </span>
-            <span>
-            @ {{item.skill.q}}
-            </span>
+          <skill :skill="item.skill" :m="true"/>
+        </td>
+      </tr>
+  </script>
+  <script type="text/x-template" id="templates-buildings">
+    <div>
+      <table class="shopheroes building">
+        <tbody>
+          <tr class="split">
+            <th class="name"></th>
+            <th class="type"></th>
+            <th class="lv"></th>
+            <th class="lv"></th>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Level</th>
+            <th>CJs Level</th>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <input class="lv" v-model="filters.lv.min"/>
+                <span>&nbsp;-&nbsp;</span>
+                <input class="lv" v-model="filters.lv.max"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <input class="lv" v-model="filters.cj.min"/>
+                <span>&nbsp;-&nbsp;</span>
+                <input class="lv" v-model="filters.cj.max"/>
+              </div>
+            </td>
+          </tr>
+          <tr class="header">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <building v-for="( building, i ) in buildings" v-show="visible( building )" :building="building" :key="i"/>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+  <script type="text/x-template" id="templates-building">
+      <tr>
+        <td>
+          <div>
+            <input type="checkbox" class="float-right" v-model="building.m"/>
+            {{building.name}}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{building.type}}
+          </div>
+        </td>
+        <td>
+          <div>
+            <input class="lv" v-model="building.lv"/>
+            <span>&nbsp;/&nbsp;</span>
+            <span>{{building.cap}}</span>
+          </div>
+        </td>
+        <td>
+          <div>
+            <input class="lv" v-model="building.cj.lv"/>
+            <span>&nbsp;/&nbsp;</span>
+            <span>{{building.cj.cap}}</span>
           </div>
         </td>
       </tr>
@@ -181,16 +266,16 @@
             <th class="item"></th>
             <th class="item"></th>
             <th class="item"></th>
-            <th class="skill name"></th>
+            <th class="item"></th>
           </tr>
           <tr class="header">
             <th class="name" colspan="2">Name</th>
             <th>Type</th>
             <th>Tier</th>
             <th>Sex</th>
+            <th>Building</th>
             <th>Level</th>
             <th>Power</th>
-            <th>Skills</th>
           </tr>
           <tr>
             <td colspan="2">
@@ -200,17 +285,22 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.tier" :options="options.tier" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.tier" :options="options.tier.list" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.sex" :options="options.sex.list" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select2 v-model="filters.building" :options="options.building.list" :placeholder="'Choose building'" :style="'width: 100%;'"/>
               </div>
             </td>
             <td>
@@ -220,22 +310,18 @@
                 <input class="lv" v-model="filters.lv.max"/>
               </div>
             </td>
-            <td/>
             <td>
-              <div>
-                <select2 v-model="filters.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
-              </div>
             </td>
           </tr>
           <tr>
-            <th class="item name">Weapon</th>
-            <th class="item">Body</th>
-            <th class="item">Head</th>
-            <th class="item">Arms</th>
-            <th class="item">Legs</th>
-            <th class="item">Accessory&nbsp;1</th>
-            <th class="item">Accessory&nbsp;2</th>
-            <th class="skill name"/>
+            <th>Weapon</th>
+            <th>Body</th>
+            <th>Head</th>
+            <th>Arms</th>
+            <th>Legs</th>
+            <th>Accessory&nbsp;1</th>
+            <th>Accessory&nbsp;2</th>
+            <th>Skills</th>
           </tr>
           <tr class="split">
             <th></th>
@@ -255,10 +341,31 @@
   <script type="text/x-template" id="templates-hero">
         <tbody>
           <tr>
-            <th class="name" colspan="2">{{hero.name}}</th>
-            <td>{{hero.type}}</td>
-            <td>Tier {{hero.tier}}</td>
-            <td>{{hero.sex}}</td>
+            <th class="name" colspan="2">
+              <div>
+                {{hero.name}}
+              </div>
+            </th>
+            <td>
+              <div>
+                {{hero.type}}
+              </div>
+            </td>
+            <td>
+              <div>
+                Tier {{hero.tier}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{hero.sex}}
+              </div>
+            </td>
+            <td>
+              <div>
+                {{hero.building}}
+              </div>
+            </td>
             <td>
               <div>
                 <input class="lv" v-model="hero.lv"/>
@@ -267,9 +374,10 @@
               </div>
             </td>
             <td>
-              {{parseInt(summary.power.hero+summary.power.items).toLocaleString()}}
+              <div>
+                {{parseInt(summary.power.hero+summary.power.items).toLocaleString()}}
+              </div>
             </td>
-            <td></td>
           </tr>
           <tr>
             <td v-for="item in summary.items">
@@ -299,7 +407,7 @@
           <tr>
             <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <div>
-                <select2 v-if="hero.slots[j].item" v-model="hero.slots[j].q" :options="qualities" :placeholder="'Choose quality'" :nosearch="true"/>
+                <select2 v-if="hero.slots[j].item" v-model="hero.slots[j].q" :options="quality.list" :placeholder="'Choose quality'" :nosearch="true"/>
               </div>
             </td>
             <td>
@@ -307,8 +415,8 @@
             </td>
           </tr>
           <tr>
-            <td v-for="item in summary.items">
-              <skill :skill="item.skill"/>
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
+              <skill :skill="summary.items[j].skill"/>
             </td>
             <th/>
           </tr>
