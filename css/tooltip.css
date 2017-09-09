@@ -1,0 +1,39 @@
+.htooltip span {
+	background-color: #F6F6F6;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+	margin-left: 20px;
+	margin-top: -2.25em;
+	opacity: 0;
+	padding: 0.25em 0.5em;
+	position: absolute;
+	text-decoration: none;
+  white-space: pre;
+	visibility: hidden;
+	z-index: 10;
+  text-align: justify;
+}
+.htooltip span img {
+	border: 0 none;
+	float: left;
+	margin: -1em 0 0 -234px;
+	opacity: 0;
+	position: absolute;
+	visibility: hidden;
+	z-index: -1;
+}
+.htooltip:hover span img,
+.htooltip:hover span {
+	opacity: 1;
+	visibility: visible;
+}
+.htooltip {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1.5em;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 1.5em;
+  max-height: 1.5em;
+  background-image: url( "../jquery/images/ui-icons_444444_256x240.png" );
+  background-position: -16px -144px;
+}

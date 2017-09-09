@@ -141,7 +141,7 @@ table.shopheroes .collapse {
   width: auto !important; 
 }
 
-table.shopheroes .skill.inactive {
+table.shopheroes .inactive {
   color: gray;
   text-decoration: line-through;
 }

@@ -5,16 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
     <meta name="Description" content=""/>
-    <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css?v=1" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="select2/css/select2.css?v=1" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=1" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/styles.js"></script>
-    <script defer type="text/javascript" src="select2/js/select2.min.js"></script>
-    <script defer type="text/javascript" src="vue/js/vue.js"></script>
-    <script defer type="text/javascript" src="js/cache.js"></script>
-    <script defer type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="select2/js/select2.min.js" defer></script>
+    <script type="text/javascript" src="vue/js/vue.js" defer></script>
+    <script type="text/javascript" src="js/styles.js" defer></script>
+    <script type="text/javascript" src="js/cache.js" defer></script>
+    <script type="text/javascript" src="js/main.js" defer></script>
   </head>
   <body>
     <div id="tabs">
@@ -69,11 +70,24 @@
       <slot/>
     </select>
   </script>
+  <script type="text/x-template" id="templates-power">
+    <div>
+      <span class="power">
+        {{Math.round( power.value, 0 ).toLocaleString()}}
+      </span>
+      <span class="htooltip" v-if="!!power.info">
+        <span>{{power.info}}</span>
+      </span>
+    </div>
+  </script>
   <script type="text/x-template" id="templates-skill">
     <div v-if="!!skill">
       <input v-if="m" type="checkbox" class="float-right" v-model="skill.m"/>
-      <span class="skill" :class="{inactive: !m && !skill.active}" :title="summary.title">
+      <span :class="{inactive: !m && !skill.active}">
         {{skill.name}}
+      </span>
+      <span class="htooltip">
+        <span>{{summary.info}}</span>
       </span>
     </div>
   </script>
@@ -158,7 +172,7 @@
         </td>
         <td>
           <div>
-            {{Math.round( item.power, 0 ).toLocaleString()}}
+            <power :power="{ value: item.power }"/>
           </div>
         </td>
         <td>
@@ -375,7 +389,7 @@
             </td>
             <td>
               <div>
-                {{parseInt(summary.power.hero+summary.power.items).toLocaleString()}}
+                <power :power="{ value: summary.power.hero + summary.power.items, info: summary.power.info }"/>
               </div>
             </td>
           </tr>
@@ -383,7 +397,7 @@
             <td v-for="item in summary.items">
               <div v-if="!!item">
                 <div class="float-left power">
-                  {{parseInt(item.power).toLocaleString()}}
+                  <power :power="{ value: item.power.value, info: item.power.info }"/>
                 </div>
                 <div class="float-right break">
                   {{(item.chance*100).toFixed(1)}}%
