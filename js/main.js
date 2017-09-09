@@ -605,7 +605,7 @@ $( function() {
         var roster = this.team.roster
           .map( function( name, i ) {
             var hero = c_data.heroes.find( n => !!name && n.name.toUpperCase() == name.toUpperCase() );
-            var summary = vm_heroes.summary( hero );
+            return vm_heroes.summary( hero );
           } );
         var companions = roster[0].companions || 1;
         for ( i = companions, m = this.team.roster.length; i < m; i++ ) {
