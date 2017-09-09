@@ -81,15 +81,14 @@
             <th class="type"></th>
             <th class="lv"></th>
             <th class="power"></th>
-            <th class="skill name"></th>
-            <th class="skill quality"></th>
+            <th class="skill"></th>
           </tr>
           <tr>
             <th>Name</th>
             <th>Type</th>
             <th>Level</th>
             <th>Power</th>
-            <th colspan="2">Skill</th>
+            <th>Skill</th>
           </tr>
           <tr>
             <td>
@@ -110,14 +109,13 @@
               </div>
             </td>
             <td/>
-            <td colspan="2">
+            <td>
               <div>
                 <select2 v-model="filters.skill" :options="options.skill" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
               </div>
             </td>
           </tr>
           <tr class="header">
-            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -131,7 +129,6 @@
             <th></th>
             <th></th>
             <th></th>
-            <th></th>
           </tr>
         </tbody>
       </table>
@@ -140,29 +137,35 @@
   <script type="text/x-template" id="templates-item">
       <tr>
         <td>
-          <span>{{item.name}}</span>
+          <div>
+            {{item.name}}
+          </div>
         </td>
         <td>
-          <span>{{item.type}}</span>
+          <div>
+            {{item.type}}
+          </div>
         </td>
         <td>
-          <span>{{item.lv}}</span>
+          <div>
+            {{item.lv}}
+          </div>
         </td>
         <td>
-          <span>{{parseInt(item.power).toLocaleString()}}</span>
+          <div>
+            {{Math.round( item.power, 0 ).toLocaleString()}}
+          </div>
         </td>
         <td>
-          <span v-if="item.skill">
-            <input type="checkbox" class="float-left" v-model="item.skill.m"/>
-          </span>
-          <span v-if="item.skill">
-            {{item.skill.name}}
-          </span>
-        </td>
-        <td>
-          <span v-if="item.skill">
-          {{item.skill.q}}
-          </span>
+          <div v-if="item.skill">
+            <input type="checkbox" class="float-right" v-model="item.skill.m"/>
+            <span>
+              {{item.skill.name}}
+            </span>
+            <span>
+            @ {{item.skill.q}}
+            </span>
+          </div>
         </td>
       </tr>
   </script>

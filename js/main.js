@@ -338,8 +338,42 @@ $( function() {
       }
     },
     methods: {
+      power: function( power ) {
+        return Math.round( power, 0 ).toLocaleString();
+      },
       visible: function( hero ) {
         return this.filter( hero );
+      },
+      skills: function( summary ) {
+        var skills1 = summary.skills
+          .filter( s => s.active );
+        var skills2 = summary.items
+          .filter( i => i.skill )
+          .map( i => { return i.skill; } )
+          .filter( s => s.active );
+        var skills = [].concat( skills1, skills2 )
+          .map( s => {
+            var si = c_data.skills.find( ss => ss.name == s.name );
+            var sb = c_data.skills_effects.find( se => se.name == si.base );
+            return $.extend( true, {}, sb, si );
+          } )
+          .reduce( ( p, s ) => {
+            if ( p[s.applies][s.base] == undefined ) {
+              p[s.applies][s.base] = {
+                name: s.base,
+                text: s.text,
+                type: s.type,
+                affects: s.affects,
+                cap: s.cap,
+                value: s.value
+              };
+            } else {
+              value = p[s.applies][s.base].value;
+              p[s.applies][s.base].value = s.stacks ? value + s.value : Math.max( value, s.value );
+            }
+            return p;
+          }, { team: {}, hero: {} } );
+        return skills;
       },
       summary: function( hero ) {
         var result = {
@@ -377,7 +411,7 @@ $( function() {
                 } );
                 var lv_difference = Math.abs( res.lv - hero.lv );
                 res.optimal = ( lv_difference <= 6 );
-                res.power = Math.round( ( res.power || 0 ) * ( c_data.powers.q[res.q] || 1.0 ), 0 );
+                res.power *= c_data.powers.q[res.q] || 1.0;
                 res.a = slot.list.find( s => s.type == res.type ).a;
                 var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[res.a] ), 0.85 ) ) * c_data.breaks.q[res.q];
                 if ( chance < 0.005 ) {
@@ -397,35 +431,24 @@ $( function() {
             }
             return res;
           } );
-        result.power.items = ( optimals == 7 ? 1.25 : 1.0 ) * result.power.items;
+        result.power.items *= ( optimals == 7 ? 1.25 : 1.0 );
 
-        var skills1 = result.skills
-          .filter( s => s.active );
-        var skills2 = result.items
-          .filter( i => i.skill )
-          .map( i => { return i.skill; } )
-          .filter( s => s.active );
-        var skills = [].concat( skills1, skills2 )
-          .map( s => {
-            var si = c_data.skills.find( ss => ss.name == s.name );
-            if ( si == undefined ) {
-              console.log( s.name );
-            }
-            var sb = c_data.skills_effects.find( se => se.name == si.base );
-            if ( sb == undefined ) {
-              console.log( si.name );
-            }
-            return $.extend( true, {}, sb, si );
-          } )
-          .reduce( ( p, s ) => {
-            if ( p[s.applies][s.base] == undefined ) {
-              p[s.applies][s.base] == s;
-            } else {
-              value = p[s.applies][s.base].value || 0;
-              p[s.applies][s.base].value = s.stacks ? value + s.value : Math.max( value, s.value );
-            }
-            return p;
-          }, { team: {}, hero: {} } );
+        var skills = this.skills( result );
+        $.each( skills.hero, function( n, s ) {
+          switch ( s.affects ) {
+            case "companions":
+              result.companions += s.value;
+              break;
+            case "power.items":
+              result.power.items *= 1.0 + s.value;
+              break;
+            case "power.hero":
+              result.power.hero *= 1.0 + s.value;
+              break;
+            default:
+              break;
+          };
+        } );
         return result;
       },
       equippables: function( hero ) {

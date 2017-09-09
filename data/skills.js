@@ -277,6 +277,7 @@ $( function() {
     {
       name: "Gangster I",
       base: "Equipment",
+      applies: "team",
       value: 0.10,
       activates: ( hero, i ) => { return 0 == i; },
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
@@ -284,6 +285,7 @@ $( function() {
     {
       name: "Gangster II",
       base: "Equipment",
+      applies: "team",
       value: 0.15,
       activates: ( hero, i ) => { return 0 == i; },
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
@@ -291,6 +293,7 @@ $( function() {
     {
       name: "Gangster III",
       base: "Equipment",
+      applies: "team",
       value: 0.25,
       activates: ( hero, i ) => { return 0 == i; },
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
@@ -308,7 +311,7 @@ $( function() {
     {
       name: "Mage Armor",
       base: "Equipment",
-      value: 0.30
+      value: 0.25
     },
     {
       name: "Backstab",
