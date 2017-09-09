@@ -247,6 +247,7 @@ $( function() {
     template: '#templates-power',
     props:[ 'power' ]
   } );
+  
   Vue.component( 'skill', {
     template: '#templates-skill',
     props:[ 'skill', 'm' ],
