@@ -88,11 +88,14 @@
   <script type="text/x-template" id="templates-skill">
     <div v-if="!!skill">
       <input v-if="m" type="checkbox" class="float-right" v-model="skill.m"/>
-      <span :class="{inactive: !m && !skill.active}">
+      <span :class="{inactive: !v && !m && !skill.active}">
         {{skill.name}}
       </span>
       <span class="htooltip">
-        <span>{{info}}</span>
+        <span>{{summary.info}}</span>
+      </span>
+      <span v-if="v" class="float-right">
+        {{summary.value}}
       </span>
     </div>
   </script>
@@ -181,7 +184,7 @@
           </div>
         </td>
         <td>
-          <skill :skill="item.skill" :m="true"/>
+          <skill :skill="skill" :m="true"/>
         </td>
       </tr>
   </script>
@@ -332,16 +335,6 @@
             <td>
             </td>
           </tr>
-          <tr>
-            <th>Weapon</th>
-            <th>Body</th>
-            <th>Head</th>
-            <th>Arms</th>
-            <th>Legs</th>
-            <th>Accessory&nbsp;1</th>
-            <th>Accessory&nbsp;2</th>
-            <th>Skills</th>
-          </tr>
           <tr class="split">
             <th></th>
             <th></th>
@@ -359,6 +352,15 @@
   </script>
   <script type="text/x-template" id="templates-hero">
         <tbody>
+          <tr class="header">
+            <th class="name" colspan="2">Name</th>
+            <th>Type</th>
+            <th>Tier</th>
+            <th>Sex</th>
+            <th>Building</th>
+            <th>Level</th>
+            <th>Power</th>
+          </tr>
           <tr>
             <th class="name" colspan="2">
               <div>
@@ -393,51 +395,76 @@
               </div>
             </td>
             <td>
-            </td>
-          </tr>
-          <tr>
-            <td v-for="item in summary.items">
-              <div v-if="!!item">
-                <div class="float-left power">
-                  <power :power="{ value: item.power.value, info: item.power.info }"/>
-                </div>
-                <div class="float-right break">
-                  {{(item.chance*100).toFixed(1)}}%
-                </div>
-              </div>
-            </td>
-            <td>
               <div>
                 <power :power="summary.power"/>
               </div>
             </td>
           </tr>
           <tr>
+            <th>Skills</th>
+            <th>Weapon</th>
+            <th>Body</th>
+            <th>Head</th>
+            <th>Arms</th>
+            <th>Legs</th>
+            <th>Accessory&nbsp;1</th>
+            <th>Accessory&nbsp;2</th>
+          </tr>
+          <tr>
+            <td>
+              <skill :skill="summary.skills.hero[0]"/>
+            </td>
+            <td v-for="item in summary.items">
+              <div v-if="!!item">
+                <div class="float-left power">
+                  <power :power="item.power"/>
+                </div>
+                <div class="float-right break">
+                  {{(item.chance*100).toFixed(1)}}%
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <skill :skill="summary.skills.hero[1]"/>
+            </td>
             <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <div>
                 <select2 v-model="hero.slots[j].item" :options="equippables[j]" :placeholder="'Choose item'"/>
               </div>
             </td>
-            <td>
-              <skill :skill="summary.skills.hero[0]"/>
-            </td>
           </tr>
           <tr>
+            <td>
+              <skill :skill="summary.skills.hero[2]"/>
+            </td>
             <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <div>
                 <select2 v-if="hero.slots[j].item" v-model="hero.slots[j].q" :options="quality.list" :placeholder="'Choose quality'" :nosearch="true"/>
               </div>
             </td>
-            <td>
-              <skill :skill="summary.skills.hero[1]"/>
-            </td>
           </tr>
           <tr>
+            <th>Skills</th>
             <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
               <skill :skill="summary.skills.items[j]"/>
             </td>
-            <td>
-              <skill :skill="summary.skills.hero[2]"/>
+          </tr>
+          <tr>
+            <th>Hero</th>
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
+              <div>
+                <skill :skill="summary.info.hero[j]" :v="true" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Team</th>
+            <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
+              <div>
+                <skill :skill="summary.info.team[j]" :v="true" />
+              </div>
             </td>
           </tr>
           <tr class="split">

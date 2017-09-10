@@ -166,13 +166,14 @@ $( function() {
   Vue.mixin( {
     methods: {
       get_skill: function( s ) {
-        var si = c_data.skills.find( ss => ss.name == s.name );
-        var sb = c_data.skills_effects.find( se => se.name == si.base );
-        var res = $.extend( true, {}, sb, si, s );
+        var ss = c_data.skills.find( ss => ss.name == s.name );
+        var sb = c_data.skills_effects.find( sb => sb.name == ss.base );
+        var res = $.extend( true, {}, sb, ss, s );
         res.text = res.text.format( res.type == "percent" ? "" + ( 100 * res.value ) + "%" : res.value );
         return res;
       },
       get_hero: function( h ) {
+        var vm = this;
         var result = {
           companions: 1,
           optimals: 0,
@@ -183,17 +184,20 @@ $( function() {
           },
           items: Array(7),
           skills: {
-            info: [],
             hero: [],
             items: []
-          }
+          },
+          info: { 
+            hero: [],
+            team: []
+          },
         };
         if ( !h ) {
           return result;
         }
         result.companions = 4 + ( h.lv >= 30 ? 1 : 0 );
         result.skills.hero = h.skills.map( s => {
-          return $.extend( true, s, { active: ( h.lv >= s.lv ) } );
+          return $.extend( true, vm.get_skill( s ), { active: ( h.lv >= s.lv ) } );
         } );
         result.items = h.slots
           .map( function( slot ) {
@@ -223,7 +227,7 @@ $( function() {
                 if ( !!i.skill ) {
                   var q1 = c_data.qualities[slot.q];
                   var q2 = c_data.qualities[i.skill.q];
-                  $.extend( true, i.skill, { active: i.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i ) } );
+                  i.skill = $.extend( true, vm.get_skill( i.skill ), { active: i.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i ) } );
                 }
                 result.power.items += i.power.value;
                 result.optimals += i.optimal;
@@ -329,34 +333,46 @@ $( function() {
   
   Vue.component( 'skill', {
     template: '#templates-skill',
-    props:[ 'skill', 'm' ],
+    props:[ 'skill', 'm', 'v' ],
     computed: {
-      info: function() {
+      summary: function() {
         var vm = this;
-        var s = vm.get_skill( vm.skill );
-        var info = s.name;
-        if ( s.leader ) {
+        var info = vm.skill.name;
+        if ( vm.skill.leader ) {
           info += "\r\n" + "Leader skill";
         }
-        if ( !!s.text ) {
-          info += "\r\n" + s.text;
+        if ( !!vm.skill.text ) {
+          info += "\r\n" + vm.skill.text;
         }
-        if ( !s.active ) {
-          if ( !!s.q ) {
-            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+        if ( !vm.v && !vm.skill.active ) {
+          if ( !!vm.skill.q ) {
+            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( vm.skill.q );
           }
-          if ( !!s.lv ) {
-            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+          if ( !!vm.skill.lv ) {
+            info += "\r\n" + "Unlocked at level {0}".format( vm.skill.lv );
           }
         }
-        return info;
+        var v = ( vm.skill.cap && vm.skill.value > vm.skill.cap ? vm.skill.cap : vm.skill.value );
+        var value = "" + ( "percent" == vm.skill.type ? v * 100 + "%" : v );
+        return {
+          info: info,
+          value: value
+        };
       }
     }
   } );
   
   Vue.component( 'item', {
     template: '#templates-item',
-    props: [ 'item' ]
+    props: [ 'item' ],
+    computed: {
+      skill: function() {
+        var vm = this;
+        if ( vm.item.skill ) {
+          return vm.get_skill( vm.item.skill );
+        }
+      }
+    }
   } );
   var vm_items = new Vue( {
     el: $( '<div/>' )[0],
@@ -577,29 +593,66 @@ $( function() {
 
         var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0, m_p = 1.0;
         var c_b = 0;
-        var skills = [].concat( result.skills.hero, result.skills.items )
+        
+        var filter = function( h, f ) {
+          if ( !f ) {
+            return true;
+          }
+          var res = true;
+          $.map( f, ( v, k ) => {
+            res = res && h[k] == v;
+          } );
+          return res;
+        }
+
+        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == vm.hero.building.toUpperCase() );
+        [].concat( result.skills.hero, result.skills.items )
           .filter( s => !!s && s.active )
-          .map( s => {
-            return vm.get_skill( s );
-          } )
-          .filter( s => "hero" == s.applies )
-          .map( s => {
-            switch ( s.affects ) {
-              case "companions":
-                c_b += s.value;
-                break;
-              case "power.items":
-                m_i += s.value;
-                break;
-              case "power.hero":
-                m_h += s.value;
+          .map( si => {
+            if ( "hero" == si.applies ) {
+              switch ( si.base ) {
+                case "Leader":
+                  c_b += si.value;
+                  break;
+                case "Equipment":
+                  if ( filter( vm.hero, si.filter ) ) {
+                    m_i += si.value;
+                  }
+                  break;
+                case "Strength":
+                  if ( filter( vm.hero, si.filter ) ) {
+                    m_h += si.value;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            }
+            switch ( si.base ) {
+              case "Equipment":
+              case "Strength":
+              case "Survival":
                 break;
               default:
+                var idx = result.info[si.applies].findIndex( s => s.base == si.base );
+                if ( idx < 0 ) {
+                  result.info[si.applies].push( {
+                    name: si.base,
+                    text: si.text,
+                    type: si.type,
+                    cap: si.cap,
+                    leader: si.leader,
+                    value: si.value
+                  } );
+                } else {
+                  result.info[si.applies][idx].value += si.value;
+                }
                 break;
             }
           } );
-        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == vm.hero.building.toUpperCase() );
-
+        result.info.hero = $.extend( Array(7), result.info.hero );
+        result.info.team = $.extend( Array(7), result.info.team );
+        
         m_p = vm.hero.power.m;
         m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
         m_o += result.optimals == 7 ? 0.25 : 0.0;

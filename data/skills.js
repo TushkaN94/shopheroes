@@ -4,174 +4,223 @@ $( function() {
   
   var effects = [
     { 
+      type: "Escape",
       name: "Escape",
       text: "Chance of getting injury is decreased by {0}",
       cap: 1.0,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Wise",
       name: "Wise",
       text: "Amount of experience for successfully completing quests is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Resilient",
       name: "Resilient",
       text: "Amount of experience for completing quests with injury is {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      name: "Gold",
       name: "Gold",
       text: "Amount of gold found is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Maximum",
       name: "Maximum",
       text: "Maximum number of artifacts found is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Minimum",
       name: "Minimum",
       text: "Minimum number of artifacts found is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Leader",
       name: "Leader",
       text: "Number of companions is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
-      affects: "companions",
-      leader: true,
-      filters: () => true
+      leader: true
     },
     {
+      type: "Equipment",
       name: "Equipment",
       text: "Equipment strength is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: "power.items",
-      leader: false,
-      filters: () => true
+      leader: false
+    },
+    {
+      type: "Equipment",
+      name: "Gangster",
+      text: "Equipment strength of Rogues in party is increased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
+      leader: true,
+      filter: {
+        type: "Rogue"
+      }
     },
     { 
+      type: "Strength",
       name: "Strength",
       text: "Strength is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: "power.hero",
+      leader: false
+    },
+    {
+      type: "Strength",
+      name: "Commander",
+      text: "Strength of each party member is increased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
+      leader: true
+    },
+    {
+      type: "Strength",
+      name: "Arch Wizard",
+      text: "Strength of Spellcasters in party is increased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
       leader: false,
-      filters: () => true
+      filter: {
+        type: "Spellcaster"
+      }
     },
     { 
+      type: "Survival",
       name: "Survival",
       text: "Survival rate of each party member is increased by {0}",
       cap: false,
       type: "percent",
       applies: "team",
-      affects: "power",
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
-      name: "Break",
+      type: "Survival",
+      name: "Amazon",
+      text: "Survival rate of Female party members is increased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
+      leader: true,
+      filter: {
+        sex: "Female"
+      }
+    },
+    { 
+      type: "Survival",
+      name: "Brothers",
+      text: "Survival rate of Male party members is increased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
+      leader: true,
+      filter: {
+        sex: "Male"
+      }
+    },
+    { 
+      type: "Break Chance",
+      name: "Fastidious",
       text: "Chance of breaking equipment is decreased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Break Chance",
+      name: "Supplier",
+      text: "Chance of breaking oompanions equipment is decreased by {0}",
+      cap: false,
+      type: "percent",
+      applies: "team",
+      leader: false
+    },
+    { 
+      type: "Break Count",
       name: "Resourceful",
       text: "Prevents {0} pieces of equipment from breaking",
       cap: false,
       type: "value",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Break Count",
       name: "Support",
       text: "Prevents {0} pieces of companions equipment from breaking",
       cap: false,
       type: "value",
       applies: "team",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Resting",
       name: "Healer",
       text: "Resting time of companions is reduced by {0}",
       cap: 0.9,
       type: "percent",
       applies: "team",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Resting",
       name: "Energetic",
       text: "Resting time is reduced by {0}",
       cap: 1.0,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Revive",
       name: "Revive",
       text: "{0} chance to revive injuried companions",
       cap: false,
       type: "percent",
       applies: "team",
-      affects: null,
-      leader: false,
-      filters: () => true
+      leader: false
     },
     { 
+      type: "Speed",
       name: "Speed",
       text: "Quest duration is reduced by {0}",
       cap: 1.0,
       type: "percent",
       applies: "hero",
-      affects: null,
-      leader: true,
-      filters: () => true
+      leader: true
     },
   ];
   cache.set( "skills_effects", effects, true );
@@ -259,30 +308,18 @@ $( function() {
     },
     {
       name: "Gangster I",
-      base: "Equipment",
-      text: "Equipment strength of Rogues in party is increased by {0}",
-      applies: "team",
-      value: 0.10,
-      leader: true,
-      filters: ( hero, i ) => { return "Rogue" == hero.type; }
+      base: "Gangster",
+      value: 0.10
     },
     {
       name: "Gangster II",
-      base: "Equipment",
-      text: "Equipment strength of Rogues in party is increased by {0}",
-      applies: "team",
-      value: 0.15,
-      leader: true,
-      filters: ( hero, i ) => { return "Rogue" == hero.type; }
+      base: "Gangster",
+      value: 0.15
     },
     {
       name: "Gangster III",
-      base: "Equipment",
-      text: "Equipment strength of Rogues in party is increased by {0}",
-      applies: "team",
-      value: 0.25,
-      leader: true,
-      filters: ( hero, i ) => { return "Rogue" == hero.type; }
+      base: "Gangster",
+      value: 0.25
     },
     {
       name: "Parry",
@@ -400,51 +437,33 @@ $( function() {
     },
     {
       name: "Commander I",
-      base: "Strength",
-      text: "Strength of each party member is increased by {0}",
-      applies: "team",
-      value: 0.15,
-      leader: true
+      base: "Commander",
+      value: 0.15
     },
     {
       name: "Commander II",
-      base: "Strength",
-      text: "Strength of each party member is increased by {0}",
-      applies: "team",
-      value: 0.25,
-      leader: true
+      base: "Commander",
+      value: 0.25
     },
     {
       name: "Commander III",
-      base: "Strength",
-      text: "Strength of each party member is increased by {0}",
-      applies: "team",
-      value: 0.50,
-      leader: true
+      base: "Commander",
+      value: 0.50
     },
     {
       name: "Arch Wizard I",
-      base: "Strength",
-      text: "Strength of Spellcasters in party is increased by {0}",
-      applies: "team",
-      value: 0.10,
-      filters: ( hero ) => { return "Spellcaster" == hero.type; }
+      base: "Arch Wizard",
+      value: 0.10
     },
     {
       name: "Arch Wizard II",
-      base: "Strength",
-      text: "Strength of Spellcasters in party is increased by {0}",
-      applies: "team",
-      value: 0.20,
-      filters: ( hero ) => { return "Spellcaster" == hero.type; }
+      base: "Arch Wizard",
+      value: 0.20
     },
     {
       name: "Arch Wizard III",
-      base: "Strength",
-      text: "Strength of Spellcasters in party is increased by {0}",
-      applies: "team",
-      value: 0.30,
-      filters: ( hero ) => { return "Spellcaster" == hero.type; }
+      base: "Arch Wizard",
+      value: 0.30
     },
     {
       name: "Aura of Protection",
@@ -454,89 +473,62 @@ $( function() {
     },
     {
       name: "Amazon I",
-      base: "Survival",
-      text: "Survival rate of Female party members is increased by {0}",
-      applies: "team",
-      value: 0.05,
-      leader: true,
-      filters: ( hero ) => { return "Female" == hero.sex; }
+      base: "Amazon",
+      value: 0.05
     },
     {
       name: "Amazon II",
-      base: "Survival",
-      text: "Survival rate of Female party members is increased by {0}",
-      applies: "team",
-      value: 0.10,
-      leader: true,
-      filters: ( hero ) => { return "Female" == hero.sex; }
+      base: "Amazon",
+      value: 0.10
     },
     {
       name: "Amazon III",
-      base: "Survival",
-      text: "Survival rate of Female party members is increased by {0}",
-      applies: "team",
-      value: 0.25,
-      leader: true,
-      filters: ( hero ) => { return "Female" == hero.sex; }
+      base: "Amazon",
+      value: 0.25
     },
     {
       name: "Brothers-in-arms I",
-      base: "Survival",
-      text: "Survival rate of Male party members is increased by {0}",
-      applies: "team",
-      value: 0.05,
-      leader: true,
-      filters: ( hero ) => { return "Male" == hero.sex; }
+      base: "Brothers",
+      value: 0.05
     },
     {
       name: "Brothers-in-arms II",
-      base: "Survival",
-      text: "Survival rate of Male party members is increased by {0}",
-      applies: "team",
-      value: 0.10,
-      leader: true,
-      filters: ( hero ) => { return "Male" == hero.sex; }
+      base: "Brothers",
+      value: 0.10
     },
     {
       name: "Brothers-in-arms III",
-      base: "Survival",
-      text: "Survival rate of Male party members is increased by {0}",
-      applies: "team",
-      value: 0.25,
-      leader: true,
-      filters: ( hero ) => { return "Male" == hero.sex; }
+      base: "Brothers",
+      value: 0.25
     },
     {
       name: "Fastidious I",
-      base: "Break",
+      base: "Fastidious",
       value: 0.15
     },
     {
       name: "Fastidious II",
-      base: "Break",
+      base: "Fastidious",
       value: 0.30
     },
     {
       name: "Fastidious III",
-      base: "Break",
+      base: "Fastidious",
       value: 0.50
     },
     {
       name: "Supplier I",
-      base: "Break",
-      applies: "team",
+      base: "Supplier",
       value: 0.05
     },
     {
       name: "Supplier II",
-      base: "Break",
-      applies: "team",
+      base: "Supplier",
       value: 0.10
     },
     {
       name: "Supplier III",
-      base: "Break",
-      applies: "team",
+      base: "Supplier",
       value: 0.15
     },
     {
