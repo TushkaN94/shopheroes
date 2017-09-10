@@ -393,9 +393,6 @@
               </div>
             </td>
             <td>
-              <div>
-                <power :power="{ value: summary.power.hero + summary.power.items, info: summary.power.info }"/>
-              </div>
             </td>
           </tr>
           <tr>
@@ -410,7 +407,9 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[0]"/>
+              <div>
+                <power :power="summary.power"/>
+              </div>
             </td>
           </tr>
           <tr>
@@ -420,7 +419,7 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[1]"/>
+              <skill :skill="summary.skills.hero[0]"/>
             </td>
           </tr>
           <tr>
@@ -430,14 +429,16 @@
               </div>
             </td>
             <td>
-              <skill :skill="summary.skills[2]"/>
+              <skill :skill="summary.skills.hero[1]"/>
             </td>
           </tr>
           <tr>
             <td v-for="j in [ 0, 1, 2, 3, 4, 5, 6 ]">
-              <skill :skill="summary.items[j].skill"/>
+              <skill :skill="summary.skills.items[j]"/>
             </td>
-            <th/>
+            <td>
+              <skill :skill="summary.skills.hero[2]"/>
+            </td>
           </tr>
           <tr class="split">
             <th></th>

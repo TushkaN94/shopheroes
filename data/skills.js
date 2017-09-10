@@ -10,7 +10,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -20,7 +20,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -30,7 +30,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -40,7 +40,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -50,7 +50,7 @@ $( function() {
       type: "value",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -60,7 +60,7 @@ $( function() {
       type: "value",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -70,7 +70,7 @@ $( function() {
       type: "value",
       applies: "hero",
       affects: "companions",
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: () => true
     },
     {
@@ -80,7 +80,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: "power.items",
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -90,7 +90,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: "power.hero",
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -100,7 +100,7 @@ $( function() {
       type: "percent",
       applies: "team",
       affects: "power",
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -110,7 +110,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -120,7 +120,7 @@ $( function() {
       type: "value",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -130,7 +130,7 @@ $( function() {
       type: "value",
       applies: "team",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -140,7 +140,7 @@ $( function() {
       type: "percent",
       applies: "team",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -150,7 +150,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -160,7 +160,7 @@ $( function() {
       type: "percent",
       applies: "team",
       affects: null,
-      activates: () => true,
+      leader: false,
       filters: () => true
     },
     { 
@@ -170,7 +170,7 @@ $( function() {
       type: "percent",
       applies: "hero",
       affects: null,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: () => true
     },
   ];
@@ -263,7 +263,7 @@ $( function() {
       text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.10,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
     },
     {
@@ -272,7 +272,7 @@ $( function() {
       text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.15,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
     },
     {
@@ -281,7 +281,7 @@ $( function() {
       text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.25,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero, i ) => { return "Rogue" == hero.type; }
     },
     {
@@ -404,7 +404,7 @@ $( function() {
       text: "Strength of each party member is increased by {0}",
       applies: "team",
       value: 0.15,
-      activates: ( hero, i ) => { return 0 == i; }
+      leader: true
     },
     {
       name: "Commander II",
@@ -412,7 +412,7 @@ $( function() {
       text: "Strength of each party member is increased by {0}",
       applies: "team",
       value: 0.25,
-      activates: ( hero, i ) => { return 0 == i; }
+      leader: true
     },
     {
       name: "Commander III",
@@ -420,7 +420,7 @@ $( function() {
       text: "Strength of each party member is increased by {0}",
       applies: "team",
       value: 0.50,
-      activates: ( hero, i ) => { return 0 == i; }
+      leader: true
     },
     {
       name: "Arch Wizard I",
@@ -458,7 +458,7 @@ $( function() {
       text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.05,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
@@ -467,7 +467,7 @@ $( function() {
       text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.10,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
@@ -476,7 +476,7 @@ $( function() {
       text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.25,
-      activates: ( hero, i ) => { return 0 == i; },
+      leader: true,
       filters: ( hero ) => { return "Female" == hero.sex; }
     },
     {
@@ -485,8 +485,8 @@ $( function() {
       text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.05,
-      activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "M" == hero.sex; }
+      leader: true,
+      filters: ( hero ) => { return "Male" == hero.sex; }
     },
     {
       name: "Brothers-in-arms II",
@@ -494,8 +494,8 @@ $( function() {
       text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.10,
-      activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "M" == hero.sex; }
+      leader: true,
+      filters: ( hero ) => { return "Male" == hero.sex; }
     },
     {
       name: "Brothers-in-arms III",
@@ -503,8 +503,8 @@ $( function() {
       text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.25,
-      activates: ( hero, i ) => { return 0 == i; },
-      filters: ( hero ) => { return "M" == hero.sex; }
+      leader: true,
+      filters: ( hero ) => { return "Male" == hero.sex; }
     },
     {
       name: "Fastidious I",

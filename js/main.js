@@ -177,18 +177,22 @@ $( function() {
           companions: 1,
           optimals: 0,
           power: { 
-            info: "HP = ( ( HBP + LBP * HBM ) * HSM + IP * IOM * ISM ) * BM\r\nHBP = {0}\r\nLBP = {1}\r\nHBM = {2}\r\nHSM = {3}\r\nIP = {4}\r\nIOM = {5}\r\nISM = {6}\r\nBM = {7}",
+            info: "HP = ( ( HBP + LBP * HBM ) * HSM + IP * IOM * ISM ) * BM\r\n{0} = ( ( {1} + {2} * {4} ) * {5} + {3} * {6} * {7} ) * {8}",
             hero: 0,
             items: 0
           },
           items: Array(7),
-          skills: Array(3)
+          skills: {
+            info: [],
+            hero: [],
+            items: []
+          }
         };
         if ( !h ) {
           return result;
         }
         result.companions = 4 + ( h.lv >= 30 ? 1 : 0 );
-        result.skills = h.skills.map( s => {
+        result.skills.hero = h.skills.map( s => {
           return $.extend( true, s, { active: ( h.lv >= s.lv ) } );
         } );
         result.items = h.slots
@@ -204,10 +208,11 @@ $( function() {
                 $.extend( true, i, found, { q: slot.q } );
                 var lv_difference = Math.abs( i.lv - h.lv );
                 i.optimal = ( lv_difference <= 6 );
-                var m_q = c_data.powers.q[i.q] || 1.0;
+                var q_m = c_data.powers.q[i.q] || 1.0;
+                var p_v = i.power * q_m;
                 i.power = {
-                  value: i.power * m_q,
-                  info: "IP = IBP * IQM\r\nIBP = {0}\r\nIQM = {1}".format( powerToString( i.power ), m_q.toFixed(2) )
+                  value: p_v,
+                  info: "IP = IBP * IQM\r\n{0} = {1} * {2}".format( powerToString( p_v ), powerToString( i.power ), q_m.toFixed(2) )
                 };
                 i.a = slot.list.find( s => s.type == i.type ).a;
                 var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
@@ -225,6 +230,12 @@ $( function() {
               }
             }
             return i;
+          } );
+        result.skills.items = result.items
+          .map( i => {
+            var s = i.skill;
+            delete i.skill;
+            return s;
           } );
         return result;
       }
@@ -324,14 +335,19 @@ $( function() {
         var vm = this;
         var s = vm.get_skill( vm.skill );
         var info = s.name;
-        if ( !!s.q ) {
-          info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
-        }
-        if ( !!s.lv ) {
-          info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+        if ( s.leader ) {
+          info += "\r\n" + "Leader skill";
         }
         if ( !!s.text ) {
           info += "\r\n" + s.text;
+        }
+        if ( !s.active ) {
+          if ( !!s.q ) {
+            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+          }
+          if ( !!s.lv ) {
+            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+          }
         }
         return info;
       }
@@ -559,14 +575,10 @@ $( function() {
         var vm = this;
         var result = vm.get_hero( vm.hero );
 
-        var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0;
-        var skills1 = result.skills
-          .filter( s => s.active );
-        var skills2 = result.items
-          .filter( i => i.skill )
-          .map( i => { return i.skill; } )
-          .filter( s => s.active );
-        var skills = [].concat( skills1, skills2 )
+        var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0, m_p = 1.0;
+        var c_b = 0;
+        var skills = [].concat( result.skills.hero, result.skills.items )
+          .filter( s => !!s && s.active )
           .map( s => {
             return vm.get_skill( s );
           } )
@@ -574,7 +586,7 @@ $( function() {
           .map( s => {
             switch ( s.affects ) {
               case "companions":
-                result.companions += s.value;
+                c_b += s.value;
                 break;
               case "power.items":
                 m_i += s.value;
@@ -587,21 +599,27 @@ $( function() {
             }
           } );
         var bldng = c_data.buildings.find( b => b.name.toUpperCase() == vm.hero.building.toUpperCase() );
+
+        m_p = vm.hero.power.m;
         m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
         m_o += result.optimals == 7 ? 0.25 : 0.0;
         p_b = c_data.powers.lv[vm.hero.lv] || 0;
+        
+        result.power.value = Math.round( Math.round( vm.hero.power.base + vm.hero.power.m * p_b, 0 ) * m_h * m_b, 0 )
+                           + Math.round( result.power.items * m_o * m_i * m_b );
+        result.companions += c_b;
         result.power.info = result.power.info.format( 
+            powerToString( result.power.value ),
             powerToString( vm.hero.power.base ),
             powerToString( p_b ),
-            vm.hero.power.m.toFixed(2),
-            m_h.toFixed(2),
             powerToString( result.power.items ),
+            m_p.toFixed(2),
+            m_h.toFixed(2),
             m_o.toFixed(2),
             m_i.toFixed(2),
             m_b.toFixed(2) );
-        result.power.hero = vm.hero.power.base + vm.hero.power.m * p_b;
-        result.power.hero *= m_h * m_b;
-        result.power.items *= m_o * m_i * m_b;
+        delete result.power.hero;
+        delete result.power.items;
         return result;
       },
       equippables: function() {
