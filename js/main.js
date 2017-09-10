@@ -282,9 +282,10 @@ $( function() {
             var idx = result.info[s.applies].findIndex( si => si.name == s.base );
             if ( idx < 0 ) {
               result.info[s.applies].push( {
+                type: s.type,
                 name: s.base,
                 text: s.text,
-                type: s.type,
+                sign: s.sign,
                 cap: s.cap,
                 leader: s.leader,
                 value: s.value
