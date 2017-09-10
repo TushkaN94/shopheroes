@@ -281,7 +281,7 @@
       <table class="shopheroes hero filter">
         <tbody>
           <tr class="split">
-            <th class="item"></th>
+            <th class="name"></th>
             <th class="item"></th>
             <th class="item"></th>
             <th class="item"></th>
@@ -291,18 +291,28 @@
             <th class="item"></th>
           </tr>
           <tr class="header">
-            <th class="name" colspan="2">Name</th>
+            <th>Name</th>
+            <th>Power</th>
+            <th>Level</th>
             <th>Type</th>
             <th>Tier</th>
             <th>Sex</th>
             <th>Building</th>
-            <th>Level</th>
-            <th>Power</th>
+            <th></th>
           </tr>
           <tr>
-            <td colspan="2">
+            <td>
               <div>
                 <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+              </div>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div>
+                <input class="lv" v-model="filters.lv.min"/>
+                <span>&nbsp;-&nbsp</span>
+                <input class="lv" v-model="filters.lv.max"/>
               </div>
             </td>
             <td>
@@ -325,15 +335,6 @@
                 <select2 v-model="filters.building" :options="options.building.list" :placeholder="'Choose building'" :style="'width: 100%;'"/>
               </div>
             </td>
-            <td>
-              <div>
-                <input class="lv" v-model="filters.lv.min"/>
-                <span>&nbsp;-&nbsp</span>
-                <input class="lv" v-model="filters.lv.max"/>
-              </div>
-            </td>
-            <td>
-            </td>
           </tr>
           <tr class="split">
             <th></th>
@@ -353,20 +354,33 @@
   <script type="text/x-template" id="templates-hero">
         <tbody>
           <tr class="header">
-            <th class="name" colspan="2">Name</th>
+            <th>Name</th>
+            <th>Power</th>
+            <th>Level</th>
             <th>Type</th>
             <th>Tier</th>
             <th>Sex</th>
             <th>Building</th>
-            <th>Level</th>
-            <th>Power</th>
+            <th></th>
           </tr>
           <tr>
-            <th class="name" colspan="2">
+            <th>
               <div>
                 {{hero.name}}
               </div>
             </th>
+            <td>
+              <div>
+                <power :power="summary.power"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <input class="lv" v-model="hero.lv"/>
+                <span>&nbsp;/&nbsp;</span>
+                <span>{{hero.cap}}</span>
+              </div>
+            </td>
             <td>
               <div>
                 {{hero.type}}
@@ -388,16 +402,6 @@
               </div>
             </td>
             <td>
-              <div>
-                <input class="lv" v-model="hero.lv"/>
-                <span>&nbsp;/&nbsp;</span>
-                <span>{{hero.cap}}</span>
-              </div>
-            </td>
-            <td>
-              <div>
-                <power :power="summary.power"/>
-              </div>
             </td>
           </tr>
           <tr>

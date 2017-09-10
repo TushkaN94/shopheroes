@@ -206,7 +206,7 @@ $( function() {
               chance: 0.0
             };
             if ( !!slot.item ) {
-              var found = c_data.items.find( i => i.name.toUpperCase() == slot.item.toUpperCase() );
+              var found = c_data.items.find( i => i.name == slot.item );
               if ( !!found ) {
                 $.extend( true, i, found, { q: slot.q } );
                 var lv_difference = Math.abs( i.lv - h.lv );
@@ -256,14 +256,14 @@ $( function() {
           return res;
         }
 
-        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == h.building.toUpperCase() );
+        var bldng = c_data.buildings.find( b => b.name == h.building );
         [].concat( result.skills.hero, result.skills.items )
           .filter( s => !!s && s.active )
           .map( s => {
             if ( "hero" == s.applies ) {
               switch ( s.type ) {
                 case "Leader":
-                  c_b += si.value;
+                  c_b += s.value;
                   break;
                 case "Equipment":
                   if ( filter( h, s.filter ) ) {
@@ -301,10 +301,11 @@ $( function() {
         m_o += result.optimals == 7 ? 0.25 : 0.0;
         p_b = c_data.powers.lv[h.lv] || 0;
         
+        result.companions += c_b;
+
         result.power.hero = Math.round( Math.round( h.power.base + h.power.m * p_b, 0 ) * m_h * m_b, 0 );
         result.power.items = Math.round( result.power.items * m_o * m_i * m_b );
         result.power.value = result.power.hero + result.power.items;
-        result.companions += c_b;
         result.power.info = result.power.info.format( 
             powerToString( result.power.value ),
             powerToString( h.power.base ),
@@ -412,7 +413,7 @@ $( function() {
       summary: function() {
         var vm = this;
         var v = vm.skill.cap && vm.skill.value > vm.skill.cap ? vm.skill.cap : vm.skill.value;
-        var value = "" + ( "percent" == vm.skill.type ? ( Math.round( 1000 * v ) / 10 ).toLocaleString()  + "%" : v.toLocaleString() );
+        var value = "" + ( "%" == vm.skill.sign ? ( Math.round( 1000 * v ) / 10 ).toLocaleString()  + vm.skill.sign : v.toLocaleString() );
         var info = vm.skill.name;
         if ( vm.skill.leader ) {
           info += "\r\n" + "Leader skill";
@@ -523,7 +524,7 @@ $( function() {
             fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
+            fn_type = ( h ) => h.type == filters.type;
           }
           if ( !!filters.skill ) {
             fn_skill = ( h ) => h.skill && h.skill.name.toUpperCase().includes( filters.skill.toUpperCase() );
@@ -636,7 +637,7 @@ $( function() {
             fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
+            fn_type = ( h ) => h.type == filters.type;
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
             fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
@@ -674,7 +675,7 @@ $( function() {
         var result = vm.hero.slots.map( s => {
           return s.list.map( t => {
             var items = c_data.items
-              .filter( i => i.type.toUpperCase() == t.type.toUpperCase() )
+              .filter( i => i.type == t.type )
               .map( i => {
                 return {
                   id: i.name,
@@ -805,16 +806,16 @@ $( function() {
             fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type.toUpperCase() == filters.type.toUpperCase();
+            fn_type = ( h ) => h.type == filters.type;
           }
           if ( !!filters.tier ) {
             fn_tier = ( h ) => h.tier == filters.tier;
           }
           if ( !!filters.sex ) {
-            fn_sex = ( h ) => h.sex.toUpperCase() == filters.sex.toUpperCase();
+            fn_sex = ( h ) => h.sex == filters.sex;
           }
           if ( !!filters.building ) {
-            fn_bldng = ( b ) => h.building.toUpperCase() == filters.building.toUpperCase();
+            fn_bldng = ( b ) => h.building == filters.building;
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
             fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
@@ -839,7 +840,7 @@ $( function() {
         var vm = this;
         var roster = vm.team.roster
           .map( name => {
-            var hero = c_data.heroes.find( n => !!name && n.name.toUpperCase() == name.toUpperCase() );
+            var hero = c_data.heroes.find( n => !!name && n.name == name );
             return vm.get_hero( hero );
           } );
         var companions = roster[0].companions;

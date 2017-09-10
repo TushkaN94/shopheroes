@@ -142,6 +142,5 @@ table.shopheroes .collapse {
 }
 
 table.shopheroes .inactive {
-  color: gray;
   text-decoration: line-through;
 }

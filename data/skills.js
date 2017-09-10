@@ -8,7 +8,7 @@ $( function() {
       name: "Escape",
       text: "Chance of getting injury is decreased by {0}",
       cap: 1.0,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -17,7 +17,7 @@ $( function() {
       name: "Wise",
       text: "Amount of experience for successfully completing quests is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -26,7 +26,7 @@ $( function() {
       name: "Resilient",
       text: "Amount of experience for completing quests with injury is {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -35,7 +35,7 @@ $( function() {
       name: "Gold",
       text: "Amount of gold found is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -44,7 +44,7 @@ $( function() {
       name: "Maximum",
       text: "Maximum number of artifacts found is increased by {0}",
       cap: false,
-      type: "value",
+      sign: "",
       applies: "hero",
       leader: false
     },
@@ -53,7 +53,7 @@ $( function() {
       name: "Minimum",
       text: "Minimum number of artifacts found is increased by {0}",
       cap: false,
-      type: "value",
+      sign: "",
       applies: "hero",
       leader: false
     },
@@ -62,7 +62,7 @@ $( function() {
       name: "Leader",
       text: "Number of companions is increased by {0}",
       cap: false,
-      type: "value",
+      sign: "",
       applies: "hero",
       leader: true
     },
@@ -71,7 +71,7 @@ $( function() {
       name: "Equipment",
       text: "Equipment strength is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -80,7 +80,7 @@ $( function() {
       name: "Gangster",
       text: "Equipment strength of Rogues in party is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: true,
       filter: {
@@ -92,7 +92,7 @@ $( function() {
       name: "Strength",
       text: "Strength is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -101,7 +101,7 @@ $( function() {
       name: "Commander",
       text: "Strength of each party member is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: true
     },
@@ -110,7 +110,7 @@ $( function() {
       name: "Arch Wizard",
       text: "Strength of Spellcasters in party is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: false,
       filter: {
@@ -122,7 +122,7 @@ $( function() {
       name: "Survival",
       text: "Survival rate of each party member is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: false
     },
@@ -131,7 +131,7 @@ $( function() {
       name: "Amazon",
       text: "Survival rate of Female party members is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: true,
       filter: {
@@ -143,7 +143,7 @@ $( function() {
       name: "Brothers",
       text: "Survival rate of Male party members is increased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: true,
       filter: {
@@ -155,7 +155,7 @@ $( function() {
       name: "Fastidious",
       text: "Chance of breaking equipment is decreased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -164,7 +164,7 @@ $( function() {
       name: "Supplier",
       text: "Chance of breaking oompanions equipment is decreased by {0}",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: false
     },
@@ -173,7 +173,7 @@ $( function() {
       name: "Resourceful",
       text: "Prevents {0} pieces of equipment from breaking",
       cap: false,
-      type: "value",
+      sign: "",
       applies: "hero",
       leader: false
     },
@@ -182,7 +182,7 @@ $( function() {
       name: "Support",
       text: "Prevents {0} pieces of companions equipment from breaking",
       cap: false,
-      type: "value",
+      sign: "",
       applies: "team",
       leader: false
     },
@@ -191,7 +191,7 @@ $( function() {
       name: "Healer",
       text: "Resting time of companions is reduced by {0}",
       cap: 0.9,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: false
     },
@@ -200,7 +200,7 @@ $( function() {
       name: "Energetic",
       text: "Resting time is reduced by {0}",
       cap: 1.0,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: false
     },
@@ -209,7 +209,7 @@ $( function() {
       name: "Revive",
       text: "{0} chance to revive injuried companions",
       cap: false,
-      type: "percent",
+      sign: "%",
       applies: "team",
       leader: false
     },
@@ -218,7 +218,7 @@ $( function() {
       name: "Speed",
       text: "Quest duration is reduced by {0}",
       cap: 1.0,
-      type: "percent",
+      sign: "%",
       applies: "hero",
       leader: true
     },
