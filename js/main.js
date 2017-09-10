@@ -163,6 +163,74 @@ $( function() {
   c_data.set( "teams" );
   c_data.extend( "teams" );
 
+  Vue.mixin( {
+    methods: {
+      get_skill: function( s ) {
+        var si = c_data.skills.find( ss => ss.name == s.name );
+        var sb = c_data.skills_effects.find( se => se.name == si.base );
+        var res = $.extend( true, {}, sb, si, s );
+        res.text = res.text.format( res.type == "percent" ? "" + ( 100 * res.value ) + "%" : res.value );
+        return res;
+      },
+      get_hero: function( h ) {
+        var result = {
+          companions: 1,
+          optimals: 0,
+          power: { 
+            info: "HP = ( ( HBP + LBP * HBM ) * HSM + IP * IOM * ISM ) * BM\r\nHBP = {0}\r\nLBP = {1}\r\nHBM = {2}\r\nHSM = {3}\r\nIP = {4}\r\nIOM = {5}\r\nISM = {6}\r\nBM = {7}",
+            hero: 0,
+            items: 0
+          },
+          items: Array(7),
+          skills: Array(3)
+        };
+        if ( !h ) {
+          return result;
+        }
+        result.companions = 4 + ( h.lv >= 30 ? 1 : 0 );
+        result.skills = h.skills.map( s => {
+          return $.extend( true, s, { active: ( h.lv >= s.lv ) } );
+        } );
+        result.items = h.slots
+          .map( function( slot ) {
+            var i = {
+              power: 0,
+              a: 0,
+              chance: 0.0
+            };
+            if ( !!slot.item ) {
+              var found = c_data.items.find( i => i.name.toUpperCase() == slot.item.toUpperCase() );
+              if ( !!found ) {
+                $.extend( true, i, found, { q: slot.q } );
+                var lv_difference = Math.abs( i.lv - h.lv );
+                i.optimal = ( lv_difference <= 6 );
+                var m_q = c_data.powers.q[i.q] || 1.0;
+                i.power = {
+                  value: i.power * m_q,
+                  info: "IP = IBP * IQM\r\nIBP = {0}\r\nIQM = {1}".format( powerToString( i.power ), m_q.toFixed(2) )
+                };
+                i.a = slot.list.find( s => s.type == i.type ).a;
+                var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
+                if ( chance < 0.005 ) {
+                  chance = 0;
+                }
+                i.chance = chance || 0; 
+                if ( !!i.skill ) {
+                  var q1 = c_data.qualities[slot.q];
+                  var q2 = c_data.qualities[i.skill.q];
+                  $.extend( true, i.skill, { active: i.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i ) } );
+                }
+                result.power.items += i.power.value;
+                result.optimals += i.optimal;
+              }
+            }
+            return i;
+          } );
+        return result;
+      }
+    }
+  });
+
   Vue.component( 'select2', {
     template: '#templates-select2',
     props: [ 'options', 'value', 'nosearch', 'tags', 'placeholder' ],
@@ -252,17 +320,20 @@ $( function() {
     template: '#templates-skill',
     props:[ 'skill', 'm' ],
     computed: {
-      summary: function() {
-        var info = this.skill.name;
-        if ( !!this.skill.q ) {
-          info += "\r\nUnlocked on item of {0} quality or higher".format( this.skill.q );
+      info: function() {
+        var vm = this;
+        var s = vm.get_skill( vm.skill );
+        var info = s.name;
+        if ( !!s.q ) {
+          info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
         }
-        if ( !!this.skill.lv ) {
-          info += "\r\nUnlocked at level {0}".format( this.skill.lv );
+        if ( !!s.lv ) {
+          info += "\r\n" + "Unlocked at level {0}".format( s.lv );
         }
-        return {
-          info: info
-        };
+        if ( !!s.text ) {
+          info += "\r\n" + s.text;
+        }
+        return info;
       }
     }
   } );
@@ -485,10 +556,73 @@ $( function() {
     props: [ 'hero' ],
     computed: {
       summary: function() {
-        return this.$parent.summary( this.hero );
+        var vm = this;
+        var result = vm.get_hero( vm.hero );
+
+        var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0;
+        var skills1 = result.skills
+          .filter( s => s.active );
+        var skills2 = result.items
+          .filter( i => i.skill )
+          .map( i => { return i.skill; } )
+          .filter( s => s.active );
+        var skills = [].concat( skills1, skills2 )
+          .map( s => {
+            return vm.get_skill( s );
+          } )
+          .filter( s => "hero" == s.applies )
+          .map( s => {
+            switch ( s.affects ) {
+              case "companions":
+                result.companions += s.value;
+                break;
+              case "power.items":
+                m_i += s.value;
+                break;
+              case "power.hero":
+                m_h += s.value;
+                break;
+              default:
+                break;
+            }
+          } );
+        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == vm.hero.building.toUpperCase() );
+        m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
+        m_o += result.optimals == 7 ? 0.25 : 0.0;
+        p_b = c_data.powers.lv[vm.hero.lv] || 0;
+        result.power.info = result.power.info.format( 
+            powerToString( vm.hero.power.base ),
+            powerToString( p_b ),
+            vm.hero.power.m.toFixed(2),
+            m_h.toFixed(2),
+            powerToString( result.power.items ),
+            m_o.toFixed(2),
+            m_i.toFixed(2),
+            m_b.toFixed(2) );
+        result.power.hero = vm.hero.power.base + vm.hero.power.m * p_b;
+        result.power.hero *= m_h * m_b;
+        result.power.items *= m_o * m_i * m_b;
+        return result;
       },
       equippables: function() {
-        return this.$parent.equippables( this.hero );
+        var vm = this;
+        var result = vm.hero.slots.map( s => {
+          return s.list.map( t => {
+            var items = c_data.items
+              .filter( i => i.type.toUpperCase() == t.type.toUpperCase() )
+              .map( i => {
+                return {
+                  id: i.name,
+                  text: i.name
+                };
+              } );
+            return {
+              text: t.type,
+              children: items
+            };
+          } )
+        } );
+        return result;
       },
       quality: function() {
         return this.$parent.options.quality;
@@ -570,152 +704,6 @@ $( function() {
     methods: {
       visible: function( hero ) {
         return this.filter( hero );
-      },
-      skills: function( summary ) {
-        var skills1 = summary.skills
-          .filter( s => s.active );
-        var skills2 = summary.items
-          .filter( i => i.skill )
-          .map( i => { return i.skill; } )
-          .filter( s => s.active );
-        var skills = [].concat( skills1, skills2 )
-          .map( s => {
-            var si = c_data.skills.find( ss => ss.name == s.name );
-            var sb = c_data.skills_effects.find( se => se.name == si.base );
-            return $.extend( true, {}, sb, si );
-          } )
-          .reduce( ( p, s ) => {
-            if ( p[s.applies][s.base] == undefined ) {
-              p[s.applies][s.base] = {
-                name: s.base,
-                text: s.text,
-                type: s.type,
-                affects: s.affects,
-                cap: s.cap,
-                value: s.value
-              };
-            } else {
-              value = p[s.applies][s.base].value;
-              p[s.applies][s.base].value = s.stacks ? value + s.value : Math.max( value, s.value );
-            }
-            return p;
-          }, { team: {}, hero: {} } );
-        return skills;
-      },
-      summary: function( hero ) {
-        var result = {
-          companions: 1,
-          power: { 
-            info: "HP = ( ( HBP + LBP * HBM ) * HSM + IP * IOM * ISM ) * BM\r\nHBP = {0}\r\nLBP = {1}\r\nHBM = {2}\r\nHSM = {3}\r\nIP = {4}\r\nIOM = {5}\r\nISM = {6}\r\nBM = {7}",
-            hero: 0,
-            items: 0
-          },
-          items: Array(7),
-          skills: Array(3)
-        };
-        if ( !hero ) {
-          return result;
-        }
-        var optimals = 0;
-        result.skills = hero.skills.map( s => {
-          return $.extend( true, {}, s, {
-            active: ( hero.lv >= s.lv )
-          } );
-        } );
-        result.items = hero.slots
-          .map( function( slot ) {
-            var res = {
-              power: 0,
-              a: 0,
-              chance: 0.0
-            };
-            if ( !!slot.item ) {
-              var found = c_data.items.find( i => i.name.toUpperCase() == slot.item.toUpperCase() );
-              if ( !!found ) {
-                $.extend( true, res, found, {
-                  q: slot.q
-                } );
-                var lv_difference = Math.abs( res.lv - hero.lv );
-                res.optimal = ( lv_difference <= 6 );
-                var m_q = c_data.powers.q[res.q] || 1.0;
-                res.power = {
-                  value: res.power * m_q,
-                  info: "IP = IBP * IQM\r\nIBP = {0}\r\nIQM = {1}".format( powerToString( res.power ), m_q.toFixed(2) )
-                };
-                res.a = slot.list.find( s => s.type == res.type ).a;
-                var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[res.a] ), 0.85 ) ) * c_data.breaks.q[res.q];
-                if ( chance < 0.005 ) {
-                  chance = 0;
-                }
-                res.chance = chance || 0; 
-                if ( !!res.skill ) {
-                  var q1 = c_data.qualities[slot.q];
-                  var q2 = c_data.qualities[res.skill.q];
-                  $.extend( true, res.skill, {
-                    active: res.skill.m && ( !!q1 && !!q2 && q1.i >= q2.i )
-                  } );
-                }
-                result.power.items += res.power.value;
-                optimals += res.optimal;
-              }
-            }
-            return res;
-          } );
-
-        var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0;
-        result.companions = 4 + ( hero.lv >= 30 ? 1 : 0 );
-        var skills = this.skills( result );
-        $.each( skills.hero, function( n, s ) {
-          switch ( s.affects ) {
-            case "companions":
-              result.companions += s.value;
-              break;
-            case "power.items":
-              m_i += s.value;
-              break;
-            case "power.hero":
-              m_h += s.value;
-              break;
-            default:
-              break;
-          };
-        } );
-        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == hero.building.toUpperCase() );
-        m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
-        m_o += optimals == 7 ? 0.25 : 0.0;
-        p_b = c_data.powers.lv[hero.lv] || 0;
-        result.power.info = result.power.info.format( 
-            powerToString( hero.power.base ),
-            powerToString( p_b ),
-            hero.power.m.toFixed(2),
-            m_h.toFixed(2),
-            powerToString( result.power.items ),
-            m_o.toFixed(2),
-            m_i.toFixed(2),
-            m_b.toFixed(2) );
-        result.power.hero = hero.power.base + hero.power.m * p_b;
-        result.power.hero *= m_h * m_b;
-        result.power.items *= m_o * m_i * m_b;
-        return result;
-      },
-      equippables: function( hero ) {
-        var result = hero.slots.map( s => {
-          return s.list.map( t => {
-            var items = c_data.items
-              .filter( i => i.type.toUpperCase() == t.type.toUpperCase() )
-              .map( i => {
-                return {
-                  id: i.name,
-                  text: i.name
-                };
-              } );
-            return {
-              text: t.type,
-              children: items
-            };
-          } )
-        } );
-        return result;
       }
     },
     watch: {
@@ -783,14 +771,15 @@ $( function() {
     props: ['team'],
     computed: {
       summary: function() {
-        var roster = this.team.roster
-          .map( function( name, i ) {
+        var vm = this;
+        var roster = vm.team.roster
+          .map( name => {
             var hero = c_data.heroes.find( n => !!name && n.name.toUpperCase() == name.toUpperCase() );
-            return vm_heroes.summary( hero );
+            return vm.get_hero( hero );
           } );
-        var companions = roster[0].companions || 1;
-        for ( i = companions, m = this.team.roster.length; i < m; i++ ) {
-          this.team.roster[i] = undefined;
+        var companions = roster[0].companions;
+        for ( i = companions, m = vm.team.roster.length; i < m; i++ ) {
+          vm.team.roster[i] = undefined;
         };
         var power = roster
           .filter( n => !!n )

@@ -5,8 +5,7 @@ $( function() {
   var effects = [
     { 
       name: "Escape",
-      text: "Chance of getting injury is decreased %s",
-      stacks: true,
+      text: "Chance of getting injury is decreased by {0}",
       cap: 1.0,
       type: "percent",
       applies: "hero",
@@ -16,8 +15,7 @@ $( function() {
     },
     { 
       name: "Wise",
-      text: "Amount of experience for completing quests is increased by %s",
-      stacks: true,
+      text: "Amount of experience for successfully completing quests is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -27,8 +25,7 @@ $( function() {
     },
     { 
       name: "Resilient",
-      text: "Amount of experience for completing quests with injury is %s",
-      stacks: true,
+      text: "Amount of experience for completing quests with injury is {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -38,8 +35,7 @@ $( function() {
     },
     { 
       name: "Gold",
-      text: "Amount of gold found is increased by %s",
-      stacks: true,
+      text: "Amount of gold found is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -49,8 +45,7 @@ $( function() {
     },
     { 
       name: "Maximum",
-      text: "Maximum number of artifacts found is increased by %s",
-      stacks: true,
+      text: "Maximum number of artifacts found is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
@@ -60,8 +55,7 @@ $( function() {
     },
     { 
       name: "Minimum",
-      text: "Minimum number of artifacts found is increased by %s",
-      stacks: true,
+      text: "Minimum number of artifacts found is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
@@ -71,8 +65,7 @@ $( function() {
     },
     { 
       name: "Leader",
-      text: "Number of companions is increased by %s",
-      stacks: true,
+      text: "Number of companions is increased by {0}",
       cap: false,
       type: "value",
       applies: "hero",
@@ -82,8 +75,7 @@ $( function() {
     },
     {
       name: "Equipment",
-      text: "Equipment strength is increased by %s",
-      stacks: true,
+      text: "Equipment strength is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -93,8 +85,7 @@ $( function() {
     },
     { 
       name: "Strength",
-      text: "Hero strength is increased by %s",
-      stacks: true,
+      text: "Strength is increased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -104,8 +95,7 @@ $( function() {
     },
     { 
       name: "Survival",
-      text: "Survival rate is increased by %s",
-      stacks: true,
+      text: "Survival rate of each party member is increased by {0}",
       cap: false,
       type: "percent",
       applies: "team",
@@ -115,8 +105,7 @@ $( function() {
     },
     { 
       name: "Break",
-      text: "Chance of breaking equipment is decreased by %s",
-      stacks: true,
+      text: "Chance of breaking equipment is decreased by {0}",
       cap: false,
       type: "percent",
       applies: "hero",
@@ -126,8 +115,7 @@ $( function() {
     },
     { 
       name: "Resourceful",
-      text: "Prevents %s pieces of equipment from breaking",
-      stacks: true,
+      text: "Prevents {0} pieces of equipment from breaking",
       cap: false,
       type: "value",
       applies: "hero",
@@ -137,8 +125,7 @@ $( function() {
     },
     { 
       name: "Support",
-      text: "Prevents %s pieces of equipment from breaking",
-      stacks: true,
+      text: "Prevents {0} pieces of companions equipment from breaking",
       cap: false,
       type: "value",
       applies: "team",
@@ -148,8 +135,7 @@ $( function() {
     },
     { 
       name: "Healer",
-      text: "Resting time is reduced by %s",
-      stacks: true,
+      text: "Resting time of companions is reduced by {0}",
       cap: 0.9,
       type: "percent",
       applies: "team",
@@ -159,8 +145,7 @@ $( function() {
     },
     { 
       name: "Energetic",
-      text: "Resting time is reduced by %s",
-      stacks: true,
+      text: "Resting time is reduced by {0}",
       cap: 1.0,
       type: "percent",
       applies: "hero",
@@ -170,8 +155,7 @@ $( function() {
     },
     { 
       name: "Revive",
-      text: "%s chance to revive injuried companion",
-      stacks: true,
+      text: "{0} chance to revive injuried companions",
       cap: false,
       type: "percent",
       applies: "team",
@@ -181,9 +165,8 @@ $( function() {
     },
     { 
       name: "Speed",
-      text: "Quest duration is reduced by %s",
-      stacks: true,
-      cap: false,
+      text: "Quest duration is reduced by {0}",
+      cap: 1.0,
       type: "percent",
       applies: "hero",
       affects: null,
@@ -277,6 +260,7 @@ $( function() {
     {
       name: "Gangster I",
       base: "Equipment",
+      text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.10,
       activates: ( hero, i ) => { return 0 == i; },
@@ -285,6 +269,7 @@ $( function() {
     {
       name: "Gangster II",
       base: "Equipment",
+      text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.15,
       activates: ( hero, i ) => { return 0 == i; },
@@ -293,6 +278,7 @@ $( function() {
     {
       name: "Gangster III",
       base: "Equipment",
+      text: "Equipment strength of Rogues in party is increased by {0}",
       applies: "team",
       value: 0.25,
       activates: ( hero, i ) => { return 0 == i; },
@@ -355,12 +341,14 @@ $( function() {
     },
     {
       name: "Magic Find",
+      text: "Maximum number of artifacts found by each party member is increased by {0}",
       base: "Maximum",
       applies: "team",
       value: 2
     },
     {
       name: "Detect Secrets",
+      text: "Minimum number of artifacts found by each party member is increased by {0}",
       base: "Minimum",
       applies: "team",
       value: 1
@@ -413,24 +401,31 @@ $( function() {
     {
       name: "Commander I",
       base: "Strength",
+      text: "Strength of each party member is increased by {0}",
       applies: "team",
-      value: 0.15
+      value: 0.15,
+      activates: ( hero, i ) => { return 0 == i; }
     },
     {
       name: "Commander II",
       base: "Strength",
+      text: "Strength of each party member is increased by {0}",
       applies: "team",
-      value: 0.25
+      value: 0.25,
+      activates: ( hero, i ) => { return 0 == i; }
     },
     {
       name: "Commander III",
       base: "Strength",
+      text: "Strength of each party member is increased by {0}",
       applies: "team",
-      value: 0.50
+      value: 0.50,
+      activates: ( hero, i ) => { return 0 == i; }
     },
     {
       name: "Arch Wizard I",
       base: "Strength",
+      text: "Strength of Spellcasters in party is increased by {0}",
       applies: "team",
       value: 0.10,
       filters: ( hero ) => { return "Spellcaster" == hero.type; }
@@ -438,6 +433,7 @@ $( function() {
     {
       name: "Arch Wizard II",
       base: "Strength",
+      text: "Strength of Spellcasters in party is increased by {0}",
       applies: "team",
       value: 0.20,
       filters: ( hero ) => { return "Spellcaster" == hero.type; }
@@ -445,6 +441,7 @@ $( function() {
     {
       name: "Arch Wizard III",
       base: "Strength",
+      text: "Strength of Spellcasters in party is increased by {0}",
       applies: "team",
       value: 0.30,
       filters: ( hero ) => { return "Spellcaster" == hero.type; }
@@ -458,6 +455,7 @@ $( function() {
     {
       name: "Amazon I",
       base: "Survival",
+      text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.05,
       activates: ( hero, i ) => { return 0 == i; },
@@ -466,6 +464,7 @@ $( function() {
     {
       name: "Amazon II",
       base: "Survival",
+      text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.10,
       activates: ( hero, i ) => { return 0 == i; },
@@ -474,6 +473,7 @@ $( function() {
     {
       name: "Amazon III",
       base: "Survival",
+      text: "Survival rate of Female party members is increased by {0}",
       applies: "team",
       value: 0.25,
       activates: ( hero, i ) => { return 0 == i; },
@@ -482,6 +482,7 @@ $( function() {
     {
       name: "Brothers-in-arms I",
       base: "Survival",
+      text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.05,
       activates: ( hero, i ) => { return 0 == i; },
@@ -490,6 +491,7 @@ $( function() {
     {
       name: "Brothers-in-arms II",
       base: "Survival",
+      text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.10,
       activates: ( hero, i ) => { return 0 == i; },
@@ -498,6 +500,7 @@ $( function() {
     {
       name: "Brothers-in-arms III",
       base: "Survival",
+      text: "Survival rate of Male party members is increased by {0}",
       applies: "team",
       value: 0.25,
       activates: ( hero, i ) => { return 0 == i; },
