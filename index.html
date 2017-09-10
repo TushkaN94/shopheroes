@@ -88,13 +88,13 @@
   <script type="text/x-template" id="templates-skill">
     <div v-if="!!skill">
       <input v-if="m" type="checkbox" class="float-right" v-model="skill.m"/>
-      <span :class="{inactive: !v && !m && !skill.active}">
+      <span :class="{inactive: !v && !m && !skill.active}" class="float-left">
         {{skill.name}}
+        <span class="htooltip">
+          <span>{{summary.info}}</span>
+        </span>
       </span>
-      <span class="htooltip">
-        <span>{{summary.info}}</span>
-      </span>
-      <span v-if="v" class="float-right">
+      <span class="float-right">
         {{summary.value}}
       </span>
     </div>

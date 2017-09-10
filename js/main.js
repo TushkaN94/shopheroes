@@ -256,7 +256,7 @@ $( function() {
           return res;
         }
 
-        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == vm.hero.building.toUpperCase() );
+        var bldng = c_data.buildings.find( b => b.name.toUpperCase() == h.building.toUpperCase() );
         [].concat( result.skills.hero, result.skills.items )
           .filter( s => !!s && s.active )
           .map( s => {
@@ -266,12 +266,12 @@ $( function() {
                   c_b += si.value;
                   break;
                 case "Equipment":
-                  if ( filter( vm.hero, s.filter ) ) {
+                  if ( filter( h, s.filter ) ) {
                     m_i += s.value;
                   }
                   break;
                 case "Strength":
-                  if ( filter( vm.hero, s.filter ) ) {
+                  if ( filter( h, s.filter ) ) {
                     m_h += s.value;
                   }
                   break;
@@ -296,18 +296,18 @@ $( function() {
         result.info.hero = $.extend( Array(7), result.info.hero );
         result.info.team = $.extend( Array(7), result.info.team );
         
-        m_p = vm.hero.power.m;
+        m_p = h.power.m;
         m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
         m_o += result.optimals == 7 ? 0.25 : 0.0;
-        p_b = c_data.powers.lv[vm.hero.lv] || 0;
+        p_b = c_data.powers.lv[h.lv] || 0;
         
-        result.power.hero = Math.round( Math.round( vm.hero.power.base + vm.hero.power.m * p_b, 0 ) * m_h * m_b, 0 );
+        result.power.hero = Math.round( Math.round( h.power.base + h.power.m * p_b, 0 ) * m_h * m_b, 0 );
         result.power.items = Math.round( result.power.items * m_o * m_i * m_b );
         result.power.value = result.power.hero + result.power.items;
         result.companions += c_b;
         result.power.info = result.power.info.format( 
             powerToString( result.power.value ),
-            powerToString( vm.hero.power.base ),
+            powerToString( h.power.base ),
             powerToString( p_b ),
             powerToString( result.power.items ),
             m_p.toFixed(2),
@@ -423,6 +423,9 @@ $( function() {
         if ( !vm.v && !vm.skill.active ) {
           if ( !!vm.skill.q ) {
             info += "\r\n" + "Unlocked on item of {0} quality or higher".format( vm.skill.q );
+            if ( !vm.skill.m ) {
+              info += "\r\n" + "Unlocked on mastered blueprint";
+            }
           }
           if ( !!vm.skill.lv ) {
             info += "\r\n" + "Unlocked at level {0}".format( vm.skill.lv );
