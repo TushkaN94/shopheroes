@@ -76,7 +76,7 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-power">
-    <div>
+    <div v-if="power.value">
       <span class="power">
         {{Math.round( power.value, 0 ).toLocaleString()}}
       </span>
@@ -561,7 +561,7 @@
           <tr>
             <th><input type="button" value="x" @click="remove( team )"/></th>
             <th>{{team.name}}</th>
-            <td>{{parseInt(summary.power).toLocaleString()}}</td>
+            <td><power :power="summary.power"/></td>
             <td></td>
             <td></td>
             <td></td>

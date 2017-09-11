@@ -165,6 +165,16 @@ $( function() {
 
   Vue.mixin( {
     methods: {
+      get_filter: function( h, f ) {
+        if ( !f ) {
+          return true;
+        }
+        var res = true;
+        $.map( f, ( v, k ) => {
+          res = res && h[k] == v;
+        } );
+        return res;
+      },
       get_k: function( length, divide ) {
         return Math.floor( ( length - 1 ) / divide ) + 1;
       },
@@ -248,40 +258,10 @@ $( function() {
         var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0, m_p = 1.0;
         var c_b = 0;
         
-        var filter = function( h, f ) {
-          if ( !f ) {
-            return true;
-          }
-          var res = true;
-          $.map( f, ( v, k ) => {
-            res = res && h[k] == v;
-          } );
-          return res;
-        }
-
         var bldng = c_data.buildings.find( b => b.name == h.building );
         [].concat( result.skills.hero, result.skills.items )
-          .filter( s => !!s && s.active )
+          .filter( s => s && s.active )
           .map( s => {
-            if ( "hero" == s.applies ) {
-              switch ( s.type ) {
-                case "Leader":
-                  c_b += s.value;
-                  break;
-                case "Equipment":
-                  if ( filter( h, s.filter ) ) {
-                    m_i += s.value;
-                  }
-                  break;
-                case "Strength":
-                  if ( filter( h, s.filter ) ) {
-                    m_h += s.value;
-                  }
-                  break;
-                default:
-                  break;
-              }
-            }
             var idx = result.info[s.applies].findIndex( si => si.name == s.base );
             if ( idx < 0 ) {
               result.info[s.applies].push( {
@@ -298,12 +278,31 @@ $( function() {
               result.info[s.applies][idx].value += s.value;
             }
           } );
+        result.info.hero
+          .filter( s => vm.get_filter( h, s.filter ) )
+          .map( s => {
+            switch ( s.type ) {
+              case "Leader":
+                c_b += s.value;
+                break;
+              case "Equipment":
+                m_i += s.value;
+                break;
+              case "Strength":
+                m_h += s.value;
+                break;
+              default:
+                break;
+            }
+          } );
+        
         result.info.hero.sort( ( s1, s2 ) => {
           return s1.priority - s2.priority;
         } );
         result.info.team.sort( ( s1, s2 ) => {
           return s1.priority - s2.priority;
         } );
+
         result.info.hero = $.extend( Array(7), result.info.hero );
         result.info.team = $.extend( Array(7), result.info.team );
         
@@ -322,11 +321,11 @@ $( function() {
             powerToString( h.power.base ),
             powerToString( p_b ),
             powerToString( result.power.items ),
-            m_p.toFixed(2),
-            m_h.toFixed(2),
-            m_o.toFixed(2),
-            m_i.toFixed(2),
-            m_b.toFixed(2) );
+            m_p,
+            m_h,
+            m_o,
+            m_i,
+            m_b );
         return result;
       }
     }
@@ -849,16 +848,16 @@ $( function() {
     computed: {
       summary: function() {
         var vm = this;
+        var power = {
+          value: 0,
+          hero: 0
+        };
         var skills = [];
         var roster = vm.team.roster
           .map( ( name, i ) => {
-            var hero = c_data.heroes.find( n => !!name && n.name == name );
+            var hero = c_data.heroes.find( h => !!name && h.name == name );
             hero = vm.get_hero( hero );
-            [].push.apply( skills,
-              hero.info.team
-                .filter( s => s )
-                .filter( s => !s.leader || i == 0 )
-            );
+            [].push.apply( skills, hero.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
             return hero;
           } );
         skills = skills
@@ -878,9 +877,65 @@ $( function() {
         for ( i = companions, m = vm.team.roster.length; i < m; i++ ) {
           vm.team.roster[i] = undefined;
         };
-        var power = roster
-          .filter( n => !!n )
-          .reduce( ( v, h ) => v + h.power.hero + h.power.items, 0 );
+        roster = roster
+          .map( h => {
+            if ( 1 == h.companions ) {
+              return h;
+            }
+            var m_h = 1.0, m_i = 1.0, m_s = 1.0;
+            skills
+              .filter( s => vm.get_filter( h, s.filter ) )
+              .map( s => {
+                switch ( s.type ) {
+                  case "Survival":
+                    m_s += s.value;
+                    break;
+                  case "Equipment":
+                    m_i += s.value;
+                    break;
+                  case "Strength":
+                    m_h += s.value;
+                    break;
+                  default:
+                    break;
+                }
+              } );
+            power.hero += h.power.value;
+            power.value += ( h.power.hero * m_h + h.power.items * m_i ) * m_s;
+            /*
+            h.power.value = Math.round( ( Math.round( h.power.hero * m_h ) + Math.round( h.power.items * m_i ) ) * m_s );
+            h.power.info = 
+              "TP = ( HP * SM + IP * IM ) * SRM * GM\r\n{0} = ( {1} * {3}  + {2} * {4} ) * {5}"
+                .format( 
+                  powerToString( h.power.value), 
+                  powerToString( h.power.hero ),
+                  powerToString( h.power.items ),
+                  m_h,
+                  m_i,
+                  m_s );
+            power.value += h.power.value;
+            */
+            return h;
+          } );
+        var m_g = 2.0 - Math.floor( 100 * power.hero / power.value ) / 100;
+        power.value = Math.round( power.value * m_g );
+        roster = roster
+          .map( h => {
+            if ( 1 == h.companions ) {
+              return h;
+            }
+            /*
+            var p = h.power.value;
+            h.power.value = Math.round( p * m_g );
+            h.power.info = "TP = HP * GM\r\n{0} = {1} * {2}"
+              .format( 
+                powerToString( h.power.value ),
+                powerToString( p ),
+                m_g );
+            */
+            //h.power.info = h.power.info + " * " + m_g;
+            return h;
+          } );
         return {
           companions: companions,
           power: power,
@@ -891,13 +946,7 @@ $( function() {
     },
     methods: {
       options: function( name ) {
-        var selected = this.team.roster
-          .filter( n => !!n && n != name );
-        var res = c_data.heroes;
-        if ( selected.length > 0 ) {
-          res = res.filter( hero => !( selected.indexOf( hero.name ) > -1 ) );
-        }
-        return res.map( function( hero ) {
+        return c_data.heroes.map( function( hero ) {
           return {
             id: hero.name,
             text: hero.name
