@@ -339,7 +339,7 @@
       name: "Infernal Rage",
       lv: 38,
       power: 1750,
-      skill: { name: "Brothers-in-arms I", q: "Legendary", m: false }
+      skill: { name: "Bros-in-arms I", q: "Legendary", m: false }
     },
     {
       type: "Axes",
@@ -392,7 +392,7 @@
       name: "Forseti's Axe",
       lv: 53,
       power: 3275,
-      skill: { name: "Brothers-in-arms II", q: "Mythical", m: false }
+      skill: { name: "Bros-in-arms II", q: "Mythical", m: false }
     },
     {
       type: "Boots",
@@ -1918,7 +1918,7 @@
       name: "Judgement",
       lv: 36,
       power: 1950,
-      skill: { name: "Brothers-in-arms I", q: "Epic", m: false }
+      skill: { name: "Bros-in-arms I", q: "Epic", m: false }
     },
     {
       type: "Guns",
@@ -2358,7 +2358,7 @@
       name: "Dragonscale Helmet",
       lv: 38,
       power: 1450,
-      skill: { name: "Brothers-in-arms I", q: "Legendary", m: false }
+      skill: { name: "Bros-in-arms I", q: "Legendary", m: false }
     },
     {
       type: "Helmets",
@@ -2715,7 +2715,7 @@
       name: "Hammer Fist",
       lv: 22,
       power: 825,
-      skill: { name: "Brothers-in-arms I", q: "Epic", m: false }
+      skill: { name: "Bros-in-arms I", q: "Epic", m: false }
     },
     {
       type: "Maces",
@@ -3621,7 +3621,7 @@
       name: "Magic Beans",
       lv: 46,
       power: 2250,
-      skill: { name: "Brothers-in-arms II", q: "Mythical", m: false }
+      skill: { name: "Bros-in-arms II", q: "Mythical", m: false }
     },
     {
       type: "Remedies",
@@ -3754,7 +3754,7 @@
       name: "Crusader Ring",
       lv: 25,
       power: 825,
-      skill: { name: "Brothers-in-arms I", q: "Epic", m: false }
+      skill: { name: "Bros-in-arms I", q: "Epic", m: false }
     },
     {
       type: "Rings",
@@ -4284,7 +4284,7 @@
       name: "Primordial Trident",
       lv: 50,
       power: 3025,
-      skill: { name: "Brothers-in-arms II", q: "Mythical", m: false }
+      skill: { name: "Bros-in-arms II", q: "Mythical", m: false }
     },
     {
       type: "Spears",
@@ -4334,7 +4334,7 @@
       name: "Pain Totem",
       lv: 13,
       power: 340,
-      skill: { name: "Brothers-in-arms I", q: "Flawless", m: false }
+      skill: { name: "Bros-in-arms I", q: "Flawless", m: false }
     },
     {
       type: "Spells",
@@ -5104,7 +5104,7 @@
       name: "Cow Hide Vest",
       lv: 45,
       power: 2200,
-      skill: { name: "Brothers-in-arms III", q: "Mythical", m: false }
+      skill: { name: "Bros-in-arms III", q: "Mythical", m: false }
     },
     {
       type: "Vests",

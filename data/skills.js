@@ -4,132 +4,70 @@ $( function() {
   
   var effects = [
     { 
-      type: "Escape",
-      name: "Escape",
-      text: "Chance of getting injury is decreased by {0}",
+      type: "Break Count",
+      name: "Resourceful",
+      text: "Prevents {0} pieces of equipment from breaking",
+      priority: 1,
+      cap: false,
+      sign: "",
+      applies: "hero",
+      leader: false
+    },
+    { 
+      type: "Break Count",
+      name: "Support",
+      text: "Prevents {0} pieces of companions equipment from breaking",
+      priority: 1,
+      cap: false,
+      sign: "",
+      applies: "team",
+      leader: false
+    },
+    { 
+      type: "Resting",
+      name: "Healer",
+      text: "Resting time of companions is reduced by {0}",
+      priority: 2,
+      cap: 0.9,
+      sign: "%",
+      applies: "team",
+      leader: false
+    },
+    { 
+      type: "Resting",
+      name: "Energetic",
+      text: "Resting time is reduced by {0}",
+      priority: 2,
       cap: 1.0,
       sign: "%",
       applies: "hero",
       leader: false
     },
     { 
-      type: "Wise",
-      name: "Wise",
-      text: "Amount of experience for successfully completing quests is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      type: "Resilient",
-      name: "Resilient",
-      text: "Amount of experience for completing quests with injury is {0}",
-      cap: false,
-      sign: "%",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      name: "Gold",
-      name: "Gold",
-      text: "Amount of gold found is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      type: "Maximum",
-      name: "Maximum",
-      text: "Maximum number of artifacts found is increased by {0}",
-      cap: false,
-      sign: "",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      type: "Minimum",
-      name: "Minimum",
-      text: "Minimum number of artifacts found is increased by {0}",
-      cap: false,
-      sign: "",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      type: "Leader",
-      name: "Leader",
-      text: "Number of companions is increased by {0}",
-      cap: false,
-      sign: "",
-      applies: "hero",
-      leader: true
-    },
-    {
-      type: "Equipment",
-      name: "Equipment",
-      text: "Equipment strength is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "hero",
-      leader: false
-    },
-    {
-      type: "Equipment",
-      name: "Gangster",
-      text: "Equipment strength of Rogues in party is increased by {0}",
+      type: "Revive",
+      name: "Revive",
+      text: "{0} chance to revive injuried companions",
+      priority: 3,
       cap: false,
       sign: "%",
       applies: "team",
-      leader: true,
-      filter: {
-        type: "Rogue"
-      }
-    },
-    { 
-      type: "Strength",
-      name: "Strength",
-      text: "Strength is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "hero",
       leader: false
     },
-    {
-      type: "Strength",
-      name: "Commander",
-      text: "Strength of each party member is increased by {0}",
-      cap: false,
+    { 
+      type: "Speed",
+      name: "Speed",
+      text: "Quest duration is reduced by {0}",
+      priority: 4,
+      cap: 1.0,
       sign: "%",
       applies: "team",
       leader: true
-    },
-    {
-      type: "Strength",
-      name: "Arch Wizard",
-      text: "Strength of Spellcasters in party is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "team",
-      leader: false,
-      filter: {
-        type: "Spellcaster"
-      }
-    },
-    { 
-      type: "Survival",
-      name: "Survival",
-      text: "Survival rate of each party member is increased by {0}",
-      cap: false,
-      sign: "%",
-      applies: "team",
-      leader: false
     },
     { 
       type: "Survival",
       name: "Amazon",
       text: "Survival rate of Female party members is increased by {0}",
+      priority: 5,
       cap: false,
       sign: "%",
       applies: "team",
@@ -140,8 +78,9 @@ $( function() {
     },
     { 
       type: "Survival",
-      name: "Brothers",
+      name: "Bros-in-arms",
       text: "Survival rate of Male party members is increased by {0}",
+      priority: 5,
       cap: false,
       sign: "%",
       applies: "team",
@@ -151,9 +90,106 @@ $( function() {
       }
     },
     { 
+      type: "Survival",
+      name: "Survival",
+      text: "Survival rate of each party member is increased by {0}",
+      priority: 6,
+      cap: false,
+      sign: "%",
+      applies: "team",
+      leader: false
+    },
+    { 
+      type: "Minimum",
+      name: "Minimum",
+      text: "Minimum number of artifacts found is increased by {0}",
+      priority: 7,
+      cap: false,
+      sign: "",
+      applies: "hero",
+      leader: false
+    },
+    { 
+      type: "Maximum",
+      name: "Maximum",
+      text: "Maximum number of artifacts found is increased by {0}",
+      cap: false,
+      priority: 8,
+      sign: "",
+      applies: "hero",
+      leader: false
+    },
+    { 
+      type: "Leader",
+      name: "Leader",
+      priority: 9,
+      text: "Number of companions is increased by {0}",
+      cap: false,
+      sign: "",
+      applies: "hero",
+      leader: true
+    },
+    {
+      type: "Strength",
+      name: "Commander",
+      text: "Strength of each party member is increased by {0}",
+      priority: 10,
+      cap: false,
+      sign: "%",
+      applies: "team",
+      leader: true
+    },
+    {
+      type: "Strength",
+      name: "Arch Wizard",
+      text: "Strength of Spellcasters in party is increased by {0}",
+      priority: 10,
+      cap: false,
+      sign: "%",
+      applies: "team",
+      leader: false,
+      filter: {
+        type: "Spellcaster"
+      }
+    },
+    {
+      type: "Equipment",
+      name: "Gangster",
+      text: "Equipment strength of Rogues in party is increased by {0}",
+      priority: 10,
+      cap: false,
+      sign: "%",
+      applies: "team",
+      leader: true,
+      filter: {
+        type: "Rogue"
+      }
+    },
+    {
+      type: "Equipment",
+      name: "Equipment",
+      priority: 11,
+      text: "Equipment strength is increased by {0}",
+      cap: false,
+      sign: "%",
+      applies: "hero",
+      leader: false
+    },
+    { 
+      type: "Strength",
+      name: "Strength",
+      text: "Strength is increased by {0}",
+      priority: 11,
+      cap: false,
+      sign: "%",
+      applies: "hero",
+      leader: false
+    },
+    { 
       type: "Break Chance",
       name: "Fastidious",
       text: "Chance of breaking equipment is decreased by {0}",
+      priority: 12,
       cap: false,
       sign: "%",
       applies: "hero",
@@ -162,66 +198,53 @@ $( function() {
     { 
       type: "Break Chance",
       name: "Supplier",
-      text: "Chance of breaking oompanions equipment is decreased by {0}",
+      text: "Chance of breaking companions equipment is decreased by {0}",
+      priority: 12,
       cap: false,
       sign: "%",
       applies: "team",
       leader: false
     },
     { 
-      type: "Break Count",
-      name: "Resourceful",
-      text: "Prevents {0} pieces of equipment from breaking",
-      cap: false,
-      sign: "",
-      applies: "hero",
-      leader: false
-    },
-    { 
-      type: "Break Count",
-      name: "Support",
-      text: "Prevents {0} pieces of companions equipment from breaking",
-      cap: false,
-      sign: "",
-      applies: "team",
-      leader: false
-    },
-    { 
-      type: "Resting",
-      name: "Healer",
-      text: "Resting time of companions is reduced by {0}",
-      cap: 0.9,
-      sign: "%",
-      applies: "team",
-      leader: false
-    },
-    { 
-      type: "Resting",
-      name: "Energetic",
-      text: "Resting time is reduced by {0}",
+      type: "Escape",
+      name: "Escape",
+      text: "Chance of getting injury is decreased by {0}",
+      priority: 20,
       cap: 1.0,
       sign: "%",
       applies: "hero",
       leader: false
     },
     { 
-      type: "Revive",
-      name: "Revive",
-      text: "{0} chance to revive injuried companions",
+      type: "Wise",
+      name: "Wise",
+      text: "Amount of experience for successfully completing quests is increased by {0}",
+      priority: 21,
       cap: false,
       sign: "%",
-      applies: "team",
+      applies: "hero",
       leader: false
     },
     { 
-      type: "Speed",
-      name: "Speed",
-      text: "Quest duration is reduced by {0}",
-      cap: 1.0,
+      type: "Resilient",
+      name: "Resilient",
+      text: "Amount of experience for completing quests with injury is {0}",
+      priority: 22,
+      cap: false,
       sign: "%",
       applies: "hero",
-      leader: true
+      leader: false
     },
+    { 
+      name: "Gold",
+      name: "Gold",
+      text: "Amount of gold found is increased by {0}",
+      priority: 23,
+      cap: false,
+      sign: "%",
+      applies: "hero",
+      leader: false
+    }
   ];
   cache.set( "skills_effects", effects, true );
   
@@ -487,18 +510,18 @@ $( function() {
       value: 0.25
     },
     {
-      name: "Brothers-in-arms I",
-      base: "Brothers",
+      name: "Bros-in-arms I",
+      base: "Bros-in-arms",
       value: 0.05
     },
     {
-      name: "Brothers-in-arms II",
-      base: "Brothers",
+      name: "Bros-in-arms II",
+      base: "Bros-in-arms",
       value: 0.10
     },
     {
-      name: "Brothers-in-arms III",
-      base: "Brothers",
+      name: "Bros-in-arms III",
+      base: "Bros-in-arms",
       value: 0.25
     },
     {

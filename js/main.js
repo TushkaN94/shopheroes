@@ -165,6 +165,9 @@ $( function() {
 
   Vue.mixin( {
     methods: {
+      get_k: function( length, divide ) {
+        return Math.floor( ( length - 1 ) / divide ) + 1;
+      },
       get_skill: function( s ) {
         var ss = c_data.skills.find( ss => ss.name == s.name );
         var sb = c_data.skills_effects.find( sb => sb.name == ss.base );
@@ -286,6 +289,7 @@ $( function() {
                 name: s.base,
                 text: s.text,
                 sign: s.sign,
+                priority: s.priority,
                 cap: s.cap,
                 leader: s.leader,
                 value: s.value
@@ -294,6 +298,12 @@ $( function() {
               result.info[s.applies][idx].value += s.value;
             }
           } );
+        result.info.hero.sort( ( s1, s2 ) => {
+          return s1.priority - s2.priority;
+        } );
+        result.info.team.sort( ( s1, s2 ) => {
+          return s1.priority - s2.priority;
+        } );
         result.info.hero = $.extend( Array(7), result.info.hero );
         result.info.team = $.extend( Array(7), result.info.team );
         
@@ -839,10 +849,30 @@ $( function() {
     computed: {
       summary: function() {
         var vm = this;
+        var skills = [];
         var roster = vm.team.roster
-          .map( name => {
+          .map( ( name, i ) => {
             var hero = c_data.heroes.find( n => !!name && n.name == name );
-            return vm.get_hero( hero );
+            hero = vm.get_hero( hero );
+            [].push.apply( skills,
+              hero.info.team
+                .filter( s => s )
+                .filter( s => !s.leader || i == 0 )
+            );
+            return hero;
+          } );
+        skills = skills
+          .reduce( ( i, s ) => {
+            var idx = i.findIndex( si => si.name == s.name );
+            if ( idx < 0 ) {
+              i.push( s );
+            } else {
+              i[idx].value += s.value;
+            }
+            return i;
+          }, [] )
+          .sort( ( s1, s2 ) => {
+            return s1.priority - s2.priority;
           } );
         var companions = roster[0].companions;
         for ( i = companions, m = vm.team.roster.length; i < m; i++ ) {
@@ -854,7 +884,8 @@ $( function() {
         return {
           companions: companions,
           power: power,
-          roster: roster
+          roster: roster,
+          skills: skills
         };
       }
     },

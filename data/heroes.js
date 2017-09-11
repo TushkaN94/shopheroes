@@ -1,4 +1,4 @@
-﻿$( function() {
+$( function() {
   var cache = $.cache._();
 
   var heroes = [
@@ -147,7 +147,7 @@
         }
       ],
       skills: [
-        { name: "Energetic I", lv: 5 }, { name: "Cleave", lv: 10 }, { name: "Brothers-in-arms I", lv: 15 }
+        { name: "Energetic I", lv: 5 }, { name: "Cleave", lv: 10 }, { name: "Bros-in-arms I", lv: 15 }
       ]
     },
     {
@@ -295,7 +295,7 @@
         }
       ],
       skills: [
-        { name: "Leader I", lv: 4 }, { name: "Brothers-in-arms I", lv: 14 }, { name: "Resilient II", lv: 18 }
+        { name: "Leader I", lv: 4 }, { name: "Bros-in-arms I", lv: 14 }, { name: "Resilient II", lv: 18 }
       ]
     },
     {
@@ -369,7 +369,7 @@
         }
       ],
       skills: [
-        { name: "Brothers-in-arms II", lv: 7 }, { name: "Protector II", lv: 12 }, { name: "Resourceful II", lv: 26 }
+        { name: "Bros-in-arms II", lv: 7 }, { name: "Protector II", lv: 12 }, { name: "Resourceful II", lv: 26 }
       ]
     },
     {
@@ -1035,7 +1035,7 @@
         }
       ],
       skills: [
-        { name: "Wise II", lv: 8 }, { name: "Speed Runner II", lv: 12 }, { name: "Brothers-in-arms III", lv: 22 }
+        { name: "Wise II", lv: 8 }, { name: "Speed Runner II", lv: 12 }, { name: "Bros-in-arms III", lv: 22 }
       ]
     },
     {
