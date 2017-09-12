@@ -314,8 +314,8 @@ $( function() {
         
         result.companions += c_b;
 
-        result.power.hero = Math.round( Math.round( h.power.base + h.power.m * p_b, 0 ) * m_h * m_b, 0 );
-        result.power.items = Math.round( result.power.items * m_o * m_i * m_b );
+        result.power.hero = ( h.power.base + h.power.m * p_b ) * m_h * m_b;
+        result.power.items = result.power.items * m_o * m_i * m_b;
         result.power.value = result.power.hero + result.power.items;
         result.power.info = result.power.info.format( 
             powerToString( result.power.value ),
@@ -419,28 +419,32 @@ $( function() {
   
   Vue.component( 'skill', {
     template: '#templates-skill',
-    props:[ 'skill', 'm', 'v' ],
+    props:[ 'skill', 'v', 'm' ],
     computed: {
       summary: function() {
         var vm = this;
-        var v = vm.skill.cap && vm.skill.value > vm.skill.cap ? vm.skill.cap : vm.skill.value;
-        var value = "" + ( "%" == vm.skill.sign ? ( Math.round( 1000 * v ) / 10 ).toLocaleString()  + vm.skill.sign : v.toLocaleString() );
-        var info = vm.skill.name;
-        if ( vm.skill.leader ) {
+        var s = vm.skill;
+        if ( s.m != undefined ) {
+          s = vm.get_skill( s );
+        }
+        var val = s.cap && s.value > s.cap ? s.cap : s.value;
+        var value = "" + ( "%" == s.sign ? ( Math.round( 1000 * val ) / 10 ).toLocaleString()  + s.sign : val.toLocaleString() );
+        var info = s.name;
+        if ( s.leader ) {
           info += "\r\n" + "Leader skill";
         }
-        if ( !!vm.skill.text ) {
-          info += "\r\n" + vm.skill.text.format( value );
+        if ( !!s.text ) {
+          info += "\r\n" + s.text.format( value );
         }
-        if ( !vm.v && !vm.skill.active ) {
-          if ( !!vm.skill.q ) {
-            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( vm.skill.q );
-            if ( !vm.skill.m ) {
+        if ( !vm.v && !s.active ) {
+          if ( !!s.q ) {
+            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+            if ( !s.m ) {
               info += "\r\n" + "Unlocked on mastered blueprint";
             }
           }
-          if ( !!vm.skill.lv ) {
-            info += "\r\n" + "Unlocked at level {0}".format( vm.skill.lv );
+          if ( !!s.lv ) {
+            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
           }
         }
         return {
@@ -453,15 +457,7 @@ $( function() {
   
   Vue.component( 'item', {
     template: '#templates-item',
-    props: [ 'item' ],
-    computed: {
-      skill: function() {
-        var vm = this;
-        if ( vm.item.skill ) {
-          return vm.get_skill( vm.item.skill );
-        }
-      }
-    }
+    props: [ 'item' ]
   } );
   var vm_items = new Vue( {
     el: $( '<div/>' )[0],
@@ -849,6 +845,7 @@ $( function() {
     computed: {
       summary: function() {
         var vm = this;
+        var count = 0;
         var power = {
           value: 0,
           hero: 0
@@ -859,6 +856,7 @@ $( function() {
             var hero = c_data.heroes.find( h => !!name && h.name == name );
             var res = vm.get_hero( hero );
             res.hero = hero;
+            count += hero ? 1 : 0;
             [].push.apply( skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
             return res;
           } );
@@ -879,20 +877,19 @@ $( function() {
         for ( i = companions, m = vm.team.roster.length; i < m; i++ ) {
           vm.team.roster[i] = undefined;
         };
+        var m_g = 1 + 0.1 * ( count - 1 );
         roster = roster
           .map( h => {
             if ( 1 == h.companions ) {
               return h;
             }
-            var m_h = 1.0, m_i = 1.0, m_s = 1.0;
+            var m_h = 1.0, m_i = 1.0, m_s = m_g;
             skills
-              .filter( s => {
-                return vm.get_filter( h.hero, s.filter );
-              } )
+              .filter( s => vm.get_filter( h.hero, s.filter ) )
               .map( s => {
                 switch ( s.type ) {
                   case "Survival":
-                    m_s += s.value;
+                    m_s += s.value * ( count - 1 );
                     break;
                   case "Equipment":
                     m_i += s.value;
@@ -905,34 +902,20 @@ $( function() {
                 }
               } );
             power.hero += h.power.value;
-            power.value += ( h.power.hero * m_h + h.power.items * m_i ) * m_s;
-            h.power.value = Math.round( ( h.power.hero * m_h + h.power.items * m_i ) * m_s );
+            h.power.value = ( h.power.hero * m_h + h.power.items * m_i ) * m_s;
             h.power.info = 
-              "TP = ( HP * SM + IP * IM ) * SRM * GM\r\n{0} = ( {1} * {3}  + {2} * {4} ) * {5}"
+              "TP = ( HP * SM + IP * IM ) * GM\r\n{0} = ( {1} * {3}  + {2} * {4} ) * {5}"
                 .format( 
                   powerToString( h.power.value ), 
                   powerToString( h.power.hero ),
                   powerToString( h.power.items ),
                   m_h,
                   m_i,
-                  m_s );
+                  m_g );
+            power.value += h.power.value;
             return h;
           } );
-        var m_g = Math.round( 100 * power.hero / power.value ) / 100;
-        power.info = "MG = {0}".format( m_g );
-        /*
-        power.value = Math.round( power.value * m_g );
-        roster = roster
-          .map( h => {
-            if ( 1 == h.companions ) {
-              return h;
-            }
-            var p = h.power.value;
-            h.power.value = Math.round( p * m_g );
-            h.power.info += " * " + m_g;
-            return h;
-          } );
-        */
+        power.info = "Group Bonus: +{0}%".format( Math.round( 100 * ( power.value / power.hero - 1 ) ) );
         return {
           companions: companions,
           power: power,

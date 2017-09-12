@@ -23,31 +23,38 @@
 
   var qualities = {
     "Common": { 
+      sh: "C",
       i: 0
     },
     "Good": {
+      sh: "GD",
       i: 1
     },
     "Great": {
+      sh: "GT",
       i: 2
     },
     "Flawless": {
+      sh: "F",
       i: 3
     },
     "Epic": {
+      sh: "E",
       i: 4
     },
     "Legendary": {
+      sh: "L",
       i: 5
     },
     "Mythical": {
+      sh: "M",
       i: 6
     }
   };
   cache.set( "qualities", qualities, true );
 
   var powers = {
-    "q": { 
+    q: { 
       "Common": 1.0,
       "Good": 1.1,
       "Great": 1.2,
@@ -56,7 +63,7 @@
       "Legendary": 2.0,
       "Mythical": 5.0
     },
-    "lv": {
+    lv: {
       1:0,
       2:5,
       3:15,

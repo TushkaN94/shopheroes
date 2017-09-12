@@ -86,8 +86,8 @@
     </div>
   </script>
   <script type="text/x-template" id="templates-skill">
-    <div v-if="!!skill">
-      <input v-if="m" type="checkbox" class="float-right" v-model="skill.m"/>
+    <div v-if="skill">
+      <input v-if="m" type="checkbox" class="float-right" v-model="skill.m" />
       <span :class="{inactive: !v && !m && !skill.active}" class="float-left">
         <span class="htooltip">
           <span>{{summary.info}}</span>
@@ -104,11 +104,11 @@
       <table class="shopheroes item">
         <tbody>
           <tr class="split">
-            <th class="name"></th>
+            <th class="item"></th>
             <th class="type"></th>
             <th class="lv"></th>
             <th class="power"></th>
-            <th class="skill"></th>
+            <th class="item"></th>
           </tr>
           <tr>
             <th>Name</th>
@@ -184,7 +184,7 @@
           </div>
         </td>
         <td>
-          <skill :skill="skill" :m="true"/>
+          <skill :skill="item.skill" :m="true" />
         </td>
       </tr>
   </script>
@@ -548,15 +548,15 @@
         <tbody>
           <tr>
             <th class="slot"></th>
-            <th>Team</th>
-            <th>Power</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th class="name">Team</th>
+            <th class="power">Power</th>
+            <th class="item">Weapon</th>
+            <th class="item">Body</th>
+            <th class="item">Head</th>
+            <th class="item">Arms</th>
+            <th class="item">Legs</th>
+            <th class="item">Accessory&nbsp;1</th>
+            <th class="item">Accessory&nbsp;2</th>
           </tr>
           <tr>
             <th><input type="button" value="x" @click="remove( team )"/></th>
@@ -569,26 +569,6 @@
             <td></td>
             <td></td>
             <td></td>
-          </tr>
-          <tr v-for="k in get_k( summary.skills.length, 7 )">
-            <th></th>
-            <th>Skills</th>
-            <td></td>
-            <td v-for="j in 7">
-              <skill :skill="summary.skills[7*(k-1)+j-1]" :v="true"/>
-            </td>
-          </tr>
-          <tr>
-            <th class="slot">Slot</th>
-            <th class="name">Hero</th>
-            <th class="power">Power</th>
-            <th class="item">Weapon</th>
-            <th class="item">Body</th>
-            <th class="item">Head</th>
-            <th class="item">Arms</th>
-            <th class="item">Legs</th>
-            <th class="item">Accessory&nbsp;1</th>
-            <th class="item">Accessory&nbsp;2</th>
           </tr>
           <tr v-for="( hero, i ) in summary.roster" v-show="i < summary.companions">
             <td>#{{i+1}}</td>
@@ -606,6 +586,14 @@
               <div v-if="!!hero.items[j-1]" :class="hero.items[j-1].q">
                 {{hero.items[j-1].name}}
               </div>
+            </td>
+          </tr>
+          <tr v-for="k in get_k( summary.skills.length, 7 )">
+            <th></th>
+            <th>Skills</th>
+            <td></td>
+            <td v-for="j in 7">
+              <skill :skill="summary.skills[7*(k-1)+j-1]" :v="true"/>
             </td>
           </tr>
           <tr class="split">
