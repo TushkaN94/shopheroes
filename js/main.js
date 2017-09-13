@@ -1,6 +1,9 @@
 $( function() {
-  var powerToString = function( power ) {
-    return Math.round( power, 0 ).toLocaleString();
+  var powerToString = function( v ) {
+    return ( Math.round( v, 0 ) ).toLocaleString();
+  };
+  var multiplierToString = function( v ) {
+    return ( Math.round( 100 * v, 0 ) / 100 ).toFixed(2).toLocaleString();
   };
   if ( !String.prototype.format ) {
     String.prototype.format = function() {
@@ -186,13 +189,28 @@ $( function() {
       },
       get_hero: function( h ) {
         var vm = this;
+        if ( !h ) {
+          return {
+            companions: 1
+          };
+        }
         var result = {
           companions: 1,
           optimals: 0,
           power: { 
-            info: "HP = ( ( HBP + LBP * HBM ) * HSM + IP * IOM * ISM ) * BM\r\n{0} = ( ( {1} + {2} * {4} ) * {5} + {3} * {6} * {7} ) * {8}",
+            info: "",
+            base: h.power.base,
+            level: c_data.powers.lv[h.lv],
             hero: 0,
-            items: 0
+            items: 0,
+            m: {
+              l: h.power.m,
+              h: 1.0,
+              i: 1.0,
+              o: 1.0,
+              b: 1.0,
+              s: 1.0
+            }
           },
           items: Array(7),
           skills: {
@@ -204,9 +222,6 @@ $( function() {
             team: []
           },
         };
-        if ( !h ) {
-          return result;
-        }
         result.companions = 4 + ( h.lv >= 30 ? 1 : 0 );
         result.skills.hero = h.skills.map( s => {
           return $.extend( true, vm.get_skill( s ), { active: ( h.lv >= s.lv ) } );
@@ -224,11 +239,16 @@ $( function() {
                 $.extend( true, i, found, { q: slot.q } );
                 var lv_difference = Math.abs( i.lv - h.lv );
                 i.optimal = ( lv_difference <= 6 );
-                var q_m = c_data.powers.q[i.q] || 1.0;
-                var p_v = i.power * q_m;
+                var m_q = c_data.powers.q[i.q] || 1.0;
+                var p_v = i.power * m_q;
                 i.power = {
                   value: p_v,
-                  info: "IP = IBP * IQM\r\n{0} = {1} * {2}".format( powerToString( p_v ), powerToString( i.power ), q_m.toFixed(2) )
+                  info: "IP = IBP * IQM\r\n{0} = {1} * {2}"
+                    .format( 
+                      powerToString( p_v ), 
+                      powerToString( i.power ),
+                      multiplierToString( m_q )
+                    )
                 };
                 i.a = slot.list.find( s => s.type == i.type ).a;
                 var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
@@ -255,9 +275,6 @@ $( function() {
             return s;
           } );
 
-        var p_b = 1, m_o = 1.0, m_h = 1.0, m_i = 1.0, m_b = 1.0, m_p = 1.0;
-        var c_b = 0;
-        
         var bldng = c_data.buildings.find( b => b.name == h.building );
         [].concat( result.skills.hero, result.skills.items )
           .filter( s => s && s.active )
@@ -284,13 +301,13 @@ $( function() {
           .map( s => {
             switch ( s.type ) {
               case "Leader":
-                c_b += s.value;
+                result.companions += s.value;
                 break;
               case "Equipment":
-                m_i += s.value;
+                result.power.m.i += s.value;
                 break;
               case "Strength":
-                m_h += s.value;
+                result.power.m.h += s.value;
                 break;
               default:
                 break;
@@ -307,26 +324,30 @@ $( function() {
         result.info.hero = $.extend( Array(7), result.info.hero );
         result.info.team = $.extend( Array(7), result.info.team );
         
-        m_p = h.power.m;
-        m_b += bldng.cj.value * ( bldng.cj.lv - 1 );
-        m_o += result.optimals == 7 ? 0.25 : 0.0;
-        p_b = c_data.powers.lv[h.lv] || 0;
+        if ( bldng.m ) {
+          result.power.m.b += 0.25;
+        }
+        if ( bldng.cj.value ) {
+          result.power.m.b += bldng.cj.value * ( bldng.cj.lv - 1 );
+        }
+        if ( result.optimals == 7 ) {
+          result.power.m.o += 0.25;
+        }
         
-        result.companions += c_b;
-
-        result.power.hero = ( h.power.base + h.power.m * p_b ) * m_h * m_b;
-        result.power.items = result.power.items * m_o * m_i * m_b;
-        result.power.value = result.power.hero + result.power.items;
-        result.power.info = result.power.info.format( 
+        result.power.hero = result.power.base + result.power.level * result.power.m.l;
+        result.power.value = ( result.power.hero * result.power.m.h + result.power.items * result.power.m.i * result.power.m.o ) * result.power.m.b;
+        result.power.info = "HP = ( ( HBP + LBP * HLM ) * HPM + IP * IOM * IPM ) * BM\r\n{0} = ( ( {1} + {2} * {4} ) * {5} + {3} * {6} * {7} ) * {8}"
+          .format( 
             powerToString( result.power.value ),
-            powerToString( h.power.base ),
-            powerToString( p_b ),
+            powerToString( result.power.base ),
+            powerToString( result.power.level ),
             powerToString( result.power.items ),
-            m_p,
-            m_h,
-            m_o,
-            m_i,
-            m_b );
+            multiplierToString( result.power.m.l ),
+            multiplierToString( result.power.m.h ),
+            multiplierToString( result.power.m.o ),
+            multiplierToString( result.power.m.i ),
+            multiplierToString( result.power.m.b ) 
+          );
         return result;
       }
     }
@@ -854,11 +875,13 @@ $( function() {
         var roster = vm.team.roster
           .map( ( name, i ) => {
             var hero = c_data.heroes.find( h => !!name && h.name == name );
-            var res = vm.get_hero( hero );
-            res.hero = hero;
-            count += hero ? 1 : 0;
-            [].push.apply( skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
-            return res;
+            if ( hero ) {
+              var res = vm.get_hero( hero );
+              count += 1;
+              [].push.apply( skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
+              res.hero = hero;
+              return res;
+            }
           } );
         skills = skills
           .reduce( ( i, s ) => {
@@ -877,41 +900,41 @@ $( function() {
         for ( i = companions, m = vm.team.roster.length; i < m; i++ ) {
           vm.team.roster[i] = undefined;
         };
-        var m_g = 1 + 0.1 * ( count - 1 );
         roster = roster
+          .filter( h => h )
           .map( h => {
-            if ( 1 == h.companions ) {
-              return h;
-            }
-            var m_h = 1.0, m_i = 1.0, m_s = m_g;
+            h.power.m.s += 0.1 * ( count - 1 );
             skills
               .filter( s => vm.get_filter( h.hero, s.filter ) )
               .map( s => {
                 switch ( s.type ) {
                   case "Survival":
-                    m_s += s.value * ( count - 1 );
+                    h.power.m.s += s.value * ( count - 1 );
                     break;
                   case "Equipment":
-                    m_i += s.value;
+                    h.power.m.i += s.value;
                     break;
                   case "Strength":
-                    m_h += s.value;
+                    h.power.m.h += s.value;
                     break;
                   default:
                     break;
                 }
               } );
             power.hero += h.power.value;
-            h.power.value = ( h.power.hero * m_h + h.power.items * m_i ) * m_s;
+            h.power.value = ( h.power.hero * h.power.m.h + h.power.items * h.power.m.o * h.power.m.i ) * h.power.m.b * h.power.m.s;
             h.power.info = 
-              "TP = ( HP * SM + IP * IM ) * GM\r\n{0} = ( {1} * {3}  + {2} * {4} ) * {5}"
+              "TP = ( HP * HPM + IP * IOM * IPM ) * BM * SRM\r\n{0} = ( {1} * {3}  + {2} * {4} * {5} ) * {6} * {7}"
                 .format( 
                   powerToString( h.power.value ), 
                   powerToString( h.power.hero ),
                   powerToString( h.power.items ),
-                  m_h,
-                  m_i,
-                  m_g );
+                  multiplierToString( h.power.m.h ),
+                  multiplierToString( h.power.m.o ),
+                  multiplierToString( h.power.m.i ),
+                  multiplierToString( h.power.m.b ),
+                  multiplierToString( h.power.m.s )
+                );
             power.value += h.power.value;
             return h;
           } );

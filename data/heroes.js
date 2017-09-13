@@ -834,7 +834,7 @@ $( function() {
           item: null,
           q: null,
           list: [
-            { type: "Dagges", a: 1 }, { type: "Maces", a: -1 }, { type: "Bows", a: -1 }
+            { type: "Daggers", a: 1 }, { type: "Maces", a: -1 }, { type: "Bows", a: -1 }
           ]
         },
         {
