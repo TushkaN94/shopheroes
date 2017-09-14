@@ -1,3 +1,10 @@
+html * {
+  box-sizing: border-box;
+}
+body * {
+  box-sizing: border-box;
+}
+
 #tabs {
   height: 100%;
 }
@@ -10,11 +17,6 @@
 #tabs-data-json {
   width: 100%;
   min-height: 200px;
-}
-input,
-select,
-textarea {
-  box-sizing: border-box;
 }
 .ui-tabs .ui-tabs-panel {
   padding: 0.2em 0.2em !important; 
@@ -48,23 +50,23 @@ table.shopheroes td {
 }
 
 table.shopheroes th.slot {
-  max-width: 2em;
-  min-width: 2em;
+  max-width: 45px;
+  min-width: 45px;
 }
 table.shopheroes th.item {
   min-width: 140px;
   max-width: 10%;
 }
 table.shopheroes th.type {
-  min-width: 110px;
+  max-width: 100px;
 }
 table.shopheroes th.power {
   min-width: 80px;
   max-width: 80px;
 }
-table.shopheroes th.lv {
-  min-width: 80px;
-  max-width: 80px;
+table.shopheroes th.level {
+  min-width: 90px;
+  max-width: 90px;
 }
 table.shopheroes th.name {
   min-width: 140px;
@@ -96,13 +98,18 @@ table.shopheroes .select2-container .select2-selection--single .select2-selectio
   line-height: 1.5em !important;
 }
 
+table.shopheroes .select2-container {
+  font-weight: normal !important;
+}
 table.shopheroes select {
   font-size: 0.8em;
   line-height: 1.5em;
   min-height: 1.5em;
+  font-weight: normal !important;
 }
 table.shopheroes input {
   min-height: 1.5em;
+  font-weight: normal !important;
 }
 table.shopheroes input.name {
   width: 100%;
@@ -111,18 +118,16 @@ table.shopheroes input.lv {
   width: 2em;
   text-align: center;
 }
-
-table.shopheroes .float-left {
+table.shopheroes .float {
   display: inline-block;
+}
+table.shopheroes .float.left {
   text-align: left;
   float: left;
-  margin-left: 0.2em;
 }
-table.shopheroes .float-right {
-  display: inline-block;
+table.shopheroes .float.right {
   text-align: right;
   float: right;
-  margin-right: 0.2em;
 }
 
 table.shopheroes .remove {
@@ -143,4 +148,35 @@ table.shopheroes .collapse {
 
 table.shopheroes .inactive {
   text-decoration: line-through;
+}
+
+table.shopheroes span.button {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1.5em;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  cursor: pointer;
+  background-image: url( "../jquery/images/ui-icons_444444_256x240.png" );
+}
+
+table.shopheroes span.button.undo {
+  background-position:-64px -64px;
+}
+table.shopheroes span.button.redo {
+  background-position:-96px -64px;
+}
+table.shopheroes span.button.add {
+  background-position:-16px -128px;
+}
+table.shopheroes span.button.remove {
+  background-position: -176px -96px;
+}
+table.shopheroes span.button.edit {
+  background-position: -64px -112px;
+}
+table.shopheroes span.button.apply {
+  background-position: -64px -144px;
 }
