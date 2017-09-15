@@ -40,21 +40,58 @@
         <li>
           <a href="#tabs-data">Data</a>
         </li>
+        <li>
+          <a href="#tabs-help">Help</a>
+        </li>
       </ul>
+      <div id="tabs-help">
+        <h1>Hello, visitor!</h1>
+        <p>
+        <p>The main idea of this site is to provide functionality for building team setups.</p>
+        <p>I developed this site to use it in offline mode, it doesn't use server as backend, so you can't share links on setups, nor you can share your setups between different medias.</p>
+        <p>Well, lies, you actually can share setups, that's why there's Data tab, but using it is tricky.</p>
+        
+        <h2>Basics</h2>
+        <p>Adjust your heroes, items and city upgrades at appropriate tabs:
+        <ul>
+        <li>at <b>Heroes</b> tab you can adjust heroes levels;</li>
+        <li>at <b>Items</b> tab you can adjust which items skills you have mastered. Mark them with checkbox;</li>
+        <li>at <b>Buildings</b> tab adjust building level and crown jewels upgrades level.</li>
+        </ul>
+        All those tables can be filtered many ways, so you can faster navigate to specific item/hero you need.
+        </p>
+
+        <h2>Teams</h2>
+        <p>Now you can proceed to <b>Teams</b> tab and start your party assembling</p>
+        <p>First add new team by clicking <i>plus</i> button.</p>
+        <p>Now you can start edit it by clicking <i>pencil</i> button on the left of team name. Set the team name and add heroes to it's roster. Checkbox near hero power emulates bulding boost bonus.</p>
+        
+        <h2>Data</h2>
+        <p>You can export and import custom data (ie changes info).</p>
+        <p>Select an option and do what you want:
+        <ul>
+        <li>click <b>Clean</b> button to clear all changes made to base info but beware as this is unrecoverable operation;</li>
+        <li>click <b>Get</b> button to get all changed data to a text area below - you can save it to a file for future use;</li>
+        <li>place previously custom changes to text area and click <b>Set</b> button to load new custom data.</li>
+        </ul>
+        </p>
+        
+        <h2>Have fun in game!</h2>
+        <p>You can help developing site!</p>
+        <p>Send me email with your feedback to <a href="mailto:zarusjamer@gmail.com?subject=Shop Heroes Team Builder">zarusjamer@gmail.com</a>.</p>
+        <p>You can also contribute code and designs at <a href="https://github.com/zarusjamer/shopheroes">Git Hub</a> project page.</p>
+      </div>
       <div id="tabs-data">
         <div>
           <select id="tabs-data-type">
-            <option value="supplementaries">Supplementaries</option>
-            <option value="skills">Skills</option>
             <option value="buildings">Buildings</option>
             <option value="items">Items</option>
             <option value="heroes">Heroes</option>
             <option value="teams">Teams</option>
           </select>
-          <input id="tabs-data-load" type="button" value="Load Base"/>
-          <input id="tabs-data-clean" type="button" value="Clean Customs"/>
-          <input id="tabs-data-get" type="button" value="Get Customs"/>
-          <input id="tabs-data-set" type="button" value="Set Customs"/>
+          <input id="tabs-data-clean" type="button" value="Clean"/>
+          <input id="tabs-data-get" type="button" value="Get"/>
+          <input id="tabs-data-set" type="button" value="Set"/>
         </div>
         <div>
           <textarea id="tabs-data-json"></textarea>
@@ -125,20 +162,20 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'"/>
               </div>
             </td>
             <td>
               <div>
-                <input class="lv" v-model="filters.lv.min"/>
+                <input type="number" class="lv" v-model.number="filters.lv.min"/>
                 <span>&nbsp;-&nbsp;</span>
-                <input class="lv" v-model="filters.lv.max"/>
+                <input type="number" class="lv" v-model.number="filters.lv.max"/>
               </div>
             </td>
             <td/>
             <td>
               <div>
-                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'" :tags="true"/>
               </div>
             </td>
           </tr>
@@ -221,16 +258,16 @@
             </td>
             <td>
               <div>
-                <input class="lv" v-model="filters.lv.min"/>
+                <input type="number" class="lv" v-model.number="filters.lv.min"/>
                 <span>&nbsp;-&nbsp;</span>
-                <input class="lv" v-model="filters.lv.max"/>
+                <input type="number" class="lv" v-model.number="filters.lv.max"/>
               </div>
             </td>
             <td>
               <div>
-                <input class="lv" v-model="filters.cj.min"/>
+                <input type="number" class="lv" v-model.number="filters.cj.min"/>
                 <span>&nbsp;-&nbsp;</span>
-                <input class="lv" v-model="filters.cj.max"/>
+                <input type="number" class="lv" v-model.number="filters.cj.max"/>
               </div>
             </td>
           </tr>
@@ -270,14 +307,14 @@
         </td>
         <td>
           <div>
-            <input class="lv" v-model="building.lv"/>
+            <input type="number" class="lv" v-model.number.lazy="building.lv"/>
             <span>&nbsp;/&nbsp;</span>
             <span>{{building.cap}}</span>
           </div>
         </td>
         <td>
           <div>
-            <input class="lv" v-model="building.cj.lv"/>
+            <input type="number" class="lv" v-model.number.lazy="building.cj.lv"/>
             <span>&nbsp;/&nbsp;</span>
             <span>{{building.cj.cap}}</span>
           </div>
@@ -318,9 +355,9 @@
             </td>
             <td>
               <div>
-                <input class="lv" v-model="filters.lv.min"/>
+                <input type="number" class="lv" v-model.number="filters.lv.min"/>
                 <span>&nbsp;-&nbsp</span>
-                <input class="lv" v-model="filters.lv.max"/>
+                <input type="number" class="lv" v-model.number="filters.lv.max"/>
               </div>
             </td>
             <td>
@@ -389,7 +426,7 @@
             </th>
             <td>
               <div>
-                <input class="lv" v-model="hero.lv"/>
+                <input type="number" class="lv" v-model.number.lazy="hero.lv"/>
                 <span>&nbsp;/&nbsp;</span>
                 <span>{{hero.cap}}</span>
               </div>
@@ -414,7 +451,9 @@
                 {{hero.building}}
               </div>
             </td>
-            <td v-for="k in 3"><skill :skill="skills[k-1]" :view="'hero'"/></td>
+            <td v-for="k in 3">
+              <skill :skill="skills[k-1]" :view="'hero'"/>
+            </td>
           </tr>
   </script>
   <script type="text/x-template" id="templates-teams">
@@ -460,8 +499,8 @@
           </tr>
           <tr>
             <th>
-              <span class="button undo float left" @click="undo"/>
-              <span class="button redo float right" @click="redo"/>
+              <span class="button undo float left" @click="undo" :class="history.pos == 0 ? 'hidden' : ''"/>
+              <span class="button redo float right" @click="redo" :class="history.pos == history.states.length - 1 ? 'hidden' : ''"/>
             </th>
             <td>
               <div>
@@ -535,8 +574,10 @@
               <span class="button float right" :class="edit ? 'apply' : 'edit'" @click="edit = !edit"/>
             </th>
             <th>
-              <input v-if="edit" v-model="team.name"/>
-              <span v-else>{{team.name}}</span>
+              <div>
+                <input v-if="edit" v-model="team.name"/>
+                <span v-else>{{team.name}}</span>
+              </div>
             </th>
             <th>
               <power :power="summary.power"/>
@@ -590,9 +631,12 @@
                   <th>Aux #1</th>
                   <th>Aux #2</th>
                 </tr>
-                <tr v-if="sh">
+                <tr v-if="th.name">
                   <th></th>
                   <td>
+                    <span class="float left">
+                      <input type="checkbox" v-model="th.b" @click="set_boost( sh.hero.building, th.b )"/>
+                    </span>
                     <power :power="sh.power"/>
                   </td>
                   <td v-for="j in 7">
@@ -606,7 +650,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="sh">
+                <tr v-if="th.name">
                   <th></th>
                   <td>
                     <skill :skill="sh.skills.hero[0]" view="'hero'"/>
@@ -618,7 +662,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="sh">
+                <tr v-if="th.name">
                   <th></th>
                   <td>
                     <skill :skill="sh.skills.hero[1]" view="'hero'"/>
@@ -630,7 +674,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr v-if="sh">
+                <tr v-if="th.name">
                   <th></th>
                   <td>
                     <skill :skill="sh.skills.hero[2]" view="'hero'"/>

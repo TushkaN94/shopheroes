@@ -17,14 +17,6 @@ $( function() {
       return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
     };
   }
-  $.loadScript = function( url, options ) {
-    var opts = $.extend( true, {
-      dataType: "script",
-      cache: false,
-      url: url
-    }, options );
-    return $.ajax( opts );
-  };
 
   var cache = $.cache._();
   
@@ -56,62 +48,6 @@ $( function() {
           break;
       }
       return res;
-    },
-    load: function( key ) {
-      var self = this;
-      switch ( key ) {
-        case "supplementaries":
-          /*$.ajax( {
-            url: 'data/supplementaries.json',
-            dataType: 'json',
-            cache: false,
-            complete: function( res ) {
-              cache.set( "qualities", res.qualities || {} );
-              cache.set( "powers", res.powers || {} );
-              cache.set( "breaks", res.breaks || {} );
-              self.set( "qualities", res.qualities || {} );
-              self.set( "powers", res.powers || {} );
-              self.set( "breaks", res.breaks || {} );
-            }
-          } );*/
-          $.loadScript( 'data/supplementaries.js', {
-            success: function() {
-              self.set( "qualities", cache.get( "qualities" ) || [] );
-              self.set( "powers", cache.get( "powers" ) || [] );
-              self.set( "breaks", cache.get( "breaks" ) || [] );
-            }
-          } );
-          break;
-        case "items":
-          $.loadScript( 'data/items.js', {
-            success: function() {
-              self.set( "items", cache.get( "items" ) || [] );
-            }
-          } );
-          break;
-        case "heroes":
-          $.loadScript( 'data/heroes.js', {
-            success: function() {
-              self.set( "heroes", cache.get( "heroes" ) || [] );
-            }
-          } );
-          break;
-        case "skills":
-          $.loadScript( 'data/skills.js', {
-            success: function() {
-              self.set( "skills", cache.get( "skills" ) || [] );
-              self.set( "skills_effects", cache.get( "skills_effects" ) || [] );
-            }
-          } );
-          break;
-        case "buildings":
-          $.loadScript( 'data/buildings.js', {
-            success: function() {
-              self.set( "buildings", cache.get( "buildings" ) || [] );
-            }
-          } );
-          break;
-      }
     },
     extend: function( key ) {
       var self = this;
@@ -194,16 +130,17 @@ $( function() {
         return res;
       },
       empty_hero: function() {
-        return { 
+        return {
           name: null,
+          b: false,
           slots: [
-            { item: null, q: null },
-            { item: null, q: null },
-            { item: null, q: null },
-            { item: null, q: null },
-            { item: null, q: null },
-            { item: null, q: null },
-            { item: null, q: null }
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null },
+            { edit: false, item: null, q: null }
           ]
         };
       }
@@ -319,8 +256,12 @@ $( function() {
             info += "\r\n" + "Unlocked on mastered blueprint";
           }
           if ( vm.view == "hero" ) {
-            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
-            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+            if ( s.q ) {
+              info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+            }
+            if ( s.lv ) {
+              info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+            }
           }
         }
         return {
@@ -441,9 +382,9 @@ $( function() {
             building.lv = building.cap;
           }
           if ( isNaN( building.cj.lv ) ) {
-            building.cj.lv = 1;
-          } else if ( building.cj.lv < 1 ) {
-            building.cj.lv = 1;
+            building.cj.lv = 0;
+          } else if ( building.cj.lv < 0 ) {
+            building.cj.lv = 0;
           } else if ( building.cj.lv > building.cj.cap ) {
             building.cj.lv = building.cj.cap;
           }
@@ -735,9 +676,12 @@ $( function() {
             if ( h ) {
               result.assigned += 1;
             }
-            h = $.extend( true, {}, h );
-            $.extend( true, h.slots, r.slots, [ { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false }, { edit: false } ] );
+            h = $.extend( true, {}, vm.empty_hero(), h );
+            $.extend( true, h.slots, r.slots );
             var res = vm.get_hero( h );
+            if ( r.b ) {
+              res.power.m.b += 0.25;
+            }
             [].push.apply( result.skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
             res.hero = h;
             return res;
@@ -760,7 +704,6 @@ $( function() {
           vm.team.roster[i] = vm.empty_hero();
         };
         result.roster = result.roster
-          .filter( h => !!h.hero.name )
           .map( h => {
             var m_s = 0.1
             result.skills
@@ -781,7 +724,7 @@ $( function() {
                 }
               } );
             h.power.m.s += m_s * ( result.assigned - 1 );
-            result.power.hero += h.power.value;
+            result.power.hero += ( h.power.value || 0 );
             h.power.value = ( h.power.hero * h.power.m.h + h.power.items * h.power.m.o * h.power.m.i ) * h.power.m.b * h.power.m.s;
             h.power.info = 
               "TP = ( HP * HPM + IP * IOM * IPM ) * BM * SRM\r\n{0} = ( {1} * {3}  + {2} * {4} * {5} ) * {6} * {7}"
@@ -795,7 +738,7 @@ $( function() {
                   h.power.m.b.fixString(2),
                   h.power.m.s.fixString(2)
                 );
-            result.power.value += h.power.value;
+            result.power.value += ( h.power.value || 0 );
             return h;
           } );
         result.power.info = "Group Bonus: +{0}%".format( Math.round( 100 * ( result.power.value / result.power.hero - 1 ) ) );
@@ -803,6 +746,15 @@ $( function() {
       }
     },
     methods: {
+      set_boost: function( bldng, b ) {
+        var vm = this;
+        vm.summary.roster
+          .map( ( r, i ) => {
+            if ( r.hero && r.hero.building == bldng ) {
+              vm.team.roster[i].b = b;
+            }
+          } );
+      },
       get_hero: function( h ) {
         var vm = this;
         var result = {
@@ -957,11 +909,11 @@ $( function() {
           return s1.priority - s2.priority;
         } );
 
-        if ( bldng.m ) {
-          result.power.m.b += 0.25;
-        }
+        //if ( bldng.m ) {
+        //  result.power.m.b += 0.25;
+        //}
         if ( bldng.cj.value ) {
-          result.power.m.b += bldng.cj.value * ( bldng.cj.lv - 1 );
+          result.power.m.b += bldng.cj.value * bldng.cj.lv;
         }
         if ( result.optimals == 7 ) {
           result.power.m.o += 0.25;
@@ -1073,12 +1025,6 @@ $( function() {
       minimumResultsForSearch: Infinity,
       placeholder: "Choose data type",
       tags: false,
-    } );
-
-  $( '#tabs-data-load' )
-    .on( 'click', function() {
-      var type = $data.val();
-      c_data.load( type );
     } );
 
   $( '#tabs-data-clean' )

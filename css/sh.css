@@ -65,14 +65,10 @@ table.shopheroes th.power {
   max-width: 80px;
 }
 table.shopheroes th.level {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 100px;
 }
 table.shopheroes th.name {
   min-width: 140px;
-}
-table.shopheroes th.quality {
-  min-width: 80px;
 }
 
 table.shopheroes .select2-container .select2-selection--multiple,
@@ -115,7 +111,7 @@ table.shopheroes input.name {
   width: 100%;
 }
 table.shopheroes input.lv {
-  width: 2em;
+  width: 3em;
   text-align: center;
 }
 table.shopheroes .float {
@@ -130,14 +126,6 @@ table.shopheroes .float.right {
   float: right;
 }
 
-table.shopheroes .remove {
-  display: inline;
-  text-align: left;
-  margin-left: 0.2em;
-  float: left;
-  width: auto !important; 
-}
-
 table.shopheroes .collapse {
   display: inline;
   text-align: left;
@@ -148,6 +136,10 @@ table.shopheroes .collapse {
 
 table.shopheroes .inactive {
   text-decoration: line-through;
+}
+
+table.shopheroes span.button.hidden {
+  visibility: hidden;
 }
 
 table.shopheroes span.button {

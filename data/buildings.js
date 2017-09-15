@@ -10,8 +10,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -22,8 +22,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -34,8 +34,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -46,8 +46,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -58,8 +58,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -70,8 +70,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -82,8 +82,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -94,8 +94,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -106,8 +106,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -118,8 +118,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -130,8 +130,8 @@ $( function() {
       lv: 1,
       cap: 55,
       cj: {
-        lv: 1,
-        cap: 6,
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     },
@@ -142,8 +142,8 @@ $( function() {
       lv: 1,
       cap: 1,
       cj: {
-        lv: 1,
-        cap: 1,
+        lv: 0,
+        cap: 0,
         value: 0.05
       }
     },
@@ -154,8 +154,8 @@ $( function() {
       lv: 1,
       cap: 1,
       cj: {
-        lv: 1,
-        cap: 1,
+        lv: 0,
+        cap: 0,
         value: 0.05
       }
     }
