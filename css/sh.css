@@ -53,9 +53,13 @@ table.shopheroes th.slot {
   max-width: 45px;
   min-width: 45px;
 }
+table.shopheroes.team th.item {
+  min-width: calc((100%-45)/8);
+  width: calc((100%-45)/8);
+}
 table.shopheroes th.item {
-  min-width: 140px;
-  max-width: 10%;
+  min-width: 11em;
+  width: 11em;
 }
 table.shopheroes th.type {
   min-width: 7em;
@@ -65,9 +69,6 @@ table.shopheroes th.power {
 }
 table.shopheroes th.level {
   min-width: 7em;
-}
-table.shopheroes th.name {
-  min-width: 140px;
 }
 
 table.shopheroes .select2-container .select2-selection--multiple,
