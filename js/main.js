@@ -699,9 +699,9 @@ $( function() {
           .sort( ( s1, s2 ) => {
             return s1.priority - s2.priority;
           } );
-        result.companions = result.roster[0].companions;
+        result.companions = Math.min( result.roster[0].companions, 6 );
         for ( i = result.companions, m = vm.team.roster.length; i < m; i++ ) {
-          vm.team.roster[i] = vm.empty_hero();
+          vm.team.roster.splice( i, 1, vm.empty_hero() );
         };
         result.roster = result.roster
           .map( h => {
@@ -909,9 +909,6 @@ $( function() {
           return s1.priority - s2.priority;
         } );
 
-        //if ( bldng.m ) {
-        //  result.power.m.b += 0.25;
-        //}
         if ( bldng.cj.value ) {
           result.power.m.b += bldng.cj.value * bldng.cj.lv;
         }
