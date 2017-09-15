@@ -58,7 +58,7 @@ table.shopheroes th.item {
   max-width: 10%;
 }
 table.shopheroes th.type {
-  min-width: 8em;
+  min-width: 7em;
 }
 table.shopheroes th.power {
   min-width: 6em;
