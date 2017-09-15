@@ -118,14 +118,12 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-power">
-    <div v-if="power.value">
+    <span v-if="power.value">
       <span class="htooltip" v-if="!!power.info">
         <span>{{power.info}}</span>
       </span>
-      <span class="power">
-        {{power.value.intString()}}
-      </span>
-    </div>
+      <span class="power">{{power.value.intString()}}</span>
+    </span>
   </script>
   <script type="text/x-template" id="templates-skill">
     <div v-if="skill">
@@ -134,11 +132,9 @@
         <span class="htooltip">
           <span>{{summary.info}}</span>
         </span>
-        {{skill.name}}
+        <span>{{skill.name}}</span>
       </span>
-      <span class="float right">
-        {{summary.value}}
-      </span>
+      <span class="float right">{{summary.value}}</span>
     </div>
   </script>
   <script type="text/x-template" id="templates-items">
@@ -209,20 +205,14 @@
   </script>
   <script type="text/x-template" id="templates-item">
       <tr>
+        <th>
+          <span>{{item.name}}</span>
+        </th>
         <td>
-          <div>
-            {{item.name}}
-          </div>
+          <span>{{item.type}}</span>
         </td>
         <td>
-          <div>
-            {{item.type}}
-          </div>
-        </td>
-        <td>
-          <div>
-            {{item.lv}}
-          </div>
+          <span>{{item.lv}}</span>
         </td>
         <td>
           <div>
@@ -258,7 +248,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'""/>
               </div>
             </td>
             <td>
@@ -299,16 +289,11 @@
   </script>
   <script type="text/x-template" id="templates-building">
       <tr>
+        <th>
+          <span>{{building.name}}</span>
+        </th>
         <td>
-          <div>
-            <input type="checkbox" class="float right" v-model="building.m"/>
-            {{building.name}}
-          </div>
-        </td>
-        <td>
-          <div>
-            {{building.type}}
-          </div>
+          <span>{{building.type}}</span>
         </td>
         <td>
           <div>
@@ -367,27 +352,27 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :tags="true""/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.tier" :options="options.tier.list" :placeholder="'Choose tier'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.tier" :options="options.tier.list" :placeholder="'Choose tier'" :nosearch="true""/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.sex" :options="options.sex.list" :placeholder="'Choose sex'" :nosearch="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.sex" :options="options.sex.list" :placeholder="'Choose sex'" :nosearch="true""/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.building" :options="options.building.list" :placeholder="'Choose building'" :style="'width: 100%;'"/>
+                <select2 v-model="filters.building" :options="options.building.list" :placeholder="'Choose building'""/>
               </div>
             </td>
             <td colspan="3">
               <div>
-                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'" :tags="true" :style="'width: 100%;'"/>
+                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'" :tags="true""/>
               </div>
             </td>
           </tr>
@@ -425,9 +410,7 @@
   <script type="text/x-template" id="templates-hero">
           <tr>
             <th>
-              <div>
-                {{hero.name}}
-              </div>
+              <span>{{hero.name}}</span>
             </th>
             <td>
               <div>
@@ -437,24 +420,16 @@
               </div>
             </td>
             <td>
-              <div>
-                {{hero.type}}
-              </div>
+              <span>{{hero.type}}</span>
             </td>
             <td>
-              <div>
-                Tier {{hero.tier}}
-              </div>
+              <span>Tier {{hero.tier}}</span>
             </td>
             <td>
-              <div>
-                {{hero.sex}}
-              </div>
+              <span>{{hero.sex}}</span>
             </td>
             <td>
-              <div>
-                {{hero.building}}
-              </div>
+              <span>{{hero.building}}</span>
             </td>
             <td v-for="k in 3">
               <skill :skill="skills[k-1]" :view="'hero'"/>
@@ -620,7 +595,7 @@
               <template v-for="sh in [ summary.roster[k-1] ]">
                 <tr>
                   <th>
-                    #{{k}}
+                    <span>#{{k}}</span>
                   </th>
                   <th>
                     <div>
@@ -649,9 +624,7 @@
                       <span class="float left power">
                         <power :power="sh.items[j-1].power"/>
                       </span>
-                      <span class="float right break">
-                        {{sh.items[j-1].chance}}%
-                      </span>
+                      <span class="float right break">{{sh.items[j-1].chance}}%</span>
                     </div>
                   </td>
                 </tr>

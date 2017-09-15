@@ -26,6 +26,7 @@ $( function() {
     breaks: {},
     skills: [],
     skills_effects: [],
+    buildings: [],
     items: [],
     heroes: [],
     teams: [],
@@ -33,13 +34,9 @@ $( function() {
       var res = "";
       switch ( key ) {
         case "heroes":
-          res = JSON.stringify( cache.get( "heroes_custom" ) || [] );
-          break;
         case "items":
-          res = JSON.stringify( cache.get( "items_custom" ) || [] );
-          break;
         case "buildings":
-          res = JSON.stringify( cache.get( "buildings_custom" ) || [] );
+          res = JSON.stringify( cache.get( key + "_custom" ) || [] );
           break;
         case "teams":
           res = JSON.stringify( cache.get( "teams" ) || [] );
@@ -53,13 +50,9 @@ $( function() {
       var self = this;
       switch ( key ) {
         case 'heroes':
-          $.extend( true, self.heroes, cache.get( "heroes_custom" ) || [] );
-          break;
         case 'items':
-          $.extend( true, self.items, cache.get( "items_custom" ) || [] );
-          break;
         case 'buildings':
-          $.extend( true, self.buildings, cache.get( "buildings_custom" ) || [] );
+          $.extend( true, self[key], cache.get( key + "_custom" ) || [] );
           break;
         case 'teams':
           $.extend( true, self.teams, cache.get( "teams" ) || [] );
@@ -72,17 +65,12 @@ $( function() {
       var self = this;
       var value = cache.get( key );
       switch ( key ) {
-        case 'heroes':
-          self.heroes.splice(0);
-          [].push.apply( self.heroes, value );
-          break;
-        case 'items':
-          self.items.splice(0);
-          [].push.apply( self.items, value );
-          break;
+        case 'buildings':
         case 'teams':
-          self.teams.splice(0);
-          [].push.apply( self.teams, value );
+        case 'items':
+        case 'heroes':
+        case 'teams':
+          self[key].splice( 0, self[key].length, ...value );
           break;
         default:
           self[key] = value;
@@ -933,7 +921,7 @@ $( function() {
         history: {
           states: [ this.get_clone( c_data.teams ) ],
           pos: 0,
-          skip: false
+          skip: 1
         },
         teams: c_data.teams,
         filter: () => true,
@@ -946,11 +934,12 @@ $( function() {
       teams: { 
         handler: function( teams ) {
           var vm = this;
-          if ( !vm.history.skip ) {
+          if ( vm.history.skip == 0 ) {
             vm.history.states.push( vm.get_clone( teams ) );
             vm.history.pos = vm.history.states.length - 1;
+          } else {
+            vm.history.skip -= 1;
           }
-          vm.history.skip = false;
           cache.set( "teams", teams, true );
         },
         deep: true
@@ -992,22 +981,20 @@ $( function() {
         if ( vm.history.pos == 0 ) {
           return;
         }
-        var state = vm.history.states[vm.history.pos-1];
-        vm.history.skip = true;
         vm.history.pos -= 1;
-        vm.teams.splice(0);
-        [].push.apply( vm.teams, vm.get_clone( state ) );
+        var state = vm.get_clone( vm.history.states[vm.history.pos] );
+        vm.history.skip = vm.teams.length + state.length;
+        vm.teams.splice( 0, vm.teams.length, ...state );
       },
       redo: function() {
         var vm = this;
         if ( vm.history.pos == vm.history.states.length - 1 ) {
           return;
         }
-        var state = vm.history.states[vm.history.pos+1];
-        vm.history.skip = true;
         vm.history.pos += 1;
-        vm.teams.splice(0);
-        [].push.apply( vm.teams, vm.get_clone( state ) );
+        var state = vm.get_clone( vm.history.states[vm.history.pos] );
+        vm.history.skip = vm.teams.length + state.length;
+        vm.teams.splice( 0, vm.teams.length, ...state );
       }
     }
   } );
@@ -1028,14 +1015,6 @@ $( function() {
     .on( 'click', function() {
       var type = $data.val();
       switch ( type ) {
-        case "supplementaries":
-          cache.remove( "qualities" );
-          cache.remove( "powers" );
-          cache.remove( "breaks" );
-          c_data.set( "qualities", {} );
-          c_data.set( "powers", {} );
-          c_data.set( "breaks", {} );
-          break;
         case "heroes":
           c_data.heroes.splice(0);
           break;

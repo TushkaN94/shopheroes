@@ -57,12 +57,23 @@ table.shopheroes.team th.item {
   min-width: calc((100%-45)/8);
   width: calc((100%-45)/8);
 }
-table.shopheroes th.item {
-  min-width: 11em;
+table.shopheroes th.name {
+  min-width: 9em;
+  width: 9em;
+}
+table.shopheroes.item th.name {
   width: 11em;
+}
+table.shopheroes th.item {
+  min-width: 10em;
+  width: 10em;
+}
+table.shopheroes.item th.item {
+  width: 12em;
 }
 table.shopheroes th.type {
   min-width: 7em;
+  width: 7em;
 }
 table.shopheroes th.power {
   min-width: 6em;
