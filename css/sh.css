@@ -64,7 +64,7 @@ table.shopheroes th.power {
   min-width: 6em;
 }
 table.shopheroes th.level {
-  min-width: 10em;
+  min-width: 6em;
 }
 table.shopheroes th.name {
   min-width: 140px;
@@ -110,7 +110,7 @@ table.shopheroes input.name {
   width: 100%;
 }
 table.shopheroes input.lv {
-  min-width: 3em;
+  max-width: 3em;
   text-align: center;
 }
 table.shopheroes .float {
