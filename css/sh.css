@@ -110,7 +110,7 @@ table.shopheroes input.name {
   width: 100%;
 }
 table.shopheroes input.lv {
-  width: 3em;
+  min-width: 3em;
   text-align: center;
 }
 table.shopheroes .float {
