@@ -58,14 +58,13 @@ table.shopheroes th.item {
   max-width: 10%;
 }
 table.shopheroes th.type {
-  max-width: 100px;
+  min-width: 8em;
 }
 table.shopheroes th.power {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 6em;
 }
 table.shopheroes th.level {
-  min-width: 100px;
+  min-width: 10em;
 }
 table.shopheroes th.name {
   min-width: 140px;
