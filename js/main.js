@@ -6,6 +6,10 @@ $( function() {
     var base = Math.pow( 10, pos );
     return ( Math.round( base * this, 0 ) / base ).toFixed( pos ).toLocaleString();
   };
+  Number.prototype.pptString = function( pos ) {
+    var base = Math.pow( 10, pos );
+    return ( Math.round( 100 * base * this, 0 ) / base ).toLocaleString() + "%";
+  };
   if ( !String.prototype.format ) {
     String.prototype.format = function() {
       var args = arguments;
@@ -230,14 +234,21 @@ $( function() {
         if ( vm.view == "item" ) {
           s = vm.get_skill( s );
         }
-        var val = s.cap && s.value > s.cap ? s.cap : s.value;
-        var value = "" + ( "%" == s.sign ? ( Math.round( 1000 * val ) / 10 ).toLocaleString()  + s.sign : val.toLocaleString() );
+        var val = s.cap ? Math.min( s.value, s.cap ) : s.value;
+        var value = "%" == s.sign ? val.pptString(1) : val.intString();
         var info = s.name;
         if ( s.leader ) {
           info += "\r\n" + "Leader skill";
         }
         if ( !!s.text ) {
           info += "\r\n" + s.text.format( value );
+        }
+        if ( s.cap ) {
+          var c_val = s.value - val;
+          info += "\r\n" + "Capped at {0}".format( s.sign ? s.cap.pptString(1) : s.cap.intString() );
+          if ( c_val > 0 ) {
+            info += ". " + "Wasted surplus of {0}".format( "%" == s.sign ? c_val.pptString(1) : c_val.intString() );
+          }
         }
         if ( !s.active ) {
           if ( !s.m ) {

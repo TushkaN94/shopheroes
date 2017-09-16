@@ -115,7 +115,7 @@ table.shopheroes select {
   font-weight: normal !important;
 }
 table.shopheroes input {
-  min-height: 1.5em;
+  /*min-height: 1.5em;*/
   font-weight: normal !important;
 }
 table.shopheroes input.name {
