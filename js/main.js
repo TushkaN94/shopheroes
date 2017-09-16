@@ -254,13 +254,11 @@ $( function() {
           if ( !s.m ) {
             info += "\r\n" + "Unlocked on mastered blueprint";
           }
-          if ( vm.view == "hero" ) {
-            if ( s.q ) {
-              info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
-            }
-            if ( s.lv ) {
-              info += "\r\n" + "Unlocked at level {0}".format( s.lv );
-            }
+          if ( s.q || view == "item" ) {
+            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+          }
+          if ( s.lv ) {
+            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
           }
         }
         return {
