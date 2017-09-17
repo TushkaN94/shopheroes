@@ -123,24 +123,24 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-power">
-    <span v-if="power.value">
+    <span v-if="power.value" class="float left power">
       <span class="htooltip icon Power">
         <span v-if="!!power.info">{{power.info}}</span>
       </span>
-      <span class="power">{{power.value.intString()}}</span>
+      <span>{{power.value.intString()}}</span>
     </span>
   </script>
   <script type="text/x-template" id="templates-skill">
-    <div v-if="skill">
+    <span v-if="skill" class="skill-info left">
       <input v-if="view == 'item'" type="checkbox" class="float right" v-model="skill.m" />
-      <span :class="{inactive: ( view != 'item' ) && !skill.active}" class="float left">
-        <span class="htooltip info">
+      <span class="float left">
+        <span class="htooltip icon skill" :class="[ summary.icon ]">
           <span>{{summary.info}}</span>
         </span>
-        <span>{{skill.name}}</span>
+        <span :class="{inactive: ( view != 'item' ) && !skill.active}">{{skill.name}}</span>
       </span>
       <span class="float right">{{summary.value}}</span>
-    </div>
+    </span>
   </script>
   <script type="text/x-template" id="templates-item-slot">
     <span class="htooltip icon" :class="[ itemSlot.type, 'affinity' + itemSlot.a ]">
@@ -655,9 +655,7 @@
                   </td>
                   <td v-for="j in 7">
                     <div v-if="sh.items[j-1]">
-                      <span class="float left power">
-                        <power :power="sh.items[j-1].power"/>
-                      </span>
+                      <power :power="sh.items[j-1].power"/>
                       <span class="float right break">{{sh.items[j-1].chance}}%</span>
                     </div>
                   </td>

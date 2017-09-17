@@ -55,7 +55,7 @@ $( function() {
     },
     { 
       type: "Speed",
-      name: "Speed",
+      name: "Speed Runner",
       text: "Quest duration is reduced by {0}",
       priority: 4,
       cap: 1.0,
@@ -400,18 +400,18 @@ $( function() {
       value: 0.50
     },
     {
-      name: "Magic Find",
-      text: "Maximum number of artifacts found by each party member is increased by {0}",
-      base: "Maximum",
-      applies: "team",
-      value: 2
-    },
-    {
       name: "Detect Secrets",
       text: "Minimum number of artifacts found by each party member is increased by {0}",
-      base: "Minimum",
+      base: "Detect Secrets",
       applies: "team",
       value: 1
+    },
+    {
+      name: "Magic Find",
+      text: "Maximum number of artifacts found by each party member is increased by {0}",
+      base: "Magic Find",
+      applies: "team",
+      value: 2
     },
     {
       name: "Treasure Hunter I",
@@ -631,17 +631,17 @@ $( function() {
     },
     {
       name: "Speed Runner I",
-      base: "Speed",
+      base: "Speed Runner",
       value: 0.10
     },
     {
       name: "Speed Runner II",
-      base: "Speed",
+      base: "Speed Runner",
       value: 0.25
     },
     {
       name: "Speed Runner III",
-      base: "Speed",
+      base: "Speed Runner",
       value: 0.50
     }
   ];

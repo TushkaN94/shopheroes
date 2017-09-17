@@ -86,6 +86,114 @@ table.shopheroes span.icon.Pendants {
 table.shopheroes span.icon.Instruments {
   background-image: url( "images/weapon_types/Instruments.png" );
 }
+table.shopheroes span.icon.skill.SpeedRunner {
+  background-image: url( "images/skills/SpeedRunner.png" );
+}
+table.shopheroes span.icon.skill.Leader {
+  background-image: url( "images/skills/Leader.png" );
+}
+table.shopheroes span.icon.skill.Healer {
+  background-image: url( "images/skills/Healer.png" );
+}
+table.shopheroes span.icon.skill.Energetic {
+  background-image: url( "images/skills/Energetic.png" );
+}
+table.shopheroes span.icon.skill.Revive {
+  background-image: url( "images/skills/Revive.png" );
+}
+table.shopheroes span.icon.skill.Support {
+  background-image: url( "images/skills/Support.png" );
+}
+table.shopheroes span.icon.skill.Resourceful {
+  background-image: url( "images/skills/Resourceful.png" );
+}
+table.shopheroes span.icon.skill.Fastidious {
+  background-image: url( "images/skills/Fastidious.png" );
+}
+table.shopheroes span.icon.skill.Supplier {
+  background-image: url( "images/skills/Supplier.png" );
+}
+table.shopheroes span.icon.skill.Gangster {
+  background-image: url( "images/skills/Gangster.png" );
+}
+table.shopheroes span.icon.skill.Amazon {
+  background-image: url( "images/skills/Amazon.png" );
+}
+table.shopheroes span.icon.skill.Brosinarms {
+  background-image: url( "images/skills/Brosinarms.png" );
+}
+table.shopheroes span.icon.skill.Protector {
+  background-image: url( "images/skills/Protector.png" );
+}
+table.shopheroes span.icon.skill.AuraofProtection {
+  background-image: url( "images/skills/AuraofProtection.png" );
+}
+table.shopheroes span.icon.skill.Commander {
+  background-image: url( "images/skills/Commander.png" );
+}
+table.shopheroes span.icon.skill.ArchWizard {
+  background-image: url( "images/skills/ArchWizard.png" );
+}
+table.shopheroes span.icon.skill.Cleave {
+  background-image: url( "images/skills/Cleave.png" );
+}
+table.shopheroes span.icon.skill.Crush {
+  background-image: url( "images/skills/Crush.png" );
+}
+table.shopheroes span.icon.skill.Berserker {
+  background-image: url( "images/skills/Berserker.png" );
+}
+table.shopheroes span.icon.skill.Backstab {
+  background-image: url( "images/skills/Backstab.png" );
+}
+table.shopheroes span.icon.skill.Parry {
+  background-image: url( "images/skills/Parry.png" );
+}
+table.shopheroes span.icon.skill.Stoneskin {
+  background-image: url( "images/skills/Stoneskin.png" );
+}
+table.shopheroes span.icon.skill.Riposte {
+  background-image: url( "images/skills/Riposte.png" );
+}
+table.shopheroes span.icon.skill.MageArmor {
+  background-image: url( "images/skills/MageArmor.png" );
+}
+table.shopheroes span.icon.skill.Coneofcold {
+  background-image: url( "images/skills/Coneofcold.png" );
+}
+table.shopheroes span.icon.skill.Thunderbolt {
+  background-image: url( "images/skills/Thunderbolt.png" );
+}
+table.shopheroes span.icon.skill.Fireball {
+  background-image: url( "images/skills/Fireball.png" );
+}
+table.shopheroes span.icon.skill.Resilient {
+  background-image: url( "images/skills/Resilient.png" );
+}
+table.shopheroes span.icon.skill.Wise {
+  background-image: url( "images/skills/Wise.png" );
+}
+table.shopheroes span.icon.skill.Lucky {
+  background-image: url( "images/skills/Lucky.png" );
+}
+table.shopheroes span.icon.skill.Shadowstep {
+  background-image: url( "images/skills/Shadowstep.png" );
+}
+table.shopheroes span.icon.skill.GoldDigger {
+  background-image: url( "images/skills/GoldDigger.png" );
+}
+table.shopheroes span.icon.skill.TreasureHunter {
+  background-image: url( "images/skills/TreasureHunter.png" );
+}
+table.shopheroes span.icon.skill.Scavenger {
+  background-image: url( "images/skills/Scavenger.png" );
+}
+table.shopheroes span.icon.skill.DetectSecrets {
+  background-image: url( "images/skills/DetectSecrets.png" );
+}
+table.shopheroes span.icon.skill.MagicFind {
+  background-image: url( "images/skills/MagicFind.png" );
+}
 table.shopheroes span.icon.affinity1 {
   background-color: rgba( 0, 204, 102, 0.8 );
 }

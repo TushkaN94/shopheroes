@@ -290,7 +290,9 @@ $( function() {
             info += "\r\n" + "Unlocked at level {0}".format( s.lv );
           }
         }
+        var icon = s.name.replace( /\s+|I+|-/g, "" );
         return {
+          icon: icon,
           info: info,
           value: value
         };
