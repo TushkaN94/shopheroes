@@ -74,7 +74,8 @@ $( function() {
         case 'items':
         case 'heroes':
         case 'teams':
-          self[key].splice( 0, self[key].length, ...value );
+          self[key].splice( 0 );
+          [].push.apply( self[key], value );
           break;
         default:
           self[key] = value;
@@ -251,13 +252,13 @@ $( function() {
           }
         }
         if ( !s.active ) {
-          if ( !s.m ) {
+          if ( s.m != undefined && !s.m ) {
             info += "\r\n" + "Unlocked on mastered blueprint";
           }
-          if ( s.q || view == "item" ) {
+          if ( s.q != undefined ) {
             info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
           }
-          if ( s.lv ) {
+          if ( s.lv != undefined ) {
             info += "\r\n" + "Unlocked at level {0}".format( s.lv );
           }
         }
@@ -993,7 +994,8 @@ $( function() {
         vm.history.pos -= 1;
         var state = vm.get_clone( vm.history.states[vm.history.pos] );
         vm.history.skip = vm.teams.length + state.length;
-        vm.teams.splice( 0, vm.teams.length, ...state );
+        vm.teams.splice( 0 );
+        [].push.apply( vm.teams, state );
       },
       redo: function() {
         var vm = this;
@@ -1003,7 +1005,8 @@ $( function() {
         vm.history.pos += 1;
         var state = vm.get_clone( vm.history.states[vm.history.pos] );
         vm.history.skip = vm.teams.length + state.length;
-        vm.teams.splice( 0, vm.teams.length, ...state );
+        vm.teams.splice( 0 );
+        [].push.apply( vm.teams, state );
       }
     }
   } );
