@@ -28,11 +28,12 @@ table.shopheroes {
   width: flex;
 }
 table.shopheroes tr {
-  line-height: 1.5em;
-  min-height: 1.5em;
+  /*line-height: 1.5em;*/
+  /*min-height: 1.5em;*/
 }
 table.shopheroes tr.split {
   line-height: 2px;
+  height: 2px;
   max-height: 2px;
   min-height: 2px;
 }
@@ -125,15 +126,20 @@ table.shopheroes input.lv {
   max-width: 3em;
   text-align: center;
 }
+
+table.shopheroes .left {
+  text-align: left;
+}
+table.shopheroes .right {
+  text-align: right;
+}
 table.shopheroes .float {
   display: inline-block;
 }
 table.shopheroes .float.left {
-  text-align: left;
   float: left;
 }
 table.shopheroes .float.right {
-  text-align: right;
   float: right;
 }
 

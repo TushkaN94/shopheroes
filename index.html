@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/sh.css?v=a.2.2.0" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=a.2.2.0" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=a.2.2.0" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
@@ -123,8 +124,8 @@
   </script>
   <script type="text/x-template" id="templates-power">
     <span v-if="power.value">
-      <span class="htooltip" v-if="!!power.info">
-        <span>{{power.info}}</span>
+      <span class="htooltip icon Power">
+        <span v-if="!!power.info">{{power.info}}</span>
       </span>
       <span class="power">{{power.value.intString()}}</span>
     </span>
@@ -133,7 +134,7 @@
     <div v-if="skill">
       <input v-if="view == 'item'" type="checkbox" class="float right" v-model="skill.m" />
       <span :class="{inactive: ( view != 'item' ) && !skill.active}" class="float left">
-        <span class="htooltip">
+        <span class="htooltip info">
           <span>{{summary.info}}</span>
         </span>
         <span>{{skill.name}}</span>
@@ -371,7 +372,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.building" :options="options.building.list" :placeholder="'Choose building'""/>
+                <select2 v-model="filters.origin" :options="options.building.list" :placeholder="'Choose building'""/>
               </div>
             </td>
             <td colspan="3">
@@ -433,7 +434,7 @@
               <span>{{hero.sex}}</span>
             </td>
             <td>
-              <span>{{hero.building}}</span>
+              <span>{{hero.origin}}</span>
             </td>
             <td v-for="k in 3">
               <skill :skill="skills[k-1]" :view="'hero'"/>
@@ -554,17 +555,21 @@
           </tr>
           <tr>
             <th>
-              <span class="button remove float left" @click="remove( team )"/>
-              <span class="button float right" :class="edit ? 'apply' : 'edit'" @click="edit = !edit"/>
+              <div>
+                <span class="button remove float left" @click="remove( team )"/>
+                <span class="button float right" :class="edit ? 'apply' : 'edit'" @click="edit = !edit"/>
+              </div>
             </th>
-            <th>
+            <th class="left">
               <div>
                 <input v-if="edit" v-model="team.name"/>
                 <span v-else>{{team.name}}</span>
               </div>
             </th>
-            <th>
-              <power :power="summary.power"/>
+            <th class="left">
+              <div>
+                <power :power="summary.power"/>
+              </div>
             </th>
             <th></th>
             <th></th>
@@ -599,29 +604,31 @@
               <template v-for="sh in [ summary.roster[k-1] ]">
                 <tr>
                   <th>
-                    <span>#{{k}}</span>
+                    <div>
+                      <span>#{{k}}</span>
+                    </div>
                   </th>
-                  <th>
+                  <th class="left">
                     <div>
                       <select2 v-if="edit" v-model="th.name" :options="options.heroes.list" :placeholder="'Choose hero'"/>
                       <span v-else>{{th.name}}</span>
                     </div>
                   </th>
-                  <th>Weapon</th>
-                  <th>Body</th>
-                  <th>Head</th>
-                  <th>Hands</th>
-                  <th>Legs</th>
-                  <th>Aux #1</th>
-                  <th>Aux #2</th>
+                  <th class="left" v-for="j in 7">
+                    <div>
+                      <span v-for="slot in sh.hero.slots[j-1].list" class="float icon" :class="[ slot.type, 'affinity' + slot.a ]"></span>
+                    </div>  
+                  </th>
                 </tr>
                 <tr v-if="th.name">
                   <th></th>
-                  <td>
-                    <span class="float left">
-                      <input type="checkbox" v-model="th.b" @click="set_boost( sh.hero.building, th.b )"/>
-                    </span>
-                    <power :power="sh.power"/>
+                  <td class="left">
+                    <div>
+                      <span class="float right" v-if="sh.building.b">
+                        <input type="checkbox" v-model="th.b" @click="set_boost( sh, th.b )"/>
+                      </span>
+                      <power :power="sh.power"/>
+                    </div>
                   </td>
                   <td v-for="j in 7">
                     <div v-if="sh.items[j-1]">
@@ -635,7 +642,9 @@
                 <tr v-if="th.name">
                   <th></th>
                   <td>
-                    <skill :skill="sh.skills.hero[0]" view="'hero'"/>
+                    <div>
+                      <skill :skill="sh.skills.hero[0]" view="'hero'"/>
+                    </div>  
                   </td>
                   <td v-for="j in 7">
                     <div v-if="sh.items[j-1]">
@@ -647,7 +656,9 @@
                 <tr v-if="th.name">
                   <th></th>
                   <td>
-                    <skill :skill="sh.skills.hero[1]" view="'hero'"/>
+                    <div>
+                      <skill :skill="sh.skills.hero[1]" view="'hero'"/>
+                    </div>
                   </td>
                   <td v-for="j in 7">
                     <div v-if="sh.items[j-1]">
@@ -659,7 +670,9 @@
                 <tr v-if="th.name">
                   <th></th>
                   <td>
-                    <skill :skill="sh.skills.hero[2]" view="'hero'"/>
+                    <div>
+                      <skill :skill="sh.skills.hero[2]" view="'hero'"/>
+                    </div>
                   </td>
                   <td v-for="j in 7">
                     <div v-if="sh.skills.items[j-1]">

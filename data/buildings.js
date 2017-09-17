@@ -6,6 +6,7 @@ $( function() {
     {
       name: "Temple",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -18,6 +19,7 @@ $( function() {
     {
       name: "Training Hall",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -30,6 +32,7 @@ $( function() {
     {
       name: "Thief's Hideout",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -42,6 +45,7 @@ $( function() {
     {
       name: "Fountain",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -54,6 +58,7 @@ $( function() {
     {
       name: "Fighter's Guild",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -66,6 +71,7 @@ $( function() {
     {
       name: "School of Magic",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -78,6 +84,7 @@ $( function() {
     {
       name: "Hunter's Lodge",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -90,6 +97,7 @@ $( function() {
     {
       name: "Port",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -102,6 +110,7 @@ $( function() {
     {
       name: "Theater",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -114,6 +123,7 @@ $( function() {
     {
       name: "Cathedral",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -126,6 +136,7 @@ $( function() {
     {
       name: "War College",
       type: "Hero",
+      b: true,
       m: false,
       lv: 1,
       cap: 55,
@@ -138,6 +149,7 @@ $( function() {
     {
       name: "Heroic Package #1",
       type: "Hero",
+      b: false,
       m: false,
       lv: 1,
       cap: 1,
@@ -150,6 +162,7 @@ $( function() {
     {
       name: "Heroic Package #2",
       type: "Hero",
+      b: false,
       m: false,
       lv: 1,
       cap: 1,

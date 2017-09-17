@@ -1,0 +1,103 @@
+table.shopheroes span.icon {
+  height: 1.25em;
+  max-height: 24px;
+  width: 1.25em;
+  max-width: 24px;
+  margin: 2px 2px;
+  line-height: 1.5em;
+  vertical-align: middle;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 0.25em;
+}
+table.shopheroes span.icon.Swords {
+  background-image: url( "images/weapon_types/Swords.png" );
+}
+table.shopheroes span.icon.Daggers {
+  background-image: url( "images/weapon_types/Daggers.png" );
+}
+table.shopheroes span.icon.Spears {
+  background-image: url( "images/weapon_types/Spears.png" );
+}
+table.shopheroes span.icon.Axes {
+  background-image: url( "images/weapon_types/Axes.png" );
+}
+table.shopheroes span.icon.Maces {
+  background-image: url( "images/weapon_types/Maces.png" );
+}
+table.shopheroes span.icon.Staves {
+  background-image: url( "images/weapon_types/Staves.png" );
+}
+table.shopheroes span.icon.Guns {
+  background-image: url( "images/weapon_types/Guns.png" );
+}
+table.shopheroes span.icon.Bows {
+  background-image: url( "images/weapon_types/Bows.png" );
+}
+table.shopheroes span.icon.Armor {
+  background-image: url( "images/weapon_types/Armor.png" );
+}
+table.shopheroes span.icon.Vests {
+  background-image: url( "images/weapon_types/Vests.png" );
+}
+table.shopheroes span.icon.Clothes {
+  background-image: url( "images/weapon_types/Clothes.png" );
+}
+table.shopheroes span.icon.Helmets {
+  background-image: url( "images/weapon_types/Helmets.png" );
+}
+table.shopheroes span.icon.Hats {
+  background-image: url( "images/weapon_types/Hats.png" );
+}
+table.shopheroes span.icon.Gauntlets {
+  background-image: url( "images/weapon_types/Gauntlets.png" );
+}
+table.shopheroes span.icon.Bracers {
+  background-image: url( "images/weapon_types/Bracers.png" );
+}
+table.shopheroes span.icon.Boots {
+  background-image: url( "images/weapon_types/Boots.png" );
+}
+table.shopheroes span.icon.Footwear {
+  background-image: url( "images/weapon_types/Footwear.png" );
+}
+table.shopheroes span.icon.Shields {
+  background-image: url( "images/weapon_types/Shields.png" );
+}
+table.shopheroes span.icon.Projectiles {
+  background-image: url( "images/weapon_types/Projectiles.png" );
+}
+table.shopheroes span.icon.Remedies {
+  background-image: url( "images/weapon_types/Remedies.png" );
+}
+table.shopheroes span.icon.Potions {
+  background-image: url( "images/weapon_types/Potions.png" );
+}
+table.shopheroes span.icon.Spells {
+  background-image: url( "images/weapon_types/Spells.png" );
+}
+table.shopheroes span.icon.Rings {
+  background-image: url( "images/weapon_types/Rings.png" );
+}
+table.shopheroes span.icon.Pendants {
+  background-image: url( "images/weapon_types/Pendants.png" );
+}
+table.shopheroes span.icon.Instruments {
+  background-image: url( "images/weapon_types/Instruments.png" );
+}
+table.shopheroes span.icon.affinity1 {
+  background-color: rgba( 0, 204, 102, 0.8 );
+}
+table.shopheroes span.icon.affinity0 {
+  background-color: rgba( 255, 194, 102, 0.8 );
+}
+table.shopheroes span.icon.affinity-1 {
+  background-color: rgba( 255, 92, 51, 0.8 );
+}
+table.shopheroes span.icon.affinity-2 {
+  background-color: rgba( 179, 0, 0, 0.8 );
+}
+table.shopheroes span.icon.Power {
+  background-image: url( "images/Power.png" );
+}

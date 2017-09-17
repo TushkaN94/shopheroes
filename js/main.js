@@ -522,7 +522,7 @@ $( function() {
           type: null,
           tier: null,
           sex: null,
-          building: null,
+          origin: null,
           skill: null,
           lv: {
             min: null,
@@ -594,7 +594,7 @@ $( function() {
             fn_type = () => true,
             fn_tier = () => true,
             fn_sex = () => true,
-            fn_bldng = () => true,
+            fn_origin = () => true,
             fn_skill = () => true,
             fn_lv = () => true;
           if ( !!filters.name ) {
@@ -609,8 +609,8 @@ $( function() {
           if ( !!filters.sex ) {
             fn_sex = ( h ) => h.sex == filters.sex;
           }
-          if ( !!filters.building ) {
-            fn_bldng = ( h ) => h.building == filters.building;
+          if ( !!filters.origin ) {
+            fn_origin = ( h ) => h.origin == filters.origin;
           }
           if ( !!filters.skill ) {
             fn_skill = ( h ) => h.skills.some( s => s.name.toUpperCase().includes( filters.skill.toUpperCase() ) );
@@ -622,7 +622,7 @@ $( function() {
           } else if ( !!filters.lv.max ) {
             fn_lv = ( h ) => h.lv <= filters.lv.max;
           }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_bldng( h ) && fn_skill( h ) && fn_lv( h );
+          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_origin( h ) && fn_skill( h ) && fn_lv( h );
         },
         deep: true
       }
@@ -744,11 +744,11 @@ $( function() {
       }
     },
     methods: {
-      set_boost: function( bldng, b ) {
+      set_boost: function( sh, b ) {
         var vm = this;
         vm.summary.roster
           .map( ( r, i ) => {
-            if ( r.hero && r.hero.building == bldng ) {
+            if ( r.hero && r.hero.origin == sh.hero.origin ) {
               vm.team.roster[i].b = b;
             }
           } );
@@ -758,6 +758,7 @@ $( function() {
         var result = {
           companions: 1,
           optimals: 0,
+          building: {},
           power: { 
             info: "",
             base: 0,
@@ -786,6 +787,7 @@ $( function() {
         if ( !h || !h.name ) {
           return result;
         }
+        result.building = c_data.buildings.find( b => b.name == h.origin );
 
         result.power.base = h.power.base;
         result.power.level = c_data.powers.lv[h.lv];
@@ -860,7 +862,6 @@ $( function() {
             return s;
           } );
 
-        var bldng = c_data.buildings.find( b => b.name == h.building );
         [].concat( result.skills.hero, result.skills.items )
           .filter( s => s && s.active )
           .map( s => {
@@ -907,8 +908,8 @@ $( function() {
           return s1.priority - s2.priority;
         } );
 
-        if ( bldng.cj.value ) {
-          result.power.m.b += bldng.cj.value * bldng.cj.lv;
+        if ( result.building.cj.value ) {
+          result.power.m.b += result.building.cj.value * result.building.cj.lv;
         }
         if ( result.optimals == 7 ) {
           result.power.m.o += 0.25;
