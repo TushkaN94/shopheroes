@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.3.5" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.3.5" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.3.5" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.3.6" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.3.6" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.3.6" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script type="text/javascript" src="js/styles.js?v=2.3.5"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.3.5"></script>
-    <script type="text/javascript" src="data/supplementaries.js?v=2.3.5"></script>
-    <script type="text/javascript" src="data/skills.js?v=2.3.5"></script>
-    <script type="text/javascript" src="data/buildings.js?v=2.3.5"></script>
-    <script type="text/javascript" src="data/items.js?v=2.3.5"></script>
-    <script type="text/javascript" src="data/heroes.js?v=2.3.5"></script>
-    <script type="text/javascript" src="js/main.js?v=2.3.5"></script>
+    <script type="text/javascript" src="js/styles.js?v=2.3.6"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.3.6"></script>
+    <script type="text/javascript" src="data/supplementaries.js?v=2.3.6"></script>
+    <script type="text/javascript" src="data/skills.js?v=2.3.6"></script>
+    <script type="text/javascript" src="data/buildings.js?v=2.3.6"></script>
+    <script type="text/javascript" src="data/items.js?v=2.3.6"></script>
+    <script type="text/javascript" src="data/heroes.js?v=2.3.6"></script>
+    <script type="text/javascript" src="js/main.js?v=2.3.6"></script>
   </head>
   <body>
     <div id="tabs">
@@ -123,7 +123,7 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-power">
-    <span v-if="power.value" class="float left power">
+    <span v-if="power.value" class="float left power-info">
       <span class="htooltip icon Power">
         <span v-if="!!power.info">{{power.info}}</span>
       </span>
@@ -428,7 +428,12 @@
   <script type="text/x-template" id="templates-hero">
           <tr>
             <th>
-              <span>{{hero.name}}</span>
+              <div>
+                <span class="power-info">
+                  <span class="float left icon hero" :class="hero.name.replace( /\s+/g, '' )"></span>
+                  <span>{{hero.name}}</span>
+                </span>
+              </div>
             </th>
             <td>
               <div>
@@ -634,7 +639,10 @@
                   <th class="left">
                     <div>
                       <select2 v-if="edit" v-model="th.name" :options="options.heroes.list" :placeholder="'Choose hero'"/>
-                      <span v-else>{{th.name}}</span>
+                      <span class="power-info" v-else>
+                        <span class="float left icon hero" :class="th.name.replace( /\s+/g, '' )"></span>
+                        <span>{{th.name}}</span>
+                      </span>
                     </div>
                   </th>
                   <th class="left" v-for="j in 7">

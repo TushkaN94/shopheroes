@@ -129,7 +129,14 @@ table.shopheroes input.lv {
   text-align: center;
 }
 
-table.shopheroes
+table.shopheroes span.skill-info {
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+table.shopheroes span.power-info {
+  line-height: 1.5em;
+  height: 100%;
+}
 
 table.shopheroes .left {
   text-align: left;

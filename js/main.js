@@ -290,7 +290,7 @@ $( function() {
             info += "\r\n" + "Unlocked at level {0}".format( s.lv );
           }
         }
-        var icon = s.name.replace( /\s+|I+|-/g, "" );
+        var icon = s.name.replace( /\s+|\bI+$|-/g, "" );
         return {
           icon: icon,
           info: info,
@@ -812,11 +812,12 @@ $( function() {
           info: { 
             hero: [],
             team: []
-          },
+          }
         };
         if ( !h || !h.name ) {
           return result;
         }
+
         result.building = c_data.buildings.find( b => b.name == h.origin );
 
         result.power.base = h.power.base;

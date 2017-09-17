@@ -194,6 +194,87 @@ table.shopheroes span.icon.skill.DetectSecrets {
 table.shopheroes span.icon.skill.MagicFind {
   background-image: url( "images/skills/MagicFind.png" );
 }
+table.shopheroes span.icon.hero.Karal {
+  background-image: url( "images/heroes/Karal.png" );
+}
+table.shopheroes span.icon.hero.Theor {
+  background-image: url( "images/heroes/Theor.png" );
+}
+table.shopheroes span.icon.hero.Clovis {
+  background-image: url( "images/heroes/Clovis.png" );
+}
+table.shopheroes span.icon.hero.Gauvin {
+  background-image: url( "images/heroes/Gauvin.png" );
+}
+table.shopheroes span.icon.hero.Lancaster {
+  background-image: url( "images/heroes/Lancaster.png" );
+}
+table.shopheroes span.icon.hero.Fiora {
+  background-image: url( "images/heroes/Fiora.png" );
+}
+table.shopheroes span.icon.hero.Kurul {
+  background-image: url( "images/heroes/Kurul.png" );
+}
+table.shopheroes span.icon.hero.Edward {
+  background-image: url( "images/heroes/Edward.png" );
+}
+table.shopheroes span.icon.hero.Alicia {
+  background-image: url( "images/heroes/Alicia.png" );
+}
+table.shopheroes span.icon.hero.Garreth {
+  background-image: url( "images/heroes/Garreth.png" );
+}
+table.shopheroes span.icon.hero.Palash {
+  background-image: url( "images/heroes/Palash.png" );
+}
+table.shopheroes span.icon.hero.Mila {
+  background-image: url( "images/heroes/Mila.png" );
+}
+table.shopheroes span.icon.hero.Irene {
+  background-image: url( "images/heroes/Irene.png" );
+}
+table.shopheroes span.icon.hero.Darthos {
+  background-image: url( "images/heroes/Darthos.png" );
+}
+table.shopheroes span.icon.hero.Odette {
+  background-image: url( "images/heroes/Odette.png" );
+}
+table.shopheroes span.icon.hero.Louca {
+  background-image: url( "images/heroes/Louca.png" );
+}
+table.shopheroes span.icon.hero.KuroShobi {
+  background-image: url( "images/heroes/KuroShobi.png" );
+}
+table.shopheroes span.icon.hero.Lorelei {
+  background-image: url( "images/heroes/Lorelei.png" );
+}
+table.shopheroes span.icon.hero.Melina {
+  background-image: url( "images/heroes/Melina.png" );
+}
+table.shopheroes span.icon.hero.Minh {
+  background-image: url( "images/heroes/Minh.png" );
+}
+table.shopheroes span.icon.hero.Albert {
+  background-image: url( "images/heroes/Albert.png" );
+}
+table.shopheroes span.icon.hero.Nya {
+  background-image: url( "images/heroes/Nya.png" );
+}
+table.shopheroes span.icon.hero.Oneira {
+  background-image: url( "images/heroes/Oneira.png" );
+}
+table.shopheroes span.icon.hero.Azula {
+  background-image: url( "images/heroes/Azula.png" );
+}
+table.shopheroes span.icon.hero.Francesca {
+  background-image: url( "images/heroes/Francesca.png" );
+}
+table.shopheroes span.icon.hero.Mojian {
+  background-image: url( "images/heroes/Mojian.png" );
+}
+table.shopheroes span.icon.hero.Charles {
+  background-image: url( "images/heroes/Charles.png" );
+}
 table.shopheroes span.icon.affinity1 {
   background-color: rgba( 0, 204, 102, 0.8 );
 }
