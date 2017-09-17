@@ -49,7 +49,7 @@
       name: "Moonplate",
       lv: 10,
       power: 240,
-      skill: { name: "Treasure Hunter I", q: "Flawless", m: false, m: false }
+      skill: { name: "Treasure Hunter I", q: "Flawless", m: false }
     },
     {
       type: "Armor",
@@ -74,7 +74,7 @@
       name: "Noble Plate",
       lv: 18,
       power: 625,
-      skill: { name: "Support I", q: "Flawless", m: false, m: false }
+      skill: { name: "Support I", q: "Flawless", m: false }
     },
     {
       type: "Armor",
@@ -99,7 +99,7 @@
       name: "Chaos Armor",
       lv: 25,
       power: 825,
-      skill: { name: "Resilient I", q: "Epic", m: false, m: false }
+      skill: { name: "Resilient I", q: "Epic", m: false }
     },
     {
       type: "Armor",

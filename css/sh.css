@@ -78,9 +78,11 @@ table.shopheroes th.type {
 }
 table.shopheroes th.power {
   min-width: 6em;
+  width: 7em;
 }
 table.shopheroes th.level {
   min-width: 7em;
+  width: 7em;
 }
 
 table.shopheroes .select2-container .select2-selection--multiple,

@@ -142,6 +142,11 @@
       <span class="float right">{{summary.value}}</span>
     </div>
   </script>
+  <script type="text/x-template" id="templates-item-slot">
+    <span class="htooltip icon" :class="[ itemSlot.type, 'affinity' + itemSlot.a ]">
+      <span>{{summary}}</span>
+    </span>
+  </script>
   <script type="text/x-template" id="templates-items">
     <div>
       <table class="shopheroes item">
@@ -211,13 +216,19 @@
   <script type="text/x-template" id="templates-item">
       <tr>
         <th>
-          <span>{{item.name}}</span>
+          <div>
+            <span>{{item.name}}</span>
+          </div>
         </th>
         <td>
-          <span>{{item.type}}</span>
+          <div>
+            <span>{{item.type}}</span>
+          </div>
         </td>
         <td>
-          <span>{{item.lv}}</span>
+          <div>
+            <span>{{item.lv}}</span>
+          </div>
         </td>
         <td>
           <div>
@@ -225,7 +236,9 @@
           </div>
         </td>
         <td>
-          <skill :skill="item.skill" :view="'item'" />
+          <div>
+            <skill :skill="item.skill" :view="'item'" />
+          </div>
         </td>
       </tr>
   </script>
@@ -425,19 +438,29 @@
               </div>
             </td>
             <td>
-              <span>{{hero.type}}</span>
+              <div>
+                <span>{{hero.type}}</span>
+              </div>
             </td>
             <td>
-              <span>Tier {{hero.tier}}</span>
+              <div>
+                <span>Tier {{hero.tier}}</span>
+              </div>
             </td>
             <td>
-              <span>{{hero.sex}}</span>
+              <div>
+                <span>{{hero.sex}}</span>
+              </div>
             </td>
             <td>
-              <span>{{hero.origin}}</span>
+              <div>
+                <span>{{hero.origin}}</span>
+              </div>
             </td>
             <td v-for="k in 3">
-              <skill :skill="skills[k-1]" :view="'hero'"/>
+              <div>
+                <skill :skill="skills[k-1]" :view="'hero'"/>
+              </div>
             </td>
           </tr>
   </script>
@@ -616,7 +639,7 @@
                   </th>
                   <th class="left" v-for="j in 7">
                     <div>
-                      <span v-for="slot in sh.hero.slots[j-1].list" class="float icon" :class="[ slot.type, 'affinity' + slot.a ]"></span>
+                      <item-slot v-for="( slot, i ) in sh.hero.slots[j-1].list" :item-slot="slot" :key="i"/>
                     </div>  
                   </th>
                 </tr>

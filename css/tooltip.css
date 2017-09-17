@@ -2,7 +2,7 @@
 	background-color: #F6F6F6;
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 	margin-right: -50%;
-	margin-bottom: 2.25em;
+	margin-top: 1.5em;
 	opacity: 0;
 	padding: 0.25em 0.5em;
 	position: absolute;
@@ -13,16 +13,6 @@
   text-align: justify;
   font-weight: normal;
 }
-.htooltip span img {
-	border: 0 none;
-	float: left;
-	margin: -1em 0 0 -234px;
-	opacity: 0;
-	position: absolute;
-	visibility: hidden;
-	z-index: -1;
-}
-.htooltip:hover span img,
 .htooltip:hover span {
 	opacity: 1;
 	visibility: visible;
@@ -30,7 +20,7 @@
 .htooltip {
   vertical-align: middle;
   display: inline-block;
-  line-height: 1.5em;
+  /*line-height: 1.5em;*/
 }
 .htooltip.info {
   min-width: 16px;

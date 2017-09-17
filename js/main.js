@@ -225,6 +225,34 @@ $( function() {
     props:[ 'power' ]
   } );
   
+  Vue.component( 'item-slot', {
+    template: '#templates-item-slot',
+    props:[ 'itemSlot' ],
+    computed: {
+      summary: function() {
+        var vm = this;
+        var s = vm.itemSlot;
+        var info = "";
+        switch ( s.a ) {
+          case 1:
+            info = "Excel at handling {0}.\r\nBreak chance is lowered.";
+            break;
+          case 0:
+            info = "Knows how to handle {0} properly.";
+            break;
+          case -1:
+            info = "Can handle {0}.\r\nBreak chance is increased.";
+            break;
+          case -2:
+            info = "Can barely handle {0}.\r\nBreak chance is significantly increased.";
+            break;
+        }
+        info = info.format( s.type );
+        return info;
+      }
+    }
+  } );
+
   Vue.component( 'skill', {
     template: '#templates-skill',
     props:[ 'skill', 'view' ],
