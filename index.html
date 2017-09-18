@@ -143,7 +143,7 @@
     </span>
   </script>
   <script type="text/x-template" id="templates-item-slot">
-    <span class="htooltip icon" :class="[ itemSlot.type, 'affinity' + itemSlot.a ]">
+    <span class="htooltip icon item" :class="[ itemSlot.type, 'affinity' + itemSlot.a ]">
       <span>{{summary}}</span>
     </span>
   </script>
@@ -222,6 +222,7 @@
         </th>
         <td>
           <div>
+            <span class="float left icon item" :class="[ item.type ]"></span>
             <span>{{item.type}}</span>
           </div>
         </td>
@@ -340,20 +341,22 @@
             <th></th>
             <th></th>
             <th></th>
+          </tr>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
           </tr>
-          <tr class="header">
+          <tr>
             <th class="name">Name</th>
             <th class="level">Level</th>
             <th class="type">Type</th>
-            <th class="type">Tier</th>
-            <th class="type">Sex</th>
-            <th class="type">Building</th>
-            <th class="item">Skill #1</th>
-            <th class="item">Skill #2</th>
-            <th class="item">Skill #3</th>
+            <th class="item">Tier</th>
+            <th class="item">Sex</th>
+            <th class="item">Building</th>
           </tr>
           <tr>
             <td>
@@ -388,6 +391,19 @@
                 <select2 v-model="filters.origin" :options="options.building.list" :placeholder="'Choose building'""/>
               </div>
             </td>
+          </tr>
+          <tr>
+            <th></th>
+            <th colspan="2">Equipment</th>
+            <th>Skill #1</th>
+            <th>Skill #2</th>
+            <th>Skill #3</th>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td colspan="2">
+            </td>
             <td colspan="3">
               <div>
                 <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'" :tags="true""/>
@@ -401,19 +417,19 @@
             <th></th>
             <th></th>
             <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
-        <tbody>
-          <hero v-for="( hero, i ) in heroes" v-show="visible( hero )" :hero="hero" :key="i"/>
-        </tbody>
+        <hero v-for="( hero, i ) in heroes" v-show="visible( hero )" :hero="hero" :key="i"/>
         <tfoot>
           <tr class="split">
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr class="split">
             <th></th>
             <th></th>
             <th></th>
@@ -426,11 +442,20 @@
     </div>
   </script>
   <script type="text/x-template" id="templates-hero">
+        <tbody>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
           <tr>
-            <th>
+            <th rowspan="2">
               <div>
-                <span class="power-info">
-                  <span class="float left icon hero" :class="hero.name.replace( /\s+/g, '' )"></span>
+                <span class="power-info left">
+                  <span class="float left icon medium hero" :class="hero.name.replace( /\s+/g, '' )"></span>
                   <span>{{hero.name}}</span>
                 </span>
               </div>
@@ -462,12 +487,20 @@
                 <span>{{hero.origin}}</span>
               </div>
             </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="left">
+              <span v-for="j in 7">
+                <item-slot v-for="( slot, i ) in hero.slots[j-1].list" :item-slot="slot" :key="i"/>
+              </span>
+            </td>
             <td v-for="k in 3">
               <div>
                 <skill :skill="skills[k-1]" :view="'hero'"/>
               </div>
             </td>
           </tr>
+        </tbody>  
   </script>
   <script type="text/x-template" id="templates-teams">
     <div>
@@ -475,7 +508,7 @@
         <thead>
           <tr class="split">
             <th class="slot"></th>
-            <th class="item"></th>
+            <th class="item" colspan="2"></th>
             <th class="item"></th>
             <th class="item"></th>
             <th class="item"></th>
@@ -486,7 +519,7 @@
           </tr>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -499,7 +532,7 @@
             <th>
               <span class="button add" @click="add"/>
             </th>
-            <th>
+            <th colspan="2">
               Name
             </th>
             <th></th>
@@ -511,16 +544,16 @@
             <th></th>
           </tr>
           <tr>
-            <th>
-              <span class="button undo float left" @click="undo" :class="history.pos == 0 ? 'hidden' : ''"/>
-              <span class="button redo float right" @click="redo" :class="history.pos == history.states.length - 1 ? 'hidden' : ''"/>
-            </th>
-            <td>
+            <th></th>
+            <td colspan="2">
               <div>
                 <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
-            <td></td>
+            <td>
+              <span class="button undo float left" @click="undo" :class="history.pos == 0 ? 'hidden' : ''"/>
+              <span class="button redo float right" @click="redo" :class="history.pos == history.states.length - 1 ? 'hidden' : ''"/>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -533,7 +566,7 @@
         <tfoot>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -544,7 +577,7 @@
           </tr>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -561,7 +594,7 @@
         <tbody>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -572,7 +605,7 @@
           </tr>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -585,11 +618,11 @@
             <th>
               <div>
                 <span class="button remove float left" @click="remove( team )"/>
-                <span class="button float right" :class="edit ? 'apply' : 'edit'" @click="edit = !edit"/>
               </div>
             </th>
-            <th class="left">
+            <th colspan="2" class="left">
               <div>
+                <span class="button float left" :class="edit ? 'apply' : 'edit'" @click="edit = !edit" style="line-height: 1.5em;"/>
                 <input v-if="edit" v-model="team.name"/>
                 <span v-else>{{team.name}}</span>
               </div>
@@ -609,7 +642,7 @@
           <template v-if="summary.skills">
             <tr v-for="k in get_k( summary.skills.length, 8 )">
               <th></th>
-              <td v-for="j in 8">
+              <td v-for="j in 8" :colspan="[ j == 1 ? 2 : 1 ]">
                 <div>
                   <skill :skill="summary.skills[8*(k-1)+j-1]" :view="'hero'" />
                 </div>
@@ -618,7 +651,7 @@
           </template>
           <tr class="split">
             <th></th>
-            <th></th>
+            <th colspan="2"></th>
             <th></th>
             <th></th>
             <th></th>
@@ -636,11 +669,15 @@
                       <span>#{{k}}</span>
                     </div>
                   </th>
+                  <th class="left" :rowspan="[ th.name ? 2 : 1 ]">
+                    <div v-if="th.name">
+                      <span class="float left icon medium hero" :class="th.name.replace( /\s+/g, '' )"></span>
+                    </div>
+                  </th>
                   <th class="left">
                     <div>
-                      <select2 v-if="edit" v-model="th.name" :options="options.heroes.list" :placeholder="'Choose hero'"/>
+                      <select2 v-if="edit" v-model="team.roster[k-1].name" :options="options.heroes.list" :placeholder="'Choose hero'"/>
                       <span class="power-info" v-else>
-                        <span class="float left icon hero" :class="th.name.replace( /\s+/g, '' )"></span>
                         <span>{{th.name}}</span>
                       </span>
                     </div>
@@ -670,7 +707,7 @@
                 </tr>
                 <tr v-if="th.name">
                   <th></th>
-                  <td>
+                  <td colspan="2">
                     <div>
                       <skill :skill="sh.skills.hero[0]" view="'hero'"/>
                     </div>  
@@ -684,7 +721,7 @@
                 </tr>
                 <tr v-if="th.name">
                   <th></th>
-                  <td>
+                  <td colspan="2">
                     <div>
                       <skill :skill="sh.skills.hero[1]" view="'hero'"/>
                     </div>
@@ -698,7 +735,7 @@
                 </tr>
                 <tr v-if="th.name">
                   <th></th>
-                  <td>
+                  <td colspan="2">
                     <div>
                       <skill :skill="sh.skills.hero[2]" view="'hero'"/>
                     </div>
