@@ -502,3 +502,24 @@ span.icon.item.Pendants.Affinity-2 {
 span.icon.item.Instruments.Affinity-2 {
   background-image: url( "images/types/affinity-2/Instruments.png" );
 }
+span.icon.quality.Common {
+  background-image: url( "images/qualities/Common.png" );
+}
+span.icon.quality.Good {
+  background-image: url( "images/qualities/Good.png" );
+}
+span.icon.quality.Great {
+  background-image: url( "images/qualities/Great.png" );
+}
+span.icon.quality.Flawless {
+  background-image: url( "images/qualities/Flawless.png" );
+}
+span.icon.quality.Epic {
+  background-image: url( "images/qualities/Epic.png" );
+}
+span.icon.quality.Legendary {
+  background-image: url( "images/qualities/Legendary.png" );
+}
+span.icon.quality.Mythical {
+  background-image: url( "images/qualities/Mythical.png" );
+}

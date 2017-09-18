@@ -614,7 +614,7 @@ $( function() {
           return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
         } );
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
-          return { id: k, text: k };
+          return { id: k, text: k, icon: k, iconType: 'quality' };
         } );
         return options;
       }
@@ -695,7 +695,7 @@ $( function() {
           quality:  { list: [] }
         };
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
-          return { id: k, text: k };
+          return { id: k, text: k, icon: k, iconType: 'quality' };
         } );
         options.heroes.list = c_data.heroes
           .map( h => {
@@ -863,7 +863,7 @@ $( function() {
                     return {
                       id: i.name,
                       text: i.name,
-                      icon: i.name,
+                      icon: i.type,
                       iconType: 'item'
                     };
                   } );
