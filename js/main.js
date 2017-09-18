@@ -160,12 +160,22 @@ $( function() {
             }
           },
           templateResult: function( data ) {
-            var $result = $( "<span></span>" );
-            $result.text( data.text );
+            var $result = $( "<span/>" );
+            if ( data.icon ) {
+              var $icon = $( "<span/>" );
+              $icon
+                .addClass( "icon float left" )
+                .addClass( data.icon )
+                .addClass( data.iconType );
+              $result.append( $icon );
+            };
+            var $text = $( "<span/>" )
+            $text.text( data.text );
             if ( data.custom ) {
-              $result.prepend( "Contains \"" );
-              $result.append( "\"" );
+              $text.prepend( "Contains \"" );
+              $text.append( "\"" );
             }
+            $result.append( $text );
             return $result;
           }
         }
@@ -185,7 +195,17 @@ $( function() {
         .trigger( 'change' )
         .on( 'change', function() {
           vm.$emit( 'input', this.value );
-        } );
+        } )
+        .on( 'select2:unselecting', function( e ) {
+            $( this ).data( 'state', 'unselected' );
+        } )
+        .on( 'select2:open', function( e ) {
+          var self = $( this );
+          if ( self.data( 'state' ) === 'unselected' ) {
+            self.select2( 'close' );
+            self.removeData( 'state' );
+          }    
+        });
     },
     watch: {
       value: function( value ) {
@@ -335,7 +355,7 @@ $( function() {
           }
         } );
         options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name };
+          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, "" ), iconType: "skill" };
         } );
         return options;
       }
@@ -591,7 +611,7 @@ $( function() {
           return { id: b.name, text: b.name };
         } );
         options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name };
+          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, "" ), iconType: "skill" };
         } );
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
           return { id: k, text: k };
@@ -672,7 +692,6 @@ $( function() {
       options: function( name ) {
         var options = {
           heroes:   { list: [] },
-          slots:    { list: [ "Weapon", "Body", "Head", "Hands", "Legs", "Aux #1", "Aux #2" ] },
           quality:  { list: [] }
         };
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
@@ -680,7 +699,7 @@ $( function() {
         } );
         options.heroes.list = c_data.heroes
           .map( h => {
-            return { id: h.name, text: h.name };
+            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: "hero" };
           } );
         return options;
       },
