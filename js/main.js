@@ -255,16 +255,16 @@ $( function() {
         var info = '';
         switch ( s.a ) {
           case 1:
-            info = 'Excel at handling {0}.\r\nBreak chance is lowered.';
+            info = 'Excel at handling {0}\r\nBreak chance is lowered';
             break;
           case 0:
-            info = 'Knows how to handle {0} properly.';
+            info = 'Knows how to handle {0} properly';
             break;
           case -1:
-            info = 'Can handle {0}.\r\nBreak chance is increased.';
+            info = 'Can handle {0}\r\nBreak chance is increased';
             break;
           case -2:
-            info = 'Can barely handle {0}.\r\nBreak chance is significantly increased.';
+            info = 'Can barely handle {0}\r\nBreak chance is significantly increased';
             break;
         }
         info = info.format( s.type );

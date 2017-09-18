@@ -12,6 +12,7 @@
 	z-index: 10;
   text-align: justify;
   font-weight: normal;
+  font-size: 0.8rem;
 }
 .htooltip:hover span {
 	opacity: 1;
