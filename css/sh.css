@@ -65,6 +65,9 @@ table.shopheroes th.name {
 table.shopheroes.item th.name {
   width: 11rem;
 }
+table.shopheroes.item th.item {
+  width: 12rem;
+}
 table.shopheroes th.item {
   min-width: 10rem;
   width: 10rem;

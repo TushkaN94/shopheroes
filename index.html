@@ -158,6 +158,13 @@
             <th></th>
             <th></th>
           </tr>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
           <tr>
             <th class="name">Name</th>
             <th class="type">Type</th>
@@ -197,11 +204,25 @@
             <th></th>
             <th></th>
           </tr>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           <item v-for="( item, i ) in items" v-show="visible( item )" :item="item" :key="i"/>
         </tbody>
         <tfoot>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
           <tr class="split">
             <th></th>
             <th></th>
@@ -238,6 +259,7 @@
         </td>
         <td>
           <div>
+            <span v-if="item.skill" class="float left icon quality" :class="item.skill.q" />
             <skill :skill="item.skill" :view="'item'" />
           </div>
         </td>
@@ -715,7 +737,10 @@
                   <td v-for="j in 7">
                     <div v-if="sh.items[j-1]">
                       <select2 v-if="edit" v-model="th.slots[j-1].item" :options="sh.items[j-1].list" :placeholder="'Choose item'"/>
-                      <span v-else>{{th.slots[j-1].q}}</span>
+                      <span v-else>
+                        <span class="float left icon quality" :class="th.slots[j-1].q"></span>
+                        <span>{{th.slots[j-1].q}}</span>
+                      </span>
                     </div>
                   </td>
                 </tr>
