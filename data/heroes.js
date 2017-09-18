@@ -41,7 +41,7 @@ $( function() {
       },
       slots: [
         { type: "", list: [ { type: "Swords", a: 1 }, { type: "Axes", a: 0 }, { type: "Maces", a: 0 }, { type: "Spears", a: -2 } ] },
-        { type: "", list: [ { type: "Armors", a: 0 }, { type: "Vests", a: -1 } ] },
+        { type: "", list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
         { type: "", list: [ { type: "Helmets", a: 0 } ] },
         { type: "", list: [ { type: "Gauntlets", a: 0 } ] },
         { type: "", list: [ { type: "Boots", a: 0 } ] },

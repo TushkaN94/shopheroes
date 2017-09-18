@@ -351,7 +351,7 @@ $( function() {
         c_data.items.map( i => {
           if ( options.type.ids.indexOf( i.type ) < 0 ) {
             options.type.ids.push( i.type );
-            options.type.list.push( { id: i.type, text: i.type } );
+            options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: "item" } );
           }
         } );
         options.skills.list = c_data.skills.map( s => {

@@ -274,22 +274,231 @@ span.icon.hero.Mojian {
 span.icon.hero.Charles {
   background-image: url( "images/heroes/Charles.png" );
 }
-span.icon.affinity1 {
-  border-radius: 0.25rem;
-  background-color: rgba( 0, 204, 102, 0.8 );
-}
-span.icon.affinity0 {
-  border-radius: 0.25rem;
-  background-color: rgba( 255, 194, 102, 0.8 );
-}
-span.icon.affinity-1 {
-  border-radius: 0.25rem;
-  background-color: rgba( 255, 92, 51, 0.8 );
-}
-span.icon.affinity-2 {
-  border-radius: 0.25rem;
-  background-color: rgba( 179, 0, 0, 0.8 );
-}
 span.icon.Power {
   background-image: url( "images/Power.png" );
+}
+span.icon.item.Swords.Affinity1 {
+  background-image: url( "images/types/affinity1/Swords.png" );
+}
+span.icon.item.Daggers.Affinity1 {
+  background-image: url( "images/types/affinity1/Daggers.png" );
+}
+span.icon.item.Spears.Affinity1 {
+  background-image: url( "images/types/affinity1/Spears.png" );
+}
+span.icon.item.Axes.Affinity1 {
+  background-image: url( "images/types/affinity1/Axes.png" );
+}
+span.icon.item.Maces.Affinity1 {
+  background-image: url( "images/types/affinity1/Maces.png" );
+}
+span.icon.item.Staves.Affinity1 {
+  background-image: url( "images/types/affinity1/Staves.png" );
+}
+span.icon.item.Guns.Affinity1 {
+  background-image: url( "images/types/affinity1/Guns.png" );
+}
+span.icon.item.Bows.Affinity1 {
+  background-image: url( "images/types/affinity1/Bows.png" );
+}
+span.icon.item.Armor.Affinity1 {
+  background-image: url( "images/types/affinity1/Armor.png" );
+}
+span.icon.item.Vests.Affinity1 {
+  background-image: url( "images/types/affinity1/Vests.png" );
+}
+span.icon.item.Clothes.Affinity1 {
+  background-image: url( "images/types/affinity1/Clothes.png" );
+}
+span.icon.item.Helmets.Affinity1 {
+  background-image: url( "images/types/affinity1/Helmets.png" );
+}
+span.icon.item.Hats.Affinity1 {
+  background-image: url( "images/types/affinity1/Hats.png" );
+}
+span.icon.item.Gauntlets.Affinity1 {
+  background-image: url( "images/types/affinity1/Gauntlets.png" );
+}
+span.icon.item.Bracers.Affinity1 {
+  background-image: url( "images/types/affinity1/Bracers.png" );
+}
+span.icon.item.Boots.Affinity1 {
+  background-image: url( "images/types/affinity1/Boots.png" );
+}
+span.icon.item.Footwear.Affinity1 {
+  background-image: url( "images/types/affinity1/Footwear.png" );
+}
+span.icon.item.Shields.Affinity1 {
+  background-image: url( "images/types/affinity1/Shields.png" );
+}
+span.icon.item.Projectiles.Affinity1 {
+  background-image: url( "images/types/affinity1/Projectiles.png" );
+}
+span.icon.item.Remedies.Affinity1 {
+  background-image: url( "images/types/affinity1/Remedies.png" );
+}
+span.icon.item.Potions.Affinity1 {
+  background-image: url( "images/types/affinity1/Potions.png" );
+}
+span.icon.item.Spells.Affinity1 {
+  background-image: url( "images/types/affinity1/Spells.png" );
+}
+span.icon.item.Rings.Affinity1 {
+  background-image: url( "images/types/affinity1/Rings.png" );
+}
+span.icon.item.Pendants.Affinity1 {
+  background-image: url( "images/types/affinity1/Pendants.png" );
+}
+span.icon.item.Instruments.Affinity1 {
+  background-image: url( "images/types/affinity1/Instruments.png" );
+}
+span.icon.item.Swords.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Swords.png" );
+}
+span.icon.item.Daggers.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Daggers.png" );
+}
+span.icon.item.Spears.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Spears.png" );
+}
+span.icon.item.Axes.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Axes.png" );
+}
+span.icon.item.Maces.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Maces.png" );
+}
+span.icon.item.Staves.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Staves.png" );
+}
+span.icon.item.Guns.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Guns.png" );
+}
+span.icon.item.Bows.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Bows.png" );
+}
+span.icon.item.Armor.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Armor.png" );
+}
+span.icon.item.Vests.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Vests.png" );
+}
+span.icon.item.Clothes.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Clothes.png" );
+}
+span.icon.item.Helmets.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Helmets.png" );
+}
+span.icon.item.Hats.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Hats.png" );
+}
+span.icon.item.Gauntlets.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Gauntlets.png" );
+}
+span.icon.item.Bracers.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Bracers.png" );
+}
+span.icon.item.Boots.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Boots.png" );
+}
+span.icon.item.Footwear.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Footwear.png" );
+}
+span.icon.item.Shields.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Shields.png" );
+}
+span.icon.item.Projectiles.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Projectiles.png" );
+}
+span.icon.item.Remedies.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Remedies.png" );
+}
+span.icon.item.Potions.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Potions.png" );
+}
+span.icon.item.Spells.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Spells.png" );
+}
+span.icon.item.Rings.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Rings.png" );
+}
+span.icon.item.Pendants.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Pendants.png" );
+}
+span.icon.item.Instruments.Affinity-1 {
+  background-image: url( "images/types/affinity-1/Instruments.png" );
+}
+span.icon.item.Swords.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Swords.png" );
+}
+span.icon.item.Daggers.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Daggers.png" );
+}
+span.icon.item.Spears.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Spears.png" );
+}
+span.icon.item.Axes.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Axes.png" );
+}
+span.icon.item.Maces.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Maces.png" );
+}
+span.icon.item.Staves.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Staves.png" );
+}
+span.icon.item.Guns.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Guns.png" );
+}
+span.icon.item.Bows.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Bows.png" );
+}
+span.icon.item.Armor.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Armor.png" );
+}
+span.icon.item.Vests.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Vests.png" );
+}
+span.icon.item.Clothes.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Clothes.png" );
+}
+span.icon.item.Helmets.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Helmets.png" );
+}
+span.icon.item.Hats.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Hats.png" );
+}
+span.icon.item.Gauntlets.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Gauntlets.png" );
+}
+span.icon.item.Bracers.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Bracers.png" );
+}
+span.icon.item.Boots.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Boots.png" );
+}
+span.icon.item.Footwear.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Footwear.png" );
+}
+span.icon.item.Shields.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Shields.png" );
+}
+span.icon.item.Projectiles.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Projectiles.png" );
+}
+span.icon.item.Remedies.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Remedies.png" );
+}
+span.icon.item.Potions.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Potions.png" );
+}
+span.icon.item.Spells.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Spells.png" );
+}
+span.icon.item.Rings.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Rings.png" );
+}
+span.icon.item.Pendants.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Pendants.png" );
+}
+span.icon.item.Instruments.Affinity-2 {
+  background-image: url( "images/types/affinity-2/Instruments.png" );
 }
