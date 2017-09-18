@@ -8,7 +8,7 @@ $( function() {
   };
   Number.prototype.pptString = function( pos ) {
     var base = Math.pow( 10, pos );
-    return ( Math.round( 100 * base * this, 0 ) / base ).toLocaleString() + "%";
+    return ( Math.round( 100 * base * this, 0 ) / base ).toLocaleString() + '%';
   };
   if ( !String.prototype.format ) {
     String.prototype.format = function() {
@@ -35,15 +35,15 @@ $( function() {
     heroes: [],
     teams: [],
     json: function( key ) {
-      var res = "";
+      var res = '';
       switch ( key ) {
-        case "heroes":
-        case "items":
-        case "buildings":
-          res = JSON.stringify( cache.get( key + "_custom" ) || [] );
+        case 'heroes':
+        case 'items':
+        case 'buildings':
+          res = JSON.stringify( cache.get( key + '_custom' ) || [] );
           break;
-        case "teams":
-          res = JSON.stringify( cache.get( "teams" ) || [] );
+        case 'teams':
+          res = JSON.stringify( cache.get( 'teams' ) || [] );
           break;
         default:
           break;
@@ -56,10 +56,10 @@ $( function() {
         case 'heroes':
         case 'items':
         case 'buildings':
-          $.extend( true, self[key], cache.get( key + "_custom" ) || [] );
+          $.extend( true, self[key], cache.get( key + '_custom' ) || [] );
           break;
         case 'teams':
-          $.extend( true, self.teams, cache.get( "teams" ) || [] );
+          $.extend( true, self.teams, cache.get( 'teams' ) || [] );
           break;
         default:
           break;
@@ -84,19 +84,19 @@ $( function() {
     }
   };
 
-  c_data.set( "qualities" );
-  c_data.set( "powers" );
-  c_data.set( "breaks" );
-  c_data.set( "skills" );
-  c_data.set( "skills_effects" );
-  c_data.set( "buildings" );
-  c_data.extend( "buildings" );
-  c_data.set( "items" );
-  c_data.extend( "items" );
-  c_data.set( "heroes" );
-  c_data.extend( "heroes" );
-  c_data.set( "teams" );
-  c_data.extend( "teams" );
+  c_data.set( 'qualities' );
+  c_data.set( 'powers' );
+  c_data.set( 'breaks' );
+  c_data.set( 'skills' );
+  c_data.set( 'skills_effects' );
+  c_data.set( 'buildings' );
+  c_data.extend( 'buildings' );
+  c_data.set( 'items' );
+  c_data.extend( 'items' );
+  c_data.set( 'heroes' );
+  c_data.extend( 'heroes' );
+  c_data.set( 'teams' );
+  c_data.extend( 'teams' );
 
   Vue.mixin( {
     methods: {
@@ -150,7 +150,7 @@ $( function() {
           dropdownAutoWidth: true,
           allowClear: true,
           minimumResultsForSearch: Infinity,
-          placeholder: " ",
+          placeholder: ' ',
           tags: false,
           createTag: function( params ) {
             return {
@@ -160,20 +160,20 @@ $( function() {
             }
           },
           templateResult: function( data ) {
-            var $result = $( "<span/>" );
+            var $result = $( '<span/>' );
             if ( data.icon ) {
-              var $icon = $( "<span/>" );
+              var $icon = $( '<span/>' );
               $icon
-                .addClass( "icon float left" )
+                .addClass( 'icon float left' )
                 .addClass( data.icon )
                 .addClass( data.iconType );
               $result.append( $icon );
             };
-            var $text = $( "<span/>" )
+            var $text = $( '<span/>' )
             $text.text( data.text );
             if ( data.custom ) {
-              $text.prepend( "Contains \"" );
-              $text.append( "\"" );
+              $text.prepend( 'Contains "' );
+              $text.append( '"' );
             }
             $result.append( $text );
             return $result;
@@ -186,7 +186,7 @@ $( function() {
       $.extend( true, this.settings, {
         data: this.options,
         minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
-        placeholder: this.placeholder || " ",
+        placeholder: this.placeholder || ' ',
         tags: !!this.tags
       } );
       $( this.$el )
@@ -223,7 +223,7 @@ $( function() {
       },
       placeholder: function( placeholder ) {
         $.extend( true, this.settings, {
-          placeholder: !!placeholder || " "
+          placeholder: !!placeholder || ' '
         } );
       },
       tags: function( tags ) {
@@ -252,19 +252,19 @@ $( function() {
       summary: function() {
         var vm = this;
         var s = vm.itemSlot;
-        var info = "";
+        var info = '';
         switch ( s.a ) {
           case 1:
-            info = "Excel at handling {0}.\r\nBreak chance is lowered.";
+            info = 'Excel at handling {0}.\r\nBreak chance is lowered.';
             break;
           case 0:
-            info = "Knows how to handle {0} properly.";
+            info = 'Knows how to handle {0} properly.';
             break;
           case -1:
-            info = "Can handle {0}.\r\nBreak chance is increased.";
+            info = 'Can handle {0}.\r\nBreak chance is increased.';
             break;
           case -2:
-            info = "Can barely handle {0}.\r\nBreak chance is significantly increased.";
+            info = 'Can barely handle {0}.\r\nBreak chance is significantly increased.';
             break;
         }
         info = info.format( s.type );
@@ -280,37 +280,37 @@ $( function() {
       summary: function() {
         var vm = this;
         var s = vm.skill;
-        if ( vm.view == "item" ) {
+        if ( vm.view == 'item' ) {
           s = vm.get_skill( s );
         }
         var val = s.cap ? Math.min( s.value, s.cap ) : s.value;
-        var value = "%" == s.sign ? val.pptString(1) : val.intString();
+        var value = '%' == s.sign ? val.pptString(1) : val.intString();
         var info = s.name;
         if ( s.leader ) {
-          info += "\r\n" + "Leader skill";
+          info += '\r\n' + 'Leader skill';
         }
         if ( !!s.text ) {
-          info += "\r\n" + s.text.format( value );
+          info += '\r\n' + s.text.format( value );
         }
         if ( s.cap ) {
           var c_val = s.value - val;
-          info += "\r\n" + "Capped at {0}".format( s.sign ? s.cap.pptString(1) : s.cap.intString() );
+          info += '\r\n' + 'Capped at {0}'.format( s.sign ? s.cap.pptString(1) : s.cap.intString() );
           if ( c_val > 0 ) {
-            info += ". " + "Wasted surplus of {0}".format( "%" == s.sign ? c_val.pptString(1) : c_val.intString() );
+            info += '. ' + 'Wasted surplus of {0}'.format( '%' == s.sign ? c_val.pptString(1) : c_val.intString() );
           }
         }
         if ( !s.active ) {
           if ( s.m != undefined && !s.m ) {
-            info += "\r\n" + "Unlocked on mastered blueprint";
+            info += '\r\n' + 'Unlocked on mastered blueprint';
           }
           if ( s.q != undefined ) {
-            info += "\r\n" + "Unlocked on item of {0} quality or higher".format( s.q );
+            info += '\r\n' + 'Unlocked on item of {0} quality or higher'.format( s.q );
           }
           if ( s.lv != undefined ) {
-            info += "\r\n" + "Unlocked at level {0}".format( s.lv );
+            info += '\r\n' + 'Unlocked at level {0}'.format( s.lv );
           }
         }
-        var icon = s.name.replace( /\s+|\bI+$|-/g, "" );
+        var icon = s.name.replace( /\s+|\bI+$|-/g, '' );
         return {
           icon: icon,
           info: info,
@@ -351,11 +351,11 @@ $( function() {
         c_data.items.map( i => {
           if ( options.type.ids.indexOf( i.type ) < 0 ) {
             options.type.ids.push( i.type );
-            options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: "item" } );
+            options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
           }
         } );
         options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, "" ), iconType: "skill" };
+          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
         } );
         return options;
       }
@@ -611,7 +611,7 @@ $( function() {
           return { id: b.name, text: b.name };
         } );
         options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, "" ), iconType: "skill" };
+          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
         } );
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
           return { id: k, text: k };
@@ -699,7 +699,7 @@ $( function() {
         } );
         options.heroes.list = c_data.heroes
           .map( h => {
-            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: "hero" };
+            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero' };
           } );
         return options;
       },
@@ -757,13 +757,13 @@ $( function() {
               .filter( s => vm.apply_filter( h.hero, s.filter ) )
               .map( s => {
                 switch ( s.type ) {
-                  case "Survival":
+                  case 'Survival':
                     m_s += s.value;
                     break;
-                  case "Equipment":
+                  case 'Equipment':
                     h.power.m.i += s.value;
                     break;
-                  case "Strength":
+                  case 'Strength':
                     h.power.m.h += s.value;
                     break;
                   default:
@@ -774,7 +774,7 @@ $( function() {
             result.power.hero += ( h.power.value || 0 );
             h.power.value = ( h.power.hero * h.power.m.h + h.power.items * h.power.m.o * h.power.m.i ) * h.power.m.b * h.power.m.s;
             h.power.info = 
-              "TP = ( HP * HPM + IP * IOM * IPM ) * BM * SRM\r\n{0} = ( {1} * {3}  + {2} * {4} * {5} ) * {6} * {7}"
+              'TP = ( HP * HPM + IP * IOM * IPM ) * BM * SRM\r\n{0} = ( {1} * {3}  + {2} * {4} * {5} ) * {6} * {7}'
                 .format( 
                   h.power.value.intString(), 
                   h.power.hero.intString(),
@@ -788,7 +788,7 @@ $( function() {
             result.power.value += ( h.power.value || 0 );
             return h;
           } );
-        result.power.info = "Group Bonus: +{0}%".format( Math.round( 100 * ( result.power.value / result.power.hero - 1 ) ) );
+        result.power.info = 'Group Bonus: +{0}%'.format( Math.round( 100 * ( result.power.value / result.power.hero - 1 ) ) );
         return result;
       }
     },
@@ -809,7 +809,7 @@ $( function() {
           optimals: 0,
           building: {},
           power: { 
-            info: "",
+            info: '',
             base: 0,
             level: 0,
             hero: 0,
@@ -862,7 +862,9 @@ $( function() {
                   .map( i => {
                     return {
                       id: i.name,
-                      text: i.name
+                      text: i.name,
+                      icon: i.name,
+                      iconType: 'item'
                     };
                   } );
                 return {
@@ -880,7 +882,7 @@ $( function() {
                 var p_v = i.power * m_q;
                 i.power = {
                   value: p_v,
-                  info: "IP = IBP * IQM\r\n{0} = {1} * {2}"
+                  info: 'IP = IBP * IQM\r\n{0} = {1} * {2}'
                     .format( 
                       p_v.intString(), 
                       i.power.intString(),
@@ -937,13 +939,13 @@ $( function() {
           .filter( s => vm.apply_filter( h, s.filter ) )
           .map( s => {
             switch ( s.type ) {
-              case "Leader":
+              case 'Leader':
                 result.companions += s.value;
                 break;
-              case "Equipment":
+              case 'Equipment':
                 result.power.m.i += s.value;
                 break;
-              case "Strength":
+              case 'Strength':
                 result.power.m.h += s.value;
                 break;
               default:
@@ -1001,7 +1003,7 @@ $( function() {
           } else {
             vm.history.skip -= 1;
           }
-          cache.set( "teams", teams, true );
+          cache.set( 'teams', teams, true );
         },
         deep: true
       },
@@ -1070,7 +1072,7 @@ $( function() {
       dropdownAutoWidth: true,
       allowClear: false,
       minimumResultsForSearch: Infinity,
-      placeholder: "Choose data type",
+      placeholder: 'Choose data type',
       tags: false,
     } );
 
@@ -1078,13 +1080,13 @@ $( function() {
     .on( 'click', function() {
       var type = $data.val();
       switch ( type ) {
-        case "heroes":
+        case 'heroes':
           c_data.heroes.splice(0);
           break;
-        case "items":
+        case 'items':
           c_data.items.splice(0);
           break;
-        case "teams":
+        case 'teams':
           c_data.teams.splice(0);
           break;
       }
@@ -1102,22 +1104,22 @@ $( function() {
       var type = $data.val();
       var res = JSON.parse( $json.val() );
       switch ( type ) {
-        case "heroes":
-          cache.set( "heroes_custom", res, true );
-          c_data.extend( "heroes" );
+        case 'heroes':
+          cache.set( 'heroes_custom', res, true );
+          c_data.extend( 'heroes' );
           break;
-        case "items":
-          cache.set( "items_custom", res, true );
-          c_data.extend( "items" );
+        case 'items':
+          cache.set( 'items_custom', res, true );
+          c_data.extend( 'items' );
           break;
-        case "teams":
-          cache.set( "teams", res, true );
-          c_data.set( "teams" )
+        case 'teams':
+          cache.set( 'teams', res, true );
+          c_data.set( 'teams' )
           break;
         default:
           break;
       }
-      $json.val( "" );
+      $json.val( '' );
     } );
 
 } );
