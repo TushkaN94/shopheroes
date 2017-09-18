@@ -1,292 +1,295 @@
-table.shopheroes span.icon {
-  height: 1.25em;
-  max-height: 24px;
-  width: 1.25em;
-  max-width: 24px;
-  margin: 2px 2px;
-  line-height: 1.5em;
-  vertical-align: middle;
+span.icon {
+  min-height: 1.25rem;
+  min-width: 1.25rem;
+  margin: 1px;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  border-radius: 0.25em;
 }
-table.shopheroes span.icon.Swords {
+span.icon.medium {
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+}
+span.icon.item.Swords {
   background-image: url( "images/weapon_types/Swords.png" );
 }
-table.shopheroes span.icon.Daggers {
+span.icon.item.Daggers {
   background-image: url( "images/weapon_types/Daggers.png" );
 }
-table.shopheroes span.icon.Spears {
+span.icon.item.Spears {
   background-image: url( "images/weapon_types/Spears.png" );
 }
-table.shopheroes span.icon.Axes {
+span.icon.item.Axes {
   background-image: url( "images/weapon_types/Axes.png" );
 }
-table.shopheroes span.icon.Maces {
+span.icon.item.Maces {
   background-image: url( "images/weapon_types/Maces.png" );
 }
-table.shopheroes span.icon.Staves {
+span.icon.item.Staves {
   background-image: url( "images/weapon_types/Staves.png" );
 }
-table.shopheroes span.icon.Guns {
+span.icon.item.Guns {
   background-image: url( "images/weapon_types/Guns.png" );
 }
-table.shopheroes span.icon.Bows {
+span.icon.item.Bows {
   background-image: url( "images/weapon_types/Bows.png" );
 }
-table.shopheroes span.icon.Armor {
+span.icon.item.Armor {
   background-image: url( "images/weapon_types/Armor.png" );
 }
-table.shopheroes span.icon.Vests {
+span.icon.item.Vests {
   background-image: url( "images/weapon_types/Vests.png" );
 }
-table.shopheroes span.icon.Clothes {
+span.icon.item.Clothes {
   background-image: url( "images/weapon_types/Clothes.png" );
 }
-table.shopheroes span.icon.Helmets {
+span.icon.item.Helmets {
   background-image: url( "images/weapon_types/Helmets.png" );
 }
-table.shopheroes span.icon.Hats {
+span.icon.item.Hats {
   background-image: url( "images/weapon_types/Hats.png" );
 }
-table.shopheroes span.icon.Gauntlets {
+span.icon.item.Gauntlets {
   background-image: url( "images/weapon_types/Gauntlets.png" );
 }
-table.shopheroes span.icon.Bracers {
+span.icon.item.Bracers {
   background-image: url( "images/weapon_types/Bracers.png" );
 }
-table.shopheroes span.icon.Boots {
+span.icon.item.Boots {
   background-image: url( "images/weapon_types/Boots.png" );
 }
-table.shopheroes span.icon.Footwear {
+span.icon.item.Footwear {
   background-image: url( "images/weapon_types/Footwear.png" );
 }
-table.shopheroes span.icon.Shields {
+span.icon.item.Shields {
   background-image: url( "images/weapon_types/Shields.png" );
 }
-table.shopheroes span.icon.Projectiles {
+span.icon.item.Projectiles {
   background-image: url( "images/weapon_types/Projectiles.png" );
 }
-table.shopheroes span.icon.Remedies {
+span.icon.item.Remedies {
   background-image: url( "images/weapon_types/Remedies.png" );
 }
-table.shopheroes span.icon.Potions {
+span.icon.item.Potions {
   background-image: url( "images/weapon_types/Potions.png" );
 }
-table.shopheroes span.icon.Spells {
+span.icon.item.Spells {
   background-image: url( "images/weapon_types/Spells.png" );
 }
-table.shopheroes span.icon.Rings {
+span.icon.item.Rings {
   background-image: url( "images/weapon_types/Rings.png" );
 }
-table.shopheroes span.icon.Pendants {
+span.icon.item.Pendants {
   background-image: url( "images/weapon_types/Pendants.png" );
 }
-table.shopheroes span.icon.Instruments {
+span.icon.item.Instruments {
   background-image: url( "images/weapon_types/Instruments.png" );
 }
-table.shopheroes span.icon.skill.SpeedRunner {
+span.icon.skill.SpeedRunner {
   background-image: url( "images/skills/SpeedRunner.png" );
 }
-table.shopheroes span.icon.skill.Leader {
+span.icon.skill.Leader {
   background-image: url( "images/skills/Leader.png" );
 }
-table.shopheroes span.icon.skill.Healer {
+span.icon.skill.Healer {
   background-image: url( "images/skills/Healer.png" );
 }
-table.shopheroes span.icon.skill.Energetic {
+span.icon.skill.Energetic {
   background-image: url( "images/skills/Energetic.png" );
 }
-table.shopheroes span.icon.skill.Revive {
+span.icon.skill.Revive {
   background-image: url( "images/skills/Revive.png" );
 }
-table.shopheroes span.icon.skill.Support {
+span.icon.skill.Support {
   background-image: url( "images/skills/Support.png" );
 }
-table.shopheroes span.icon.skill.Resourceful {
+span.icon.skill.Resourceful {
   background-image: url( "images/skills/Resourceful.png" );
 }
-table.shopheroes span.icon.skill.Fastidious {
+span.icon.skill.Fastidious {
   background-image: url( "images/skills/Fastidious.png" );
 }
-table.shopheroes span.icon.skill.Supplier {
+span.icon.skill.Supplier {
   background-image: url( "images/skills/Supplier.png" );
 }
-table.shopheroes span.icon.skill.Gangster {
+span.icon.skill.Gangster {
   background-image: url( "images/skills/Gangster.png" );
 }
-table.shopheroes span.icon.skill.Amazon {
+span.icon.skill.Amazon {
   background-image: url( "images/skills/Amazon.png" );
 }
-table.shopheroes span.icon.skill.Brosinarms {
+span.icon.skill.Brosinarms {
   background-image: url( "images/skills/Brosinarms.png" );
 }
-table.shopheroes span.icon.skill.Protector {
+span.icon.skill.Protector {
   background-image: url( "images/skills/Protector.png" );
 }
-table.shopheroes span.icon.skill.AuraofProtection {
+span.icon.skill.AuraofProtection {
   background-image: url( "images/skills/AuraofProtection.png" );
 }
-table.shopheroes span.icon.skill.Commander {
+span.icon.skill.Commander {
   background-image: url( "images/skills/Commander.png" );
 }
-table.shopheroes span.icon.skill.ArchWizard {
+span.icon.skill.ArchWizard {
   background-image: url( "images/skills/ArchWizard.png" );
 }
-table.shopheroes span.icon.skill.Cleave {
+span.icon.skill.Cleave {
   background-image: url( "images/skills/Cleave.png" );
 }
-table.shopheroes span.icon.skill.Crush {
+span.icon.skill.Crush {
   background-image: url( "images/skills/Crush.png" );
 }
-table.shopheroes span.icon.skill.Berserker {
+span.icon.skill.Berserker {
   background-image: url( "images/skills/Berserker.png" );
 }
-table.shopheroes span.icon.skill.Backstab {
+span.icon.skill.Backstab {
   background-image: url( "images/skills/Backstab.png" );
 }
-table.shopheroes span.icon.skill.Parry {
+span.icon.skill.Parry {
   background-image: url( "images/skills/Parry.png" );
 }
-table.shopheroes span.icon.skill.Stoneskin {
+span.icon.skill.Stoneskin {
   background-image: url( "images/skills/Stoneskin.png" );
 }
-table.shopheroes span.icon.skill.Riposte {
+span.icon.skill.Riposte {
   background-image: url( "images/skills/Riposte.png" );
 }
-table.shopheroes span.icon.skill.MageArmor {
+span.icon.skill.MageArmor {
   background-image: url( "images/skills/MageArmor.png" );
 }
-table.shopheroes span.icon.skill.Coneofcold {
+span.icon.skill.Coneofcold {
   background-image: url( "images/skills/Coneofcold.png" );
 }
-table.shopheroes span.icon.skill.Thunderbolt {
+span.icon.skill.Thunderbolt {
   background-image: url( "images/skills/Thunderbolt.png" );
 }
-table.shopheroes span.icon.skill.Fireball {
+span.icon.skill.Fireball {
   background-image: url( "images/skills/Fireball.png" );
 }
-table.shopheroes span.icon.skill.Resilient {
+span.icon.skill.Resilient {
   background-image: url( "images/skills/Resilient.png" );
 }
-table.shopheroes span.icon.skill.Wise {
+span.icon.skill.Wise {
   background-image: url( "images/skills/Wise.png" );
 }
-table.shopheroes span.icon.skill.Lucky {
+span.icon.skill.Lucky {
   background-image: url( "images/skills/Lucky.png" );
 }
-table.shopheroes span.icon.skill.Shadowstep {
+span.icon.skill.Shadowstep {
   background-image: url( "images/skills/Shadowstep.png" );
 }
-table.shopheroes span.icon.skill.GoldDigger {
+span.icon.skill.GoldDigger {
   background-image: url( "images/skills/GoldDigger.png" );
 }
-table.shopheroes span.icon.skill.TreasureHunter {
+span.icon.skill.TreasureHunter {
   background-image: url( "images/skills/TreasureHunter.png" );
 }
-table.shopheroes span.icon.skill.Scavenger {
+span.icon.skill.Scavenger {
   background-image: url( "images/skills/Scavenger.png" );
 }
-table.shopheroes span.icon.skill.DetectSecrets {
+span.icon.skill.DetectSecrets {
   background-image: url( "images/skills/DetectSecrets.png" );
 }
-table.shopheroes span.icon.skill.MagicFind {
+span.icon.skill.MagicFind {
   background-image: url( "images/skills/MagicFind.png" );
 }
-table.shopheroes span.icon.hero.Karal {
+span.icon.hero.Karal {
   background-image: url( "images/heroes/Karal.png" );
 }
-table.shopheroes span.icon.hero.Theor {
+span.icon.hero.Theor {
   background-image: url( "images/heroes/Theor.png" );
 }
-table.shopheroes span.icon.hero.Clovis {
+span.icon.hero.Clovis {
   background-image: url( "images/heroes/Clovis.png" );
 }
-table.shopheroes span.icon.hero.Gauvin {
+span.icon.hero.Gauvin {
   background-image: url( "images/heroes/Gauvin.png" );
 }
-table.shopheroes span.icon.hero.Lancaster {
+span.icon.hero.Lancaster {
   background-image: url( "images/heroes/Lancaster.png" );
 }
-table.shopheroes span.icon.hero.Fiora {
+span.icon.hero.Fiora {
   background-image: url( "images/heroes/Fiora.png" );
 }
-table.shopheroes span.icon.hero.Kurul {
+span.icon.hero.Kurul {
   background-image: url( "images/heroes/Kurul.png" );
 }
-table.shopheroes span.icon.hero.Edward {
+span.icon.hero.Edward {
   background-image: url( "images/heroes/Edward.png" );
 }
-table.shopheroes span.icon.hero.Alicia {
+span.icon.hero.Alicia {
   background-image: url( "images/heroes/Alicia.png" );
 }
-table.shopheroes span.icon.hero.Garreth {
+span.icon.hero.Garreth {
   background-image: url( "images/heroes/Garreth.png" );
 }
-table.shopheroes span.icon.hero.Palash {
+span.icon.hero.Palash {
   background-image: url( "images/heroes/Palash.png" );
 }
-table.shopheroes span.icon.hero.Mila {
+span.icon.hero.Mila {
   background-image: url( "images/heroes/Mila.png" );
 }
-table.shopheroes span.icon.hero.Irene {
+span.icon.hero.Irene {
   background-image: url( "images/heroes/Irene.png" );
 }
-table.shopheroes span.icon.hero.Darthos {
+span.icon.hero.Darthos {
   background-image: url( "images/heroes/Darthos.png" );
 }
-table.shopheroes span.icon.hero.Odette {
+span.icon.hero.Odette {
   background-image: url( "images/heroes/Odette.png" );
 }
-table.shopheroes span.icon.hero.Louca {
+span.icon.hero.Louca {
   background-image: url( "images/heroes/Louca.png" );
 }
-table.shopheroes span.icon.hero.KuroShobi {
+span.icon.hero.KuroShobi {
   background-image: url( "images/heroes/KuroShobi.png" );
 }
-table.shopheroes span.icon.hero.Lorelei {
+span.icon.hero.Lorelei {
   background-image: url( "images/heroes/Lorelei.png" );
 }
-table.shopheroes span.icon.hero.Melina {
+span.icon.hero.Melina {
   background-image: url( "images/heroes/Melina.png" );
 }
-table.shopheroes span.icon.hero.Minh {
+span.icon.hero.Minh {
   background-image: url( "images/heroes/Minh.png" );
 }
-table.shopheroes span.icon.hero.Albert {
+span.icon.hero.Albert {
   background-image: url( "images/heroes/Albert.png" );
 }
-table.shopheroes span.icon.hero.Nya {
+span.icon.hero.Nya {
   background-image: url( "images/heroes/Nya.png" );
 }
-table.shopheroes span.icon.hero.Oneira {
+span.icon.hero.Oneira {
   background-image: url( "images/heroes/Oneira.png" );
 }
-table.shopheroes span.icon.hero.Azula {
+span.icon.hero.Azula {
   background-image: url( "images/heroes/Azula.png" );
 }
-table.shopheroes span.icon.hero.Francesca {
+span.icon.hero.Francesca {
   background-image: url( "images/heroes/Francesca.png" );
 }
-table.shopheroes span.icon.hero.Mojian {
+span.icon.hero.Mojian {
   background-image: url( "images/heroes/Mojian.png" );
 }
-table.shopheroes span.icon.hero.Charles {
+span.icon.hero.Charles {
   background-image: url( "images/heroes/Charles.png" );
 }
-table.shopheroes span.icon.affinity1 {
+span.icon.affinity1 {
+  border-radius: 0.25rem;
   background-color: rgba( 0, 204, 102, 0.8 );
 }
-table.shopheroes span.icon.affinity0 {
+span.icon.affinity0 {
+  border-radius: 0.25rem;
   background-color: rgba( 255, 194, 102, 0.8 );
 }
-table.shopheroes span.icon.affinity-1 {
+span.icon.affinity-1 {
+  border-radius: 0.25rem;
   background-color: rgba( 255, 92, 51, 0.8 );
 }
-table.shopheroes span.icon.affinity-2 {
+span.icon.affinity-2 {
+  border-radius: 0.25rem;
   background-color: rgba( 179, 0, 0, 0.8 );
 }
-table.shopheroes span.icon.Power {
+span.icon.Power {
   background-image: url( "images/Power.png" );
 }

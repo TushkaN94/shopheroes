@@ -23,13 +23,13 @@ body * {
 }
 
 table.shopheroes {
-  font-size: 1em;
+  font-size: 1rem;
   font-family: Arial Tahoma Calibri;
   width: flex;
 }
 table.shopheroes tr {
-  /*line-height: 1.5em;*/
-  /*min-height: 1.5em;*/
+  height: 1.5rem;
+  line-height: 1.5rem;
 }
 table.shopheroes tr.split {
   line-height: 2px;
@@ -38,51 +38,48 @@ table.shopheroes tr.split {
   min-height: 2px;
 }
 table.shopheroes th {
-  padding: 1px 3px;
-  text-align: center;
+  padding: 1px 2px;
   font-weight: bold;
+  text-align: center;
   background-color: #E9E9E9;
 }
 table.shopheroes td {
-  padding: 1px 3px;
-  font-size: 0.9em;
+  padding: 1px 2px;
+  font-size: 0.9rem;
   text-align: center;
   background-color: #F6F6F6;
 }
 
 table.shopheroes th.slot {
-  max-width: 45px;
-  min-width: 45px;
+  max-width: 20px;
+  min-width: 20px;
 }
 table.shopheroes.team th.item {
   min-width: calc((100%-45)/8);
   width: calc((100%-45)/8);
 }
 table.shopheroes th.name {
-  min-width: 9em;
-  width: 9em;
+  min-width: 9rem;
+  width: 9rem;
 }
 table.shopheroes.item th.name {
-  width: 11em;
+  width: 11rem;
 }
 table.shopheroes th.item {
-  min-width: 10em;
-  width: 10em;
-}
-table.shopheroes.item th.item {
-  width: 12em;
+  min-width: 10rem;
+  width: 10rem;
 }
 table.shopheroes th.type {
-  min-width: 7em;
-  width: 7em;
+  min-width: 8rem;
+  width: 8rem;
 }
 table.shopheroes th.power {
-  min-width: 6em;
-  width: 7em;
+  min-width: 6rem;
+  width: 7rem;
 }
 table.shopheroes th.level {
-  min-width: 7em;
-  width: 7em;
+  min-width: 8rem;
+  width: 8rem;
 }
 
 table.shopheroes .select2-container .select2-selection--multiple,
@@ -112,52 +109,48 @@ table.shopheroes .select2-container {
   font-weight: normal !important;
 }
 table.shopheroes select {
-  font-size: 0.8em;
-  line-height: 1.5em;
-  min-height: 1.5em;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
   font-weight: normal !important;
 }
 table.shopheroes input {
-  font-size: 0.8em;
+  font-size: 0.9rem;
   font-weight: normal !important;
 }
 table.shopheroes input.name {
   width: 100%;
 }
 table.shopheroes input.lv {
-  max-width: 3em;
+  max-width: 3rem;
   text-align: center;
 }
 
 table.shopheroes span.skill-info {
-  font-size: 0.9em;
-  line-height: 1.5em;
+  font-size: 0.90em;
 }
 table.shopheroes span.power-info {
-  line-height: 1.5em;
-  height: 100%;
 }
 
-table.shopheroes .left {
-  text-align: left;
+.left {
+  text-align: left !important;
 }
-table.shopheroes .right {
-  text-align: right;
+.right {
+  text-align: right !important;
 }
-table.shopheroes .float {
-  display: inline-block;
+.float {
+  display: inline-block; !important
 }
-table.shopheroes .float.left {
-  float: left;
+.float.left {
+  float: left !important;
 }
-table.shopheroes .float.right {
-  float: right;
+.float.right {
+  float: right !important;
 }
 
 table.shopheroes .collapse {
   display: inline;
   text-align: left;
-  margin-left: 0.2em;
+  margin-left: 0.2rem;
   float: left;
   width: auto !important; 
 }
@@ -173,7 +166,7 @@ table.shopheroes span.button.hidden {
 table.shopheroes span.button {
   vertical-align: middle;
   display: inline-block;
-  line-height: 1.5em;
+  line-height: 1.5rem;
   min-width: 16px;
   max-width: 16px;
   min-height: 16px;
