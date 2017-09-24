@@ -127,13 +127,13 @@ $( function() {
           name: null,
           b: false,
           slots: [
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null },
-            { edit: false, item: null, q: null }
+            { item: null, q: null },
+            { item: null, q: null },
+            { item: null, q: null },
+            { item: null, q: null },
+            { item: null, q: null },
+            { item: null, q: null },
+            { item: null, q: null }
           ]
         };
       }
@@ -142,8 +142,43 @@ $( function() {
 
   Vue.component( 'select2', {
     template: '#templates-select2',
-    props: [ 'options', 'value', 'nosearch', 'tags', 'placeholder' ],
+    props: [ 'options', 'value', 'nosearch', 'placeholder' ],
     data: function() {
+      var matcher = function( params, data ) {
+        if ( !params.term ) {
+          return data;
+        }
+        if ( data.custom ) {
+          return data;
+        }
+        if ( data.children && data.children.length > 0 ) {
+          var match = $.extend( true, {}, data );
+          for ( var c = data.children.length - 1; c >= 0; c-- ) {
+            var child = data.children[c];
+            var matches = matcher( params, child );
+            if ( !matches ) {
+              match.children.splice( c, 1 );
+            }
+          }
+          if ( match.children.length > 0 ) {
+            return match;
+          }
+        }
+        var terms = ( params.term || '' ).toUpperCase().split( ' ' );
+        var texts = data.text.toUpperCase();
+        if ( data.data ) {
+          $.each( data.data, function( i, v ) {
+            texts += ' ' + v.toString().toUpperCase();
+          } );
+        }
+        for ( var i = 0, m = terms.length; i < m; i++ ) {
+          var re = new RegExp( '\\b' + terms[i] );
+          if ( !re.test( texts ) ) {
+            return false;
+          }
+        };
+        return data;
+      };
       return {
         settings: { 
           width: '100%',
@@ -151,24 +186,69 @@ $( function() {
           allowClear: true,
           minimumResultsForSearch: Infinity,
           placeholder: ' ',
-          tags: false,
-          createTag: function( params ) {
-            return {
-              id: params.term,
-              text: params.term.capitalize( true ),
-              custom: true
+          sorter: function( data ) {
+            return data.sort( function( a, b ) {
+              if ( a.custom != undefined ) {
+                return -1;
+              }
+              if ( b.custom != undefined ) {
+                return 1;
+              }
+              if ( a.sort != undefined ) {
+                return a.sort - b.sort;
+              }
+              if ( a.text != undefined ) {
+                return a.text.localeCompare( b.text );
+              }
+              return 0;
+            } );
+          },
+          matcher: matcher,
+          templateSelection: function( data ) {
+            if ( !data ) {
+              return;
             }
+            var $result = $( '<span/>' );
+            if ( data.data ) {
+              $.each( data.data, function( i, v ) {
+                var $data = $( '<span/>' );
+                $data
+                  .text( v )
+                  .addClass( 'icon float left' )
+                  .appendTo( $result );
+              } );
+            }
+            var $text = $( '<span/>' )
+            $text.text( data.text );
+            if ( data.custom ) {
+              $text.prepend( 'Contains "' );
+              $text.append( '"' );
+            }
+            $result.append( $text );
+            return $result;
           },
           templateResult: function( data ) {
+            if ( !data ) {
+              return;
+            }
             var $result = $( '<span/>' );
             if ( data.icon ) {
               var $icon = $( '<span/>' );
               $icon
                 .addClass( 'icon float left' )
                 .addClass( data.icon )
-                .addClass( data.iconType );
-              $result.append( $icon );
+                .addClass( data.iconType )
+                .appendTo( $result );
             };
+            if ( data.data ) {
+              $.each( data.data, function( i, v ) {
+                var $data = $( '<span/>' );
+                $data
+                  .text( v )
+                  .addClass( 'icon float left' )
+                  .appendTo( $result );
+              } );
+            }
             var $text = $( '<span/>' )
             $text.text( data.text );
             if ( data.custom ) {
@@ -186,8 +266,7 @@ $( function() {
       $.extend( true, this.settings, {
         data: this.options,
         minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
-        placeholder: this.placeholder || ' ',
-        tags: !!this.tags
+        placeholder: this.placeholder || ' '
       } );
       $( this.$el )
         .select2( this.settings )
@@ -224,11 +303,6 @@ $( function() {
       placeholder: function( placeholder ) {
         $.extend( true, this.settings, {
           placeholder: !!placeholder || ' '
-        } );
-      },
-      tags: function( tags ) {
-        $.extend( true, this.settings, {
-          tags: !!tags
         } );
       },
       settings: function( settings ) {
@@ -354,9 +428,12 @@ $( function() {
             options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
           }
         } );
-        options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
-        } );
+        options.skills.list = c_data.skills
+          .map( s => {
+            return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
+          } );
+        options.skills.list.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );         
+        options.skills.list = options.skills.list.sort( ( s1, s2 ) => { return s1.text > s2.text; } );
         return options;
       }
     },
@@ -393,22 +470,26 @@ $( function() {
             fn_skill = () => true,
             fn_lv = () => true;
           if ( !!filters.name ) {
-            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type == filters.type;
+            fn_type = ( o ) => o.type == filters.type;
           }
           if ( !!filters.skill ) {
-            fn_skill = ( h ) => h.skill && h.skill.name.toUpperCase().includes( filters.skill.toUpperCase() );
+            if ( filters.skill == 'nonblanks' ) {
+              fn_skill = ( o ) => o.skill;
+            } else {
+              fn_skill = ( o ) => o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase();
+            }
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+            fn_lv = ( o ) => o.lv >= filters.lv.min && o.lv <= filters.lv.max;
           } else if ( !!filters.lv.min ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min;
+            fn_lv = ( o ) => o.lv >= filters.lv.min;
           } else if ( !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv <= filters.lv.max;
+            fn_lv = ( o ) => o.lv <= filters.lv.max;
           }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_skill( h ) && fn_lv( h );
+          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o ) && fn_lv( o );
         },
         deep: true
       }
@@ -589,8 +670,7 @@ $( function() {
           tier: { ids: [], list: [] },
           sex: { ids: [], list: [] },
           building: { ids: [], list: [] },
-          skills:  { ids: [], list: [] },
-          quality:  { ids: [], list: [] }
+          skills:  { ids: [], list: [] }
         };
         c_data.heroes.map( h => {
           options.name.list.push( h.name );
@@ -610,12 +690,11 @@ $( function() {
         options.building.list = c_data.buildings.map( b => {
           return { id: b.name, text: b.name };
         } );
-        options.skills.list = c_data.skills.map( s => {
-          return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
-        } );
-        options.quality.list = $.map( c_data.qualities, ( q, k ) => {
-          return { id: k, text: k, icon: k, iconType: 'quality' };
-        } );
+        options.skills.list = c_data.skills
+          .map( s => {
+            return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
+          } )
+          .sort( ( s1, s2 ) => { return s1.text > s2.text; } );;
         return options;
       }
     },
@@ -648,31 +727,31 @@ $( function() {
             fn_skill = () => true,
             fn_lv = () => true;
           if ( !!filters.name ) {
-            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type == filters.type;
+            fn_type = ( o ) => o.type == filters.type;
           }
           if ( !!filters.tier ) {
-            fn_tier = ( h ) => h.tier == filters.tier;
+            fn_tier = ( o ) => o.tier == filters.tier;
           }
           if ( !!filters.sex ) {
-            fn_sex = ( h ) => h.sex == filters.sex;
+            fn_sex = ( o ) => o.sex == filters.sex;
           }
           if ( !!filters.origin ) {
-            fn_origin = ( h ) => h.origin == filters.origin;
+            fn_origin = ( o ) => o.origin == filters.origin;
           }
           if ( !!filters.skill ) {
-            fn_skill = ( h ) => h.skills.some( s => s.name.toUpperCase().includes( filters.skill.toUpperCase() ) );
+            fn_skill = ( o ) => o.skills.some( s => s.name.toUpperCase() == filters.skill.toUpperCase() );
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min && h.lv <= filters.lv.max;
+            fn_lv = ( o ) => o.lv >= filters.lv.min && o.lv <= filters.lv.max;
           } else if ( !!filters.lv.min ) {
-            fn_lv = ( h ) => h.lv >= filters.lv.min;
+            fn_lv = ( o ) => o.lv >= filters.lv.min;
           } else if ( !!filters.lv.max ) {
-            fn_lv = ( h ) => h.lv <= filters.lv.max;
+            fn_lv = ( o ) => o.lv <= filters.lv.max;
           }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h ) && fn_tier( h ) && fn_sex( h ) && fn_origin( h ) && fn_skill( h ) && fn_lv( h );
+          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_tier( o ) && fn_sex( o ) && fn_origin( o ) && fn_skill( o ) && fn_lv( o );
         },
         deep: true
       }
@@ -695,11 +774,11 @@ $( function() {
           quality:  { list: [] }
         };
         options.quality.list = $.map( c_data.qualities, ( q, k ) => {
-          return { id: k, text: k, icon: k, iconType: 'quality' };
+          return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
         } );
         options.heroes.list = c_data.heroes
           .map( h => {
-            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero' };
+            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero', data: { lv: h.lv } };
           } );
         return options;
       },
@@ -747,7 +826,7 @@ $( function() {
             return s1.priority - s2.priority;
           } );
         result.companions = Math.min( result.roster[0].companions, 6 );
-        for ( i = result.companions, m = vm.team.roster.length; i < m; i++ ) {
+        for ( var i = result.companions; i < 6; i++ ) {
           vm.team.roster.splice( i, 1, vm.empty_hero() );
         };
         result.roster = result.roster
@@ -793,6 +872,20 @@ $( function() {
       }
     },
     methods: {
+      set_empty: function( k ) {
+        var vm = this;
+        var h = vm.empty_hero();
+        vm.team.roster[k].slots = h.slots;
+        var sh = vm.summary.roster[k];
+        if ( !sh.hero ) {
+          return;
+        }
+        var i = vm.summary.roster
+          .findIndex( ( r, i ) => { return i != k && r.hero && r.hero.origin == sh.hero.origin; } );
+        if ( i > -1 ) {
+          vm.team.roster[k].b = vm.team.roster[i].b;
+        }
+      },
       set_boost: function( sh, b ) {
         var vm = this;
         vm.summary.roster
@@ -864,7 +957,10 @@ $( function() {
                       id: i.name,
                       text: i.name,
                       icon: i.type,
-                      iconType: 'item'
+                      iconType: 'item',
+                      data: {
+                        lv: i.lv
+                      }
                     };
                   } );
                 return {
@@ -890,12 +986,11 @@ $( function() {
                     )
                 };
                 i.a = slot.list.find( s => s.type == i.type ).a;
-                var chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
-                if ( chance < 0.005 ) {
-                  chance = 0;
+                i.chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
+                if ( i.chance < 0.005 ) {
+                  i.chance = 0;
                 }
-                chance = chance || 0;
-                i.chance = ( Math.round( 1000 * chance ) / 10 ).toLocaleString();
+                i.chance = i.chance || 0;
                 if ( !!i.skill ) {
                   var q1 = c_data.qualities[slot.q];
                   var q2 = c_data.qualities[i.skill.q];
@@ -1072,8 +1167,7 @@ $( function() {
       dropdownAutoWidth: true,
       allowClear: false,
       minimumResultsForSearch: Infinity,
-      placeholder: 'Choose data type',
-      tags: false,
+      placeholder: 'Choose data type'
     } );
 
   $( '#tabs-data-clean' )

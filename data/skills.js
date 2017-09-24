@@ -91,7 +91,7 @@ $( function() {
     },
     { 
       type: "Survival",
-      name: "Survival",
+      name: "Protector",
       text: "Survival rate of each party member is increased by {0}",
       priority: 6,
       cap: false,
@@ -445,17 +445,17 @@ $( function() {
     },
     {
       name: "Protector I",
-      base: "Survival",
+      base: "Protector",
       value: 0.025
     },
     {
       name: "Protector II",
-      base: "Survival",
+      base: "Protector",
       value: 0.05
     },
     {
       name: "Protector III",
-      base: "Survival",
+      base: "Protector",
       value: 0.10
     },
     {
@@ -490,7 +490,7 @@ $( function() {
     },
     {
       name: "Aura of Protection",
-      base: "Survival",
+      base: "Protector",
       applies: "team",
       value: 0.075
     },

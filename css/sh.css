@@ -1,9 +1,6 @@
 html * {
   box-sizing: border-box;
 }
-body * {
-  box-sizing: border-box;
-}
 
 #tabs {
   height: 100%;
@@ -19,7 +16,7 @@ body * {
   min-height: 200px;
 }
 .ui-tabs .ui-tabs-panel {
-  padding: 0.2em 0.2em !important; 
+  padding: 0.2rem 0.2rem !important; 
 }
 
 table.shopheroes {
@@ -45,7 +42,6 @@ table.shopheroes th {
 }
 table.shopheroes td {
   padding: 1px 2px;
-  font-size: 0.9rem;
   text-align: center;
   background-color: #F6F6F6;
 }
@@ -54,19 +50,9 @@ table.shopheroes th.slot {
   max-width: 20px;
   min-width: 20px;
 }
-table.shopheroes.team th.item {
-  min-width: calc((100%-45)/8);
-  width: calc((100%-45)/8);
-}
 table.shopheroes th.name {
-  min-width: 9rem;
-  width: 9rem;
-}
-table.shopheroes.item th.name {
-  width: 11rem;
-}
-table.shopheroes.item th.item {
-  width: 12rem;
+  min-width: 10rem;
+  width: 10rem;
 }
 table.shopheroes th.item {
   min-width: 10rem;
@@ -77,7 +63,7 @@ table.shopheroes th.type {
   width: 8rem;
 }
 table.shopheroes th.power {
-  min-width: 6rem;
+  min-width: 7rem;
   width: 7rem;
 }
 table.shopheroes th.level {
@@ -85,11 +71,29 @@ table.shopheroes th.level {
   width: 8rem;
 }
 
+table.shopheroes.item th.item {
+  width: 14rem;
+}
+table.shopheroes.hero th.type {
+  min-width: 11rem;
+  width: 11rem;
+}
+
+table.shopheroes.team th.item {
+  min-width: 12%;
+  min-width: calc((100%-25px)/8);
+  width: 12%;
+  width: calc((100%-25px)/8);
+}
+table.shopheroes.team th.name {
+  min-width: 110px;
+  width: 110px;
+}
+
 table.shopheroes .select2-container .select2-selection--multiple,
 table.shopheroes .select2-container .select2-selection--single {
-  line-height: 1.5em !important;
-  min-height: 1.5em !important;
-  height: auto !important;
+  line-height: 1.4rem !important;
+  height: 1.4rem !important;
   font-size: 100% !important;
 }
 table.shopheroes .select2-container .select2-selection--multiple .select2-selection__choice,
@@ -100,25 +104,36 @@ table.shopheroes .select2-container .select2-search--inline .select2-search__fie
 
 table.shopheroes .select2-container .select2-selection--single .select2-selection__arrow,
 table.shopheroes .select2-container .select2-selection--single .select2-selection__clear {
-  min-height: 1.5em !important;
-  height: 1.5em !important;
+  min-height: 1.4rem !important;
+  height: 1.4rem !important;
 }
 table.shopheroes .select2-container .select2-selection--single .select2-selection__rendered {
-  min-height: 1.5em !important;
-  line-height: 1.5em !important;
+  min-height: 1.4rem !important;
+  line-height: 1.4rem !important;
 }
 
 table.shopheroes .select2-container {
   font-weight: normal !important;
 }
+
+.select2-results__option {
+  line-height: 1.4rem;
+  font-size: 0.85rem;
+  padding: 1px 3px;
+}
+
+.select2-results__option span {
+  vertical-align: middle;
+}
+
 table.shopheroes select {
   font-size: 0.8rem;
-  line-height: 1.5rem;
   font-weight: normal !important;
 }
 table.shopheroes input {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: normal !important;
+  vertical-align: middle;
 }
 table.shopheroes input.name {
   width: 100%;
@@ -127,27 +142,13 @@ table.shopheroes input.lv {
   max-width: 3rem;
   text-align: center;
 }
-
-table.shopheroes span.skill-info {
-  font-size: 0.90em;
+table.shopheroes .data-info {
+  font-size: 0.85rem;
+  line-height: 1.4rem;
 }
-table.shopheroes span.power-info {
-}
-
-.left {
-  text-align: left !important;
-}
-.right {
-  text-align: right !important;
-}
-.float {
-  display: inline-block; !important
-}
-.float.left {
-  float: left !important;
-}
-.float.right {
-  float: right !important;
+table.shopheroes .data-info * {
+  /* vertical-align: middle; */
+  line-height: 1.4rem;
 }
 
 table.shopheroes .collapse {
@@ -195,4 +196,17 @@ table.shopheroes span.button.edit {
 }
 table.shopheroes span.button.apply {
   background-position: -64px -144px;
+}
+
+.float-~ {
+  display: inline-block; !important
+}
+.float-left {
+  float: left !important;
+}
+.float-right {
+  float: right !important;
+}
+.left {
+  text-align: left !important;
 }
