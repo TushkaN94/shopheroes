@@ -26,6 +26,7 @@ $( function() {
   
   var c_data = {
     qualities: {},
+    rarities: {},
     powers: {},
     breaks: {},
     skills: [],
@@ -85,6 +86,7 @@ $( function() {
   };
 
   c_data.set( 'qualities' );
+  c_data.set( 'rarities' );
   c_data.set( 'powers' );
   c_data.set( 'breaks' );
   c_data.set( 'skills' );
@@ -404,40 +406,115 @@ $( function() {
     data: function() { 
       return {
         items: c_data.items,
+        sorters: [],
+        sorts: { 
+          lv: null,
+          type: null
+        },
         filter: () => true,
         filters: {
           name: null,
           type: null,
           skill: null,
+          rarity: null,
+          origin: null,
           lv: {
             min: null,
             max: null
           }
-        },
+        }
       }
     },
     computed: {
+      itemsSorted: function() {
+        var m = this.sorters.length;
+        var list = this.get_clone( this.items )
+          .map( ( v, i ) => {
+            var res = v;
+            res.i = i;
+            return res;
+          } )
+          .sort( ( o1, o2 ) => {
+            for ( var i = 0; i < m; i++ ) {
+              var res = this.sorters[i].fn( o1, o2 );
+              if ( res != 0 ) { 
+                return res;
+              }
+            }
+            return 0;
+          } )
+          .map( v => {
+            return v.i
+          } );
+        return list;
+      },
       options: function() {
         var options = {
           type: { ids: [], list: [] },
-          skills:  { ids: [], list: [] }
+          skills:  { ids: [], list: [] },
+          rarities: { ids: [], list: [] },
+          origins: { ids: [], list: [] }
         };
         c_data.items.map( i => {
           if ( options.type.ids.indexOf( i.type ) < 0 ) {
             options.type.ids.push( i.type );
             options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
           }
+          if ( options.origins.ids.indexOf( i.origin ) < 0 ) {
+            options.origins.ids.push( i.origin );
+            options.origins.list.push( { id: i.origin, text: i.origin } );
+          }
         } );
+        options.origins.list.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );
+        options.origins.list.push( { id: "blanks", text: 'Blanks', custom: true } );
+        options.rarities.list = c_data.rarities
+          .map( ( o, i ) => {
+            return { id: o, text: o, sort: i };
+          } );
         options.skills.list = c_data.skills
           .map( s => {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
           } );
         options.skills.list.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );         
-        options.skills.list = options.skills.list.sort( ( s1, s2 ) => { return s1.text > s2.text; } );
         return options;
       }
     },
     methods: {
+      next_ord: function( ord ) {
+        if ( ord == null ) {
+          return 'asc';
+        }
+        if ( ord == 'asc' ) {
+          return 'desc';
+        }
+        return  null;
+      },
+      add_sort: function( e, param ) {
+        var ord = this.next_ord( this.sorts[param] );
+        this.sorts[param] = ord;
+        var fn;
+        var d = 0;
+        if      ( ord == 'asc'  ) d = 1;
+        else if ( ord == 'desc' ) d = -1;
+        if ( param == 'lv' ) {
+          fn = ( o1, o2 ) => { 
+            return d * ( o1.lv - o2.lv );
+          };
+        } else if ( param == 'type' ) {
+          fn = ( o1, o2 ) => { 
+            return d * o1.type.localeCompare( o2.type );
+          };
+        }
+        if ( e.ctrlKey == true ) {
+          var ix = this.sorters.findIndex( p => p.param == param );
+          if ( ix >= 0 ) {
+            this.sorters.splice( ix, 1 );
+          }
+        } else {
+          this.sorters.splice( 0 );
+        }
+        this.sorters.push( { param: param, fn: fn } );
+      },
       visible: function( item ) {
         return this.filter( item );
       }
@@ -466,6 +543,8 @@ $( function() {
         handler: function( filters ) {
           var 
             fn_name = () => true,
+            fn_origin = () => true,
+            fn_rarity = () => true,
             fn_type = () => true,
             fn_skill = () => true,
             fn_lv = () => true;
@@ -474,6 +553,18 @@ $( function() {
           }
           if ( !!filters.type ) {
             fn_type = ( o ) => o.type == filters.type;
+          }
+          if ( !!filters.rarity ) {
+            fn_rarity = ( o ) => o.rarity == filters.rarity;
+          }
+          if ( !!filters.origin ) {
+            if ( filters.origin == 'nonblanks' ) {
+              fn_skill = ( o ) => o.origin.length > 0;
+            } else if ( filters.origin == 'blanks' ) {
+              fn_skill = ( o ) => o.origin.length == 0;
+            } else {
+              fn_skill = ( o ) => o.origin == filters.origin;
+            }
           }
           if ( !!filters.skill ) {
             if ( filters.skill == 'nonblanks' ) {
@@ -489,7 +580,7 @@ $( function() {
           } else if ( !!filters.lv.max ) {
             fn_lv = ( o ) => o.lv <= filters.lv.max;
           }
-          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o ) && fn_lv( o );
+          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o ) && fn_lv( o ) && fn_rarity( o ) && fn_origin( o );
         },
         deep: true
       }
@@ -672,29 +763,30 @@ $( function() {
           building: { ids: [], list: [] },
           skills:  { ids: [], list: [] }
         };
-        c_data.heroes.map( h => {
-          options.name.list.push( h.name );
-          if ( options.type.ids.indexOf( h.type ) < 0 ) {
-            options.type.ids.push( h.type );
-            options.type.list.push( { id: h.type, text: h.type } );
-          }
-          if ( options.tier.ids.indexOf( h.tier ) < 0 ) {
-            options.tier.ids.push( h.tier );
-            options.tier.list.push( { id: h.tier, text: h.tier } );
-          }
-          if ( options.sex.ids.indexOf( h.sex ) < 0 ) {
-            options.sex.ids.push( h.sex );
-            options.sex.list.push( { id: h.sex, text: h.sex } );
-          }
-        } );
-        options.building.list = c_data.buildings.map( b => {
-          return { id: b.name, text: b.name };
-        } );
+        c_data.heroes
+          .map( h => {
+            options.name.list.push( h.name );
+            if ( options.type.ids.indexOf( h.type ) < 0 ) {
+              options.type.ids.push( h.type );
+              options.type.list.push( { id: h.type, text: h.type } );
+            }
+            if ( options.tier.ids.indexOf( h.tier ) < 0 ) {
+              options.tier.ids.push( h.tier );
+              options.tier.list.push( { id: h.tier, text: h.tier } );
+            }
+            if ( options.sex.ids.indexOf( h.sex ) < 0 ) {
+              options.sex.ids.push( h.sex );
+              options.sex.list.push( { id: h.sex, text: h.sex } );
+            }
+          } );
+        options.building.list = c_data.buildings
+          .map( b => {
+            return { id: b.name, text: b.name };
+          } );
         options.skills.list = c_data.skills
           .map( s => {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
-          } )
-          .sort( ( s1, s2 ) => { return s1.text > s2.text; } );;
+          } );
         return options;
       }
     },

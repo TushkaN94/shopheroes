@@ -1,6 +1,14 @@
 ﻿$( function() {
 
   var cache = $.cache._();
+  
+  var rarities = [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Exclusive"
+  ];
+  cache.set( "rarities", rarities, true );
 
   var breaks = {
     a: { 

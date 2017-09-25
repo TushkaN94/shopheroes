@@ -158,6 +158,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
             <th></th>
@@ -165,16 +166,45 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr>
-            <th class="name">Name</th>
-            <th class="type">Type</th>
-            <th class="level">Level</th>
-            <th class="power">Power</th>
-            <th class="item">Skill</th>
+            <th class="name" colspan="2">
+              <div>
+                <span>Name</span>
+              </div>
+            </th>
+            <th class="type">
+              <div>
+                <span>Type</span>
+                <span class="icon-sortable float-right" :class="[ sorts.type ]" @click="add_sort( $event, 'type' )">
+                  <span class="top">&#9650;</span>
+                  <span class="bot">&#9660;</span>
+                </span>
+              </div>
+            </th>
+            <th class="level">
+              <div>
+                <span>Level</span>
+                <span class="icon-sortable float-right" :class="[ sorts.lv ]" @click="add_sort( $event, 'lv' )">
+                  <span class="top">&#9650;</span>
+                  <span class="bot">&#9660;</span>
+                </span>
+              </div>
+            </th>
+            <th class="power">
+              <div>
+                <span>Power</span>
+              </div>
+            </th>
+            <th class="item">
+              <div>
+                <span>Skill</span>
+              </div>
+            </th>
           </tr>
           <tr>
-            <td>
+            <td colspan="2">
               <div>
                 <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
               </div>
@@ -191,11 +221,57 @@
                 <input type="number" class="lv" v-model.number="filters.lv.max"/>
               </div>
             </td>
-            <td/>
+            <td>
+            </td>
             <td>
               <div>
                 <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'"/>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <div>
+                <span>Origin</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Rarity</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>XP</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Price</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Precrafts</span>
+              </div>
+            </th>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div>
+                <select2 v-model="filters.origin" :options="options.origins.list" :placeholder="'Choose origin'"/>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select2 v-model="filters.rarity" :options="options.rarities.list" :placeholder="'Choose rarity'"/>
+              </div>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
             </td>
           </tr>
           <tr class="split">
@@ -204,8 +280,10 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -213,18 +291,10 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <item v-for="( item, i ) in items" v-show="visible( item )" :item="item" :key="i"/>
-        </tbody>
+        <item v-for="i in itemsSorted" v-show="visible( items[i] )" :item="items[i]" :key="i"/>
         <tfoot>
           <tr class="split">
             <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr class="split">
             <th></th>
             <th></th>
             <th></th>
@@ -236,38 +306,79 @@
     </div>
   </script>
   <script type="text/x-template" id="templates-item">
-      <tr>
-        <th>
-          <div>
-            <span>{{item.name}}</span>
-          </div>
-        </th>
-        <td>
-          <div>
-            <span class="float-left icon item" :class="[ item.type ]"></span>
-            <span>{{item.type}}</span>
-          </div>
-        </td>
-        <td>
-          <div>
-            <span>{{item.lv}}</span>
-          </div>
-        </td>
-        <td>
-          <div>
-            <power :power="{ value: item.power }"/>
-          </div>
-        </td>
-        <td>
-          <div class="data-info" v-if="item.skill">
-            <span class="float-left icon quality" :class="item.skill.q" />
-            <span class="float-right">
-              <input type="checkbox" v-model="item.skill.m" />
-            </span>
-            <skill :skill="item.skill" :view="'item'" />
-          </div>
-        </td>
-      </tr>
+        <tbody>
+          <tr>
+            <th rowspan="2">
+              <div>
+                <span class="icon medium item" :class="item.name.toLowerCase().replace( /\s+/g, '' )"></span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>{{item.name}}</span>
+              </div>
+            </th>
+            <td>
+              <div>
+                <span class="float-left icon item" :class="[ item.type ]"></span>
+                <span>{{item.type}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <span>{{item.lv}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <power :power="{ value: item.power }"/>
+              </div>
+            </td>
+            <td>
+              <div class="data-info" v-if="item.skill">
+                <span class="float-left icon quality" :class="item.skill.q" />
+                <span class="float-right">
+                  <input type="checkbox" v-model="item.skill.m" />
+                </span>
+                <skill :skill="item.skill" :view="'item'" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <span>{{item.origin}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <span>{{item.rarity}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <span>{{item.xp.intString()}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <span>{{item.price.intString()}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+              </div>
+            </td>
+          </tr>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
   </script>
   <script type="text/x-template" id="templates-buildings">
     <div>
@@ -385,6 +496,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
             <th></th>
@@ -393,17 +505,42 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr>
-            <th class="name">Name</th>
-            <th class="level">Level</th>
-            <th class="type">Type</th>
-            <th class="item">Tier</th>
-            <th class="item">Sex</th>
-            <th class="item">Building</th>
+            <th class="name" colspan="2">
+              <div>
+                <span>Name</span>
+              </div>
+            </th>
+            <th class="level">
+              <div>
+                <span>Level</span>
+              </div>
+            </th>
+            <th class="type">
+              <div>
+                <span>Type</span>
+              </div>
+            </th>
+            <th class="item">
+              <div>
+                <span>Tier</span>
+              </div>
+            </th>
+            <th class="item">
+              <div>
+                <span>Sex</span>
+              </div>
+            </th>
+            <th class="item">
+              <div>
+                <span>Origin</span>
+              </div>
+            </th>
           </tr>
           <tr>
-            <td>
+            <td colspan="2">
               <div>
                 <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
               </div>
@@ -437,14 +574,31 @@
             </td>
           </tr>
           <tr>
-            <th></th>
-            <th colspan="2">Equipment</th>
-            <th>Skill #1</th>
-            <th>Skill #2</th>
-            <th>Skill #3</th>
+            <th colspan="2">
+            </th>
+            <th colspan="2">
+              <div>
+                <span>Equipment</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Skill #1</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Skill #2</span>
+              </div>
+            </th>
+            <th>
+              <div>
+                <span>Skill #3</span>
+              </div>
+            </th>
           </tr>
           <tr>
-            <td>
+            <td colspan="2">
             </td>
             <td colspan="2">
             </td>
@@ -455,6 +609,16 @@
             </td>
           </tr>
           <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr class="split">
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -472,13 +636,6 @@
             <th></th>
             <th></th>
             <th></th>
-          </tr>
-          <tr class="split">
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
             <th></th>
           </tr>
         </tfoot>
@@ -487,21 +644,15 @@
   </script>
   <script type="text/x-template" id="templates-hero">
         <tbody>
-          <tr class="split">
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
           <tr>
             <th rowspan="2">
               <div>
-                <span class="left">
-                  <span class="float-left icon medium hero" :class="hero.name.replace( /\s+/g, '' )"></span>
-                  <span>{{hero.name}}</span>
-                </span>
+                <span class="icon medium hero" :class="hero.name.replace( /\s+/g, '' )"></span>
+              </div>
+            </th>
+            <th rowspan="2">
+              <div>
+                <span>{{hero.name}}</span>
               </div>
             </th>
             <td>
@@ -543,6 +694,15 @@
                 <skill :skill="skills[k-1]" :view="'hero'"/>
               </div>
             </td>
+          </tr>
+          <tr class="split">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </tbody>  
   </script>

@@ -15,13 +15,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "", list: [ { type: "Axes", a: 1 }, { type: "Maces", a: 0 }, { type: "Spears", a: -1 } ] },
-        { type: "", list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
-        { type: "", list: [ { type: "Helmets", a: 0 } ] },
-        { type: "", list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "", list: [ { type: "Boots", a: 0 } ] },
-        { type: "", list: [ { type: "Shields", a: 0 }, { type: "Pendants", a: 0 } ] },
-        { type: "", list: [ { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 } ] }
+        { list: [ { type: "Axes", a: 1 }, { type: "Maces", a: 0 }, { type: "Spears", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 }, { type: "Pendants", a: 0 } ] },
+        { list: [ { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 } ] }
       ],
       skills: [
         { name: "Amazon I", lv: 1 }, { name: "Resilient II", lv: 18 }, { name: "Crush", lv: 21 }
@@ -40,13 +40,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "", list: [ { type: "Swords", a: 1 }, { type: "Axes", a: 0 }, { type: "Maces", a: 0 }, { type: "Spears", a: -2 } ] },
-        { type: "", list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
-        { type: "", list: [ { type: "Helmets", a: 0 } ] },
-        { type: "", list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "", list: [ { type: "Boots", a: 0 } ] },
-        { type: "", list: [ { type: "Shields", a: 0 } ] },
-        { type: "", list: [ { type: "Remedies", a: 0 } ] }
+        { list: [ { type: "Swords", a: 1 }, { type: "Axes", a: 0 }, { type: "Maces", a: 0 }, { type: "Spears", a: -2 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 } ] },
+        { list: [ { type: "Remedies", a: 0 } ] }
       ],
       skills: [
         { name: "Energetic I", lv: 5 }, { name: "Cleave", lv: 10 }, { name: "Bros-in-arms I", lv: 15 }
@@ -65,13 +65,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Remedies", a: 0 }, { type: "Potions", a: -1 } ] }
+        { list: [ { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 } ] },
+        { list: [ { type: "Armor", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 } ] },
+        { list: [ { type: "Remedies", a: 0 }, { type: "Potions", a: -1 } ] }
       ],
       skills: [
         { name: "Parry", lv: 5 }, { name: "Protector I", lv: 10 }, { name: "Commander I", lv: 15 }
@@ -90,13 +90,13 @@ $( function() {
         m: 1.50
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 }, { type: "Pendants", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Potions", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Spears", a: 1 }, { type: "Axes", a: 0 }, { type: "Swords", a: -1 }, { type: "Maces", a: -2 } ] },
+        { list: [ { type: "Armor", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 }, { type: "Pendants", a: 0 } ] },
+        { list: [ { type: "Potions", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Leader I", lv: 4 }, { name: "Bros-in-arms I", lv: 14 }, { name: "Resilient II", lv: 18 }
@@ -115,13 +115,13 @@ $( function() {
         m: 2.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: 0 }, { type: "Maces", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Remedies", a: 0 }, { type: "Potions", a: -1 } ] }
+        { list: [ { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: 0 }, { type: "Maces", a: -2 } ] },
+        { list: [ { type: "Armor", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 } ] },
+        { list: [ { type: "Remedies", a: 0 }, { type: "Potions", a: -1 } ] }
       ],
       skills: [
         { name: "Bros-in-arms II", lv: 7 }, { name: "Protector II", lv: 12 }, { name: "Resourceful II", lv: 26 }
@@ -140,13 +140,13 @@ $( function() {
         m: 3.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Maces", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: -1 }, { type: "Staves", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 }, { type: "Rings", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Potions", a: 0 } ] }
+        { list: [ { type: "Maces", a: 1 }, { type: "Swords", a: 0 }, { type: "Spears", a: -1 }, { type: "Staves", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: -1 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 }, { type: "Rings", a: 0 } ] },
+        { list: [ { type: "Potions", a: 0 } ] }
       ],
       skills: [
         { name: "Commander II", lv: 8 }, { name: "Gold Digger II", lv: 15 }, { name: "Revive II", lv: 30 }
@@ -165,13 +165,13 @@ $( function() {
         m: 3.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Maces", a: 1 }, { type: "Axes", a: 0 }, { type: "Spears", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Pendants", a: 0 }, { type: "Shields", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Remedies", a: 0 } ] }
+        { list: [ { type: "Maces", a: 1 }, { type: "Axes", a: 0 }, { type: "Spears", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Vests", a: -1 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Pendants", a: 0 }, { type: "Shields", a: -1 } ] },
+        { list: [ { type: "Remedies", a: 0 } ] }
       ],
       skills: [
         { name: "Energetic II", lv: 12 }, { name: "Scavenger II", lv: 20 }, { name: "Leader II", lv: 25 }
@@ -190,13 +190,13 @@ $( function() {
         m: 4.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Spears", a: 1 }, { type: "Maces", a: 0 }, { type: "Swords", a: -1 }, { type: "Axes", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Potions", a: 0 }, { type: "Spells", a: -1 } ] }
+        { list: [ { type: "Spears", a: 1 }, { type: "Maces", a: 0 }, { type: "Swords", a: -1 }, { type: "Axes", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: -1 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 } ] },
+        { list: [ { type: "Potions", a: 0 }, { type: "Spells", a: -1 } ] }
       ],
       skills: [
         { name: "Leader III", lv: 12 }, { name: "Revive III", lv: 26 }, { name: "Protector III", lv: 34 }
@@ -215,13 +215,13 @@ $( function() {
         m: 4.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Maces", a: -1 }, { type: "Spears", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Shields", a: 0 }, { type: "Instruments", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: 0 } ] }
+        { list: [ { type: "Axes", a: 1 }, { type: "Swords", a: 0 }, { type: "Maces", a: -1 }, { type: "Spears", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Shields", a: 0 }, { type: "Instruments", a: 0 } ] },
+        { list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: 0 } ] }
       ],
       skills: [
         { name: "Amazon III", lv: 14 }, { name: "Energetic III", lv: 24 }, { name: "Lucky III", lv: 32 }
@@ -240,13 +240,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Daggers", a: 1 }, { type: "Bows", a: -1 }, { type: "Guns", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Daggers", a: 1 }, { type: "Bows", a: -1 }, { type: "Guns", a: -2 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Lucky I", lv: 5 }, { name: "Treasure Hunter I", lv: 14 }, { name: "Scavenger I", lv: 20 }
@@ -265,13 +265,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Bows", a: 1 }, { type: "Axes", a: 0 }, { type: "Guns", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Instruments", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: -1 }, { type: "Remedies", a: 0 } ] }
+        { list: [ { type: "Bows", a: 1 }, { type: "Axes", a: 0 }, { type: "Guns", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Instruments", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: -1 }, { type: "Remedies", a: 0 } ] }
       ],
       skills: [
         { name: "Resilient I", lv: 3 }, { name: "Scavenger I", lv: 16 }, { name: "Supplier I", lv: 22 }
@@ -290,13 +290,13 @@ $( function() {
         m: 1.50
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Daggers", a: 1 }, { type: "Maces", a: -1 }, { type: "Bows", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Daggers", a: 1 }, { type: "Maces", a: -1 }, { type: "Bows", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Gold Digger I", lv: 7 }, { name: "Treasure Hunter II", lv: 14 }, { name: "Lucky II", lv: 22 }
@@ -315,13 +315,13 @@ $( function() {
         m: 1.50
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Swords", a: 1 }, { type: "Guns", a: 0 }, { type: "Daggers", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 } ] }
+        { list: [ { type: "Swords", a: 1 }, { type: "Guns", a: 0 }, { type: "Daggers", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 } ] },
+        { list: [ { type: "Potions", a: 0 }, { type: "Projectiles", a: -1 } ] }
       ],
       skills: [
         { name: "Gangster I", lv: 9 }, { name: "Resourceful I", lv: 20 }, { name: "Supplier II", lv: 28 }
@@ -340,13 +340,13 @@ $( function() {
         m: 2.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Guns", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 }, { type: "Helmets", a: -1 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Guns", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 }, { type: "Helmets", a: -1 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Wise II", lv: 8 }, { name: "Speed Runner II", lv: 12 }, { name: "Bros-in-arms III", lv: 22 }
@@ -365,13 +365,13 @@ $( function() {
         m: 2.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Bows", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: 0 }, { type: "Guns", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 } ] }
+        { list: [ { type: "Bows", a: 1 }, { type: "Swords", a: 0 }, { type: "Daggers", a: 0 }, { type: "Guns", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: -1 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Pendants", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: 0 } ] }
       ],
       skills: [
         { name: "Fastidious II", lv: 8 }, { name: "Amazon II", lv: 18 }, { name: "Support II", lv: 24 }
@@ -390,13 +390,13 @@ $( function() {
         m: 4.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Guns", a: 1 }, { type: "Maces", a: 0 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 }, { type: "Boots", a: -1 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 }, { type: "Pendants", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Remedies", a: 0 }, { type: "Projectiles", a: -1 } ] }
+        { list: [ { type: "Guns", a: 1 }, { type: "Maces", a: 0 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 }, { type: "Boots", a: -1 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Shields", a: -1 }, { type: "Pendants", a: -1 } ] },
+        { list: [ { type: "Remedies", a: 0 }, { type: "Projectiles", a: -1 } ] }
       ],
       skills: [
         { name: "Scavenger III", lv: 18 }, { name: "Treasure Hunter III", lv: 25 }, { name: "Support III", lv: 35 }
@@ -415,13 +415,13 @@ $( function() {
         m: 4.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Swords", a: 1 }, { type: "Daggers", a: 0 }, { type: "Bows", a: 0 }, { type: "Guns", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 }, { type: "Instruments", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 } ] }
+        { list: [ { type: "Swords", a: 1 }, { type: "Daggers", a: 0 }, { type: "Bows", a: 0 }, { type: "Guns", a: -1 } ] },
+        { list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: -1 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 }, { type: "Instruments", a: -1 } ] },
+        { list: [ { type: "Projectiles", a: 0 } ] }
       ],
       skills: [
         { name: "Gangster III", lv: 14 }, { name: "Resourceful III", lv: 26 }, { name: "Speed Runner III", lv: 34 }
@@ -440,13 +440,13 @@ $( function() {
         m: 5.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Daggers", a: 1 }, { type: "Guns", a: 0 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Rings", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Projectiles", a: 0 } ] }
+        { list: [ { type: "Daggers", a: 1 }, { type: "Guns", a: 0 } ] },
+        { list: [ { type: "Vests", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Rings", a: 0 } ] },
+        { list: [ { type: "Projectiles", a: 0 } ] }
       ],
       skills: [
         { name: "Lucky III", lv: 20 }, { name: "Backstab", lv: 25 }, { name: "Scavenger III", lv: 30 }
@@ -465,13 +465,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Bows", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Pendants", a: 0 }, { type: "Rings", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Bows", a: -2 } ] },
+        { list: [ { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Pendants", a: 0 }, { type: "Rings", a: 0 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Fireball", lv: 6 }, { name: "Wise I", lv: 10 }, { name: "Speed Runner I", lv: 18 }
@@ -490,13 +490,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Maces", a: 1 }, { type: "Staves", a: 0 }, { type: "Bows", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Pendants", a: 0 }, { type: "Instruments", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Potions", a: 0 }, { type: "Spells", a: -1 } ] }
+        { list: [ { type: "Maces", a: 1 }, { type: "Staves", a: 0 }, { type: "Bows", a: -1 } ] },
+        { list: [ { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Pendants", a: 0 }, { type: "Instruments", a: -1 } ] },
+        { list: [ { type: "Potions", a: 0 }, { type: "Spells", a: -1 } ] }
       ],
       skills: [
         { name: "Wise I", lv: 6 }, { name: "Healer I", lv: 15 }, { name: "Revive I", lv: 22 }
@@ -515,13 +515,13 @@ $( function() {
         m: 1.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Bows", a: 1 }, { type: "Staves", a: 0 }, { type: "Daggers", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 }, { type: "Vests", a: -1 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
+        { list: [ { type: "Bows", a: 1 }, { type: "Staves", a: 0 }, { type: "Daggers", a: -1 } ] },
+        { list: [ { type: "Clothes", a: 0 }, { type: "Vests", a: -1 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
       ],
       skills: [
         { name: "Fastidious I", lv: 8 }, { name: "Supplier I", lv: 12 }, { name: "Support I", lv: 20 }
@@ -540,13 +540,13 @@ $( function() {
         m: 1.50
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Spears", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 }, { type: "Rings", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Staves", a: 1 }, { type: "Daggers", a: -1 }, { type: "Spears", a: -2 } ] },
+        { list: [ { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 }, { type: "Rings", a: -1 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Revive I", lv: 12 }, { name: "Arch Wizard I", lv: 17 }, { name: "Cone-of-cold", lv: 25 }
@@ -565,13 +565,13 @@ $( function() {
         m: 2.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Daggers", a: 1 }, { type: "Staves", a: -1 }, { type: "Bows", a: -2 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: 0 }, { type: "Rings", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
+        { list: [ { type: "Daggers", a: 1 }, { type: "Staves", a: -1 }, { type: "Bows", a: -2 } ] },
+        { list: [ { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: 0 }, { type: "Rings", a: -1 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
       ],
       skills: [
         { name: "Gold Digger III", lv: 6 }, { name: "Healer II", lv: 18 }, { name: "Support II", lv: 24 }
@@ -590,13 +590,13 @@ $( function() {
         m: 3.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Staves", a: 1 }, { type: "Spears", a: 0 }, { type: "Daggers", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 }, { type: "Rings", a: -1 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
+        { list: [ { type: "Staves", a: 1 }, { type: "Spears", a: 0 }, { type: "Daggers", a: -1 } ] },
+        { list: [ { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 }, { type: "Pendants", a: -1 }, { type: "Rings", a: -1 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Remedies", a: -1 } ] }
       ],
       skills: [
         { name: "Arch Wizard II", lv: 8 }, { name: "Healer III", lv: 12 }, { name: "Wise III", lv: 20 }
@@ -615,13 +615,13 @@ $( function() {
         m: 3.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Guns", a: 1 }, { type: "Staves", a: 0 }, { type: "Swords", a: -1 }, { type: "Spears", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Potions", a: 0 } ] }
+        { list: [ { type: "Guns", a: 1 }, { type: "Staves", a: 0 }, { type: "Swords", a: -1 }, { type: "Spears", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Potions", a: 0 } ] }
       ],
       skills: [
         { name: "Fastidious III", lv: 13 }, { name: "Resilient III", lv: 20 }, { name: "Supplier III", lv: 28 }
@@ -640,13 +640,13 @@ $( function() {
         m: 4.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Staves", a: 1 }, { type: "Guns", a: 0 }, { type: "Bows", a: -1 } ] },
-        { type: "Body",   list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Helmets", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Gauntlets", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Boots", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Pendants", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
+        { list: [ { type: "Staves", a: 1 }, { type: "Guns", a: 0 }, { type: "Bows", a: -1 } ] },
+        { list: [ { type: "Armor", a: 0 }, { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Helmets", a: 0 } ] },
+        { list: [ { type: "Gauntlets", a: 0 } ] },
+        { list: [ { type: "Boots", a: 0 } ] },
+        { list: [ { type: "Pendants", a: 0 } ] },
+        { list: [ { type: "Spells", a: 0 }, { type: "Potions", a: -1 } ] }
       ],
       skills: [
         { name: "Commander III", lv: 15 }, { name: "Arch Wizard III", lv: 22 }, { name: "Thunderbolt", lv: 35 }
@@ -665,13 +665,13 @@ $( function() {
         m: 5.00
       },
       slots: [
-        { type: "Weapon", list: [ { type: "Bows", a: 1 }, { type: "Staves", a: 0 } ] },
-        { type: "Body",   list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: 0 } ] },
-        { type: "Head",   list: [ { type: "Hats", a: 0 } ] },
-        { type: "Hands",  list: [ { type: "Bracers", a: 0 } ] },
-        { type: "Legs",   list: [ { type: "Footwear", a: 0 } ] },
-        { type: "Aux #1", list: [ { type: "Instruments", a: 0 } ] },
-        { type: "Aux #2", list: [ { type: "Spells", a: 0 } ] }
+        { list: [ { type: "Bows", a: 1 }, { type: "Staves", a: 0 } ] },
+        { list: [ { type: "Vests", a: 0 }, { type: "Clothes", a: 0 } ] },
+        { list: [ { type: "Hats", a: 0 } ] },
+        { list: [ { type: "Bracers", a: 0 } ] },
+        { list: [ { type: "Footwear", a: 0 } ] },
+        { list: [ { type: "Instruments", a: 0 } ] },
+        { list: [ { type: "Spells", a: 0 } ] }
       ],
       skills: [
         { name: "Mage Armor", lv: 17 }, { name: "Detect Secrets", lv: 28 }, { name: "Magic Find", lv: 36 }

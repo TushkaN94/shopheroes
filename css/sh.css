@@ -51,8 +51,8 @@ table.shopheroes th.slot {
   min-width: 20px;
 }
 table.shopheroes th.name {
-  min-width: 10rem;
-  width: 10rem;
+  min-width: 14rem;
+  width: 14rem;
 }
 table.shopheroes th.item {
   min-width: 10rem;
@@ -209,4 +209,32 @@ table.shopheroes span.button.apply {
 }
 .left {
   text-align: left !important;
+}
+
+.icon-sortable {
+  margin-top: 0.2rem;
+  display: inline-block;
+  font-size: 0.50rem;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.icon-sortable.asc span.bot {
+  visibility: hidden;
+}
+.icon-sortable.desc span.top {
+  visibility: hidden;
+}
+.icon-sortable span.top {
+  display: block;
+  position: relative;
+  vertical-align: top;
+  line-height: 0.6rem;
+  height: 0.6rem;
+}
+.icon-sortable span.bot {
+  display: block;
+  position: relative;
+  vertical-align: bottom;
+  line-height: 0.6rem;
+  height: 0.6rem;
 }

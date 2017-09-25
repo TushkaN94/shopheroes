@@ -8,6 +8,7 @@ span.icon {
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+  vertical-align: middle;
 }
 span.icon.medium {
   min-height: 2.5rem;
