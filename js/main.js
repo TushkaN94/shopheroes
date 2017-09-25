@@ -428,25 +428,30 @@ $( function() {
     computed: {
       itemsSorted: function() {
         var m = this.sorters.length;
-        var list = this.get_clone( this.items )
+        var list = this.items
           .map( ( v, i ) => {
-            var res = v;
-            res.i = i;
-            return res;
-          } )
-          .sort( ( o1, o2 ) => {
-            for ( var i = 0; i < m; i++ ) {
-              var res = this.sorters[i].fn( o1, o2 );
-              if ( res != 0 ) { 
-                return res;
+            return {
+              i: i,
+              lv: v.lv,
+              type: v.type
+            };
+          } );
+        if ( m > 0 ) {
+          list = list
+            .sort( ( o1, o2 ) => {
+              for ( var i = 0; i < m; i++ ) {
+                var res = this.sorters[i].fn( o1, o2 );
+                if ( res != 0 ) { 
+                  return res;
+                }
               }
-            }
-            return 0;
-          } )
+              return 0;
+            } );
+        }
+        return list
           .map( v => {
             return v.i
           } );
-        return list;
       },
       options: function() {
         var options = {
