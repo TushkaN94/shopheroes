@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.5.3" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.5.3" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.5.3" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.0" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.0" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.0" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script type="text/javascript" src="js/styles.js?v=2.5.3"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.5.3"></script>
-    <script type="text/javascript" src="data/supplementaries.js?v=2.5.3"></script>
-    <script type="text/javascript" src="data/skills.js?v=2.5.3"></script>
-    <script type="text/javascript" src="data/buildings.js?v=2.5.3"></script>
-    <script type="text/javascript" src="data/items.js?v=2.5.3"></script>
-    <script type="text/javascript" src="data/heroes.js?v=2.5.3"></script>
-    <script type="text/javascript" src="js/main.js?v=2.5.3"></script>
+    <script type="text/javascript" src="js/styles.js?v=2.6.0"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.6.0"></script>
+    <script type="text/javascript" src="data/supplementaries.js?v=2.6.0"></script>
+    <script type="text/javascript" src="data/skills.js?v=2.6.0"></script>
+    <script type="text/javascript" src="data/buildings.js?v=2.6.0"></script>
+    <script type="text/javascript" src="data/items.js?v=2.6.0"></script>
+    <script type="text/javascript" src="data/heroes.js?v=2.6.0"></script>
+    <script type="text/javascript" src="js/main.js?v=2.6.0"></script>
   </head>
   <body>
     <div id="tabs">
@@ -125,7 +125,7 @@
   <script type="text/x-template" id="templates-power">
     <span v-if="power.value">
       <span class="float-left">
-        <span class="htooltip icon Power">
+        <span class="htooltip icon power">
           <span v-if="!!power.info">{{power.info}}</span>
         </span>
         <span>{{power.value.intString()}}</span>  
@@ -135,7 +135,7 @@
   <script type="text/x-template" id="templates-skill">
     <span v-if="skill">
       <span class="float-left">
-        <span class="htooltip icon skill" :class="[ summary.icon ]">
+        <span class="htooltip icon skill" :class="[ summary.icon.asIconPath() ]">
           <span>{{summary.info}}</span>
         </span>
         <span :class="{inactive: ( view != 'item' ) && !skill.active}">{{skill.name}}</span>
@@ -144,7 +144,7 @@
     </span>
   </script>
   <script type="text/x-template" id="templates-item-slot">
-    <span class="htooltip icon item" :class="[ itemSlot.type, 'Affinity' + itemSlot.a ]">
+    <span class="htooltip icon item" :class="[ itemSlot.type.asIconPath(), 'i-affinity' + itemSlot.a ]">
       <span>{{summary}}</span>
     </span>
   </script>
@@ -310,7 +310,7 @@
           <tr>
             <th rowspan="2">
               <div>
-                <span class="icon medium item" :class="item.name.toLowerCase().replace( /\s+/g, '' )"></span>
+                <span class="icon medium item" :class="[ item.type.asIconPath(), 'i-' + item.name.asIconPath() ]"></span>
               </div>
             </th>
             <th>
@@ -320,7 +320,7 @@
             </th>
             <td>
               <div>
-                <span class="float-left icon item" :class="[ item.type ]"></span>
+                <span class="float-left icon item" :class="[ item.type.asIconPath() ]"></span>
                 <span>{{item.type}}</span>
               </div>
             </td>
@@ -336,10 +336,11 @@
             </td>
             <td>
               <div class="data-info" v-if="item.skill">
-                <span class="float-left icon quality" :class="item.skill.q" />
-                <span class="float-right">
+                <span class="float-left htooltip">
+                  <span>{{'Mark as {0}mastered'.format( item.skill.m ? 'un' : '' )}}</span>
                   <input type="checkbox" v-model="item.skill.m" />
                 </span>
+                <span class="float-left icon quality" :class="item.skill.q.asIconPath()" />
                 <skill :skill="item.skill" :view="'item'" />
               </div>
             </td>
@@ -647,7 +648,7 @@
           <tr>
             <th rowspan="2">
               <div>
-                <span class="icon medium hero" :class="hero.name.replace( /\s+/g, '' )"></span>
+                <span class="icon medium hero" :class="hero.name.asIconPath()"></span>
               </div>
             </th>
             <th rowspan="2">
@@ -879,7 +880,7 @@
                   </th>
                   <th class="left" :rowspan="[ th.name ? 2 : 1 ]">
                     <div v-if="th.name">
-                      <span class="float-left icon medium hero" :class="th.name.replace( /\s+/g, '' )"></span>
+                      <span class="float-left icon medium hero" :class="th.name.asIconPath()"></span>
                     </div>
                   </th>
                   <th class="left name">
@@ -901,7 +902,8 @@
                   <th></th>
                   <td>
                     <div class="data-info">
-                      <span v-if="sh.building.b" class="float-right">
+                      <span v-if="sh.building.b" class="float-right htooltip">
+                        <span>{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
                         <input type="checkbox" v-model="th.b" @click="set_boost( sh, th.b )"/>
                       </span>
                       <power :power="sh.power"/>
@@ -921,13 +923,16 @@
                       <skill :skill="sh.skills.hero[0]" view="'hero'"/>
                     </div>  
                   </td>
-                  <td v-for="j in 7">
+                  <td v-for="j in 7" v-if="edit"> 
                     <div class="data-info" v-if="sh.items[j-1]">
                       <select2 v-if="edit" v-model="th.slots[j-1].item" :options="sh.items[j-1].list" :placeholder="'Choose item'"/>
-                      <span v-else>
-                        <span class="float-left icon quality" :class="th.slots[j-1].q"></span>
-                        <span>{{th.slots[j-1].q}}</span>
-                      </span>
+                    </div>
+                  </td>
+                  <td v-else rowspan="2">
+                    <div class="data-info" v-if="th.slots[j-1].item">
+                      <span class="float-right icon quality" :class="th.slots[j-1].q.asIconPath()"></span>
+                      <span class="icon medium item" :class="[ sh.items[j-1].type.asIconPath(), 'i-' + sh.items[j-1].name.asIconPath() ]"/>
+                      <span class="float-left icon">{{sh.items[j-1].lv}}</span>
                     </div>
                   </td>
                 </tr>
@@ -938,13 +943,9 @@
                       <skill :skill="sh.skills.hero[1]" view="'hero'"/>
                     </div>
                   </td>
-                  <td v-for="j in 7">
+                  <td v-for="j in 7" v-if="edit">
                     <div class="data-info" v-if="sh.items[j-1]">
                       <select2 v-if="edit" v-model="th.slots[j-1].q" :options="options.quality.list" :placeholder="'Choose quality'"/>
-                      <span v-else>
-                        <span class="float-left icon">{{sh.items[j-1].lv}}</span>
-                        <span>{{sh.items[j-1].name}}</span>
-                      </span>
                     </div>
                   </td>
                 </tr>

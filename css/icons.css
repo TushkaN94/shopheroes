@@ -16,516 +16,2944 @@ span.icon.medium {
   height: 2.5rem;
   width: 2.5rem;
 }
-span.icon.item.Swords {
-  background-image: url( "images/weapon_types/Swords.png" );
+span.icon.power {
+  background-image: url( "../images/power.png" );
 }
-span.icon.item.Daggers {
-  background-image: url( "images/weapon_types/Daggers.png" );
+span.icon.quality.common {
+  background-image: url( "../images/qualities/common.png" );
 }
-span.icon.item.Spears {
-  background-image: url( "images/weapon_types/Spears.png" );
+span.icon.quality.good {
+  background-image: url( "../images/qualities/good.png" );
 }
-span.icon.item.Axes {
-  background-image: url( "images/weapon_types/Axes.png" );
+span.icon.quality.great {
+  background-image: url( "../images/qualities/great.png" );
 }
-span.icon.item.Maces {
-  background-image: url( "images/weapon_types/Maces.png" );
+span.icon.quality.flawless {
+  background-image: url( "../images/qualities/flawless.png" );
 }
-span.icon.item.Staves {
-  background-image: url( "images/weapon_types/Staves.png" );
+span.icon.quality.epic {
+  background-image: url( "../images/qualities/epic.png" );
 }
-span.icon.item.Guns {
-  background-image: url( "images/weapon_types/Guns.png" );
+span.icon.quality.legendary {
+  background-image: url( "../images/qualities/legendary.png" );
 }
-span.icon.item.Bows {
-  background-image: url( "images/weapon_types/Bows.png" );
+span.icon.quality.mythical {
+  background-image: url( "../images/qualities/mythical.png" );
 }
-span.icon.item.Armor {
-  background-image: url( "images/weapon_types/Armor.png" );
+span.icon.item.swords {
+  background-image: url( "../images/types/items/swords.png" );
 }
-span.icon.item.Vests {
-  background-image: url( "images/weapon_types/Vests.png" );
+span.icon.item.daggers {
+  background-image: url( "../images/types/items/daggers.png" );
 }
-span.icon.item.Clothes {
-  background-image: url( "images/weapon_types/Clothes.png" );
+span.icon.item.spears {
+  background-image: url( "../images/types/items/spears.png" );
 }
-span.icon.item.Helmets {
-  background-image: url( "images/weapon_types/Helmets.png" );
+span.icon.item.axes {
+  background-image: url( "../images/types/items/axes.png" );
 }
-span.icon.item.Hats {
-  background-image: url( "images/weapon_types/Hats.png" );
+span.icon.item.maces {
+  background-image: url( "../images/types/items/maces.png" );
 }
-span.icon.item.Gauntlets {
-  background-image: url( "images/weapon_types/Gauntlets.png" );
+span.icon.item.staves {
+  background-image: url( "../images/types/items/staves.png" );
 }
-span.icon.item.Bracers {
-  background-image: url( "images/weapon_types/Bracers.png" );
+span.icon.item.guns {
+  background-image: url( "../images/types/items/guns.png" );
 }
-span.icon.item.Boots {
-  background-image: url( "images/weapon_types/Boots.png" );
+span.icon.item.bows {
+  background-image: url( "../images/types/items/bows.png" );
 }
-span.icon.item.Footwear {
-  background-image: url( "images/weapon_types/Footwear.png" );
+span.icon.item.armor {
+  background-image: url( "../images/types/items/armor.png" );
 }
-span.icon.item.Shields {
-  background-image: url( "images/weapon_types/Shields.png" );
+span.icon.item.vests {
+  background-image: url( "../images/types/items/vests.png" );
 }
-span.icon.item.Projectiles {
-  background-image: url( "images/weapon_types/Projectiles.png" );
+span.icon.item.clothes {
+  background-image: url( "../images/types/items/clothes.png" );
 }
-span.icon.item.Remedies {
-  background-image: url( "images/weapon_types/Remedies.png" );
+span.icon.item.helmets {
+  background-image: url( "../images/types/items/helmets.png" );
 }
-span.icon.item.Potions {
-  background-image: url( "images/weapon_types/Potions.png" );
+span.icon.item.hats {
+  background-image: url( "../images/types/items/hats.png" );
 }
-span.icon.item.Spells {
-  background-image: url( "images/weapon_types/Spells.png" );
+span.icon.item.gauntlets {
+  background-image: url( "../images/types/items/gauntlets.png" );
 }
-span.icon.item.Rings {
-  background-image: url( "images/weapon_types/Rings.png" );
+span.icon.item.bracers {
+  background-image: url( "../images/types/items/bracers.png" );
 }
-span.icon.item.Pendants {
-  background-image: url( "images/weapon_types/Pendants.png" );
+span.icon.item.boots {
+  background-image: url( "../images/types/items/boots.png" );
 }
-span.icon.item.Instruments {
-  background-image: url( "images/weapon_types/Instruments.png" );
+span.icon.item.footwear {
+  background-image: url( "../images/types/items/footwear.png" );
 }
-span.icon.skill.SpeedRunner {
-  background-image: url( "images/skills/SpeedRunner.png" );
+span.icon.item.shields {
+  background-image: url( "../images/types/items/shields.png" );
 }
-span.icon.skill.Leader {
-  background-image: url( "images/skills/Leader.png" );
+span.icon.item.projectiles {
+  background-image: url( "../images/types/items/projectiles.png" );
 }
-span.icon.skill.Healer {
-  background-image: url( "images/skills/Healer.png" );
+span.icon.item.remedies {
+  background-image: url( "../images/types/items/remedies.png" );
 }
-span.icon.skill.Energetic {
-  background-image: url( "images/skills/Energetic.png" );
+span.icon.item.potions {
+  background-image: url( "../images/types/items/potions.png" );
 }
-span.icon.skill.Revive {
-  background-image: url( "images/skills/Revive.png" );
+span.icon.item.spells {
+  background-image: url( "../images/types/items/spells.png" );
 }
-span.icon.skill.Support {
-  background-image: url( "images/skills/Support.png" );
+span.icon.item.rings {
+  background-image: url( "../images/types/items/rings.png" );
 }
-span.icon.skill.Resourceful {
-  background-image: url( "images/skills/Resourceful.png" );
+span.icon.item.pendants {
+  background-image: url( "../images/types/items/pendants.png" );
 }
-span.icon.skill.Fastidious {
-  background-image: url( "images/skills/Fastidious.png" );
+span.icon.item.instruments {
+  background-image: url( "../images/types/items/instruments.png" );
 }
-span.icon.skill.Supplier {
-  background-image: url( "images/skills/Supplier.png" );
+span.icon.skill.speedrunner {
+  background-image: url( "../images/skills/speedrunner.png" );
 }
-span.icon.skill.Gangster {
-  background-image: url( "images/skills/Gangster.png" );
+span.icon.skill.leader {
+  background-image: url( "../images/skills/leader.png" );
 }
-span.icon.skill.Amazon {
-  background-image: url( "images/skills/Amazon.png" );
+span.icon.skill.healer {
+  background-image: url( "../images/skills/healer.png" );
 }
-span.icon.skill.Brosinarms {
-  background-image: url( "images/skills/Brosinarms.png" );
+span.icon.skill.energetic {
+  background-image: url( "../images/skills/energetic.png" );
 }
-span.icon.skill.Protector {
-  background-image: url( "images/skills/Protector.png" );
+span.icon.skill.revive {
+  background-image: url( "../images/skills/revive.png" );
 }
-span.icon.skill.AuraofProtection {
-  background-image: url( "images/skills/AuraofProtection.png" );
+span.icon.skill.support {
+  background-image: url( "../images/skills/support.png" );
 }
-span.icon.skill.Commander {
-  background-image: url( "images/skills/Commander.png" );
+span.icon.skill.resourceful {
+  background-image: url( "../images/skills/resourceful.png" );
 }
-span.icon.skill.ArchWizard {
-  background-image: url( "images/skills/ArchWizard.png" );
+span.icon.skill.fastidious {
+  background-image: url( "../images/skills/fastidious.png" );
 }
-span.icon.skill.Cleave {
-  background-image: url( "images/skills/Cleave.png" );
+span.icon.skill.supplier {
+  background-image: url( "../images/skills/supplier.png" );
 }
-span.icon.skill.Crush {
-  background-image: url( "images/skills/Crush.png" );
+span.icon.skill.gangster {
+  background-image: url( "../images/skills/gangster.png" );
 }
-span.icon.skill.Berserker {
-  background-image: url( "images/skills/Berserker.png" );
+span.icon.skill.amazon {
+  background-image: url( "../images/skills/amazon.png" );
 }
-span.icon.skill.Backstab {
-  background-image: url( "images/skills/Backstab.png" );
+span.icon.skill.brosinarms {
+  background-image: url( "../images/skills/brosinarms.png" );
 }
-span.icon.skill.Parry {
-  background-image: url( "images/skills/Parry.png" );
+span.icon.skill.protector {
+  background-image: url( "../images/skills/protector.png" );
 }
-span.icon.skill.Stoneskin {
-  background-image: url( "images/skills/Stoneskin.png" );
+span.icon.skill.auraofprotection {
+  background-image: url( "../images/skills/auraofprotection.png" );
 }
-span.icon.skill.Riposte {
-  background-image: url( "images/skills/Riposte.png" );
+span.icon.skill.commander {
+  background-image: url( "../images/skills/commander.png" );
 }
-span.icon.skill.MageArmor {
-  background-image: url( "images/skills/MageArmor.png" );
+span.icon.skill.archwizard {
+  background-image: url( "../images/skills/archwizard.png" );
 }
-span.icon.skill.Coneofcold {
-  background-image: url( "images/skills/Coneofcold.png" );
+span.icon.skill.cleave {
+  background-image: url( "../images/skills/cleave.png" );
 }
-span.icon.skill.Thunderbolt {
-  background-image: url( "images/skills/Thunderbolt.png" );
+span.icon.skill.crush {
+  background-image: url( "../images/skills/crush.png" );
 }
-span.icon.skill.Fireball {
-  background-image: url( "images/skills/Fireball.png" );
+span.icon.skill.berserker {
+  background-image: url( "../images/skills/berserker.png" );
 }
-span.icon.skill.Resilient {
-  background-image: url( "images/skills/Resilient.png" );
+span.icon.skill.backstab {
+  background-image: url( "../images/skills/backstab.png" );
 }
-span.icon.skill.Wise {
-  background-image: url( "images/skills/Wise.png" );
+span.icon.skill.parry {
+  background-image: url( "../images/skills/parry.png" );
 }
-span.icon.skill.Lucky {
-  background-image: url( "images/skills/Lucky.png" );
+span.icon.skill.stoneskin {
+  background-image: url( "../images/skills/stoneskin.png" );
 }
-span.icon.skill.Shadowstep {
-  background-image: url( "images/skills/Shadowstep.png" );
+span.icon.skill.riposte {
+  background-image: url( "../images/skills/riposte.png" );
 }
-span.icon.skill.GoldDigger {
-  background-image: url( "images/skills/GoldDigger.png" );
+span.icon.skill.magearmor {
+  background-image: url( "../images/skills/magearmor.png" );
 }
-span.icon.skill.TreasureHunter {
-  background-image: url( "images/skills/TreasureHunter.png" );
+span.icon.skill.coneofcold {
+  background-image: url( "../images/skills/coneofcold.png" );
 }
-span.icon.skill.Scavenger {
-  background-image: url( "images/skills/Scavenger.png" );
+span.icon.skill.thunderbolt {
+  background-image: url( "../images/skills/thunderbolt.png" );
 }
-span.icon.skill.DetectSecrets {
-  background-image: url( "images/skills/DetectSecrets.png" );
+span.icon.skill.fireball {
+  background-image: url( "../images/skills/fireball.png" );
 }
-span.icon.skill.MagicFind {
-  background-image: url( "images/skills/MagicFind.png" );
+span.icon.skill.resilient {
+  background-image: url( "../images/skills/resilient.png" );
 }
-span.icon.hero.Karal {
-  background-image: url( "images/heroes/Karal.png" );
+span.icon.skill.wise {
+  background-image: url( "../images/skills/wise.png" );
 }
-span.icon.hero.Theor {
-  background-image: url( "images/heroes/Theor.png" );
+span.icon.skill.lucky {
+  background-image: url( "../images/skills/lucky.png" );
 }
-span.icon.hero.Clovis {
-  background-image: url( "images/heroes/Clovis.png" );
+span.icon.skill.shadowstep {
+  background-image: url( "../images/skills/shadowstep.png" );
 }
-span.icon.hero.Gauvin {
-  background-image: url( "images/heroes/Gauvin.png" );
+span.icon.skill.golddigger {
+  background-image: url( "../images/skills/golddigger.png" );
 }
-span.icon.hero.Lancaster {
-  background-image: url( "images/heroes/Lancaster.png" );
+span.icon.skill.treasurehunter {
+  background-image: url( "../images/skills/treasurehunter.png" );
 }
-span.icon.hero.Fiora {
-  background-image: url( "images/heroes/Fiora.png" );
+span.icon.skill.scavenger {
+  background-image: url( "../images/skills/scavenger.png" );
 }
-span.icon.hero.Kurul {
-  background-image: url( "images/heroes/Kurul.png" );
+span.icon.skill.detectsecrets {
+  background-image: url( "../images/skills/detectsecrets.png" );
 }
-span.icon.hero.Edward {
-  background-image: url( "images/heroes/Edward.png" );
+span.icon.skill.magicfind {
+  background-image: url( "../images/skills/magicfind.png" );
 }
-span.icon.hero.Alicia {
-  background-image: url( "images/heroes/Alicia.png" );
+span.icon.hero.karal {
+  background-image: url( "../images/heroes/karal.png" );
 }
-span.icon.hero.Garreth {
-  background-image: url( "images/heroes/Garreth.png" );
+span.icon.hero.theor {
+  background-image: url( "../images/heroes/theor.png" );
 }
-span.icon.hero.Palash {
-  background-image: url( "images/heroes/Palash.png" );
+span.icon.hero.clovis {
+  background-image: url( "../images/heroes/clovis.png" );
 }
-span.icon.hero.Mila {
-  background-image: url( "images/heroes/Mila.png" );
+span.icon.hero.gauvin {
+  background-image: url( "../images/heroes/gauvin.png" );
 }
-span.icon.hero.Irene {
-  background-image: url( "images/heroes/Irene.png" );
+span.icon.hero.lancaster {
+  background-image: url( "../images/heroes/lancaster.png" );
 }
-span.icon.hero.Darthos {
-  background-image: url( "images/heroes/Darthos.png" );
+span.icon.hero.fiora {
+  background-image: url( "../images/heroes/fiora.png" );
 }
-span.icon.hero.Odette {
-  background-image: url( "images/heroes/Odette.png" );
+span.icon.hero.kurul {
+  background-image: url( "../images/heroes/kurul.png" );
 }
-span.icon.hero.Louca {
-  background-image: url( "images/heroes/Louca.png" );
+span.icon.hero.edward {
+  background-image: url( "../images/heroes/edward.png" );
 }
-span.icon.hero.KuroShobi {
-  background-image: url( "images/heroes/KuroShobi.png" );
+span.icon.hero.alicia {
+  background-image: url( "../images/heroes/alicia.png" );
 }
-span.icon.hero.Lorelei {
-  background-image: url( "images/heroes/Lorelei.png" );
+span.icon.hero.garreth {
+  background-image: url( "../images/heroes/garreth.png" );
 }
-span.icon.hero.Melina {
-  background-image: url( "images/heroes/Melina.png" );
+span.icon.hero.palash {
+  background-image: url( "../images/heroes/palash.png" );
 }
-span.icon.hero.Minh {
-  background-image: url( "images/heroes/Minh.png" );
+span.icon.hero.mila {
+  background-image: url( "../images/heroes/mila.png" );
 }
-span.icon.hero.Albert {
-  background-image: url( "images/heroes/Albert.png" );
+span.icon.hero.irene {
+  background-image: url( "../images/heroes/irene.png" );
 }
-span.icon.hero.Nya {
-  background-image: url( "images/heroes/Nya.png" );
+span.icon.hero.darthos {
+  background-image: url( "../images/heroes/darthos.png" );
 }
-span.icon.hero.Oneira {
-  background-image: url( "images/heroes/Oneira.png" );
+span.icon.hero.odette {
+  background-image: url( "../images/heroes/odette.png" );
 }
-span.icon.hero.Azula {
-  background-image: url( "images/heroes/Azula.png" );
+span.icon.hero.louca {
+  background-image: url( "../images/heroes/louca.png" );
 }
-span.icon.hero.Francesca {
-  background-image: url( "images/heroes/Francesca.png" );
+span.icon.hero.kuroshobi {
+  background-image: url( "../images/heroes/kuroshobi.png" );
 }
-span.icon.hero.Mojian {
-  background-image: url( "images/heroes/Mojian.png" );
+span.icon.hero.lorelei {
+  background-image: url( "../images/heroes/lorelei.png" );
 }
-span.icon.hero.Charles {
-  background-image: url( "images/heroes/Charles.png" );
+span.icon.hero.melina {
+  background-image: url( "../images/heroes/melina.png" );
 }
-span.icon.Power {
-  background-image: url( "images/Power.png" );
+span.icon.hero.minh {
+  background-image: url( "../images/heroes/minh.png" );
 }
-span.icon.item.Swords.Affinity1 {
-  background-image: url( "images/types/affinity1/Swords.png" );
+span.icon.hero.albert {
+  background-image: url( "../images/heroes/albert.png" );
 }
-span.icon.item.Daggers.Affinity1 {
-  background-image: url( "images/types/affinity1/Daggers.png" );
+span.icon.hero.nya {
+  background-image: url( "../images/heroes/nya.png" );
 }
-span.icon.item.Spears.Affinity1 {
-  background-image: url( "images/types/affinity1/Spears.png" );
+span.icon.hero.oneira {
+  background-image: url( "../images/heroes/oneira.png" );
 }
-span.icon.item.Axes.Affinity1 {
-  background-image: url( "images/types/affinity1/Axes.png" );
+span.icon.hero.azula {
+  background-image: url( "../images/heroes/azula.png" );
 }
-span.icon.item.Maces.Affinity1 {
-  background-image: url( "images/types/affinity1/Maces.png" );
+span.icon.hero.francesca {
+  background-image: url( "../images/heroes/francesca.png" );
 }
-span.icon.item.Staves.Affinity1 {
-  background-image: url( "images/types/affinity1/Staves.png" );
+span.icon.hero.mojian {
+  background-image: url( "../images/heroes/mojian.png" );
 }
-span.icon.item.Guns.Affinity1 {
-  background-image: url( "images/types/affinity1/Guns.png" );
+span.icon.hero.charles {
+  background-image: url( "../images/heroes/charles.png" );
 }
-span.icon.item.Bows.Affinity1 {
-  background-image: url( "images/types/affinity1/Bows.png" );
+span.icon.item.swords.i-affinity1 {
+  background-image: url( "../images/types/affinity1/swords.png" );
 }
-span.icon.item.Armor.Affinity1 {
-  background-image: url( "images/types/affinity1/Armor.png" );
+span.icon.item.daggers.i-affinity1 {
+  background-image: url( "../images/types/affinity1/daggers.png" );
 }
-span.icon.item.Vests.Affinity1 {
-  background-image: url( "images/types/affinity1/Vests.png" );
+span.icon.item.spears.i-affinity1 {
+  background-image: url( "../images/types/affinity1/spears.png" );
 }
-span.icon.item.Clothes.Affinity1 {
-  background-image: url( "images/types/affinity1/Clothes.png" );
+span.icon.item.axes.i-affinity1 {
+  background-image: url( "../images/types/affinity1/axes.png" );
 }
-span.icon.item.Helmets.Affinity1 {
-  background-image: url( "images/types/affinity1/Helmets.png" );
+span.icon.item.maces.i-affinity1 {
+  background-image: url( "../images/types/affinity1/maces.png" );
 }
-span.icon.item.Hats.Affinity1 {
-  background-image: url( "images/types/affinity1/Hats.png" );
+span.icon.item.staves.i-affinity1 {
+  background-image: url( "../images/types/affinity1/staves.png" );
 }
-span.icon.item.Gauntlets.Affinity1 {
-  background-image: url( "images/types/affinity1/Gauntlets.png" );
+span.icon.item.guns.i-affinity1 {
+  background-image: url( "../images/types/affinity1/guns.png" );
 }
-span.icon.item.Bracers.Affinity1 {
-  background-image: url( "images/types/affinity1/Bracers.png" );
+span.icon.item.bows.i-affinity1 {
+  background-image: url( "../images/types/affinity1/bows.png" );
 }
-span.icon.item.Boots.Affinity1 {
-  background-image: url( "images/types/affinity1/Boots.png" );
+span.icon.item.armor.i-affinity1 {
+  background-image: url( "../images/types/affinity1/armor.png" );
 }
-span.icon.item.Footwear.Affinity1 {
-  background-image: url( "images/types/affinity1/Footwear.png" );
+span.icon.item.vests.i-affinity1 {
+  background-image: url( "../images/types/affinity1/vests.png" );
 }
-span.icon.item.Shields.Affinity1 {
-  background-image: url( "images/types/affinity1/Shields.png" );
+span.icon.item.clothes.i-affinity1 {
+  background-image: url( "../images/types/affinity1/clothes.png" );
 }
-span.icon.item.Projectiles.Affinity1 {
-  background-image: url( "images/types/affinity1/Projectiles.png" );
+span.icon.item.helmets.i-affinity1 {
+  background-image: url( "../images/types/affinity1/helmets.png" );
 }
-span.icon.item.Remedies.Affinity1 {
-  background-image: url( "images/types/affinity1/Remedies.png" );
+span.icon.item.hats.i-affinity1 {
+  background-image: url( "../images/types/affinity1/hats.png" );
 }
-span.icon.item.Potions.Affinity1 {
-  background-image: url( "images/types/affinity1/Potions.png" );
+span.icon.item.gauntlets.i-affinity1 {
+  background-image: url( "../images/types/affinity1/gauntlets.png" );
 }
-span.icon.item.Spells.Affinity1 {
-  background-image: url( "images/types/affinity1/Spells.png" );
+span.icon.item.bracers.i-affinity1 {
+  background-image: url( "../images/types/affinity1/bracers.png" );
 }
-span.icon.item.Rings.Affinity1 {
-  background-image: url( "images/types/affinity1/Rings.png" );
+span.icon.item.boots.i-affinity1 {
+  background-image: url( "../images/types/affinity1/boots.png" );
 }
-span.icon.item.Pendants.Affinity1 {
-  background-image: url( "images/types/affinity1/Pendants.png" );
+span.icon.item.footwear.i-affinity1 {
+  background-image: url( "../images/types/affinity1/footwear.png" );
 }
-span.icon.item.Instruments.Affinity1 {
-  background-image: url( "images/types/affinity1/Instruments.png" );
+span.icon.item.shields.i-affinity1 {
+  background-image: url( "../images/types/affinity1/shields.png" );
 }
-span.icon.item.Swords.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Swords.png" );
+span.icon.item.projectiles.i-affinity1 {
+  background-image: url( "../images/types/affinity1/projectiles.png" );
 }
-span.icon.item.Daggers.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Daggers.png" );
+span.icon.item.remedies.i-affinity1 {
+  background-image: url( "../images/types/affinity1/remedies.png" );
 }
-span.icon.item.Spears.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Spears.png" );
+span.icon.item.potions.i-affinity1 {
+  background-image: url( "../images/types/affinity1/potions.png" );
 }
-span.icon.item.Axes.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Axes.png" );
+span.icon.item.spells.i-affinity1 {
+  background-image: url( "../images/types/affinity1/spells.png" );
 }
-span.icon.item.Maces.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Maces.png" );
+span.icon.item.rings.i-affinity1 {
+  background-image: url( "../images/types/affinity1/rings.png" );
 }
-span.icon.item.Staves.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Staves.png" );
+span.icon.item.pendants.i-affinity1 {
+  background-image: url( "../images/types/affinity1/pendants.png" );
 }
-span.icon.item.Guns.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Guns.png" );
+span.icon.item.instruments.i-affinity1 {
+  background-image: url( "../images/types/affinity1/instruments.png" );
 }
-span.icon.item.Bows.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Bows.png" );
+span.icon.item.swords.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/swords.png" );
 }
-span.icon.item.Armor.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Armor.png" );
+span.icon.item.daggers.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/daggers.png" );
 }
-span.icon.item.Vests.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Vests.png" );
+span.icon.item.spears.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/spears.png" );
 }
-span.icon.item.Clothes.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Clothes.png" );
+span.icon.item.axes.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/axes.png" );
 }
-span.icon.item.Helmets.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Helmets.png" );
+span.icon.item.maces.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/maces.png" );
 }
-span.icon.item.Hats.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Hats.png" );
+span.icon.item.staves.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/staves.png" );
 }
-span.icon.item.Gauntlets.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Gauntlets.png" );
+span.icon.item.guns.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/guns.png" );
 }
-span.icon.item.Bracers.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Bracers.png" );
+span.icon.item.bows.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/bows.png" );
 }
-span.icon.item.Boots.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Boots.png" );
+span.icon.item.armor.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/armor.png" );
 }
-span.icon.item.Footwear.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Footwear.png" );
+span.icon.item.vests.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/vests.png" );
 }
-span.icon.item.Shields.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Shields.png" );
+span.icon.item.clothes.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/clothes.png" );
 }
-span.icon.item.Projectiles.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Projectiles.png" );
+span.icon.item.helmets.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/helmets.png" );
 }
-span.icon.item.Remedies.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Remedies.png" );
+span.icon.item.hats.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/hats.png" );
 }
-span.icon.item.Potions.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Potions.png" );
+span.icon.item.gauntlets.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/gauntlets.png" );
 }
-span.icon.item.Spells.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Spells.png" );
+span.icon.item.bracers.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/bracers.png" );
 }
-span.icon.item.Rings.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Rings.png" );
+span.icon.item.boots.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/boots.png" );
 }
-span.icon.item.Pendants.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Pendants.png" );
+span.icon.item.footwear.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/footwear.png" );
 }
-span.icon.item.Instruments.Affinity-1 {
-  background-image: url( "images/types/affinity-1/Instruments.png" );
+span.icon.item.shields.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/shields.png" );
 }
-span.icon.item.Swords.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Swords.png" );
+span.icon.item.projectiles.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/projectiles.png" );
 }
-span.icon.item.Daggers.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Daggers.png" );
+span.icon.item.remedies.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/remedies.png" );
 }
-span.icon.item.Spears.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Spears.png" );
+span.icon.item.potions.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/potions.png" );
 }
-span.icon.item.Axes.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Axes.png" );
+span.icon.item.spells.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/spells.png" );
 }
-span.icon.item.Maces.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Maces.png" );
+span.icon.item.rings.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/rings.png" );
 }
-span.icon.item.Staves.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Staves.png" );
+span.icon.item.pendants.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/pendants.png" );
 }
-span.icon.item.Guns.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Guns.png" );
+span.icon.item.instruments.i-affinity-1 {
+  background-image: url( "../images/types/affinity-1/instruments.png" );
 }
-span.icon.item.Bows.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Bows.png" );
+span.icon.item.swords.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/swords.png" );
 }
-span.icon.item.Armor.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Armor.png" );
+span.icon.item.daggers.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/daggers.png" );
 }
-span.icon.item.Vests.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Vests.png" );
+span.icon.item.spears.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/spears.png" );
 }
-span.icon.item.Clothes.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Clothes.png" );
+span.icon.item.axes.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/axes.png" );
 }
-span.icon.item.Helmets.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Helmets.png" );
+span.icon.item.maces.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/maces.png" );
 }
-span.icon.item.Hats.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Hats.png" );
+span.icon.item.staves.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/staves.png" );
 }
-span.icon.item.Gauntlets.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Gauntlets.png" );
+span.icon.item.guns.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/guns.png" );
 }
-span.icon.item.Bracers.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Bracers.png" );
+span.icon.item.bows.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/bows.png" );
 }
-span.icon.item.Boots.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Boots.png" );
+span.icon.item.armor.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/armor.png" );
 }
-span.icon.item.Footwear.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Footwear.png" );
+span.icon.item.vests.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/vests.png" );
 }
-span.icon.item.Shields.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Shields.png" );
+span.icon.item.clothes.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/clothes.png" );
 }
-span.icon.item.Projectiles.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Projectiles.png" );
+span.icon.item.helmets.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/helmets.png" );
 }
-span.icon.item.Remedies.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Remedies.png" );
+span.icon.item.hats.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/hats.png" );
 }
-span.icon.item.Potions.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Potions.png" );
+span.icon.item.gauntlets.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/gauntlets.png" );
 }
-span.icon.item.Spells.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Spells.png" );
+span.icon.item.bracers.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/bracers.png" );
 }
-span.icon.item.Rings.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Rings.png" );
+span.icon.item.boots.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/boots.png" );
 }
-span.icon.item.Pendants.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Pendants.png" );
+span.icon.item.footwear.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/footwear.png" );
 }
-span.icon.item.Instruments.Affinity-2 {
-  background-image: url( "images/types/affinity-2/Instruments.png" );
+span.icon.item.shields.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/shields.png" );
 }
-span.icon.quality.Common {
-  background-image: url( "images/qualities/Common.png" );
+span.icon.item.projectiles.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/projectiles.png" );
 }
-span.icon.quality.Good {
-  background-image: url( "images/qualities/Good.png" );
+span.icon.item.remedies.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/remedies.png" );
 }
-span.icon.quality.Great {
-  background-image: url( "images/qualities/Great.png" );
+span.icon.item.potions.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/potions.png" );
 }
-span.icon.quality.Flawless {
-  background-image: url( "images/qualities/Flawless.png" );
+span.icon.item.spells.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/spells.png" );
 }
-span.icon.quality.Epic {
-  background-image: url( "images/qualities/Epic.png" );
+span.icon.item.rings.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/rings.png" );
 }
-span.icon.quality.Legendary {
-  background-image: url( "images/qualities/Legendary.png" );
+span.icon.item.pendants.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/pendants.png" );
 }
-span.icon.quality.Mythical {
-  background-image: url( "images/qualities/Mythical.png" );
+span.icon.item.instruments.i-affinity-2 {
+  background-image: url( "../images/types/affinity-2/instruments.png" );
+}
+
+span.icon.item.swords.i-shortsword {
+  background-image: url( "../images/items/swords/shortsword.png" );
+}
+span.icon.item.swords.i-longsword {
+  background-image: url( "../images/items/swords/longsword.png" );
+}
+span.icon.item.swords.i-broadsword {
+  background-image: url( "../images/items/swords/broadsword.png" );
+}
+span.icon.item.swords.i-midnightsword {
+  background-image: url( "../images/items/swords/midnightsword.png" );
+}
+span.icon.item.swords.i-rapier {
+  background-image: url( "../images/items/swords/rapier.png" );
+}
+span.icon.item.swords.i-claymore {
+  background-image: url( "../images/items/swords/claymore.png" );
+}
+span.icon.item.swords.i-jadedblade {
+  background-image: url( "../images/items/swords/jadedblade.png" );
+}
+span.icon.item.swords.i-fireblade {
+  background-image: url( "../images/items/swords/fireblade.png" );
+}
+span.icon.item.swords.i-zweihander {
+  background-image: url( "../images/items/swords/zweihander.png" );
+}
+span.icon.item.swords.i-macuahuitl {
+  background-image: url( "../images/items/swords/macuahuitl.png" );
+}
+span.icon.item.swords.i-bastardsword {
+  background-image: url( "../images/items/swords/bastardsword.png" );
+}
+span.icon.item.swords.i-sabre {
+  background-image: url( "../images/items/swords/sabre.png" );
+}
+span.icon.item.swords.i-wakizashi {
+  background-image: url( "../images/items/swords/wakizashi.png" );
+}
+span.icon.item.swords.i-vorpalsword {
+  background-image: url( "../images/items/swords/vorpalsword.png" );
+}
+span.icon.item.swords.i-scimitar {
+  background-image: url( "../images/items/swords/scimitar.png" );
+}
+span.icon.item.swords.i-coldsteel {
+  background-image: url( "../images/items/swords/coldsteel.png" );
+}
+span.icon.item.swords.i-masamune {
+  background-image: url( "../images/items/swords/masamune.png" );
+}
+span.icon.item.swords.i-sawblade {
+  background-image: url( "../images/items/swords/sawblade.png" );
+}
+span.icon.item.swords.i-heavenswill {
+  background-image: url( "../images/items/swords/heavenswill.png" );
+}
+span.icon.item.swords.i-abyssalbrand {
+  background-image: url( "../images/items/swords/abyssalbrand.png" );
+}
+span.icon.item.swords.i-baconblade {
+  background-image: url( "../images/items/swords/baconblade.png" );
+}
+span.icon.item.swords.i-slashingtiger {
+  background-image: url( "../images/items/swords/slashingtiger.png" );
+}
+span.icon.item.swords.i-excalibur {
+  background-image: url( "../images/items/swords/excalibur.png" );
+}
+span.icon.item.swords.i-stormbringer {
+  background-image: url( "../images/items/swords/stormbringer.png" );
+}
+span.icon.item.swords.i-twilightscimitar {
+  background-image: url( "../images/items/swords/twilightscimitar.png" );
+}
+span.icon.item.swords.i-balmung {
+  background-image: url( "../images/items/swords/balmung.png" );
+}
+span.icon.item.swords.i-dragonslayer {
+  background-image: url( "../images/items/swords/dragonslayer.png" );
+}
+span.icon.item.swords.i-unholyfangs {
+  background-image: url( "../images/items/swords/unholyfangs.png" );
+}
+span.icon.item.swords.i-frostfireblade {
+  background-image: url( "../images/items/swords/frostfireblade.png" );
+}
+span.icon.item.swords.i-bladeofpower {
+  background-image: url( "../images/items/swords/bladeofpower.png" );
+}
+span.icon.item.swords.i-naughtyandnice {
+  background-image: url( "../images/items/swords/naughtyandnice.png" );
+}
+span.icon.item.swords.i-durandal {
+  background-image: url( "../images/items/swords/durandal.png" );
+}
+span.icon.item.swords.i-skofnung {
+  background-image: url( "../images/items/swords/skofnung.png" );
+}
+span.icon.item.daggers.i-knife {
+  background-image: url( "../images/items/daggers/knife.png" );
+}
+span.icon.item.daggers.i-pocketknife {
+  background-image: url( "../images/items/daggers/pocketknife.png" );
+}
+span.icon.item.daggers.i-kris {
+  background-image: url( "../images/items/daggers/kris.png" );
+}
+span.icon.item.daggers.i-dirk {
+  background-image: url( "../images/items/daggers/dirk.png" );
+}
+span.icon.item.daggers.i-parryingdagger {
+  background-image: url( "../images/items/daggers/parryingdagger.png" );
+}
+span.icon.item.daggers.i-stiletto {
+  background-image: url( "../images/items/daggers/stiletto.png" );
+}
+span.icon.item.daggers.i-bronzedagger {
+  background-image: url( "../images/items/daggers/bronzedagger.png" );
+}
+span.icon.item.daggers.i-whitedagger {
+  background-image: url( "../images/items/daggers/whitedagger.png" );
+}
+span.icon.item.daggers.i-broadblade {
+  background-image: url( "../images/items/daggers/broadblade.png" );
+}
+span.icon.item.daggers.i-guttingknife {
+  background-image: url( "../images/items/daggers/guttingknife.png" );
+}
+span.icon.item.daggers.i-huntingknife {
+  background-image: url( "../images/items/daggers/huntingknife.png" );
+}
+span.icon.item.daggers.i-crimsonheart {
+  background-image: url( "../images/items/daggers/crimsonheart.png" );
+}
+span.icon.item.daggers.i-mailbreaker {
+  background-image: url( "../images/items/daggers/mailbreaker.png" );
+}
+span.icon.item.daggers.i-phantomkatar {
+  background-image: url( "../images/items/daggers/phantomkatar.png" );
+}
+span.icon.item.daggers.i-switchblade {
+  background-image: url( "../images/items/daggers/switchblade.png" );
+}
+span.icon.item.daggers.i-lifestealer {
+  background-image: url( "../images/items/daggers/lifestealer.png" );
+}
+span.icon.item.daggers.i-nightshiv {
+  background-image: url( "../images/items/daggers/nightshiv.png" );
+}
+span.icon.item.daggers.i-shadowripper {
+  background-image: url( "../images/items/daggers/shadowripper.png" );
+}
+span.icon.item.daggers.i-wingblade {
+  background-image: url( "../images/items/daggers/wingblade.png" );
+}
+span.icon.item.daggers.i-darkhand {
+  background-image: url( "../images/items/daggers/darkhand.png" );
+}
+span.icon.item.daggers.i-betrayer {
+  background-image: url( "../images/items/daggers/betrayer.png" );
+}
+span.icon.item.daggers.i-royaldirk {
+  background-image: url( "../images/items/daggers/royaldirk.png" );
+}
+span.icon.item.daggers.i-sevenstars {
+  background-image: url( "../images/items/daggers/sevenstars.png" );
+}
+span.icon.item.daggers.i-dragonfang {
+  background-image: url( "../images/items/daggers/dragonfang.png" );
+}
+span.icon.item.daggers.i-traitorousblade {
+  background-image: url( "../images/items/daggers/traitorousblade.png" );
+}
+span.icon.item.daggers.i-jaggedspike {
+  background-image: url( "../images/items/daggers/jaggedspike.png" );
+}
+span.icon.item.daggers.i-tecpatl {
+  background-image: url( "../images/items/daggers/tecpatl.png" );
+}
+span.icon.item.daggers.i-obsidiandagger {
+  background-image: url( "../images/items/daggers/obsidiandagger.png" );
+}
+span.icon.item.daggers.i-aphoticshiv {
+  background-image: url( "../images/items/daggers/aphoticshiv.png" );
+}
+span.icon.item.daggers.i-primaldagger {
+  background-image: url( "../images/items/daggers/primaldagger.png" );
+}
+span.icon.item.daggers.i-mistilteinn {
+  background-image: url( "../images/items/daggers/mistilteinn.png" );
+}
+span.icon.item.axes.i-handaxe {
+  background-image: url( "../images/items/axes/handaxe.png" );
+}
+span.icon.item.axes.i-ironaxe {
+  background-image: url( "../images/items/axes/ironaxe.png" );
+}
+span.icon.item.axes.i-broadaxe {
+  background-image: url( "../images/items/axes/broadaxe.png" );
+}
+span.icon.item.axes.i-halberd {
+  background-image: url( "../images/items/axes/halberd.png" );
+}
+span.icon.item.axes.i-druidicaxe {
+  background-image: url( "../images/items/axes/druidicaxe.png" );
+}
+span.icon.item.axes.i-huntingaxe {
+  background-image: url( "../images/items/axes/huntingaxe.png" );
+}
+span.icon.item.axes.i-poleaxe {
+  background-image: url( "../images/items/axes/poleaxe.png" );
+}
+span.icon.item.axes.i-tiamat {
+  background-image: url( "../images/items/axes/tiamat.png" );
+}
+span.icon.item.axes.i-labrys {
+  background-image: url( "../images/items/axes/labrys.png" );
+}
+span.icon.item.axes.i-hoe {
+  background-image: url( "../images/items/axes/hoe.png" );
+}
+span.icon.item.axes.i-steelaxe {
+  background-image: url( "../images/items/axes/steelaxe.png" );
+}
+span.icon.item.axes.i-hawk {
+  background-image: url( "../images/items/axes/hawk.png" );
+}
+span.icon.item.axes.i-lavaaxe {
+  background-image: url( "../images/items/axes/lavaaxe.png" );
+}
+span.icon.item.axes.i-reaper {
+  background-image: url( "../images/items/axes/reaper.png" );
+}
+span.icon.item.axes.i-berserkersaxe {
+  background-image: url( "../images/items/axes/berserkersaxe.png" );
+}
+span.icon.item.axes.i-bonereaver {
+  background-image: url( "../images/items/axes/bonereaver.png" );
+}
+span.icon.item.axes.i-sharptusk {
+  background-image: url( "../images/items/axes/sharptusk.png" );
+}
+span.icon.item.axes.i-itztopilli {
+  background-image: url( "../images/items/axes/itztopilli.png" );
+}
+span.icon.item.axes.i-crystalasunder {
+  background-image: url( "../images/items/axes/crystalasunder.png" );
+}
+span.icon.item.axes.i-shiningaxe {
+  background-image: url( "../images/items/axes/shiningaxe.png" );
+}
+span.icon.item.axes.i-widowmaker {
+  background-image: url( "../images/items/axes/widowmaker.png" );
+}
+span.icon.item.axes.i-nocturneaxe {
+  background-image: url( "../images/items/axes/nocturneaxe.png" );
+}
+span.icon.item.axes.i-stormsplitter {
+  background-image: url( "../images/items/axes/stormsplitter.png" );
+}
+span.icon.item.axes.i-infernalrage {
+  background-image: url( "../images/items/axes/infernalrage.png" );
+}
+span.icon.item.axes.i-eagle {
+  background-image: url( "../images/items/axes/eagle.png" );
+}
+span.icon.item.axes.i-ragnaroksedge {
+  background-image: url( "../images/items/axes/ragnaroksedge.png" );
+}
+span.icon.item.axes.i-retribution {
+  background-image: url( "../images/items/axes/retribution.png" );
+}
+span.icon.item.axes.i-wyvernaxe {
+  background-image: url( "../images/items/axes/wyvernaxe.png" );
+}
+span.icon.item.axes.i-heartstopperaxe {
+  background-image: url( "../images/items/axes/heartstopperaxe.png" );
+}
+span.icon.item.axes.i-frenziedaxe {
+  background-image: url( "../images/items/axes/frenziedaxe.png" );
+}
+span.icon.item.axes.i-umbralaxe {
+  background-image: url( "../images/items/axes/umbralaxe.png" );
+}
+span.icon.item.axes.i-forsetisaxe {
+  background-image: url( "../images/items/axes/forsetisaxe.png" );
+}
+span.icon.item.spears.i-woodenspear {
+  background-image: url( "../images/items/spears/woodenspear.png" );
+}
+span.icon.item.spears.i-ironspear {
+  background-image: url( "../images/items/spears/ironspear.png" );
+}
+span.icon.item.spears.i-halfpike {
+  background-image: url( "../images/items/spears/halfpike.png" );
+}
+span.icon.item.spears.i-trident {
+  background-image: url( "../images/items/spears/trident.png" );
+}
+span.icon.item.spears.i-pike {
+  background-image: url( "../images/items/spears/pike.png" );
+}
+span.icon.item.spears.i-gaiasjavelin {
+  background-image: url( "../images/items/spears/gaiasjavelin.png" );
+}
+span.icon.item.spears.i-spade {
+  background-image: url( "../images/items/spears/spade.png" );
+}
+span.icon.item.spears.i-pitchfork {
+  background-image: url( "../images/items/spears/pitchfork.png" );
+}
+span.icon.item.spears.i-seekingtip {
+  background-image: url( "../images/items/spears/seekingtip.png" );
+}
+span.icon.item.spears.i-lance {
+  background-image: url( "../images/items/spears/lance.png" );
+}
+span.icon.item.spears.i-championsjavelin {
+  background-image: url( "../images/items/spears/championsjavelin.png" );
+}
+span.icon.item.spears.i-knightslance {
+  background-image: url( "../images/items/spears/knightslance.png" );
+}
+span.icon.item.spears.i-valkyrie {
+  background-image: url( "../images/items/spears/valkyrie.png" );
+}
+span.icon.item.spears.i-poisontip {
+  background-image: url( "../images/items/spears/poisontip.png" );
+}
+span.icon.item.spears.i-bonespear {
+  background-image: url( "../images/items/spears/bonespear.png" );
+}
+span.icon.item.spears.i-wingedspear {
+  background-image: url( "../images/items/spears/wingedspear.png" );
+}
+span.icon.item.spears.i-silverfork {
+  background-image: url( "../images/items/spears/silverfork.png" );
+}
+span.icon.item.spears.i-lionstail {
+  background-image: url( "../images/items/spears/lionstail.png" );
+}
+span.icon.item.spears.i-moonvoulge {
+  background-image: url( "../images/items/spears/moonvoulge.png" );
+}
+span.icon.item.spears.i-tepoztopilli {
+  background-image: url( "../images/items/spears/tepoztopilli.png" );
+}
+span.icon.item.spears.i-impaler {
+  background-image: url( "../images/items/spears/impaler.png" );
+}
+span.icon.item.spears.i-obsidianspear {
+  background-image: url( "../images/items/spears/obsidianspear.png" );
+}
+span.icon.item.spears.i-twistedpike {
+  background-image: url( "../images/items/spears/twistedpike.png" );
+}
+span.icon.item.spears.i-titaniclance {
+  background-image: url( "../images/items/spears/titaniclance.png" );
+}
+span.icon.item.spears.i-nightspike {
+  background-image: url( "../images/items/spears/nightspike.png" );
+}
+span.icon.item.spears.i-divineray {
+  background-image: url( "../images/items/spears/divineray.png" );
+}
+span.icon.item.spears.i-mysticspear {
+  background-image: url( "../images/items/spears/mysticspear.png" );
+}
+span.icon.item.spears.i-twilightspear {
+  background-image: url( "../images/items/spears/twilightspear.png" );
+}
+span.icon.item.spears.i-ascalon {
+  background-image: url( "../images/items/spears/ascalon.png" );
+}
+span.icon.item.spears.i-obsidianvoulge {
+  background-image: url( "../images/items/spears/obsidianvoulge.png" );
+}
+span.icon.item.spears.i-greendragon {
+  background-image: url( "../images/items/spears/greendragon.png" );
+}
+span.icon.item.spears.i-primordialtrident {
+  background-image: url( "../images/items/spears/primordialtrident.png" );
+}
+span.icon.item.spears.i-gungnir {
+  background-image: url( "../images/items/spears/gungnir.png" );
+}
+span.icon.item.maces.i-club {
+  background-image: url( "../images/items/maces/club.png" );
+}
+span.icon.item.maces.i-spikedclub {
+  background-image: url( "../images/items/maces/spikedclub.png" );
+}
+span.icon.item.maces.i-shieldbreaker {
+  background-image: url( "../images/items/maces/shieldbreaker.png" );
+}
+span.icon.item.maces.i-maul {
+  background-image: url( "../images/items/maces/maul.png" );
+}
+span.icon.item.maces.i-sledgehammer {
+  background-image: url( "../images/items/maces/sledgehammer.png" );
+}
+span.icon.item.maces.i-mace {
+  background-image: url( "../images/items/maces/mace.png" );
+}
+span.icon.item.maces.i-morningstar {
+  background-image: url( "../images/items/maces/morningstar.png" );
+}
+span.icon.item.maces.i-heavymace {
+  background-image: url( "../images/items/maces/heavymace.png" );
+}
+span.icon.item.maces.i-battlemace {
+  background-image: url( "../images/items/maces/battlemace.png" );
+}
+span.icon.item.maces.i-pumpkinsmasher {
+  background-image: url( "../images/items/maces/pumpkinsmasher.png" );
+}
+span.icon.item.maces.i-steeledclub {
+  background-image: url( "../images/items/maces/steeledclub.png" );
+}
+span.icon.item.maces.i-treetrunk {
+  background-image: url( "../images/items/maces/treetrunk.png" );
+}
+span.icon.item.maces.i-wargavel {
+  background-image: url( "../images/items/maces/wargavel.png" );
+}
+span.icon.item.maces.i-journeymace {
+  background-image: url( "../images/items/maces/journeymace.png" );
+}
+span.icon.item.maces.i-hammerfist {
+  background-image: url( "../images/items/maces/hammerfist.png" );
+}
+span.icon.item.maces.i-demolisher {
+  background-image: url( "../images/items/maces/demolisher.png" );
+}
+span.icon.item.maces.i-giantshammer {
+  background-image: url( "../images/items/maces/giantshammer.png" );
+}
+span.icon.item.maces.i-furyclub {
+  background-image: url( "../images/items/maces/furyclub.png" );
+}
+span.icon.item.maces.i-earthquake {
+  background-image: url( "../images/items/maces/earthquake.png" );
+}
+span.icon.item.maces.i-apocalyptus {
+  background-image: url( "../images/items/maces/apocalyptus.png" );
+}
+span.icon.item.maces.i-pulverizer {
+  background-image: url( "../images/items/maces/pulverizer.png" );
+}
+span.icon.item.maces.i-tidemaker {
+  background-image: url( "../images/items/maces/tidemaker.png" );
+}
+span.icon.item.maces.i-eveningstar {
+  background-image: url( "../images/items/maces/eveningstar.png" );
+}
+span.icon.item.maces.i-destroyer {
+  background-image: url( "../images/items/maces/destroyer.png" );
+}
+span.icon.item.maces.i-hundredton {
+  background-image: url( "../images/items/maces/hundredton.png" );
+}
+span.icon.item.maces.i-stormbasher {
+  background-image: url( "../images/items/maces/stormbasher.png" );
+}
+span.icon.item.maces.i-crusher {
+  background-image: url( "../images/items/maces/crusher.png" );
+}
+span.icon.item.maces.i-lionmace {
+  background-image: url( "../images/items/maces/lionmace.png" );
+}
+span.icon.item.maces.i-primalsmasher {
+  background-image: url( "../images/items/maces/primalsmasher.png" );
+}
+span.icon.item.maces.i-tenderizer {
+  background-image: url( "../images/items/maces/tenderizer.png" );
+}
+span.icon.item.maces.i-shatteringcore {
+  background-image: url( "../images/items/maces/shatteringcore.png" );
+}
+span.icon.item.staves.i-walkingstick {
+  background-image: url( "../images/items/staves/walkingstick.png" );
+}
+span.icon.item.staves.i-crowstick {
+  background-image: url( "../images/items/staves/crowstick.png" );
+}
+span.icon.item.staves.i-druidicrod {
+  background-image: url( "../images/items/staves/druidicrod.png" );
+}
+span.icon.item.staves.i-battlestaff {
+  background-image: url( "../images/items/staves/battlestaff.png" );
+}
+span.icon.item.staves.i-deceptionstaff {
+  background-image: url( "../images/items/staves/deceptionstaff.png" );
+}
+span.icon.item.staves.i-mutedcaster {
+  background-image: url( "../images/items/staves/mutedcaster.png" );
+}
+span.icon.item.staves.i-bishopstaff {
+  background-image: url( "../images/items/staves/bishopstaff.png" );
+}
+span.icon.item.staves.i-sproutstaff {
+  background-image: url( "../images/items/staves/sproutstaff.png" );
+}
+span.icon.item.staves.i-healingrod {
+  background-image: url( "../images/items/staves/healingrod.png" );
+}
+span.icon.item.staves.i-forestwand {
+  background-image: url( "../images/items/staves/forestwand.png" );
+}
+span.icon.item.staves.i-firerod {
+  background-image: url( "../images/items/staves/firerod.png" );
+}
+span.icon.item.staves.i-mysticstaff {
+  background-image: url( "../images/items/staves/mysticstaff.png" );
+}
+span.icon.item.staves.i-bloodstaff {
+  background-image: url( "../images/items/staves/bloodstaff.png" );
+}
+span.icon.item.staves.i-lunarod {
+  background-image: url( "../images/items/staves/lunarod.png" );
+}
+span.icon.item.staves.i-whisperingwand {
+  background-image: url( "../images/items/staves/whisperingwand.png" );
+}
+span.icon.item.staves.i-rebirthrod {
+  background-image: url( "../images/items/staves/rebirthrod.png" );
+}
+span.icon.item.staves.i-icestaff {
+  background-image: url( "../images/items/staves/icestaff.png" );
+}
+span.icon.item.staves.i-deathstick {
+  background-image: url( "../images/items/staves/deathstick.png" );
+}
+span.icon.item.staves.i-sacredscepter {
+  background-image: url( "../images/items/staves/sacredscepter.png" );
+}
+span.icon.item.staves.i-candycanestaff {
+  background-image: url( "../images/items/staves/candycanestaff.png" );
+}
+span.icon.item.staves.i-soulstealer {
+  background-image: url( "../images/items/staves/soulstealer.png" );
+}
+span.icon.item.staves.i-championstorch {
+  background-image: url( "../images/items/staves/championstorch.png" );
+}
+span.icon.item.staves.i-staffofages {
+  background-image: url( "../images/items/staves/staffofages.png" );
+}
+span.icon.item.staves.i-starwand {
+  background-image: url( "../images/items/staves/starwand.png" );
+}
+span.icon.item.staves.i-eaglerod {
+  background-image: url( "../images/items/staves/eaglerod.png" );
+}
+span.icon.item.staves.i-emperorwand {
+  background-image: url( "../images/items/staves/emperorwand.png" );
+}
+span.icon.item.staves.i-cultiststaff {
+  background-image: url( "../images/items/staves/cultiststaff.png" );
+}
+span.icon.item.staves.i-valkyrieswisdom {
+  background-image: url( "../images/items/staves/valkyrieswisdom.png" );
+}
+span.icon.item.staves.i-sunking {
+  background-image: url( "../images/items/staves/sunking.png" );
+}
+span.icon.item.staves.i-draconicscepter {
+  background-image: url( "../images/items/staves/draconicscepter.png" );
+}
+span.icon.item.staves.i-keeperofsouls {
+  background-image: url( "../images/items/staves/keeperofsouls.png" );
+}
+span.icon.item.staves.i-affection {
+  background-image: url( "../images/items/staves/affection.png" );
+}
+span.icon.item.staves.i-shatteredwand {
+  background-image: url( "../images/items/staves/shatteredwand.png" );
+}
+span.icon.item.staves.i-necrostaff {
+  background-image: url( "../images/items/staves/necrostaff.png" );
+}
+span.icon.item.bows.i-shortbow {
+  background-image: url( "../images/items/bows/shortbow.png" );
+}
+span.icon.item.bows.i-longbow {
+  background-image: url( "../images/items/bows/longbow.png" );
+}
+span.icon.item.bows.i-faerysstring {
+  background-image: url( "../images/items/bows/faerysstring.png" );
+}
+span.icon.item.bows.i-doublestring {
+  background-image: url( "../images/items/bows/doublestring.png" );
+}
+span.icon.item.bows.i-falconeye {
+  background-image: url( "../images/items/bows/falconeye.png" );
+}
+span.icon.item.bows.i-compositebow {
+  background-image: url( "../images/items/bows/compositebow.png" );
+}
+span.icon.item.bows.i-crossbow {
+  background-image: url( "../images/items/bows/crossbow.png" );
+}
+span.icon.item.bows.i-hallowedstriker {
+  background-image: url( "../images/items/bows/hallowedstriker.png" );
+}
+span.icon.item.bows.i-recurvedbow {
+  background-image: url( "../images/items/bows/recurvedbow.png" );
+}
+span.icon.item.bows.i-heavycrossbow {
+  background-image: url( "../images/items/bows/heavycrossbow.png" );
+}
+span.icon.item.bows.i-selfloader {
+  background-image: url( "../images/items/bows/selfloader.png" );
+}
+span.icon.item.bows.i-forester {
+  background-image: url( "../images/items/bows/forester.png" );
+}
+span.icon.item.bows.i-eagleeye {
+  background-image: url( "../images/items/bows/eagleeye.png" );
+}
+span.icon.item.bows.i-transfixer {
+  background-image: url( "../images/items/bows/transfixer.png" );
+}
+span.icon.item.bows.i-silentarbalest {
+  background-image: url( "../images/items/bows/silentarbalest.png" );
+}
+span.icon.item.bows.i-windstriker {
+  background-image: url( "../images/items/bows/windstriker.png" );
+}
+span.icon.item.bows.i-bowoflight {
+  background-image: url( "../images/items/bows/bowoflight.png" );
+}
+span.icon.item.bows.i-valkyriestouch {
+  background-image: url( "../images/items/bows/valkyriestouch.png" );
+}
+span.icon.item.bows.i-spider {
+  background-image: url( "../images/items/bows/spider.png" );
+}
+span.icon.item.bows.i-chimerawings {
+  background-image: url( "../images/items/bows/chimerawings.png" );
+}
+span.icon.item.bows.i-evelyn {
+  background-image: url( "../images/items/bows/evelyn.png" );
+}
+span.icon.item.bows.i-dragoneye {
+  background-image: url( "../images/items/bows/dragoneye.png" );
+}
+span.icon.item.bows.i-lovestruck {
+  background-image: url( "../images/items/bows/lovestruck.png" );
+}
+span.icon.item.bows.i-griffinwings {
+  background-image: url( "../images/items/bows/griffinwings.png" );
+}
+span.icon.item.bows.i-adamantiumcrossbow {
+  background-image: url( "../images/items/bows/adamantiumcrossbow.png" );
+}
+span.icon.item.bows.i-twilightshot {
+  background-image: url( "../images/items/bows/twilightshot.png" );
+}
+span.icon.item.bows.i-elvenbow {
+  background-image: url( "../images/items/bows/elvenbow.png" );
+}
+span.icon.item.bows.i-serpentshooter {
+  background-image: url( "../images/items/bows/serpentshooter.png" );
+}
+span.icon.item.bows.i-windpiercer {
+  background-image: url( "../images/items/bows/windpiercer.png" );
+}
+span.icon.item.bows.i-lycanslayer {
+  background-image: url( "../images/items/bows/lycanslayer.png" );
+}
+span.icon.item.bows.i-artemisbow {
+  background-image: url( "../images/items/bows/artemisbow.png" );
+}
+span.icon.item.guns.i-pistol {
+  background-image: url( "../images/items/guns/pistol.png" );
+}
+span.icon.item.guns.i-musket {
+  background-image: url( "../images/items/guns/musket.png" );
+}
+span.icon.item.guns.i-arquebuse {
+  background-image: url( "../images/items/guns/arquebuse.png" );
+}
+span.icon.item.guns.i-pocketpistol {
+  background-image: url( "../images/items/guns/pocketpistol.png" );
+}
+span.icon.item.guns.i-longmusket {
+  background-image: url( "../images/items/guns/longmusket.png" );
+}
+span.icon.item.guns.i-falconer {
+  background-image: url( "../images/items/guns/falconer.png" );
+}
+span.icon.item.guns.i-sixshooter {
+  background-image: url( "../images/items/guns/sixshooter.png" );
+}
+span.icon.item.guns.i-rifle {
+  background-image: url( "../images/items/guns/rifle.png" );
+}
+span.icon.item.guns.i-axepistol {
+  background-image: url( "../images/items/guns/axepistol.png" );
+}
+span.icon.item.guns.i-flintlock {
+  background-image: url( "../images/items/guns/flintlock.png" );
+}
+span.icon.item.guns.i-blackstock {
+  background-image: url( "../images/items/guns/blackstock.png" );
+}
+span.icon.item.guns.i-tribarrel {
+  background-image: url( "../images/items/guns/tribarrel.png" );
+}
+span.icon.item.guns.i-doublebarrel {
+  background-image: url( "../images/items/guns/doublebarrel.png" );
+}
+span.icon.item.guns.i-firegun {
+  background-image: url( "../images/items/guns/firegun.png" );
+}
+span.icon.item.guns.i-conqueror {
+  background-image: url( "../images/items/guns/conqueror.png" );
+}
+span.icon.item.guns.i-waraxepistol {
+  background-image: url( "../images/items/guns/waraxepistol.png" );
+}
+span.icon.item.guns.i-thundershot {
+  background-image: url( "../images/items/guns/thundershot.png" );
+}
+span.icon.item.guns.i-candycanepistol {
+  background-image: url( "../images/items/guns/candycanepistol.png" );
+}
+span.icon.item.guns.i-deathmissive {
+  background-image: url( "../images/items/guns/deathmissive.png" );
+}
+span.icon.item.guns.i-heartshooter {
+  background-image: url( "../images/items/guns/heartshooter.png" );
+}
+span.icon.item.guns.i-risingsun {
+  background-image: url( "../images/items/guns/risingsun.png" );
+}
+span.icon.item.guns.i-oneshot {
+  background-image: url( "../images/items/guns/oneshot.png" );
+}
+span.icon.item.guns.i-judgement {
+  background-image: url( "../images/items/guns/judgement.png" );
+}
+span.icon.item.guns.i-bomblauncher {
+  background-image: url( "../images/items/guns/bomblauncher.png" );
+}
+span.icon.item.guns.i-solarflare {
+  background-image: url( "../images/items/guns/solarflare.png" );
+}
+span.icon.item.guns.i-nordicwarfare {
+  background-image: url( "../images/items/guns/nordicwarfare.png" );
+}
+span.icon.item.guns.i-harpoongun {
+  background-image: url( "../images/items/guns/harpoongun.png" );
+}
+span.icon.item.guns.i-blaster {
+  background-image: url( "../images/items/guns/blaster.png" );
+}
+span.icon.item.guns.i-piratepistol {
+  background-image: url( "../images/items/guns/piratepistol.png" );
+}
+span.icon.item.guns.i-gfg. {
+  background-image: url( "../images/items/guns/gfg.png" );
+}
+span.icon.item.guns.i-stakeshooter {
+  background-image: url( "../images/items/guns/stakeshooter.png" );
+}
+span.icon.item.guns.i-demonicblast {
+  background-image: url( "../images/items/guns/demonicblast.png" );
+}
+span.icon.item.guns.i-dragonfire {
+  background-image: url( "../images/items/guns/dragonfire.png" );
+}
+span.icon.item.armor.i-cuirass {
+  background-image: url( "../images/items/armor/cuirass.png" );
+}
+span.icon.item.armor.i-bandedmail {
+  background-image: url( "../images/items/armor/bandedmail.png" );
+}
+span.icon.item.armor.i-scalemail {
+  background-image: url( "../images/items/armor/scalemail.png" );
+}
+span.icon.item.armor.i-ringmail {
+  background-image: url( "../images/items/armor/ringmail.png" );
+}
+span.icon.item.armor.i-chainmail {
+  background-image: url( "../images/items/armor/chainmail.png" );
+}
+span.icon.item.armor.i-halfplate {
+  background-image: url( "../images/items/armor/halfplate.png" );
+}
+span.icon.item.armor.i-tlahuiztli {
+  background-image: url( "../images/items/armor/tlahuiztli.png" );
+}
+span.icon.item.armor.i-moonplate {
+  background-image: url( "../images/items/armor/moonplate.png" );
+}
+span.icon.item.armor.i-steelcuirass {
+  background-image: url( "../images/items/armor/steelcuirass.png" );
+}
+span.icon.item.armor.i-fullplate {
+  background-image: url( "../images/items/armor/fullplate.png" );
+}
+span.icon.item.armor.i-longmail {
+  background-image: url( "../images/items/armor/longmail.png" );
+}
+span.icon.item.armor.i-nobleplate {
+  background-image: url( "../images/items/armor/nobleplate.png" );
+}
+span.icon.item.armor.i-silveredscales {
+  background-image: url( "../images/items/armor/silveredscales.png" );
+}
+span.icon.item.armor.i-arcaneguard {
+  background-image: url( "../images/items/armor/arcaneguard.png" );
+}
+span.icon.item.armor.i-runicmail {
+  background-image: url( "../images/items/armor/runicmail.png" );
+}
+span.icon.item.armor.i-chaosarmor {
+  background-image: url( "../images/items/armor/chaosarmor.png" );
+}
+span.icon.item.armor.i-shiningarmor {
+  background-image: url( "../images/items/armor/shiningarmor.png" );
+}
+span.icon.item.armor.i-valkyriearmor {
+  background-image: url( "../images/items/armor/valkyriearmor.png" );
+}
+span.icon.item.armor.i-whitefullplate {
+  background-image: url( "../images/items/armor/whitefullplate.png" );
+}
+span.icon.item.armor.i-eldritchmail {
+  background-image: url( "../images/items/armor/eldritchmail.png" );
+}
+span.icon.item.armor.i-goldenheart {
+  background-image: url( "../images/items/armor/goldenheart.png" );
+}
+span.icon.item.armor.i-gaiasfortress {
+  background-image: url( "../images/items/armor/gaiasfortress.png" );
+}
+span.icon.item.armor.i-draconicplate {
+  background-image: url( "../images/items/armor/draconicplate.png" );
+}
+span.icon.item.armor.i-twilightcuirass {
+  background-image: url( "../images/items/armor/twilightcuirass.png" );
+}
+span.icon.item.armor.i-crimsonplate {
+  background-image: url( "../images/items/armor/crimsonplate.png" );
+}
+span.icon.item.armor.i-darksilverarmor {
+  background-image: url( "../images/items/armor/darksilverarmor.png" );
+}
+span.icon.item.armor.i-earthenmail {
+  background-image: url( "../images/items/armor/earthenmail.png" );
+}
+span.icon.item.armor.i-hallowedcasket {
+  background-image: url( "../images/items/armor/hallowedcasket.png" );
+}
+span.icon.item.armor.i-oraclesarmor {
+  background-image: url( "../images/items/armor/oraclesarmor.png" );
+}
+span.icon.item.armor.i-blackmail {
+  background-image: url( "../images/items/armor/blackmail.png" );
+}
+span.icon.item.vests.i-leathervest {
+  background-image: url( "../images/items/vests/leathervest.png" );
+}
+span.icon.item.vests.i-hidearmor {
+  background-image: url( "../images/items/vests/hidearmor.png" );
+}
+span.icon.item.vests.i-boiledleather {
+  background-image: url( "../images/items/vests/boiledleather.png" );
+}
+span.icon.item.vests.i-brigandine {
+  background-image: url( "../images/items/vests/brigandine.png" );
+}
+span.icon.item.vests.i-merchantsarmor {
+  background-image: url( "../images/items/vests/merchantsarmor.png" );
+}
+span.icon.item.vests.i-leathercuirass {
+  background-image: url( "../images/items/vests/leathercuirass.png" );
+}
+span.icon.item.vests.i-studdedleather {
+  background-image: url( "../images/items/vests/studdedleather.png" );
+}
+span.icon.item.vests.i-raccoonranger {
+  background-image: url( "../images/items/vests/raccoonranger.png" );
+}
+span.icon.item.vests.i-poisonstuds {
+  background-image: url( "../images/items/vests/poisonstuds.png" );
+}
+span.icon.item.vests.i-strappedleather {
+  background-image: url( "../images/items/vests/strappedleather.png" );
+}
+span.icon.item.vests.i-platedtunic {
+  background-image: url( "../images/items/vests/platedtunic.png" );
+}
+span.icon.item.vests.i-jacket {
+  background-image: url( "../images/items/vests/jacket.png" );
+}
+span.icon.item.vests.i-platedleather {
+  background-image: url( "../images/items/vests/platedleather.png" );
+}
+span.icon.item.vests.i-beararmor {
+  background-image: url( "../images/items/vests/beararmor.png" );
+}
+span.icon.item.vests.i-nightingale {
+  background-image: url( "../images/items/vests/nightingale.png" );
+}
+span.icon.item.vests.i-genjiarmor {
+  background-image: url( "../images/items/vests/genjiarmor.png" );
+}
+span.icon.item.vests.i-oiledleather {
+  background-image: url( "../images/items/vests/oiledleather.png" );
+}
+span.icon.item.vests.i-layeredarmor {
+  background-image: url( "../images/items/vests/layeredarmor.png" );
+}
+span.icon.item.vests.i-orientalvest {
+  background-image: url( "../images/items/vests/orientalvest.png" );
+}
+span.icon.item.vests.i-goldstitch {
+  background-image: url( "../images/items/vests/goldstitch.png" );
+}
+span.icon.item.vests.i-wyrmhide {
+  background-image: url( "../images/items/vests/wyrmhide.png" );
+}
+span.icon.item.vests.i-whitecrow {
+  background-image: url( "../images/items/vests/whitecrow.png" );
+}
+span.icon.item.vests.i-shadowlurker {
+  background-image: url( "../images/items/vests/shadowlurker.png" );
+}
+span.icon.item.vests.i-moonscalearmor {
+  background-image: url( "../images/items/vests/moonscalearmor.png" );
+}
+span.icon.item.vests.i-valkyriesembrace {
+  background-image: url( "../images/items/vests/valkyriesembrace.png" );
+}
+span.icon.item.vests.i-dragonskin {
+  background-image: url( "../images/items/vests/dragonskin.png" );
+}
+span.icon.item.vests.i-piratearmor {
+  background-image: url( "../images/items/vests/piratearmor.png" );
+}
+span.icon.item.vests.i-cowhidevest {
+  background-image: url( "../images/items/vests/cowhidevest.png" );
+}
+span.icon.item.vests.i-oceanleather {
+  background-image: url( "../images/items/vests/oceanleather.png" );
+}
+span.icon.item.vests.i-primalleather {
+  background-image: url( "../images/items/vests/primalleather.png" );
+}
+span.icon.item.vests.i-mysticvest {
+  background-image: url( "../images/items/vests/mysticvest.png" );
+}
+span.icon.item.vests.i-blackcrow {
+  background-image: url( "../images/items/vests/blackcrow.png" );
+}
+span.icon.item.vests.i-royalcuirass {
+  background-image: url( "../images/items/vests/royalcuirass.png" );
+}
+span.icon.item.helmets.i-hardhat {
+  background-image: url( "../images/items/helmets/hardhat.png" );
+}
+span.icon.item.helmets.i-ironcap {
+  background-image: url( "../images/items/helmets/ironcap.png" );
+}
+span.icon.item.helmets.i-ironhelmet {
+  background-image: url( "../images/items/helmets/ironhelmet.png" );
+}
+span.icon.item.helmets.i-hornedhelm {
+  background-image: url( "../images/items/helmets/hornedhelm.png" );
+}
+span.icon.item.helmets.i-fullhelm {
+  background-image: url( "../images/items/helmets/fullhelm.png" );
+}
+span.icon.item.helmets.i-warriorshelmet {
+  background-image: url( "../images/items/helmets/warriorshelmet.png" );
+}
+span.icon.item.helmets.i-moonlightcap {
+  background-image: url( "../images/items/helmets/moonlightcap.png" );
+}
+span.icon.item.helmets.i-spangenhelm {
+  background-image: url( "../images/items/helmets/spangenhelm.png" );
+}
+span.icon.item.helmets.i-scalehelmet {
+  background-image: url( "../images/items/helmets/scalehelmet.png" );
+}
+span.icon.item.helmets.i-hearthelmet {
+  background-image: url( "../images/items/helmets/hearthelmet.png" );
+}
+span.icon.item.helmets.i-knightshelm {
+  background-image: url( "../images/items/helmets/knightshelm.png" );
+}
+span.icon.item.helmets.i-paladinshelmet {
+  background-image: url( "../images/items/helmets/paladinshelmet.png" );
+}
+span.icon.item.helmets.i-greathelm {
+  background-image: url( "../images/items/helmets/greathelm.png" );
+}
+span.icon.item.helmets.i-frozenhelm {
+  background-image: url( "../images/items/helmets/frozenhelm.png" );
+}
+span.icon.item.helmets.i-silverhelm {
+  background-image: url( "../images/items/helmets/silverhelm.png" );
+}
+span.icon.item.helmets.i-infantryhelmet {
+  background-image: url( "../images/items/helmets/infantryhelmet.png" );
+}
+span.icon.item.helmets.i-dragoonscasque {
+  background-image: url( "../images/items/helmets/dragoonscasque.png" );
+}
+span.icon.item.helmets.i-bunnyhelmet {
+  background-image: url( "../images/items/helmets/bunnyhelmet.png" );
+}
+span.icon.item.helmets.i-elirsbarbuta {
+  background-image: url( "../images/items/helmets/elirsbarbuta.png" );
+}
+span.icon.item.helmets.i-adventurershelm {
+  background-image: url( "../images/items/helmets/adventurershelm.png" );
+}
+span.icon.item.helmets.i-mercurial {
+  background-image: url( "../images/items/helmets/mercurial.png" );
+}
+span.icon.item.helmets.i-phoenixhelmet {
+  background-image: url( "../images/items/helmets/phoenixhelmet.png" );
+}
+span.icon.item.helmets.i-championshelm {
+  background-image: url( "../images/items/helmets/championshelm.png" );
+}
+span.icon.item.helmets.i-dragonscalehelmet {
+  background-image: url( "../images/items/helmets/dragonscalehelmet.png" );
+}
+span.icon.item.helmets.i-vikinghelm {
+  background-image: url( "../images/items/helmets/vikinghelm.png" );
+}
+span.icon.item.helmets.i-adamantiumhelm {
+  background-image: url( "../images/items/helmets/adamantiumhelm.png" );
+}
+span.icon.item.helmets.i-valkyriehelm {
+  background-image: url( "../images/items/helmets/valkyriehelm.png" );
+}
+span.icon.item.helmets.i-goldenhelm {
+  background-image: url( "../images/items/helmets/goldenhelm.png" );
+}
+span.icon.item.helmets.i-frostfirebarbuta {
+  background-image: url( "../images/items/helmets/frostfirebarbuta.png" );
+}
+span.icon.item.helmets.i-twilighthelm {
+  background-image: url( "../images/items/helmets/twilighthelm.png" );
+}
+span.icon.item.helmets.i-hallowedskull {
+  background-image: url( "../images/items/helmets/hallowedskull.png" );
+}
+span.icon.item.helmets.i-jadehelm {
+  background-image: url( "../images/items/helmets/jadehelm.png" );
+}
+span.icon.item.helmets.i-jaggedcrown {
+  background-image: url( "../images/items/helmets/jaggedcrown.png" );
+}
+span.icon.item.gauntlets.i-lightgauntlets {
+  background-image: url( "../images/items/gauntlets/lightgauntlets.png" );
+}
+span.icon.item.gauntlets.i-gauntlets {
+  background-image: url( "../images/items/gauntlets/gauntlets.png" );
+}
+span.icon.item.gauntlets.i-vambrace {
+  background-image: url( "../images/items/gauntlets/vambrace.png" );
+}
+span.icon.item.gauntlets.i-longgauntlets {
+  background-image: url( "../images/items/gauntlets/longgauntlets.png" );
+}
+span.icon.item.gauntlets.i-meshedgauntlets {
+  background-image: url( "../images/items/gauntlets/meshedgauntlets.png" );
+}
+span.icon.item.gauntlets.i-moonlightgauntlets {
+  background-image: url( "../images/items/gauntlets/moonlightgauntlets.png" );
+}
+span.icon.item.gauntlets.i-chainmailgauntlets {
+  background-image: url( "../images/items/gauntlets/chainmailgauntlets.png" );
+}
+span.icon.item.gauntlets.i-jaggedgauntlets {
+  background-image: url( "../images/items/gauntlets/jaggedgauntlets.png" );
+}
+span.icon.item.gauntlets.i-lordsgauntlets {
+  background-image: url( "../images/items/gauntlets/lordsgauntlets.png" );
+}
+span.icon.item.gauntlets.i-steelvambrace {
+  background-image: url( "../images/items/gauntlets/steelvambrace.png" );
+}
+span.icon.item.gauntlets.i-frozengrip {
+  background-image: url( "../images/items/gauntlets/frozengrip.png" );
+}
+span.icon.item.gauntlets.i-silvergauntlets {
+  background-image: url( "../images/items/gauntlets/silvergauntlets.png" );
+}
+span.icon.item.gauntlets.i-kingsgauntlets {
+  background-image: url( "../images/items/gauntlets/kingsgauntlets.png" );
+}
+span.icon.item.gauntlets.i-bloodlustgauntlets {
+  background-image: url( "../images/items/gauntlets/bloodlustgauntlets.png" );
+}
+span.icon.item.gauntlets.i-darkvambrace {
+  background-image: url( "../images/items/gauntlets/darkvambrace.png" );
+}
+span.icon.item.gauntlets.i-protectorgauntlets {
+  background-image: url( "../images/items/gauntlets/protectorgauntlets.png" );
+}
+span.icon.item.gauntlets.i-shockers {
+  background-image: url( "../images/items/gauntlets/shockers.png" );
+}
+span.icon.item.gauntlets.i-hallowedgrip {
+  background-image: url( "../images/items/gauntlets/hallowedgrip.png" );
+}
+span.icon.item.gauntlets.i-gigabrace {
+  background-image: url( "../images/items/gauntlets/gigabrace.png" );
+}
+span.icon.item.gauntlets.i-firesmashers {
+  background-image: url( "../images/items/gauntlets/firesmashers.png" );
+}
+span.icon.item.gauntlets.i-dragonscalegauntlets {
+  background-image: url( "../images/items/gauntlets/dragonscalegauntlets.png" );
+}
+span.icon.item.gauntlets.i-twilightfists {
+  background-image: url( "../images/items/gauntlets/twilightfists.png" );
+}
+span.icon.item.gauntlets.i-adamantiumfists {
+  background-image: url( "../images/items/gauntlets/adamantiumfists.png" );
+}
+span.icon.item.gauntlets.i-goldengauntlets {
+  background-image: url( "../images/items/gauntlets/goldengauntlets.png" );
+}
+span.icon.item.gauntlets.i-frostfiregauntlets {
+  background-image: url( "../images/items/gauntlets/frostfiregauntlets.png" );
+}
+span.icon.item.gauntlets.i-abyssalgauntlets {
+  background-image: url( "../images/items/gauntlets/abyssalgauntlets.png" );
+}
+span.icon.item.gauntlets.i-berserkergauntlets {
+  background-image: url( "../images/items/gauntlets/berserkergauntlets.png" );
+}
+span.icon.item.gauntlets.i-valkyriesgrip {
+  background-image: url( "../images/items/gauntlets/valkyriesgrip.png" );
+}
+span.icon.item.gauntlets.i-volcanicsmashers {
+  background-image: url( "../images/items/gauntlets/volcanicsmashers.png" );
+}
+span.icon.item.gauntlets.i-runicgauntlets {
+  background-image: url( "../images/items/gauntlets/runicgauntlets.png" );
+}
+span.icon.item.boots.i-heavyboots {
+  background-image: url( "../images/items/boots/heavyboots.png" );
+}
+span.icon.item.boots.i-ridersboots {
+  background-image: url( "../images/items/boots/ridersboots.png" );
+}
+span.icon.item.boots.i-chaingreaves {
+  background-image: url( "../images/items/boots/chaingreaves.png" );
+}
+span.icon.item.boots.i-platedboots {
+  background-image: url( "../images/items/boots/platedboots.png" );
+}
+span.icon.item.boots.i-travelingboots {
+  background-image: url( "../images/items/boots/travelingboots.png" );
+}
+span.icon.item.boots.i-moonboots {
+  background-image: url( "../images/items/boots/moonboots.png" );
+}
+span.icon.item.boots.i-redboots {
+  background-image: url( "../images/items/boots/redboots.png" );
+}
+span.icon.item.boots.i-lionboots {
+  background-image: url( "../images/items/boots/lionboots.png" );
+}
+span.icon.item.boots.i-explorerboots {
+  background-image: url( "../images/items/boots/explorerboots.png" );
+}
+span.icon.item.boots.i-valkyrieboots {
+  background-image: url( "../images/items/boots/valkyrieboots.png" );
+}
+span.icon.item.boots.i-sabaton {
+  background-image: url( "../images/items/boots/sabaton.png" );
+}
+span.icon.item.boots.i-warriorsgreaves {
+  background-image: url( "../images/items/boots/warriorsgreaves.png" );
+}
+span.icon.item.boots.i-knightriders {
+  background-image: url( "../images/items/boots/knightriders.png" );
+}
+span.icon.item.boots.i-adventurersboots {
+  background-image: url( "../images/items/boots/adventurersboots.png" );
+}
+span.icon.item.boots.i-silveredgreaves {
+  background-image: url( "../images/items/boots/silveredgreaves.png" );
+}
+span.icon.item.boots.i-flamegreaves {
+  background-image: url( "../images/items/boots/flamegreaves.png" );
+}
+span.icon.item.boots.i-lordsboots {
+  background-image: url( "../images/items/boots/lordsboots.png" );
+}
+span.icon.item.boots.i-magicriders {
+  background-image: url( "../images/items/boots/magicriders.png" );
+}
+span.icon.item.boots.i-frostsabatons {
+  background-image: url( "../images/items/boots/frostsabatons.png" );
+}
+span.icon.item.boots.i-hallowedstomper {
+  background-image: url( "../images/items/boots/hallowedstomper.png" );
+}
+span.icon.item.boots.i-earthshakers {
+  background-image: url( "../images/items/boots/earthshakers.png" );
+}
+span.icon.item.boots.i-kingsboots {
+  background-image: url( "../images/items/boots/kingsboots.png" );
+}
+span.icon.item.boots.i-skullstompers {
+  background-image: url( "../images/items/boots/skullstompers.png" );
+}
+span.icon.item.boots.i-draconicgreaves {
+  background-image: url( "../images/items/boots/draconicgreaves.png" );
+}
+span.icon.item.boots.i-adamantiumboots {
+  background-image: url( "../images/items/boots/adamantiumboots.png" );
+}
+span.icon.item.boots.i-royalgreaves {
+  background-image: url( "../images/items/boots/royalgreaves.png" );
+}
+span.icon.item.boots.i-azureboots {
+  background-image: url( "../images/items/boots/azureboots.png" );
+}
+span.icon.item.boots.i-obsidiangreaves {
+  background-image: url( "../images/items/boots/obsidiangreaves.png" );
+}
+span.icon.item.boots.i-titansfeet {
+  background-image: url( "../images/items/boots/titansfeet.png" );
+}
+span.icon.item.boots.i-wildlingboots {
+  background-image: url( "../images/items/boots/wildlingboots.png" );
+}
+span.icon.item.clothes.i-tunic {
+  background-image: url( "../images/items/clothes/tunic.png" );
+}
+span.icon.item.clothes.i-cloak {
+  background-image: url( "../images/items/clothes/cloak.png" );
+}
+span.icon.item.clothes.i-mantle {
+  background-image: url( "../images/items/clothes/mantle.png" );
+}
+span.icon.item.clothes.i-redtunic {
+  background-image: url( "../images/items/clothes/redtunic.png" );
+}
+span.icon.item.clothes.i-robe {
+  background-image: url( "../images/items/clothes/robe.png" );
+}
+span.icon.item.clothes.i-doublet {
+  background-image: url( "../images/items/clothes/doublet.png" );
+}
+span.icon.item.clothes.i-apprenticerobes {
+  background-image: url( "../images/items/clothes/apprenticerobes.png" );
+}
+span.icon.item.clothes.i-icecloak {
+  background-image: url( "../images/items/clothes/icecloak.png" );
+}
+span.icon.item.clothes.i-magicianscloak {
+  background-image: url( "../images/items/clothes/magicianscloak.png" );
+}
+span.icon.item.clothes.i-silkrobe {
+  background-image: url( "../images/items/clothes/silkrobe.png" );
+}
+span.icon.item.clothes.i-heartrobe {
+  background-image: url( "../images/items/clothes/heartrobe.png" );
+}
+span.icon.item.clothes.i-magerobe {
+  background-image: url( "../images/items/clothes/magerobe.png" );
+}
+span.icon.item.clothes.i-sacredtunic {
+  background-image: url( "../images/items/clothes/sacredtunic.png" );
+}
+span.icon.item.clothes.i-imperialmantle {
+  background-image: url( "../images/items/clothes/imperialmantle.png" );
+}
+span.icon.item.clothes.i-gaiasmantle {
+  background-image: url( "../images/items/clothes/gaiasmantle.png" );
+}
+span.icon.item.clothes.i-stealthapparel {
+  background-image: url( "../images/items/clothes/stealthapparel.png" );
+}
+span.icon.item.clothes.i-stormapparel {
+  background-image: url( "../images/items/clothes/stormapparel.png" );
+}
+span.icon.item.clothes.i-nightwalker {
+  background-image: url( "../images/items/clothes/nightwalker.png" );
+}
+span.icon.item.clothes.i-sorcererrobe {
+  background-image: url( "../images/items/clothes/sorcererrobe.png" );
+}
+span.icon.item.clothes.i-nightmarecape {
+  background-image: url( "../images/items/clothes/nightmarecape.png" );
+}
+span.icon.item.clothes.i-sagesrobe {
+  background-image: url( "../images/items/clothes/sagesrobe.png" );
+}
+span.icon.item.clothes.i-shimmeringrobe {
+  background-image: url( "../images/items/clothes/shimmeringrobe.png" );
+}
+span.icon.item.clothes.i-plasmicrobe {
+  background-image: url( "../images/items/clothes/plasmicrobe.png" );
+}
+span.icon.item.clothes.i-archwizardrobe {
+  background-image: url( "../images/items/clothes/archwizardrobe.png" );
+}
+span.icon.item.clothes.i-twilightrobe {
+  background-image: url( "../images/items/clothes/twilightrobe.png" );
+}
+span.icon.item.clothes.i-kingsmantle {
+  background-image: url( "../images/items/clothes/kingsmantle.png" );
+}
+span.icon.item.clothes.i-twilightdoublet {
+  background-image: url( "../images/items/clothes/twilightdoublet.png" );
+}
+span.icon.item.clothes.i-patriotsjacket {
+  background-image: url( "../images/items/clothes/patriotsjacket.png" );
+}
+span.icon.item.clothes.i-magedoublet {
+  background-image: url( "../images/items/clothes/magedoublet.png" );
+}
+span.icon.item.clothes.i-holytunic {
+  background-image: url( "../images/items/clothes/holytunic.png" );
+}
+span.icon.item.clothes.i-sunriserobe {
+  background-image: url( "../images/items/clothes/sunriserobe.png" );
+}
+span.icon.item.shields.i-targe {
+  background-image: url( "../images/items/shields/targe.png" );
+}
+span.icon.item.shields.i-buckler {
+  background-image: url( "../images/items/shields/buckler.png" );
+}
+span.icon.item.shields.i-smallshield {
+  background-image: url( "../images/items/shields/smallshield.png" );
+}
+span.icon.item.shields.i-heatershield {
+  background-image: url( "../images/items/shields/heatershield.png" );
+}
+span.icon.item.shields.i-protector {
+  background-image: url( "../images/items/shields/protector.png" );
+}
+span.icon.item.shields.i-meatshield {
+  background-image: url( "../images/items/shields/meatshield.png" );
+}
+span.icon.item.shields.i-kiteshield {
+  background-image: url( "../images/items/shields/kiteshield.png" );
+}
+span.icon.item.shields.i-towershield {
+  background-image: url( "../images/items/shields/towershield.png" );
+}
+span.icon.item.shields.i-chimalli {
+  background-image: url( "../images/items/shields/chimalli.png" );
+}
+span.icon.item.shields.i-moonlightshield {
+  background-image: url( "../images/items/shields/moonlightshield.png" );
+}
+span.icon.item.shields.i-knightshield {
+  background-image: url( "../images/items/shields/knightshield.png" );
+}
+span.icon.item.shields.i-fireproof {
+  background-image: url( "../images/items/shields/fireproof.png" );
+}
+span.icon.item.shields.i-venomousbuckler {
+  background-image: url( "../images/items/shields/venomousbuckler.png" );
+}
+span.icon.item.shields.i-aegis {
+  background-image: url( "../images/items/shields/aegis.png" );
+}
+span.icon.item.shields.i-bulwark {
+  background-image: url( "../images/items/shields/bulwark.png" );
+}
+span.icon.item.shields.i-reflectiveshield {
+  background-image: url( "../images/items/shields/reflectiveshield.png" );
+}
+span.icon.item.shields.i-skeletonshield {
+  background-image: url( "../images/items/shields/skeletonshield.png" );
+}
+span.icon.item.shields.i-spikedshield {
+  background-image: url( "../images/items/shields/spikedshield.png" );
+}
+span.icon.item.shields.i-starryshield {
+  background-image: url( "../images/items/shields/starryshield.png" );
+}
+span.icon.item.shields.i-embershield {
+  background-image: url( "../images/items/shields/embershield.png" );
+}
+span.icon.item.shields.i-crystalshield {
+  background-image: url( "../images/items/shields/crystalshield.png" );
+}
+span.icon.item.shields.i-argusshield {
+  background-image: url( "../images/items/shields/argusshield.png" );
+}
+span.icon.item.shields.i-bunnyshield {
+  background-image: url( "../images/items/shields/bunnyshield.png" );
+}
+span.icon.item.shields.i-blessedaegis {
+  background-image: url( "../images/items/shields/blessedaegis.png" );
+}
+span.icon.item.shields.i-demonshield {
+  background-image: url( "../images/items/shields/demonshield.png" );
+}
+span.icon.item.shields.i-dragonskull {
+  background-image: url( "../images/items/shields/dragonskull.png" );
+}
+span.icon.item.shields.i-hawkshield {
+  background-image: url( "../images/items/shields/hawkshield.png" );
+}
+span.icon.item.shields.i-giantshield {
+  background-image: url( "../images/items/shields/giantshield.png" );
+}
+span.icon.item.shields.i-adventurersshield {
+  background-image: url( "../images/items/shields/adventurersshield.png" );
+}
+span.icon.item.shields.i-twilightaegis {
+  background-image: url( "../images/items/shields/twilightaegis.png" );
+}
+span.icon.item.shields.i-medusabuckler {
+  background-image: url( "../images/items/shields/medusabuckler.png" );
+}
+span.icon.item.shields.i-gaiasshield {
+  background-image: url( "../images/items/shields/gaiasshield.png" );
+}
+span.icon.item.shields.i-sunflowershield {
+  background-image: url( "../images/items/shields/sunflowershield.png" );
+}
+span.icon.item.shields.i-oracleshield {
+  background-image: url( "../images/items/shields/oracleshield.png" );
+}
+span.icon.item.shields.i-halfmoonshield {
+  background-image: url( "../images/items/shields/halfmoonshield.png" );
+}
+span.icon.item.hats.i-circlet {
+  background-image: url( "../images/items/hats/circlet.png" );
+}
+span.icon.item.hats.i-hood {
+  background-image: url( "../images/items/hats/hood.png" );
+}
+span.icon.item.hats.i-monkshat {
+  background-image: url( "../images/items/hats/monkshat.png" );
+}
+span.icon.item.hats.i-bucklehat {
+  background-image: url( "../images/items/hats/bucklehat.png" );
+}
+span.icon.item.hats.i-robinshood {
+  background-image: url( "../images/items/hats/robinshood.png" );
+}
+span.icon.item.hats.i-plumedhat {
+  background-image: url( "../images/items/hats/plumedhat.png" );
+}
+span.icon.item.hats.i-pumpkinhead {
+  background-image: url( "../images/items/hats/pumpkinhead.png" );
+}
+span.icon.item.hats.i-thiefshood {
+  background-image: url( "../images/items/hats/thiefshood.png" );
+}
+span.icon.item.hats.i-nobletiara {
+  background-image: url( "../images/items/hats/nobletiara.png" );
+}
+span.icon.item.hats.i-lightvisage {
+  background-image: url( "../images/items/hats/lightvisage.png" );
+}
+span.icon.item.hats.i-jeweledhat {
+  background-image: url( "../images/items/hats/jeweledhat.png" );
+}
+span.icon.item.hats.i-scarletcoif {
+  background-image: url( "../images/items/hats/scarletcoif.png" );
+}
+span.icon.item.hats.i-skadistiara {
+  background-image: url( "../images/items/hats/skadistiara.png" );
+}
+span.icon.item.hats.i-magictop {
+  background-image: url( "../images/items/hats/magictop.png" );
+}
+span.icon.item.hats.i-silvercrown {
+  background-image: url( "../images/items/hats/silvercrown.png" );
+}
+span.icon.item.hats.i-elvencoif {
+  background-image: url( "../images/items/hats/elvencoif.png" );
+}
+span.icon.item.hats.i-goldencrown {
+  background-image: url( "../images/items/hats/goldencrown.png" );
+}
+span.icon.item.hats.i-cowboyhat {
+  background-image: url( "../images/items/hats/cowboyhat.png" );
+}
+span.icon.item.hats.i-wisecap {
+  background-image: url( "../images/items/hats/wisecap.png" );
+}
+span.icon.item.hats.i-darkvisage {
+  background-image: url( "../images/items/hats/darkvisage.png" );
+}
+span.icon.item.hats.i-shadowhood {
+  background-image: url( "../images/items/hats/shadowhood.png" );
+}
+span.icon.item.hats.i-deathveil {
+  background-image: url( "../images/items/hats/deathveil.png" );
+}
+span.icon.item.hats.i-archwizardshat {
+  background-image: url( "../images/items/hats/archwizardshat.png" );
+}
+span.icon.item.hats.i-runictiara {
+  background-image: url( "../images/items/hats/runictiara.png" );
+}
+span.icon.item.hats.i-thundercrown {
+  background-image: url( "../images/items/hats/thundercrown.png" );
+}
+span.icon.item.hats.i-runiccoif {
+  background-image: url( "../images/items/hats/runiccoif.png" );
+}
+span.icon.item.hats.i-jorouscrown {
+  background-image: url( "../images/items/hats/jorouscrown.png" );
+}
+span.icon.item.hats.i-demonicvisage {
+  background-image: url( "../images/items/hats/demonicvisage.png" );
+}
+span.icon.item.hats.i-jadevisage {
+  background-image: url( "../images/items/hats/jadevisage.png" );
+}
+span.icon.item.hats.i-celestialhat {
+  background-image: url( "../images/items/hats/celestialhat.png" );
+}
+span.icon.item.hats.i-jaguarhelm {
+  background-image: url( "../images/items/hats/jaguarhelm.png" );
+}
+span.icon.item.hats.i-cultistshood {
+  background-image: url( "../images/items/hats/cultistshood.png" );
+}
+span.icon.item.hats.i-lokismask {
+  background-image: url( "../images/items/hats/lokismask.png" );
+}
+span.icon.item.hats.i-royaltiara {
+  background-image: url( "../images/items/hats/royaltiara.png" );
+}
+span.icon.item.hats.i-nethercrown {
+  background-image: url( "../images/items/hats/nethercrown.png" );
+}
+span.icon.item.bracers.i-leatherbracers {
+  background-image: url( "../images/items/bracers/leatherbracers.png" );
+}
+span.icon.item.bracers.i-gloves {
+  background-image: url( "../images/items/bracers/gloves.png" );
+}
+span.icon.item.bracers.i-wristguards {
+  background-image: url( "../images/items/bracers/wristguards.png" );
+}
+span.icon.item.bracers.i-paddedgloves {
+  background-image: url( "../images/items/bracers/paddedgloves.png" );
+}
+span.icon.item.bracers.i-mysticgloves {
+  background-image: url( "../images/items/bracers/mysticgloves.png" );
+}
+span.icon.item.bracers.i-furgloves {
+  background-image: url( "../images/items/bracers/furgloves.png" );
+}
+span.icon.item.bracers.i-venomoushands {
+  background-image: url( "../images/items/bracers/venomoushands.png" );
+}
+span.icon.item.bracers.i-wovenbracers {
+  background-image: url( "../images/items/bracers/wovenbracers.png" );
+}
+span.icon.item.bracers.i-dexterousgloves {
+  background-image: url( "../images/items/bracers/dexterousgloves.png" );
+}
+span.icon.item.bracers.i-elementalbracers {
+  background-image: url( "../images/items/bracers/elementalbracers.png" );
+}
+span.icon.item.bracers.i-wisdomgloves {
+  background-image: url( "../images/items/bracers/wisdomgloves.png" );
+}
+span.icon.item.bracers.i-grandmastergloves {
+  background-image: url( "../images/items/bracers/grandmastergloves.png" );
+}
+span.icon.item.bracers.i-flaminghands {
+  background-image: url( "../images/items/bracers/flaminghands.png" );
+}
+span.icon.item.bracers.i-shadowedgloves {
+  background-image: url( "../images/items/bracers/shadowedgloves.png" );
+}
+span.icon.item.bracers.i-royalbracers {
+  background-image: url( "../images/items/bracers/royalbracers.png" );
+}
+span.icon.item.bracers.i-alchemistgloves {
+  background-image: url( "../images/items/bracers/alchemistgloves.png" );
+}
+span.icon.item.bracers.i-magebracers {
+  background-image: url( "../images/items/bracers/magebracers.png" );
+}
+span.icon.item.bracers.i-sorcerersbracers {
+  background-image: url( "../images/items/bracers/sorcerersbracers.png" );
+}
+span.icon.item.bracers.i-ehecatlsgloves {
+  background-image: url( "../images/items/bracers/ehecatlsgloves.png" );
+}
+span.icon.item.bracers.i-shieldbracers {
+  background-image: url( "../images/items/bracers/shieldbracers.png" );
+}
+span.icon.item.bracers.i-santasgloves {
+  background-image: url( "../images/items/bracers/santasgloves.png" );
+}
+span.icon.item.bracers.i-angelgloves {
+  background-image: url( "../images/items/bracers/angelgloves.png" );
+}
+span.icon.item.bracers.i-freezingbracers {
+  background-image: url( "../images/items/bracers/freezingbracers.png" );
+}
+span.icon.item.bracers.i-runicbracers {
+  background-image: url( "../images/items/bracers/runicbracers.png" );
+}
+span.icon.item.bracers.i-nightstalkergloves {
+  background-image: url( "../images/items/bracers/nightstalkergloves.png" );
+}
+span.icon.item.bracers.i-deathgrip {
+  background-image: url( "../images/items/bracers/deathgrip.png" );
+}
+span.icon.item.bracers.i-midasgloves {
+  background-image: url( "../images/items/bracers/midasgloves.png" );
+}
+span.icon.item.bracers.i-cindarigloves {
+  background-image: url( "../images/items/bracers/cindarigloves.png" );
+}
+span.icon.item.bracers.i-ogrebracers {
+  background-image: url( "../images/items/bracers/ogrebracers.png" );
+}
+span.icon.item.bracers.i-frostfiregloves {
+  background-image: url( "../images/items/bracers/frostfiregloves.png" );
+}
+span.icon.item.bracers.i-starrygloves {
+  background-image: url( "../images/items/bracers/starrygloves.png" );
+}
+span.icon.item.bracers.i-archangelgloves {
+  background-image: url( "../images/items/bracers/archangelgloves.png" );
+}
+span.icon.item.bracers.i-nethergloves {
+  background-image: url( "../images/items/bracers/nethergloves.png" );
+}
+span.icon.item.footwear.i-sandals {
+  background-image: url( "../images/items/footwear/sandals.png" );
+}
+span.icon.item.footwear.i-shoes {
+  background-image: url( "../images/items/footwear/shoes.png" );
+}
+span.icon.item.footwear.i-druidicshoes {
+  background-image: url( "../images/items/footwear/druidicshoes.png" );
+}
+span.icon.item.footwear.i-leathershoes {
+  background-image: url( "../images/items/footwear/leathershoes.png" );
+}
+span.icon.item.footwear.i-furloafers {
+  background-image: url( "../images/items/footwear/furloafers.png" );
+}
+span.icon.item.footwear.i-lightboots {
+  background-image: url( "../images/items/footwear/lightboots.png" );
+}
+span.icon.item.footwear.i-elvenboots {
+  background-image: url( "../images/items/footwear/elvenboots.png" );
+}
+span.icon.item.footwear.i-dancershoes {
+  background-image: url( "../images/items/footwear/dancershoes.png" );
+}
+span.icon.item.footwear.i-legionsandals {
+  background-image: url( "../images/items/footwear/legionsandals.png" );
+}
+span.icon.item.footwear.i-hornedshoes {
+  background-image: url( "../images/items/footwear/hornedshoes.png" );
+}
+span.icon.item.footwear.i-moonwalkers {
+  background-image: url( "../images/items/footwear/moonwalkers.png" );
+}
+span.icon.item.footwear.i-goldenshoes {
+  background-image: url( "../images/items/footwear/goldenshoes.png" );
+}
+span.icon.item.footwear.i-plumedloafers {
+  background-image: url( "../images/items/footwear/plumedloafers.png" );
+}
+span.icon.item.footwear.i-wingedsandals {
+  background-image: url( "../images/items/footwear/wingedsandals.png" );
+}
+span.icon.item.footwear.i-imperialsandals {
+  background-image: url( "../images/items/footwear/imperialsandals.png" );
+}
+span.icon.item.footwear.i-patriotboots {
+  background-image: url( "../images/items/footwear/patriotboots.png" );
+}
+span.icon.item.footwear.i-genjigetas {
+  background-image: url( "../images/items/footwear/genjigetas.png" );
+}
+span.icon.item.footwear.i-pathfinders {
+  background-image: url( "../images/items/footwear/pathfinders.png" );
+}
+span.icon.item.footwear.i-floatingslippers {
+  background-image: url( "../images/items/footwear/floatingslippers.png" );
+}
+span.icon.item.footwear.i-harvestshoes {
+  background-image: url( "../images/items/footwear/harvestshoes.png" );
+}
+span.icon.item.footwear.i-windwalkers {
+  background-image: url( "../images/items/footwear/windwalkers.png" );
+}
+span.icon.item.footwear.i-arcanesandals {
+  background-image: url( "../images/items/footwear/arcanesandals.png" );
+}
+span.icon.item.footwear.i-planeswalkers {
+  background-image: url( "../images/items/footwear/planeswalkers.png" );
+}
+span.icon.item.footwear.i-adamantiumshoes {
+  background-image: url( "../images/items/footwear/adamantiumshoes.png" );
+}
+span.icon.item.footwear.i-draconicboots {
+  background-image: url( "../images/items/footwear/draconicboots.png" );
+}
+span.icon.item.footwear.i-jadeshoes {
+  background-image: url( "../images/items/footwear/jadeshoes.png" );
+}
+span.icon.item.footwear.i-hoppingshoes {
+  background-image: url( "../images/items/footwear/hoppingshoes.png" );
+}
+span.icon.item.footwear.i-frostfireshoes {
+  background-image: url( "../images/items/footwear/frostfireshoes.png" );
+}
+span.icon.item.footwear.i-nobleshoes {
+  background-image: url( "../images/items/footwear/nobleshoes.png" );
+}
+span.icon.item.footwear.i-firewalkers {
+  background-image: url( "../images/items/footwear/firewalkers.png" );
+}
+span.icon.item.footwear.i-demontrackers {
+  background-image: url( "../images/items/footwear/demontrackers.png" );
+}
+span.icon.item.footwear.i-icewalkers {
+  background-image: url( "../images/items/footwear/icewalkers.png" );
+}
+span.icon.item.remedies.i-healingherbs {
+  background-image: url( "../images/items/remedies/healingherbs.png" );
+}
+span.icon.item.remedies.i-antidote {
+  background-image: url( "../images/items/remedies/antidote.png" );
+}
+span.icon.item.remedies.i-fungibrew {
+  background-image: url( "../images/items/remedies/fungibrew.png" );
+}
+span.icon.item.remedies.i-elderflower {
+  background-image: url( "../images/items/remedies/elderflower.png" );
+}
+span.icon.item.remedies.i-healingmix {
+  background-image: url( "../images/items/remedies/healingmix.png" );
+}
+span.icon.item.remedies.i-coloredpowder {
+  background-image: url( "../images/items/remedies/coloredpowder.png" );
+}
+span.icon.item.remedies.i-firemoss {
+  background-image: url( "../images/items/remedies/firemoss.png" );
+}
+span.icon.item.remedies.i-mistletoe {
+  background-image: url( "../images/items/remedies/mistletoe.png" );
+}
+span.icon.item.remedies.i-sleepingshrooms {
+  background-image: url( "../images/items/remedies/sleepingshrooms.png" );
+}
+span.icon.item.remedies.i-barktea {
+  background-image: url( "../images/items/remedies/barktea.png" );
+}
+span.icon.item.remedies.i-fairysprinkle {
+  background-image: url( "../images/items/remedies/fairysprinkle.png" );
+}
+span.icon.item.remedies.i-antivenom {
+  background-image: url( "../images/items/remedies/antivenom.png" );
+}
+span.icon.item.remedies.i-protectiondust {
+  background-image: url( "../images/items/remedies/protectiondust.png" );
+}
+span.icon.item.remedies.i-swiftseed {
+  background-image: url( "../images/items/remedies/swiftseed.png" );
+}
+span.icon.item.remedies.i-elvencure {
+  background-image: url( "../images/items/remedies/elvencure.png" );
+}
+span.icon.item.remedies.i-rejuvenatingtea {
+  background-image: url( "../images/items/remedies/rejuvenatingtea.png" );
+}
+span.icon.item.remedies.i-angeldust {
+  background-image: url( "../images/items/remedies/angeldust.png" );
+}
+span.icon.item.remedies.i-coldfiredust {
+  background-image: url( "../images/items/remedies/coldfiredust.png" );
+}
+span.icon.item.remedies.i-unicornessence {
+  background-image: url( "../images/items/remedies/unicornessence.png" );
+}
+span.icon.item.remedies.i-cornucopia {
+  background-image: url( "../images/items/remedies/cornucopia.png" );
+}
+span.icon.item.remedies.i-clowndust {
+  background-image: url( "../images/items/remedies/clowndust.png" );
+}
+span.icon.item.remedies.i-strengthseed {
+  background-image: url( "../images/items/remedies/strengthseed.png" );
+}
+span.icon.item.remedies.i-phoenixdust {
+  background-image: url( "../images/items/remedies/phoenixdust.png" );
+}
+span.icon.item.remedies.i-panacea {
+  background-image: url( "../images/items/remedies/panacea.png" );
+}
+span.icon.item.remedies.i-mysticflower {
+  background-image: url( "../images/items/remedies/mysticflower.png" );
+}
+span.icon.item.remedies.i-magicseed {
+  background-image: url( "../images/items/remedies/magicseed.png" );
+}
+span.icon.item.remedies.i-albizia {
+  background-image: url( "../images/items/remedies/albizia.png" );
+}
+span.icon.item.remedies.i-dragondust {
+  background-image: url( "../images/items/remedies/dragondust.png" );
+}
+span.icon.item.remedies.i-magicbeans {
+  background-image: url( "../images/items/remedies/magicbeans.png" );
+}
+span.icon.item.remedies.i-devildust {
+  background-image: url( "../images/items/remedies/devildust.png" );
+}
+span.icon.item.remedies.i-teonanacatl {
+  background-image: url( "../images/items/remedies/teonanacatl.png" );
+}
+span.icon.item.remedies.i-draconictea {
+  background-image: url( "../images/items/remedies/draconictea.png" );
+}
+span.icon.item.remedies.i-seedofpower {
+  background-image: url( "../images/items/remedies/seedofpower.png" );
+}
+span.icon.item.potions.i-healthvial {
+  background-image: url( "../images/items/potions/healthvial.png" );
+}
+span.icon.item.potions.i-manavial {
+  background-image: url( "../images/items/potions/manavial.png" );
+}
+span.icon.item.potions.i-speedpotion {
+  background-image: url( "../images/items/potions/speedpotion.png" );
+}
+span.icon.item.potions.i-lovesplash {
+  background-image: url( "../images/items/potions/lovesplash.png" );
+}
+span.icon.item.potions.i-healingpotion {
+  background-image: url( "../images/items/potions/healingpotion.png" );
+}
+span.icon.item.potions.i-toxicvial {
+  background-image: url( "../images/items/potions/toxicvial.png" );
+}
+span.icon.item.potions.i-energizingpotion {
+  background-image: url( "../images/items/potions/energizingpotion.png" );
+}
+span.icon.item.potions.i-elixirdrops {
+  background-image: url( "../images/items/potions/elixirdrops.png" );
+}
+span.icon.item.potions.i-healthdrink {
+  background-image: url( "../images/items/potions/healthdrink.png" );
+}
+span.icon.item.potions.i-strengthpotion {
+  background-image: url( "../images/items/potions/strengthpotion.png" );
+}
+span.icon.item.potions.i-eggnogpotion {
+  background-image: url( "../images/items/potions/eggnogpotion.png" );
+}
+span.icon.item.potions.i-warmingspray {
+  background-image: url( "../images/items/potions/warmingspray.png" );
+}
+span.icon.item.potions.i-acidicsplash {
+  background-image: url( "../images/items/potions/acidicsplash.png" );
+}
+span.icon.item.potions.i-healthpotion {
+  background-image: url( "../images/items/potions/healthpotion.png" );
+}
+span.icon.item.potions.i-wisdompotion {
+  background-image: url( "../images/items/potions/wisdompotion.png" );
+}
+span.icon.item.potions.i-manapotion {
+  background-image: url( "../images/items/potions/manapotion.png" );
+}
+span.icon.item.potions.i-demonsblood {
+  background-image: url( "../images/items/potions/demonsblood.png" );
+}
+span.icon.item.potions.i-elixir {
+  background-image: url( "../images/items/potions/elixir.png" );
+}
+span.icon.item.potions.i-goldenpotion {
+  background-image: url( "../images/items/potions/goldenpotion.png" );
+}
+span.icon.item.potions.i-lifepotion {
+  background-image: url( "../images/items/potions/lifepotion.png" );
+}
+span.icon.item.potions.i-mysticpotion {
+  background-image: url( "../images/items/potions/mysticpotion.png" );
+}
+span.icon.item.potions.i-invincibilitypotion {
+  background-image: url( "../images/items/potions/invincibilitypotion.png" );
+}
+span.icon.item.potions.i-dragonsblood {
+  background-image: url( "../images/items/potions/dragonsblood.png" );
+}
+span.icon.item.potions.i-megalixir {
+  background-image: url( "../images/items/potions/megalixir.png" );
+}
+span.icon.item.potions.i-twilightpotion {
+  background-image: url( "../images/items/potions/twilightpotion.png" );
+}
+span.icon.item.potions.i-godsessence {
+  background-image: url( "../images/items/potions/godsessence.png" );
+}
+span.icon.item.potions.i-claritypotion {
+  background-image: url( "../images/items/potions/claritypotion.png" );
+}
+span.icon.item.potions.i-vialofrebirth {
+  background-image: url( "../images/items/potions/vialofrebirth.png" );
+}
+span.icon.item.potions.i-jacksbrew {
+  background-image: url( "../images/items/potions/jacksbrew.png" );
+}
+span.icon.item.potions.i-obsidianpotion {
+  background-image: url( "../images/items/potions/obsidianpotion.png" );
+}
+span.icon.item.potions.i-dragonfirepotion {
+  background-image: url( "../images/items/potions/dragonfirepotion.png" );
+}
+span.icon.item.potions.i-gaiasessence {
+  background-image: url( "../images/items/potions/gaiasessence.png" );
+}
+span.icon.item.potions.i-unholypotion {
+  background-image: url( "../images/items/potions/unholypotion.png" );
+}
+span.icon.item.spells.i-shieldingseal {
+  background-image: url( "../images/items/spells/shieldingseal.png" );
+}
+span.icon.item.spells.i-fireballscroll {
+  background-image: url( "../images/items/spells/fireballscroll.png" );
+}
+span.icon.item.spells.i-poisonscroll {
+  background-image: url( "../images/items/spells/poisonscroll.png" );
+}
+span.icon.item.spells.i-lightningscroll {
+  background-image: url( "../images/items/spells/lightningscroll.png" );
+}
+span.icon.item.spells.i-sleepingtotem {
+  background-image: url( "../images/items/spells/sleepingtotem.png" );
+}
+span.icon.item.spells.i-firewallscroll {
+  background-image: url( "../images/items/spells/firewallscroll.png" );
+}
+span.icon.item.spells.i-paintotem {
+  background-image: url( "../images/items/spells/paintotem.png" );
+}
+span.icon.item.spells.i-charmingscroll {
+  background-image: url( "../images/items/spells/charmingscroll.png" );
+}
+span.icon.item.spells.i-deflectionseal {
+  background-image: url( "../images/items/spells/deflectionseal.png" );
+}
+span.icon.item.spells.i-freezingscroll {
+  background-image: url( "../images/items/spells/freezingscroll.png" );
+}
+span.icon.item.spells.i-invisibilityscroll {
+  background-image: url( "../images/items/spells/invisibilityscroll.png" );
+}
+span.icon.item.spells.i-teleportationscroll {
+  background-image: url( "../images/items/spells/teleportationscroll.png" );
+}
+span.icon.item.spells.i-magicalcodex {
+  background-image: url( "../images/items/spells/magicalcodex.png" );
+}
+span.icon.item.spells.i-paralysistotem {
+  background-image: url( "../images/items/spells/paralysistotem.png" );
+}
+span.icon.item.spells.i-mysticscroll {
+  background-image: url( "../images/items/spells/mysticscroll.png" );
+}
+span.icon.item.spells.i-evilseal {
+  background-image: url( "../images/items/spells/evilseal.png" );
+}
+span.icon.item.spells.i-possessionscroll {
+  background-image: url( "../images/items/spells/possessionscroll.png" );
+}
+span.icon.item.spells.i-powerseal {
+  background-image: url( "../images/items/spells/powerseal.png" );
+}
+span.icon.item.spells.i-njord {
+  background-image: url( "../images/items/spells/njord.png" );
+}
+span.icon.item.spells.i-gloomtotem {
+  background-image: url( "../images/items/spells/gloomtotem.png" );
+}
+span.icon.item.spells.i-arcanecompendium {
+  background-image: url( "../images/items/spells/arcanecompendium.png" );
+}
+span.icon.item.spells.i-disintegrationscroll {
+  background-image: url( "../images/items/spells/disintegrationscroll.png" );
+}
+span.icon.item.spells.i-returnscroll {
+  background-image: url( "../images/items/spells/returnscroll.png" );
+}
+span.icon.item.spells.i-hawktotem {
+  background-image: url( "../images/items/spells/hawktotem.png" );
+}
+span.icon.item.spells.i-divinetome {
+  background-image: url( "../images/items/spells/divinetome.png" );
+}
+span.icon.item.spells.i-twilightseal {
+  background-image: url( "../images/items/spells/twilightseal.png" );
+}
+span.icon.item.spells.i-dragontotem {
+  background-image: url( "../images/items/spells/dragontotem.png" );
+}
+span.icon.item.spells.i-santaslist {
+  background-image: url( "../images/items/spells/santaslist.png" );
+}
+span.icon.item.spells.i-hauntedscroll {
+  background-image: url( "../images/items/spells/hauntedscroll.png" );
+}
+span.icon.item.spells.i-primalcompendium {
+  background-image: url( "../images/items/spells/primalcompendium.png" );
+}
+span.icon.item.spells.i-guardianseal {
+  background-image: url( "../images/items/spells/guardianseal.png" );
+}
+span.icon.item.spells.i-bloodscroll {
+  background-image: url( "../images/items/spells/bloodscroll.png" );
+}
+span.icon.item.spells.i-deceptionscroll {
+  background-image: url( "../images/items/spells/deceptionscroll.png" );
+}
+span.icon.item.projectiles.i-darts {
+  background-image: url( "../images/items/projectiles/darts.png" );
+}
+span.icon.item.projectiles.i-sling {
+  background-image: url( "../images/items/projectiles/sling.png" );
+}
+span.icon.item.projectiles.i-boomerang {
+  background-image: url( "../images/items/projectiles/boomerang.png" );
+}
+span.icon.item.projectiles.i-kunai {
+  background-image: url( "../images/items/projectiles/kunai.png" );
+}
+span.icon.item.projectiles.i-poisondarts {
+  background-image: url( "../images/items/projectiles/poisondarts.png" );
+}
+span.icon.item.projectiles.i-fireworks {
+  background-image: url( "../images/items/projectiles/fireworks.png" );
+}
+span.icon.item.projectiles.i-smokebomb {
+  background-image: url( "../images/items/projectiles/smokebomb.png" );
+}
+span.icon.item.projectiles.i-metalboomerang {
+  background-image: url( "../images/items/projectiles/metalboomerang.png" );
+}
+span.icon.item.projectiles.i-toxicbomb {
+  background-image: url( "../images/items/projectiles/toxicbomb.png" );
+}
+span.icon.item.projectiles.i-sleepingbomb {
+  background-image: url( "../images/items/projectiles/sleepingbomb.png" );
+}
+span.icon.item.projectiles.i-festivebombs {
+  background-image: url( "../images/items/projectiles/festivebombs.png" );
+}
+span.icon.item.projectiles.i-shockdarts {
+  background-image: url( "../images/items/projectiles/shockdarts.png" );
+}
+span.icon.item.projectiles.i-shuriken {
+  background-image: url( "../images/items/projectiles/shuriken.png" );
+}
+span.icon.item.projectiles.i-elastisling {
+  background-image: url( "../images/items/projectiles/elastisling.png" );
+}
+span.icon.item.projectiles.i-chakram {
+  background-image: url( "../images/items/projectiles/chakram.png" );
+}
+span.icon.item.projectiles.i-bladedfeather {
+  background-image: url( "../images/items/projectiles/bladedfeather.png" );
+}
+span.icon.item.projectiles.i-magicshuriken {
+  background-image: url( "../images/items/projectiles/magicshuriken.png" );
+}
+span.icon.item.projectiles.i-singingchakram {
+  background-image: url( "../images/items/projectiles/singingchakram.png" );
+}
+span.icon.item.projectiles.i-steelarang {
+  background-image: url( "../images/items/projectiles/steelarang.png" );
+}
+span.icon.item.projectiles.i-heartseeker {
+  background-image: url( "../images/items/projectiles/heartseeker.png" );
+}
+span.icon.item.projectiles.i-seekingkunai {
+  background-image: url( "../images/items/projectiles/seekingkunai.png" );
+}
+span.icon.item.projectiles.i-shredder {
+  background-image: url( "../images/items/projectiles/shredder.png" );
+}
+span.icon.item.projectiles.i-explodingdarts {
+  background-image: url( "../images/items/projectiles/explodingdarts.png" );
+}
+span.icon.item.projectiles.i-heartpiercer {
+  background-image: url( "../images/items/projectiles/heartpiercer.png" );
+}
+span.icon.item.projectiles.i-lightboomerang {
+  background-image: url( "../images/items/projectiles/lightboomerang.png" );
+}
+span.icon.item.projectiles.i-thunderclap {
+  background-image: url( "../images/items/projectiles/thunderclap.png" );
+}
+span.icon.item.projectiles.i-dragondarts {
+  background-image: url( "../images/items/projectiles/dragondarts.png" );
+}
+span.icon.item.projectiles.i-windslicer {
+  background-image: url( "../images/items/projectiles/windslicer.png" );
+}
+span.icon.item.projectiles.i-frostfirekunai {
+  background-image: url( "../images/items/projectiles/frostfirekunai.png" );
+}
+span.icon.item.projectiles.i-squashbomb {
+  background-image: url( "../images/items/projectiles/squashbomb.png" );
+}
+span.icon.item.projectiles.i-eggsplosives {
+  background-image: url( "../images/items/projectiles/eggsplosives.png" );
+}
+span.icon.item.projectiles.i-hellbomb {
+  background-image: url( "../images/items/projectiles/hellbomb.png" );
+}
+span.icon.item.projectiles.i-flyingguillotine {
+  background-image: url( "../images/items/projectiles/flyingguillotine.png" );
+}
+span.icon.item.rings.i-ironband {
+  background-image: url( "../images/items/rings/ironband.png" );
+}
+span.icon.item.rings.i-rabbitring {
+  background-image: url( "../images/items/rings/rabbitring.png" );
+}
+span.icon.item.rings.i-jewelring {
+  background-image: url( "../images/items/rings/jewelring.png" );
+}
+span.icon.item.rings.i-shadowmark {
+  background-image: url( "../images/items/rings/shadowmark.png" );
+}
+span.icon.item.rings.i-crescentring {
+  background-image: url( "../images/items/rings/crescentring.png" );
+}
+span.icon.item.rings.i-starryring {
+  background-image: url( "../images/items/rings/starryring.png" );
+}
+span.icon.item.rings.i-moonstonering {
+  background-image: url( "../images/items/rings/moonstonering.png" );
+}
+span.icon.item.rings.i-luckband {
+  background-image: url( "../images/items/rings/luckband.png" );
+}
+span.icon.item.rings.i-golddigger {
+  background-image: url( "../images/items/rings/golddigger.png" );
+}
+span.icon.item.rings.i-soldiersmark {
+  background-image: url( "../images/items/rings/soldiersmark.png" );
+}
+span.icon.item.rings.i-nimblering {
+  background-image: url( "../images/items/rings/nimblering.png" );
+}
+span.icon.item.rings.i-fireband {
+  background-image: url( "../images/items/rings/fireband.png" );
+}
+span.icon.item.rings.i-sightband {
+  background-image: url( "../images/items/rings/sightband.png" );
+}
+span.icon.item.rings.i-undeadring {
+  background-image: url( "../images/items/rings/undeadring.png" );
+}
+span.icon.item.rings.i-powerring {
+  background-image: url( "../images/items/rings/powerring.png" );
+}
+span.icon.item.rings.i-infinityring {
+  background-image: url( "../images/items/rings/infinityring.png" );
+}
+span.icon.item.rings.i-crusaderring {
+  background-image: url( "../images/items/rings/crusaderring.png" );
+}
+span.icon.item.rings.i-prayerring {
+  background-image: url( "../images/items/rings/prayerring.png" );
+}
+span.icon.item.rings.i-wisdommark {
+  background-image: url( "../images/items/rings/wisdommark.png" );
+}
+span.icon.item.rings.i-resistanceband {
+  background-image: url( "../images/items/rings/resistanceband.png" );
+}
+span.icon.item.rings.i-dynamicring {
+  background-image: url( "../images/items/rings/dynamicring.png" );
+}
+span.icon.item.rings.i-truthring {
+  background-image: url( "../images/items/rings/truthring.png" );
+}
+span.icon.item.rings.i-divinemark {
+  background-image: url( "../images/items/rings/divinemark.png" );
+}
+span.icon.item.rings.i-royalring {
+  background-image: url( "../images/items/rings/royalring.png" );
+}
+span.icon.item.rings.i-fallenangelring {
+  background-image: url( "../images/items/rings/fallenangelring.png" );
+}
+span.icon.item.rings.i-oracle {
+  background-image: url( "../images/items/rings/oracle.png" );
+}
+span.icon.item.rings.i-mysticring {
+  background-image: url( "../images/items/rings/mysticring.png" );
+}
+span.icon.item.rings.i-lichring {
+  background-image: url( "../images/items/rings/lichring.png" );
+}
+span.icon.item.rings.i-ouroboros {
+  background-image: url( "../images/items/rings/ouroboros.png" );
+}
+span.icon.item.rings.i-azurering {
+  background-image: url( "../images/items/rings/azurering.png" );
+}
+span.icon.item.rings.i-heartring {
+  background-image: url( "../images/items/rings/heartring.png" );
+}
+span.icon.item.rings.i-antimagicband {
+  background-image: url( "../images/items/rings/antimagicband.png" );
+}
+span.icon.item.rings.i-midasring {
+  background-image: url( "../images/items/rings/midasring.png" );
+}
+span.icon.item.pendants.i-shinypendant {
+  background-image: url( "../images/items/pendants/shinypendant.png" );
+}
+span.icon.item.pendants.i-opalnecklace {
+  background-image: url( "../images/items/pendants/opalnecklace.png" );
+}
+span.icon.item.pendants.i-scarletdrop {
+  background-image: url( "../images/items/pendants/scarletdrop.png" );
+}
+span.icon.item.pendants.i-protectionpendant {
+  background-image: url( "../images/items/pendants/protectionpendant.png" );
+}
+span.icon.item.pendants.i-lunacharm {
+  background-image: url( "../images/items/pendants/lunacharm.png" );
+}
+span.icon.item.pendants.i-windcharm {
+  background-image: url( "../images/items/pendants/windcharm.png" );
+}
+span.icon.item.pendants.i-skeletonward {
+  background-image: url( "../images/items/pendants/skeletonward.png" );
+}
+span.icon.item.pendants.i-bunnypendant {
+  background-image: url( "../images/items/pendants/bunnypendant.png" );
+}
+span.icon.item.pendants.i-hangingjournal {
+  background-image: url( "../images/items/pendants/hangingjournal.png" );
+}
+span.icon.item.pendants.i-fierytalisman {
+  background-image: url( "../images/items/pendants/fierytalisman.png" );
+}
+span.icon.item.pendants.i-azurebeads {
+  background-image: url( "../images/items/pendants/azurebeads.png" );
+}
+span.icon.item.pendants.i-timelesslocket {
+  background-image: url( "../images/items/pendants/timelesslocket.png" );
+}
+span.icon.item.pendants.i-jadeamulet {
+  background-image: url( "../images/items/pendants/jadeamulet.png" );
+}
+span.icon.item.pendants.i-obeliskcharm {
+  background-image: url( "../images/items/pendants/obeliskcharm.png" );
+}
+span.icon.item.pendants.i-turningtoken {
+  background-image: url( "../images/items/pendants/turningtoken.png" );
+}
+span.icon.item.pendants.i-lightamulet {
+  background-image: url( "../images/items/pendants/lightamulet.png" );
+}
+span.icon.item.pendants.i-shieldingward {
+  background-image: url( "../images/items/pendants/shieldingward.png" );
+}
+span.icon.item.pendants.i-phoenixtalon {
+  background-image: url( "../images/items/pendants/phoenixtalon.png" );
+}
+span.icon.item.pendants.i-freezingward {
+  background-image: url( "../images/items/pendants/freezingward.png" );
+}
+span.icon.item.pendants.i-heartpendant {
+  background-image: url( "../images/items/pendants/heartpendant.png" );
+}
+span.icon.item.pendants.i-catseye {
+  background-image: url( "../images/items/pendants/catseye.png" );
+}
+span.icon.item.pendants.i-skadischarm {
+  background-image: url( "../images/items/pendants/skadischarm.png" );
+}
+span.icon.item.pendants.i-lichsheart {
+  background-image: url( "../images/items/pendants/lichsheart.png" );
+}
+span.icon.item.pendants.i-draconicamulet {
+  background-image: url( "../images/items/pendants/draconicamulet.png" );
+}
+span.icon.item.pendants.i-trinecharm {
+  background-image: url( "../images/items/pendants/trinecharm.png" );
+}
+span.icon.item.pendants.i-goddesstear {
+  background-image: url( "../images/items/pendants/goddesstear.png" );
+}
+span.icon.item.pendants.i-ancientamulet {
+  background-image: url( "../images/items/pendants/ancientamulet.png" );
+}
+span.icon.item.pendants.i-draconiccharm {
+  background-image: url( "../images/items/pendants/draconiccharm.png" );
+}
+span.icon.item.pendants.i-championsmedal {
+  background-image: url( "../images/items/pendants/championsmedal.png" );
+}
+span.icon.item.pendants.i-frostfiretalisman {
+  background-image: url( "../images/items/pendants/frostfiretalisman.png" );
+}
+span.icon.item.pendants.i-gaiasheart {
+  background-image: url( "../images/items/pendants/gaiasheart.png" );
+}
+span.icon.item.pendants.i-primalcharm {
+  background-image: url( "../images/items/pendants/primalcharm.png" );
+}
+span.icon.item.instruments.i-woodflute {
+  background-image: url( "../images/items/instruments/woodflute.png" );
+}
+span.icon.item.instruments.i-smalldrum {
+  background-image: url( "../images/items/instruments/smalldrum.png" );
+}
+span.icon.item.instruments.i-panflute {
+  background-image: url( "../images/items/instruments/panflute.png" );
+}
+span.icon.item.instruments.i-handdrum {
+  background-image: url( "../images/items/instruments/handdrum.png" );
+}
+span.icon.item.instruments.i-horn {
+  background-image: url( "../images/items/instruments/horn.png" );
+}
+span.icon.item.instruments.i-harp {
+  background-image: url( "../images/items/instruments/harp.png" );
+}
+span.icon.item.instruments.i-ironflute {
+  background-image: url( "../images/items/instruments/ironflute.png" );
+}
+span.icon.item.instruments.i-lute {
+  background-image: url( "../images/items/instruments/lute.png" );
+}
+span.icon.item.instruments.i-frozenharp {
+  background-image: url( "../images/items/instruments/frozenharp.png" );
+}
+span.icon.item.instruments.i-longflute {
+  background-image: url( "../images/items/instruments/longflute.png" );
+}
+span.icon.item.instruments.i-oud {
+  background-image: url( "../images/items/instruments/oud.png" );
+}
+span.icon.item.instruments.i-nordiclute {
+  background-image: url( "../images/items/instruments/nordiclute.png" );
+}
+span.icon.item.instruments.i-militarytap {
+  background-image: url( "../images/items/instruments/militarytap.png" );
+}
+span.icon.item.instruments.i-yggflute {
+  background-image: url( "../images/items/instruments/yggflute.png" );
+}
+span.icon.item.instruments.i-silveredflute {
+  background-image: url( "../images/items/instruments/silveredflute.png" );
+}
+span.icon.item.instruments.i-chinesedrum {
+  background-image: url( "../images/items/instruments/chinesedrum.png" );
+}
+span.icon.item.instruments.i-soothingharp {
+  background-image: url( "../images/items/instruments/soothingharp.png" );
+}
+span.icon.item.instruments.i-wyrmhorn {
+  background-image: url( "../images/items/instruments/wyrmhorn.png" );
+}
+span.icon.item.instruments.i-goldenstring {
+  background-image: url( "../images/items/instruments/goldenstring.png" );
+}
+span.icon.item.instruments.i-hellhound {
+  background-image: url( "../images/items/instruments/hellhound.png" );
+}
+span.icon.item.instruments.i-draconiansound {
+  background-image: url( "../images/items/instruments/draconiansound.png" );
+}
+span.icon.item.instruments.i-draconicheartbeat {
+  background-image: url( "../images/items/instruments/draconicheartbeat.png" );
+}
+span.icon.item.instruments.i-twilightflute {
+  background-image: url( "../images/items/instruments/twilightflute.png" );
+}
+span.icon.item.instruments.i-angelicstrings {
+  background-image: url( "../images/items/instruments/angelicstrings.png" );
+}
+span.icon.item.instruments.i-ancienthorn {
+  background-image: url( "../images/items/instruments/ancienthorn.png" );
+}
+span.icon.item.instruments.i-bunnyharp {
+  background-image: url( "../images/items/instruments/bunnyharp.png" );
+}
+span.icon.item.instruments.i-wingedharp {
+  background-image: url( "../images/items/instruments/wingedharp.png" );
+}
+span.icon.item.instruments.i-frostfireharp {
+  background-image: url( "../images/items/instruments/frostfireharp.png" );
+}
+span.icon.item.instruments.i-angelicbell {
+  background-image: url( "../images/items/instruments/angelicbell.png" );
+}
+span.icon.item.instruments.i-wisdomocarina {
+  background-image: url( "../images/items/instruments/wisdomocarina.png" );
+}
+span.icon.item.instruments.i-gaiasflute {
+  background-image: url( "../images/items/instruments/gaiasflute.png" );
+}
+span.icon.item.instruments.i-summoningflute {
+  background-image: url( "../images/items/instruments/summoningflute.png" );
 }

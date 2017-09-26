@@ -21,6 +21,10 @@ $( function() {
       return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
     };
   }
+  String.prototype.asIconPath = function() {
+    var res = this.replace( /[\-\'\.\s]+/g, '' );
+    return res.toLowerCase();
+  };
 
   var cache = $.cache._();
   
@@ -238,8 +242,8 @@ $( function() {
               var $icon = $( '<span/>' );
               $icon
                 .addClass( 'icon float left' )
-                .addClass( data.icon )
-                .addClass( data.iconType )
+                .addClass( data.icon.asIconPath() )
+                .addClass( data.iconType.asIconPath() )
                 .appendTo( $result );
             };
             if ( data.data ) {

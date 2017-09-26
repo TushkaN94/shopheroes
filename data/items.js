@@ -6721,18 +6721,6 @@
     },
     {
       type: "Shields",
-      name: "Demon Shield",
-      lv: 35,
-      xp: 396664,
-      power: 1550,
-      price: 805000,
-      rarity: "Exclusive",
-      origin: "Sports Package",
-      skill: { name: "Parry", q: "Legendary", m: false },
-      pre: [ { item: "Spiked Shield", q: "Great", c: 1 } ]
-    },
-    {
-      type: "Shields",
       name: "Targe",
       lv: 2,
       xp: 8,
@@ -6988,6 +6976,18 @@
       rarity: "Common",
       origin: "",
       pre: [ { item: "Moonlight Shield", q: "Great", c: 2 } ]
+    },
+    {
+      type: "Shields",
+      name: "Demon Shield",
+      lv: 35,
+      xp: 396664,
+      power: 1550,
+      price: 805000,
+      rarity: "Exclusive",
+      origin: "Sports Package",
+      skill: { name: "Parry", q: "Legendary", m: false },
+      pre: [ { item: "Spiked Shield", q: "Great", c: 1 } ]
     },
     {
       type: "Shields",
