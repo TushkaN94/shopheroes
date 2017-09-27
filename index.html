@@ -32,6 +32,9 @@
     <div id="tabs">
       <ul>
         <li>
+          <a href="#tabs-help">Help</a>
+        </li>
+        <li>
           <a href="#tabs-teams">Teams</a>
         </li>
         <li>
@@ -45,9 +48,6 @@
         </li>
         <li>
           <a href="#tabs-data">Data</a>
-        </li>
-        <li>
-          <a href="#tabs-help">Help</a>
         </li>
       </ul>
       <div id="tabs-help">
@@ -126,7 +126,7 @@
     <span v-if="power.value">
       <span class="float-left">
         <span class="htooltip icon power">
-          <span v-if="!!power.info">{{power.info}}</span>
+          <span class="htooltip-text" v-if="!!power.info">{{power.info}}</span>
         </span>
         <span>{{power.value.intString()}}</span>  
       </span>
@@ -136,7 +136,7 @@
     <span v-if="skill">
       <span class="float-left">
         <span class="htooltip icon skill" :class="[ summary.icon.asIconPath() ]">
-          <span>{{summary.info}}</span>
+          <span class="htooltip-text">{{summary.info}}</span>
         </span>
         <span :class="{inactive: ( view != 'item' ) && !skill.active}">{{skill.name}}</span>
       </span>
@@ -145,7 +145,7 @@
   </script>
   <script type="text/x-template" id="templates-item-slot">
     <span class="htooltip icon item" :class="[ itemSlot.type.asIconPath(), 'i-affinity' + itemSlot.a ]">
-      <span>{{summary}}</span>
+      <span class="htooltip-text">{{summary}}</span>
     </span>
   </script>
   <script type="text/x-template" id="templates-items">
@@ -310,7 +310,7 @@
           <tr>
             <th rowspan="2">
               <div>
-                <span class="icon medium item" :class="[ item.type.asIconPath(), 'i-' + item.name.asIconPath() ]"></span>
+                <span class="icon medium item" :class="[ item.type.asIconPath(), 'i-' + item.name.asIconPath() ]"/>
               </div>
             </th>
             <th>
@@ -320,7 +320,7 @@
             </th>
             <td>
               <div>
-                <span class="float-left icon item" :class="[ item.type.asIconPath() ]"></span>
+                <span class="float-left icon item" :class="[ item.type.asIconPath() ]"/>
                 <span>{{item.type}}</span>
               </div>
             </td>
@@ -337,7 +337,7 @@
             <td>
               <div class="data-info" v-if="item.skill">
                 <span class="float-left htooltip">
-                  <span>{{'Mark as {0}mastered'.format( item.skill.m ? 'un' : '' )}}</span>
+                  <span class="htooltip-text">{{'Mark as {0}mastered'.format( item.skill.m ? 'un' : '' )}}</span>
                   <input type="checkbox" v-model="item.skill.m" />
                 </span>
                 <span class="float-left icon quality" :class="item.skill.q.asIconPath()" />
@@ -367,7 +367,14 @@
               </div>
             </td>
             <td>
-              <div>
+              <div style="text-align: left;">
+                <template v-for="pi in item.pre" v-if="item.pre">
+                  <span class="htooltip">
+                    <span class="htooltip-text">{{"{0} {1}".format( pi.q, pi.item )}}</span>
+                    <span class="icon quality" :class="[ pi.q.asIconPath() ]" />
+                    <span class="icon item" :class="[ 'i-' + pi.item.asIconPath() ]" />
+                  </span>
+                </template>
               </div>
             </td>
           </tr>
@@ -903,7 +910,7 @@
                   <td>
                     <div class="data-info">
                       <span v-if="sh.building.b" class="float-right htooltip">
-                        <span>{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
+                        <span class="htooltip-text">{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
                         <input type="checkbox" v-model="th.b" @click="set_boost( sh, th.b )"/>
                       </span>
                       <power :power="sh.power"/>

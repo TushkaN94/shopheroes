@@ -1,4 +1,4 @@
-.htooltip span {
+.htooltip span.htooltip-text {
 	background-color: #F6F6F6;
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 	margin-right: -50%;
@@ -14,7 +14,7 @@
   font-weight: normal;
   font-size: 0.9rem;
 }
-.htooltip:hover span {
+.htooltip:hover span.htooltip-text {
 	opacity: 1;
 	visibility: visible;
 }
