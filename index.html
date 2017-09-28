@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.4" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.4" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.4" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.5" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.5" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.5" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script type="text/javascript" src="js/styles.js?v=2.6.4"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.6.4"></script>
-    <script type="text/javascript" src="data/supplementaries.js?v=2.6.4"></script>
-    <script type="text/javascript" src="data/skills.js?v=2.6.4"></script>
-    <script type="text/javascript" src="data/buildings.js?v=2.6.4"></script>
-    <script type="text/javascript" src="data/items.js?v=2.6.4"></script>
-    <script type="text/javascript" src="data/heroes.js?v=2.6.4"></script>
-    <script type="text/javascript" src="js/main.js?v=2.6.4"></script>
+    <script type="text/javascript" src="js/styles.js?v=2.6.5"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.6.5"></script>
+    <script type="text/javascript" src="data/supplementaries.js?v=2.6.5"></script>
+    <script type="text/javascript" src="data/skills.js?v=2.6.5"></script>
+    <script type="text/javascript" src="data/buildings.js?v=2.6.5"></script>
+    <script type="text/javascript" src="data/items.js?v=2.6.5"></script>
+    <script type="text/javascript" src="data/heroes.js?v=2.6.5"></script>
+    <script type="text/javascript" src="js/main.js?v=2.6.5"></script>
   </head>
   <body>
     <div id="tabs">
@@ -211,7 +211,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'"/>
+                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'"/>
               </div>
             </td>
             <td>
@@ -225,7 +225,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'"/>
+                <select2 v-model="filters.skill" :options="options.skills" :placeholder="'Choose skill'"/>
               </div>
             </td>
           </tr>
@@ -259,12 +259,12 @@
           <tr>
             <td colspan="2">
               <div>
-                <select2 v-model="filters.origin" :options="options.origins.list" :placeholder="'Choose origin'"/>
+                <select2 v-model="filters.origin" :options="options.origins" :placeholder="'Choose origin'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.rarity" :options="options.rarities.list" :placeholder="'Choose rarity'"/>
+                <select2 v-model="filters.rarity" :options="options.rarities" :placeholder="'Choose rarity'"/>
               </div>
             </td>
             <td>
@@ -272,6 +272,14 @@
             <td>
             </td>
             <td>
+              <div>
+                <div style="width: 50% !important; display: inline-block;">
+                  <input v-model="filters.pre.name" type="search" placeholder="Type in name" class="name"/>
+                </div>
+                <div style="width: 45% !important; display: inline-block;">
+                  <select2 v-model="filters.pre.q" :options="options.qualities" :placeholder="'Choose quality'"/>
+                </div>
+              </div>
             </td>
           </tr>
           <tr class="split">
@@ -418,7 +426,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'"/>
+                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'"/>
               </div>
             </td>
             <td>
@@ -562,22 +570,22 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.type.list" :placeholder="'Choose type'" :nosearch="true"/>
+                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.tier" :options="options.tier.list" :placeholder="'Choose tier'" :nosearch="true"/>
+                <select2 v-model="filters.tier" :options="options.tiers" :placeholder="'Choose tier'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.sex" :options="options.sex.list" :placeholder="'Choose sex'" :nosearch="true"/>
+                <select2 v-model="filters.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.origin" :options="options.building.list" :placeholder="'Choose building'"/>
+                <select2 v-model="filters.origin" :options="options.origins" :placeholder="'Choose building'"/>
               </div>
             </td>
           </tr>
@@ -612,7 +620,7 @@
             </td>
             <td colspan="3">
               <div>
-                <select2 v-model="filters.skill" :options="options.skills.list" :placeholder="'Choose skill'"/>
+                <select2 v-model="filters.skill" :options="options.skills" :placeholder="'Choose skill'"/>
               </div>
             </td>
           </tr>
@@ -892,7 +900,7 @@
                   </th>
                   <th class="left name">
                     <div class="data-info">
-                      <select2 v-if="edit" v-model="team.roster[k-1].name" :options="options.heroes.list" :placeholder="'Choose hero'" @input="set_empty(k-1)"/>
+                      <select2 v-if="edit" v-model="team.roster[k-1].name" :options="options.heroes" :placeholder="'Choose hero'" @input="set_empty(k-1)"/>
                       <span v-else="th.name">
                         <span class="float-left icon">{{sh.hero.lv}}</span>
                         <span>{{sh.hero.name.replace( /\s+/g, '&nbsp;' )}}</span>
@@ -911,7 +919,7 @@
                     <div class="data-info">
                       <span v-if="sh.building.b" class="float-right htooltip">
                         <span class="htooltip-text">{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
-                        <input type="checkbox" v-model="th.b" @click="set_boost( sh, th.b )"/>
+                        <input type="checkbox" v-model="th.b" @change="set_boost( sh.building.name, th.b )"/>
                       </span>
                       <power :power="sh.power"/>
                     </div>
@@ -952,7 +960,7 @@
                   </td>
                   <td v-for="j in 7" v-if="edit">
                     <div class="data-info" v-if="sh.items[j-1]">
-                      <select2 v-if="edit" v-model="th.slots[j-1].q" :options="options.quality.list" :placeholder="'Choose quality'"/>
+                      <select2 v-if="edit" v-model="th.slots[j-1].q" :options="options.qualities" :placeholder="'Choose quality'"/>
                     </div>
                   </td>
                 </tr>

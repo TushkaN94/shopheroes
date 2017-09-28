@@ -422,6 +422,10 @@ $( function() {
           skill: null,
           rarity: null,
           origin: null,
+          pre: {
+            name: null,
+            q: null
+          },
           lv: {
             min: null,
             max: null
@@ -458,33 +462,42 @@ $( function() {
           } );
       },
       options: function() {
-        var options = {
-          type: { ids: [], list: [] },
-          skills:  { ids: [], list: [] },
-          rarities: { ids: [], list: [] },
-          origins: { ids: [], list: [] }
+        var ids = {
+          types: [],
+          origins: []
         };
+        var options = {
+          types: [],
+          origins: [],
+          rarities: [],
+          skills:  [],
+          qualities: []
+        };
+        options.qualities = $.map( c_data.qualities, ( q, k ) => {
+          return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
+        } );
         c_data.items.map( i => {
-          if ( options.type.ids.indexOf( i.type ) < 0 ) {
-            options.type.ids.push( i.type );
-            options.type.list.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
+          if ( ids.types.indexOf( i.type ) < 0 ) {
+            ids.types.push( i.type );
+            options.types.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
           }
-          if ( options.origins.ids.indexOf( i.origin ) < 0 ) {
-            options.origins.ids.push( i.origin );
-            options.origins.list.push( { id: i.origin, text: i.origin } );
+          if ( ids.origins.indexOf( i.origin ) < 0 ) {
+            ids.origins.push( i.origin );
+            options.origins.push( { id: i.origin, text: i.origin } );
           }
         } );
-        options.origins.list.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );
-        options.origins.list.push( { id: "blanks", text: 'Blanks', custom: true } );
-        options.rarities.list = c_data.rarities
-          .map( ( o, i ) => {
+        options.origins.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );
+        options.origins.push( { id: "blanks", text: 'Blanks', custom: true } );
+        
+        options.rarities = c_data.rarities.map( ( o, i ) => {
             return { id: o, text: o, sort: i };
           } );
-        options.skills.list = c_data.skills
-          .map( s => {
+        
+        options.skills = c_data.skills.map( s => {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
           } );
-        options.skills.list.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );         
+        options.skills.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );         
+        
         return options;
       }
     },
@@ -556,6 +569,7 @@ $( function() {
             fn_rarity = () => true,
             fn_type = () => true,
             fn_skill = () => true,
+            fn_pre = () => true,
             fn_lv = () => true;
           if ( !!filters.name ) {
             fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
@@ -582,6 +596,17 @@ $( function() {
               fn_skill = ( o ) => o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase();
             }
           }
+          if ( !!filters.pre.name && !!filters.pre.q ) {
+            fn_pre = ( o ) => o.pre && o.pre.some( p => 
+              p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ) &&
+              p.q == filters.pre.q );
+          } else if ( !!filters.pre.name ) {
+            fn_pre = ( o ) => o.pre && o.pre.some( p => 
+              p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ) );
+          } else if ( !!filters.pre.q ) {
+            fn_pre = ( o ) => o.pre && o.pre.some( p => 
+              p.q == filters.pre.q );
+          }
           if ( !!filters.lv.min && !!filters.lv.max ) {
             fn_lv = ( o ) => o.lv >= filters.lv.min && o.lv <= filters.lv.max;
           } else if ( !!filters.lv.min ) {
@@ -589,7 +614,7 @@ $( function() {
           } else if ( !!filters.lv.max ) {
             fn_lv = ( o ) => o.lv <= filters.lv.max;
           }
-          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o ) && fn_lv( o ) && fn_rarity( o ) && fn_origin( o );
+          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o )  && fn_lv( o ) && fn_rarity( o ) && fn_origin( o ) && fn_pre( o );
         },
         deep: true
       }
@@ -645,13 +670,16 @@ $( function() {
     },
     computed: {
       options: function() {
+        var ids = {
+          types: []
+        };
         var options = {
-          type: { ids: [], list: [] }
+          types: []
         };
         c_data.buildings.map( b => {
-          if ( options.type.ids.indexOf( b.type ) < 0 ) {
-            options.type.ids.push( b.type );
-            options.type.list.push( { id: b.type, text: b.type } );
+          if ( ids.types.indexOf( b.type ) < 0 ) {
+            ids.types.push( b.type );
+            options.types.push( { id: b.type, text: b.type } );
           }
         } );
         return options;
@@ -764,36 +792,39 @@ $( function() {
     },
     computed: {
       options: function() {
-        var options = {
-          name: { ids: [], list: [] },
-          type: { ids: [], list: [] },
-          tier: { ids: [], list: [] },
-          sex: { ids: [], list: [] },
-          building: { ids: [], list: [] },
-          skills:  { ids: [], list: [] }
+        var ids = {
+          names: [],
+          types: [],
+          tiers: [],
+          sex: []
         };
-        c_data.heroes
-          .map( h => {
-            options.name.list.push( h.name );
-            if ( options.type.ids.indexOf( h.type ) < 0 ) {
-              options.type.ids.push( h.type );
-              options.type.list.push( { id: h.type, text: h.type } );
+        var options = {
+          names: [],
+          types: [],
+          tiers: [],
+          sex: [],
+          origins: [],
+          skills:  []
+        };
+        c_data.heroes.map( h => {
+            options.names.push( h.name );
+            if ( ids.types.indexOf( h.type ) < 0 ) {
+              ids.types.push( h.type );
+              options.types.push( { id: h.type, text: h.type } );
             }
-            if ( options.tier.ids.indexOf( h.tier ) < 0 ) {
-              options.tier.ids.push( h.tier );
-              options.tier.list.push( { id: h.tier, text: h.tier } );
+            if ( ids.tiers.indexOf( h.tier ) < 0 ) {
+              ids.tiers.push( h.tier );
+              options.tiers.push( { id: h.tier, text: h.tier } );
             }
-            if ( options.sex.ids.indexOf( h.sex ) < 0 ) {
-              options.sex.ids.push( h.sex );
-              options.sex.list.push( { id: h.sex, text: h.sex } );
+            if ( ids.sex.indexOf( h.sex ) < 0 ) {
+              ids.sex.push( h.sex );
+              options.sex.push( { id: h.sex, text: h.sex } );
             }
           } );
-        options.building.list = c_data.buildings
-          .map( b => {
+        options.origins = c_data.buildings.map( b => {
             return { id: b.name, text: b.name };
           } );
-        options.skills.list = c_data.skills
-          .map( s => {
+        options.skills = c_data.skills.map( s => {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
           } );
         return options;
@@ -871,13 +902,13 @@ $( function() {
     computed: {
       options: function( name ) {
         var options = {
-          heroes:   { list: [] },
-          quality:  { list: [] }
+          heroes: [],
+          qualities: []
         };
-        options.quality.list = $.map( c_data.qualities, ( q, k ) => {
+        options.qualities = $.map( c_data.qualities, ( q, k ) => {
           return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
         } );
-        options.heroes.list = c_data.heroes
+        options.heroes = c_data.heroes
           .map( h => {
             return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero', data: { lv: h.lv } };
           } );
@@ -987,12 +1018,12 @@ $( function() {
           vm.team.roster[k].b = vm.team.roster[i].b;
         }
       },
-      set_boost: function( sh, b ) {
+      set_boost: function( origin, b ) {
         var vm = this;
-        vm.summary.roster
+        vm.team.roster
           .map( ( r, i ) => {
-            if ( r.hero && r.hero.origin == sh.hero.origin ) {
-              vm.team.roster[i].b = b;
+            if ( r.name && vm.summary.roster[i].hero.origin == origin ) {
+              r.b = b;
             }
           } );
       },
