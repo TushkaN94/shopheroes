@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.5" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.5" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.5" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.6" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.6" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.6" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script type="text/javascript" src="js/styles.js?v=2.6.5"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.6.5"></script>
-    <script type="text/javascript" src="data/supplementaries.js?v=2.6.5"></script>
-    <script type="text/javascript" src="data/skills.js?v=2.6.5"></script>
-    <script type="text/javascript" src="data/buildings.js?v=2.6.5"></script>
-    <script type="text/javascript" src="data/items.js?v=2.6.5"></script>
-    <script type="text/javascript" src="data/heroes.js?v=2.6.5"></script>
-    <script type="text/javascript" src="js/main.js?v=2.6.5"></script>
+    <script type="text/javascript" src="js/styles.js?v=2.6.6"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.6.6"></script>
+    <script type="text/javascript" src="data/supplementaries.js?v=2.6.6"></script>
+    <script type="text/javascript" src="data/skills.js?v=2.6.6"></script>
+    <script type="text/javascript" src="data/buildings.js?v=2.6.6"></script>
+    <script type="text/javascript" src="data/items.js?v=2.6.6"></script>
+    <script type="text/javascript" src="data/heroes.js?v=2.6.6"></script>
+    <script type="text/javascript" src="js/main.js?v=2.6.6"></script>
   </head>
   <body>
     <div id="tabs">
@@ -58,7 +58,7 @@
         <p>Well, lies, you actually can share setups, that's why there's Data tab, but using it is tricky.</p>
 
         <h2>Credits</h2>
-        <p>I want to thank all those people created and maintaining <a href="http://bit.ly/shopheroes" target="_blank">Shop Heroes Spreadsheet</a> for this is an increadible source of ingame data!</p>
+        <p>I want to thank all those people created and maintaining <a href="http://bit.ly/shopheroes" target="_blank">Shop Heroes Spreadsheet</a> for this is an incredible source of ingame data!</p>
         <p>And I give my due respects to creators of Team Builder Redux for insiping me to make this site.</p>
         
         <h2>Basics</h2>
@@ -123,13 +123,11 @@
     </select>
   </script>
   <script type="text/x-template" id="templates-power">
-    <span v-if="power.value">
-      <span class="float-left">
-        <span class="htooltip icon power">
-          <span class="htooltip-text" v-if="!!power.info">{{power.info}}</span>
-        </span>
-        <span>{{power.value.intString()}}</span>  
+    <span class="float-left" v-if="power.value">
+      <span class="htooltip icon power">
+        <span class="htooltip-text" v-if="!!power.info">{{power.info}}</span>
       </span>
+      <span>{{power.value.intString()}}</span>  
     </span>
   </script>
   <script type="text/x-template" id="templates-skill">
@@ -206,12 +204,12 @@
           <tr>
             <td colspan="2">
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+                <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'"/>
+                <select2 v-model="filters.type" :options="options.types" :choicetext="'Choose type'"/>
               </div>
             </td>
             <td>
@@ -225,7 +223,7 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.skill" :options="options.skills" :placeholder="'Choose skill'"/>
+                <select2 v-model="filters.skill" :options="options.skills" :choicetext="'Choose skill'"/>
               </div>
             </td>
           </tr>
@@ -259,12 +257,12 @@
           <tr>
             <td colspan="2">
               <div>
-                <select2 v-model="filters.origin" :options="options.origins" :placeholder="'Choose origin'"/>
+                <select2 v-model="filters.origin" :options="options.origins" :choicetext="'Choose origin'"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.rarity" :options="options.rarities" :placeholder="'Choose rarity'"/>
+                <select2 v-model="filters.rarity" :options="options.rarities" :choicetext="'Choose rarity'"/>
               </div>
             </td>
             <td>
@@ -274,10 +272,10 @@
             <td>
               <div>
                 <div style="width: 50% !important; display: inline-block;">
-                  <input v-model="filters.pre.name" type="search" placeholder="Type in name" class="name"/>
+                  <input v-model="filters.pre.name" type="search" choicetext="Type in name" class="name"/>
                 </div>
                 <div style="width: 45% !important; display: inline-block;">
-                  <select2 v-model="filters.pre.q" :options="options.qualities" :placeholder="'Choose quality'"/>
+                  <select2 v-model="filters.pre.q" :options="options.qualities" :choicetext="'Choose quality'"/>
                 </div>
               </div>
             </td>
@@ -421,12 +419,12 @@
           <tr>
             <td>
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+                <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'"/>
+                <select2 v-model="filters.type" :options="options.types" :choicetext="'Choose type'"/>
               </div>
             </td>
             <td>
@@ -558,7 +556,7 @@
           <tr>
             <td colspan="2">
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+                <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
@@ -570,22 +568,22 @@
             </td>
             <td>
               <div>
-                <select2 v-model="filters.type" :options="options.types" :placeholder="'Choose type'" :nosearch="true"/>
+                <select2 v-model="filters.type" :options="options.types" :choicetext="'Choose type'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.tier" :options="options.tiers" :placeholder="'Choose tier'" :nosearch="true"/>
+                <select2 v-model="filters.tier" :options="options.tiers" :choicetext="'Choose tier'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.sex" :options="options.sex" :placeholder="'Choose sex'" :nosearch="true"/>
+                <select2 v-model="filters.sex" :options="options.sex" :choicetext="'Choose sex'" :nosearch="true"/>
               </div>
             </td>
             <td>
               <div>
-                <select2 v-model="filters.origin" :options="options.origins" :placeholder="'Choose building'"/>
+                <select2 v-model="filters.origin" :options="options.origins" :choicetext="'Choose building'"/>
               </div>
             </td>
           </tr>
@@ -620,7 +618,7 @@
             </td>
             <td colspan="3">
               <div>
-                <select2 v-model="filters.skill" :options="options.skills" :placeholder="'Choose skill'"/>
+                <select2 v-model="filters.skill" :options="options.skills" :choicetext="'Choose skill'"/>
               </div>
             </td>
           </tr>
@@ -702,7 +700,7 @@
           <tr>
             <td colspan="2" class="left">
               <span v-for="j in 7">
-                <item-slot v-for="( slot, i ) in hero.slots[j-1].list" :item-slot="slot" :key="i"/>
+                <item-slot v-for="( slot, i ) in hero.items[j-1]" :item-slot="slot" :key="i"/>
               </span>
             </td>
             <td v-for="k in 3">
@@ -767,7 +765,7 @@
             <th></th>
             <td colspan="2">
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+                <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
               </div>
             </td>
             <td>
@@ -837,12 +835,12 @@
           <tr>
             <th>
               <div>
-                <span class="button remove float-left" @click="remove( team )"/>
+                <span class="button float-left" :class="[ edit ? 'apply' : 'edit' ]" @click="edit = !edit"/>
               </div>
             </th>
             <th>
               <div>
-                <span class="button float-left" :class="[ edit ? 'apply' : 'edit' ]" @click="edit = !edit"/>
+                <span class="button remove float-left" @click="remove( team )"/>
               </div>
             </th>
             <th>
@@ -884,54 +882,58 @@
             <th></th>
             <th></th>
           </tr>
-          <template v-for="k in summary.companions" v-if="( edit || team.roster[k-1].name )">
-            <template v-for="th in [ team.roster[k-1] ]">
-              <template v-for="sh in [ summary.roster[k-1] ]">
+          <template v-for="( th, k ) in team.roster" v-if="( edit || th.name && k < summary.companions )">
+            <template v-for="sh in [ summary.roster[k] ]">
+              <tr>
+                <th>
+                  <div>
+                    <span>#{{k+1}}</span>
+                  </div>
+                </th>
+                <th class="left" :rowspan="[ th.name ? 2 : 1 ]">
+                  <div v-if="th.name">
+                    <span class="float-left icon medium hero" :class="th.name.asIconPath()"></span>
+                  </div>
+                </th>
+                <th class="left name">
+                  <div class="data-info">
+                    <select2 v-if="edit" v-model="th.name" :options="options.heroes[k]" :choicetext="'Choose hero'" @input="set_roster(k)"/>
+                    <span v-else="th.name">
+                      <span class="float-left icon">{{sh.hero.lv}}</span>
+                      <span>{{sh.hero.name.replace( /\s+/g, '&nbsp;' )}}</span>
+                    </span>
+                  </div>
+                </th>
+                <th v-for="j in 7">
+                  <div class="data-info" v-if="th.name">
+                    <item-slot v-for="( slot, i ) in sh.hero.items[j-1]" :item-slot="slot" :key="i"/>
+                  </div>  
+                </th>
+              </tr>
+              <tr v-if="th.name">
+                <th>
+                  <div>
+                    <span class="button float-left" :class="[ edit ? 'apply' : 'edit' ]" @click="edit = !edit"/>
+                  </div>
+                </th>
+                <td>
+                  <div class="data-info" v-if="th.name">
+                    <span v-if="sh.building.b" class="float-right htooltip">
+                      <span class="htooltip-text">{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
+                      <input type="checkbox" v-model="th.b" @change="set_boost( sh.building.name, th.b )"/>
+                    </span>
+                    <power :power="sh.power"/>
+                  </div>
+                </td>
+                <td v-for="j in 7">
+                  <div class="data-info" v-if="sh.slots[j-1].name">
+                    <power :power="sh.slots[j-1].power"/>
+                    <span class="float-right break">{{sh.slots[j-1].chance.pptString(1)}}</span>
+                  </div>
+                </td>
+              </tr>
+              <template v-if="th.name">
                 <tr>
-                  <th>
-                    <div>
-                      <span>#{{k}}</span>
-                    </div>
-                  </th>
-                  <th class="left" :rowspan="[ th.name ? 2 : 1 ]">
-                    <div v-if="th.name">
-                      <span class="float-left icon medium hero" :class="th.name.asIconPath()"></span>
-                    </div>
-                  </th>
-                  <th class="left name">
-                    <div class="data-info">
-                      <select2 v-if="edit" v-model="team.roster[k-1].name" :options="options.heroes" :placeholder="'Choose hero'" @input="set_empty(k-1)"/>
-                      <span v-else="th.name">
-                        <span class="float-left icon">{{sh.hero.lv}}</span>
-                        <span>{{sh.hero.name.replace( /\s+/g, '&nbsp;' )}}</span>
-                      </span>
-                    </div>
-                  </th>
-                  <th v-for="j in 7">
-                    <div class="data-info">
-                      <item-slot v-for="( slot, i ) in sh.hero.slots[j-1].list" :item-slot="slot" :key="i"/>
-                    </div>  
-                  </th>
-                </tr>
-                <tr v-if="th.name">
-                  <th></th>
-                  <td>
-                    <div class="data-info">
-                      <span v-if="sh.building.b" class="float-right htooltip">
-                        <span class="htooltip-text">{{'Set {0} boost {1}'.format( sh.building.name, ( th.b ? 'disabled' : 'enabled' ) )}}</span>
-                        <input type="checkbox" v-model="th.b" @change="set_boost( sh.building.name, th.b )"/>
-                      </span>
-                      <power :power="sh.power"/>
-                    </div>
-                  </td>
-                  <td v-for="j in 7">
-                    <div class="data-info" v-if="sh.items[j-1]">
-                      <power :power="sh.items[j-1].power"/>
-                      <span class="float-right break">{{sh.items[j-1].chance.pptString(1)}}</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr v-if="th.name">
                   <th></th>
                   <td colspan="2">
                     <div class="data-info">
@@ -939,19 +941,19 @@
                     </div>  
                   </td>
                   <td v-for="j in 7" v-if="edit"> 
-                    <div class="data-info" v-if="sh.items[j-1]">
-                      <select2 v-if="edit" v-model="th.slots[j-1].item" :options="sh.items[j-1].list" :placeholder="'Choose item'"/>
+                    <div class="data-info">
+                      <select2 v-if="edit" v-model="th.slots[j-1].item" :options="sh.items[j-1]" :choicetext="'Choose item'"/>
                     </div>
                   </td>
                   <td v-else rowspan="2">
-                    <div class="data-info" v-if="th.slots[j-1].item">
-                      <span class="float-right icon quality" :class="th.slots[j-1].q.asIconPath()"></span>
-                      <span class="icon medium item" :class="[ sh.items[j-1].type.asIconPath(), 'i-' + sh.items[j-1].name.asIconPath() ]"/>
-                      <span class="float-left icon">{{sh.items[j-1].lv}}</span>
+                    <div class="data-info" v-if="sh.slots[j-1].name">
+                      <span class="float-right icon quality" :class="th.slots[j-1].q.asIconPath()" v-if="th.slots[j-1].q"/>
+                      <span class="icon medium item" :class="[ sh.slots[j-1].type.asIconPath(), 'i-' + sh.slots[j-1].name.asIconPath() ]"/>
+                      <span class="float-left icon">{{sh.slots[j-1].lv}}</span>
                     </div>
                   </td>
                 </tr>
-                <tr v-if="th.name">
+                <tr>
                   <th></th>
                   <td colspan="2">
                     <div class="data-info">
@@ -959,11 +961,12 @@
                     </div>
                   </td>
                   <td v-for="j in 7" v-if="edit">
-                    <div class="data-info" v-if="sh.items[j-1]">
-                      <select2 v-if="edit" v-model="th.slots[j-1].q" :options="options.qualities" :placeholder="'Choose quality'"/>
+                    <div class="data-info" v-if="sh.slots[j-1]">
+                      <select2 v-if="edit" v-model="th.slots[j-1].q" :options="options.qualities" :choicetext="'Choose quality'"/>
                     </div>
                   </td>
                 </tr>
+                <tr>
                   <th></th>
                   <td colspan="2">
                     <div class="data-info">

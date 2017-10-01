@@ -107,7 +107,7 @@ $( function() {
   Vue.mixin( {
     methods: {
       apply_filter: function( h, f ) {
-        if ( !f ) {
+        if ( !f || !h ) {
           return true;
         }
         var res = true;
@@ -148,7 +148,7 @@ $( function() {
 
   Vue.component( 'select2', {
     template: '#templates-select2',
-    props: [ 'options', 'value', 'nosearch', 'placeholder' ],
+    props: [ 'options', 'value', 'nosearch', 'choicetext' ],
     data: function() {
       var matcher = function( params, data ) {
         if ( !params.term ) {
@@ -186,12 +186,14 @@ $( function() {
         return data;
       };
       return {
-        settings: { 
+        settings: {
           width: '100%',
           dropdownAutoWidth: true,
           allowClear: true,
-          minimumResultsForSearch: Infinity,
-          placeholder: ' ',
+          data: this.options,
+          minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
+          placeholder: this.choicetext || ' ',
+          matcher: matcher,
           sorter: function( data ) {
             return data.sort( function( a, b ) {
               if ( a.custom != undefined ) {
@@ -209,7 +211,6 @@ $( function() {
               return 0;
             } );
           },
-          matcher: matcher,
           templateSelection: function( data ) {
             if ( !data ) {
               return;
@@ -268,55 +269,52 @@ $( function() {
       };
     },
     mounted: function() {
-      var vm = this;
-      $.extend( true, this.settings, {
-        data: this.options,
-        minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
-        placeholder: this.placeholder || ' '
-      } );
-      $( this.$el )
-        .select2( this.settings )
-        .val( this.value )
-        .trigger( 'change' )
-        .on( 'change', function() {
-          vm.$emit( 'input', this.value );
-        } )
-        .on( 'select2:unselecting', function( e ) {
-            $( this ).data( 'state', 'unselected' );
-        } )
-        .on( 'select2:open', function( e ) {
-          var self = $( this );
-          if ( self.data( 'state' ) === 'unselected' ) {
-            self.select2( 'close' );
-            self.removeData( 'state' );
-          }    
-        });
+      this.attach( this.settings );
+    },
+    methods: {
+      detach: function() {
+        $( this.$el ).off().select2( 'destroy' );
+        $( this.$el ).html('');
+      },
+      attach: function( settings ) {
+        var vm = this;
+        $( this.$el )
+          .select2( settings )
+          .val( this.value )
+          .trigger( 'change' )
+          .on( 'change', function() {
+            vm.$emit( 'input', this.value );
+          } )
+          .on( 'select2:unselecting', function( e ) {
+              $( this ).data( 'state', 'unselected' );
+          } )
+          .on( 'select2:open', function( e ) {
+            var self = $( this );
+            if ( self.data( 'state' ) === 'unselected' ) {
+              self.select2( 'close' );
+              self.removeData( 'state' );
+            }    
+          });
+      }
     },
     watch: {
       value: function( value ) {
         $( this.$el ).val( value ).trigger( 'change' );
+        
       },
       options: function( options ) {
-        $.extend( true, this.settings, { 
-          data: options 
-        } );
+        this.settings.data = options;
       },
-      nosearch: function( nosearch ) {
-        $.extend( true, this.settings, {
-          minimumResultsForSearch: nosearch ? Infinity : 3
-        } );
-      },
-      placeholder: function( placeholder ) {
-        $.extend( true, this.settings, {
-          placeholder: !!placeholder || ' '
-        } );
-      },
-      settings: function( settings ) {
-        $( this.$el ).select2( settings );
+      settings: {
+        deep: true,
+        handler: function( settings ) {
+          this.detach();
+          this.attach( settings );
+        }
       }
     },
     destroyed: function() {
-      $( this.$el ).off().select2( 'destroy' );
+      this.detach();
     }
   } );
 
@@ -831,18 +829,20 @@ $( function() {
       }
     },
     methods: {
-      visible: function( hero ) {
-        return this.filter( hero );
+      visible: function( h ) {
+        return this.filter( h );
       }
     },
     watch: {
       heroes: { 
         handler: function( heroes ) {
           var custom = heroes
-            .map( hero => {
-              return {
-                lv: hero.lv
+            .map( h => {
+              var res = {
+                lv: h.lv,
+                slots: h.slots
               };
+              return res;
             } );
           cache.set( 'heroes_custom', custom, true );
         },
@@ -896,24 +896,14 @@ $( function() {
     props: [ 'team' ],
     data: function() {
       return {
-        edit: false
+        edit: false,
+        options: {
+          qualities: this.list_qualities(),
+          heroes: Array(6)
+        }
       }
     },
     computed: {
-      options: function( name ) {
-        var options = {
-          heroes: [],
-          qualities: []
-        };
-        options.qualities = $.map( c_data.qualities, ( q, k ) => {
-          return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
-        } );
-        options.heroes = c_data.heroes
-          .map( h => {
-            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero', data: { lv: h.lv } };
-          } );
-        return options;
-      },
       summary: function() {
         var vm = this;
         var result = {
@@ -923,25 +913,25 @@ $( function() {
             hero: 0,
             value: 0
           },
-          slots: null,
-          items: null,
-          roster: [],
+          roster: Array(6),
           skills: []
         };
         result.roster = vm.team.roster
           .map( ( r, i ) => {
-            var h = c_data.heroes.find( h => r.name && h.name == r.name );
-            if ( h ) {
+            var hero = c_data.heroes.find( h => r.name && h.name == r.name );
+            if ( hero ) {
               result.assigned += 1;
+            } else {
+              hero = vm.empty_hero();
             }
-            h = $.extend( true, {}, vm.empty_hero(), h );
+            h = $.extend( true, {}, hero );
             $.extend( true, h.slots, r.slots );
             var res = vm.get_hero( h );
+            res.hero = hero;
             if ( r.b ) {
               res.power.m.b += 0.25;
             }
             [].push.apply( result.skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
-            res.hero = h;
             return res;
           } );
         result.skills = result.skills
@@ -1003,20 +993,43 @@ $( function() {
         return result;
       }
     },
-    methods: {
-      set_empty: function( k ) {
+    watch: {
+      'team.roster': function( roster ) {
         var vm = this;
-        var h = vm.empty_hero();
-        vm.team.roster[k].slots = h.slots;
+        vm.options.heroes = roster.map( ( r, i ) => {
+          return vm.list_heroes().filter( h => {
+            var j = roster.findIndex( rr => rr.name == h.text );
+            if ( j < 0 || j == i ) {
+              return true;
+            }
+            return false;
+          } );
+        } );
+      }
+    },
+    methods: {
+      list_qualities: function() {
+        return $.map( c_data.qualities, ( q, k ) => {
+            return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
+          } );
+      },
+      list_heroes: function() {
+        return c_data.heroes
+          .map( h => {
+            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero', data: { lv: h.lv } };
+          } );
+      },
+      set_roster: function( k ) {
+        var vm = this;
         var sh = vm.summary.roster[k];
-        if ( !sh.hero ) {
-          return;
-        }
-        var i = vm.summary.roster
-          .findIndex( ( r, i ) => { return i != k && r.hero && r.hero.origin == sh.hero.origin; } );
-        if ( i > -1 ) {
-          vm.team.roster[k].b = vm.team.roster[i].b;
-        }
+        vm.team.roster[k].slots = sh.hero.slots;
+        var b = false;
+        vm.summary.roster.map( ( r, i ) => { 
+          if ( i != k && r.hero && r.hero.origin == sh.hero.origin ) {
+            b = b || vm.team.roster[i].b;
+          }
+        } );
+        vm.team.roster[k].b = b;
       },
       set_boost: function( origin, b ) {
         var vm = this;
@@ -1049,6 +1062,7 @@ $( function() {
             }
           },
           items: Array(7),
+          slots: Array(7),
           skills: {
             hero: [],
             items: []
@@ -1072,34 +1086,36 @@ $( function() {
         result.skills.hero = h.skills.map( s => {
           return $.extend( true, vm.get_skill( s ), { active: ( h.lv >= s.lv ) } );
         } );
-        result.items = h.slots
-          .map( function( slot ) {
+        result.items = h.items
+          .map( si => {
+            return si.map( t => {
+              var items = c_data.items
+                .filter( i => i.type == t.type )
+                .map( i => {
+                  return {
+                    id: i.name,
+                    text: i.name,
+                    icon: i.type,
+                    iconType: 'item',
+                    data: {
+                      lv: i.lv
+                    }
+                  };
+                } );
+              return {
+                text: t.type,
+                children: items
+              };
+            } );
+          } );
+
+        result.slots = h.slots
+          .map( function( slot, j ) {
             var i = {
-              list: [],
               power: 0,
               a: 0,
               chance: 0.0
             };
-            i.list = slot.list
-              .map( t => {
-                var items = c_data.items
-                  .filter( i => i.type == t.type )
-                  .map( i => {
-                    return {
-                      id: i.name,
-                      text: i.name,
-                      icon: i.type,
-                      iconType: 'item',
-                      data: {
-                        lv: i.lv
-                      }
-                    };
-                  } );
-                return {
-                  text: t.type,
-                  children: items
-                };
-              } );
             if ( !!slot.item ) {
               var found = c_data.items.find( i => i.name == slot.item );
               if ( !!found ) {
@@ -1117,7 +1133,8 @@ $( function() {
                       m_q.fixString(2)
                     )
                 };
-                i.a = slot.list.find( s => s.type == i.type ).a;
+                var is = h.items[j].find( s => s.type == i.type );
+                i.a = is ? is.a : 0;
                 i.chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
                 if ( i.chance < 0.005 ) {
                   i.chance = 0;
@@ -1134,7 +1151,7 @@ $( function() {
             }
             return i;
           } );
-        result.skills.items = result.items
+        result.skills.items = result.slots
           .map( i => {
             var s = i.skill;
             delete i.skill;
@@ -1253,7 +1270,7 @@ $( function() {
       add: function() {
         var vm = this;
         var roster = [];
-        for ( i = 0; i < 7; i++ ) {
+        for ( i = 0; i < 6; i++ ) {
           roster.push( vm.empty_hero() );
         }
         var team = {
