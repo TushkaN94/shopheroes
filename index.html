@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.6.6" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.6.6" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.6.6" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.7.0" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.7.0" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.7.0" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script type="text/javascript" src="js/styles.js?v=2.6.6"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.6.6"></script>
-    <script type="text/javascript" src="data/supplementaries.js?v=2.6.6"></script>
-    <script type="text/javascript" src="data/skills.js?v=2.6.6"></script>
-    <script type="text/javascript" src="data/buildings.js?v=2.6.6"></script>
-    <script type="text/javascript" src="data/items.js?v=2.6.6"></script>
-    <script type="text/javascript" src="data/heroes.js?v=2.6.6"></script>
-    <script type="text/javascript" src="js/main.js?v=2.6.6"></script>
+    <script type="text/javascript" src="js/styles.js?v=2.7.0"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.7.0"></script>
+    <script type="text/javascript" src="data/supplementaries.js?v=2.7.0"></script>
+    <script type="text/javascript" src="data/skills.js?v=2.7.0"></script>
+    <script type="text/javascript" src="data/buildings.js?v=2.7.0"></script>
+    <script type="text/javascript" src="data/items.js?v=2.7.0"></script>
+    <script type="text/javascript" src="data/heroes.js?v=2.7.0"></script>
+    <script type="text/javascript" src="js/main.js?v=2.7.0"></script>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107341279-1"></script>
     <script>
@@ -519,8 +519,12 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr class="split">
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -535,12 +539,12 @@
                 <span>Name</span>
               </div>
             </th>
-            <th class="level">
+            <th class="item">
               <div>
                 <span>Level</span>
               </div>
             </th>
-            <th class="type">
+            <th class="item">
               <div>
                 <span>Type</span>
               </div>
@@ -559,6 +563,10 @@
               <div>
                 <span>Origin</span>
               </div>
+            </th>
+            <th class="item">
+            </th>
+            <th class="item">
             </th>
           </tr>
           <tr>
@@ -594,37 +602,7 @@
                 <select2 v-model="filters.origin" :options="options.origins" :choicetext="'Choose building'"/>
               </div>
             </td>
-          </tr>
-          <tr>
-            <th colspan="2">
-            </th>
-            <th colspan="2">
-              <div>
-                <span>Equipment</span>
-              </div>
-            </th>
-            <th>
-              <div>
-                <span>Skill #1</span>
-              </div>
-            </th>
-            <th>
-              <div>
-                <span>Skill #2</span>
-              </div>
-            </th>
-            <th>
-              <div>
-                <span>Skill #3</span>
-              </div>
-            </th>
-          </tr>
-          <tr>
             <td colspan="2">
-            </td>
-            <td colspan="2">
-            </td>
-            <td colspan="3">
               <div>
                 <select2 v-model="filters.skill" :options="options.skills" :choicetext="'Choose skill'"/>
               </div>
@@ -638,8 +616,12 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr class="split">
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -659,6 +641,8 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </tfoot>
       </table>
@@ -667,19 +651,22 @@
   <script type="text/x-template" id="templates-hero">
         <tbody>
           <tr>
-            <th rowspan="2">
+            <th rowspan="3">
               <div>
                 <span class="icon medium hero" :class="hero.name.asIconPath()"></span>
               </div>
             </th>
-            <th rowspan="2">
+            <th>
               <div>
                 <span>{{hero.name}}</span>
               </div>
             </th>
             <td>
               <div>
-                <input type="number" class="lv" v-model.number.lazy="hero.lv"/>
+                <template>
+                  <input v-if="edit" type="number" class="lv" v-model.number.lazy="hero.lv"/>
+                  <span v-else>{{hero.lv}}</span>
+                </template>
                 <span>&nbsp;/&nbsp;</span>
                 <span>{{hero.cap}}</span>
               </div>
@@ -704,20 +691,86 @@
                 <span>{{hero.origin}}</span>
               </div>
             </td>
+            <td>
+            </td>
+            <td>
+            </td>
           </tr>
           <tr>
-            <td colspan="2" class="left">
-              <span v-for="j in 7">
-                <item-slot v-for="( slot, i ) in hero.items[j-1]" :item-slot="slot" :key="i"/>
-              </span>
-            </td>
-            <td v-for="k in 3">
+            <th>
               <div class="data-info">
-                <skill :skill="skills[k-1]" :view="'hero'"/>
+                <span class="button float-left" :class="[ edit ? 'apply' : 'edit' ]" @click="edit = !edit"/>
+              </div>
+            </th>
+            <th v-for="j in 7">
+              <div class="data-info">
+                <item-slot v-for="( slot, i ) in hero.items[j-1]" :item-slot="slot" :key="i"/>
+              </div>  
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <div class="data-info">
+                <span class="float-right htooltip">
+                  <span class="htooltip-text">{{'Set {0} boost {1}'.format( hero.origin, ( hero.b ? 'disabled' : 'enabled' ) )}}</span>
+                  <input type="checkbox" v-model="hero.b"/>
+                </span>
+                <power :power="summary.power"/>
+              </div>
+            </td>
+            <td v-for="j in 7">
+              <div class="data-info" v-if="summary.slots[j-1].name">
+                <power :power="summary.slots[j-1].power"/>
+                <span class="float-right break">{{summary.slots[j-1].chance.pptString(1)}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="data-info">
+                <skill :skill="summary.skills.hero[0]" view="'hero'"/>
+              </div>  
+            </td>
+            <td v-for="j in 7" v-if="edit"> 
+              <div class="data-info">
+                <select2 v-model="hero.slots[j-1].item" :options="summary.items[j-1]" :choicetext="'Choose item'"/>
+              </div>
+            </td>
+            <td v-else rowspan="2">
+              <div class="data-info" v-if="summary.slots[j-1].name">
+                <span class="float-right icon quality" :class="summary.slots[j-1].q.asIconPath()" v-if="summary.slots[j-1].q"/>
+                <span class="icon medium item" :class="[ summary.slots[j-1].type.asIconPath(), 'i-' + summary.slots[j-1].name.asIconPath() ]"/>
+                <span class="float-left icon">{{summary.slots[j-1].lv}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="data-info">
+                <skill :skill="summary.skills.hero[1]" view="'hero'"/>
+              </div>
+            </td>
+            <td v-for="j in 7" v-if="edit">
+              <div class="data-info">
+                <select2 v-if="edit" v-model="hero.slots[j-1].q" :options="options.qualities" :choicetext="'Choose quality'"/>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="data-info">
+                <skill :skill="summary.skills.hero[2]" view="'hero'"/>
+              </div>
+            </td>
+            <td v-for="j in 7">
+              <div class="data-info" v-if="summary.skills.items[j-1]">
+                <skill :skill="summary.skills.items[j-1]" :view="'hero'"/>
               </div>
             </td>
           </tr>
           <tr class="split">
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>

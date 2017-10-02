@@ -10,6 +10,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 25,
+      b: false,
       power: {
         base: 100,
         m: 1.00
@@ -44,6 +45,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 30,
+      b: false,
       power: {
         base: 50,
         m: 1.00
@@ -78,6 +80,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 35,
+      b: false,
       power: {
         base: 100,
         m: 1.00
@@ -112,6 +115,7 @@ $( function() {
       tier: 2,
       lv: 1,
       cap: 40,
+      b: false,
       power: {
         base: 500,
         m: 1.50
@@ -146,6 +150,7 @@ $( function() {
       tier: 3,
       lv: 1,
       cap: 45,
+      b: false,
       power: {
         base: 1000,
         m: 2.00
@@ -180,6 +185,7 @@ $( function() {
       tier: 4,
       lv: 1,
       cap: 50,
+      b: false,
       power: {
         base: 2500,
         m: 3.00
@@ -214,6 +220,7 @@ $( function() {
       tier: 4,
       lv: 1,
       cap: 50,
+      b: false,
       power: {
         base: 2500,
         m: 3.00
@@ -248,6 +255,7 @@ $( function() {
       tier: 5,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 4.00
@@ -282,6 +290,7 @@ $( function() {
       tier: 5,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 4.00
@@ -316,6 +325,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 30,
+      b: false,
       power: {
         base: 50,
         m: 1.00
@@ -350,6 +360,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 40,
+      b: false,
       power: {
         base: 100,
         m: 1.00
@@ -384,6 +395,7 @@ $( function() {
       tier: 2,
       lv: 1,
       cap: 40,
+      b: false,
       power: {
         base: 500,
         m: 1.50
@@ -418,6 +430,7 @@ $( function() {
       tier: 2,
       lv: 1,
       cap: 45,
+      b: false,
       power: {
         base: 500,
         m: 1.50
@@ -452,6 +465,7 @@ $( function() {
       tier: 3,
       lv: 1,
       cap: 45,
+      b: false,
       power: {
         base: 1000,
         m: 2.00
@@ -486,6 +500,7 @@ $( function() {
       tier: 3,
       lv: 1,
       cap: 45,
+      b: false,
       power: {
         base: 1000,
         m: 2.00
@@ -520,6 +535,7 @@ $( function() {
       tier: 5,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 4.00
@@ -554,6 +570,7 @@ $( function() {
       tier: 5,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 4.00
@@ -588,6 +605,7 @@ $( function() {
       tier: 6,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 5.00
@@ -622,6 +640,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 25,
+      b: false,
       power: {
         base: 50,
         m: 1.00
@@ -656,6 +675,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 35,
+      b: false,
       power: {
         base: 50,
         m: 1.00
@@ -690,6 +710,7 @@ $( function() {
       tier: 1,
       lv: 1,
       cap: 40,
+      b: false,
       power: {
         base: 100,
         m: 1.00
@@ -724,6 +745,7 @@ $( function() {
       tier: 2,
       lv: 1,
       cap: 40,
+      b: false,
       power: {
         base: 500,
         m: 1.50
@@ -758,6 +780,7 @@ $( function() {
       tier: 3,
       lv: 1,
       cap: 45,
+      b: false,
       power: {
         base: 1000,
         m: 2.00
@@ -792,6 +815,7 @@ $( function() {
       tier: 4,
       lv: 1,
       cap: 50,
+      b: false,
       power: {
         base: 2500,
         m: 3.00
@@ -826,6 +850,7 @@ $( function() {
       tier: 4,
       lv: 1,
       cap: 50,
+      b: false,
       power: {
         base: 2500,
         m: 3.00
@@ -860,6 +885,7 @@ $( function() {
       tier: 5,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 4.00
@@ -894,6 +920,7 @@ $( function() {
       tier: 6,
       lv: 1,
       cap: 55,
+      b: false,
       power: {
         base: 5000,
         m: 5.00
