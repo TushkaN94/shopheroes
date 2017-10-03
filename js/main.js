@@ -1,4 +1,19 @@
 $( function() {
+  $( '#tabs' ).tabs();
+
+  Number.prototype.dateString = function() {
+    var s = Math.round( this );
+    var d = Math.floor( s / 86400 );
+    var h = Math.floor( s % 86400 / 3600 );
+    var m = Math.floor( s % 86400 % 3600 / 60 );
+    var s = Math.floor( s % 86400 % 3600 % 60 );
+    var res = ''
+      + ( d > 0 ? d + 'd ' : '' )
+      + ( h > 0 ? h + 'h ' : '' )
+      + ( m > 0 ? m + 'm ' : '' )
+      + ( s > 0 ? s + 's ' : '' );
+    return res.trim();
+  };
   Number.prototype.intString = function() {
     return ( Math.round( this, 0 ) ).toLocaleString();
   };
@@ -36,6 +51,7 @@ $( function() {
     skills: [],
     skills_effects: [],
     buildings: [],
+    quests: [],
     items: [],
     heroes: [],
     teams: [],
@@ -64,7 +80,7 @@ $( function() {
           $.extend( true, self[key], cache.get( key + '_custom' ) || [] );
           break;
         case 'teams':
-          $.extend( true, self.teams, cache.get( 'teams' ) || [] );
+          $.extend( true, self[key], cache.get( key ) || [] );
           break;
         default:
           break;
@@ -75,6 +91,7 @@ $( function() {
       var value = cache.get( key );
       switch ( key ) {
         case 'buildings':
+        case 'quests':
         case 'teams':
         case 'items':
         case 'heroes':
@@ -95,6 +112,7 @@ $( function() {
   c_data.set( 'breaks' );
   c_data.set( 'skills' );
   c_data.set( 'skills_effects' );
+  c_data.set( 'quests' );
   c_data.set( 'buildings' );
   c_data.extend( 'buildings' );
   c_data.set( 'items' );
@@ -1335,6 +1353,50 @@ $( function() {
   } );
   $( '#tabs-teams' ).append( vm_teams.$el );
 
+  Vue.component( 'quest', {
+    template: '#templates-quest',
+    props: [ 'quest' ],
+    watch: {
+      quest: { 
+        handler: function( quest ) {
+        },
+        deep: true
+      }
+    }
+  } );
+  var vm_quests = new Vue( {
+    el: $( '<div/>' )[0],
+    template: '#templates-quests',
+    data: function() { 
+      return {
+        quests: c_data.quests,
+        filter: () => true,
+        filters: {
+          name: null
+        }
+      }
+    },
+    watch: {
+      filters: {
+        handler: function( filters ) {
+          var 
+            fn_name = () => true;
+          if ( !!filters.name ) {
+            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
+          }
+          this.filter = ( o ) => fn_name( o );
+        },
+        deep: true
+      }
+    },
+    methods: {
+      visible: function( quest ) {
+        return this.filter( quest );
+      }
+    }
+  } );
+  $( '#tabs-quests' ).append( vm_quests.$el );
+  
   var $json = $( '#tabs-data-json' );
   var $data = $( '#tabs-data-type' )
     .select2( { 
