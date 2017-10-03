@@ -144,15 +144,12 @@ table.shopheroes input.lv {
 table.shopheroes .data-info {
   font-size: 0.85rem;
   vertical-align: middle;
-  line-height: 1.4rem;
 }
 table.shopheroes .data-info th,
 table.shopheroes .data-info td {
   padding: 2px 4px;
 }
-table.shopheroes .data-info * {
-  vertical-align: middle;
-}
+
 
 table.shopheroes .collapse {
   display: inline;

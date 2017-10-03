@@ -5,7 +5,7 @@ $( function() {
   var buildings = [
     {
       name: "Temple",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -18,7 +18,7 @@ $( function() {
     },
     {
       name: "Training Hall",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -31,7 +31,7 @@ $( function() {
     },
     {
       name: "Thief's Hideout",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -44,7 +44,7 @@ $( function() {
     },
     {
       name: "Fountain",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -57,7 +57,7 @@ $( function() {
     },
     {
       name: "Fighter's Guild",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -70,7 +70,7 @@ $( function() {
     },
     {
       name: "School of Magic",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -83,7 +83,7 @@ $( function() {
     },
     {
       name: "Hunter's Lodge",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -96,7 +96,7 @@ $( function() {
     },
     {
       name: "Port",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -109,7 +109,7 @@ $( function() {
     },
     {
       name: "Theater",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -122,7 +122,7 @@ $( function() {
     },
     {
       name: "Cathedral",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -135,7 +135,7 @@ $( function() {
     },
     {
       name: "War College",
-      type: "Hero",
+      type: "Questing",
       b: true,
       m: false,
       lv: 1,
@@ -148,7 +148,7 @@ $( function() {
     },
     {
       name: "Heroic Package #1",
-      type: "Hero",
+      type: "Questing",
       b: false,
       m: false,
       lv: 1,
@@ -161,7 +161,7 @@ $( function() {
     },
     {
       name: "Heroic Package #2",
-      type: "Hero",
+      type: "Questing",
       b: false,
       m: false,
       lv: 1,
@@ -169,6 +169,19 @@ $( function() {
       cj: {
         lv: 0,
         cap: 0,
+        value: 0.05
+      }
+    },
+    {
+      name: "Inn",
+      type: "City",
+      b: false,
+      m: false,
+      lv: 1,
+      cap: 55,
+      cj: {
+        lv: 0,
+        cap: 5,
         value: 0.05
       }
     }

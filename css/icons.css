@@ -304,6 +304,123 @@ span.icon.hero.mojian {
 span.icon.hero.charles {
   background-image: url( "../images/heroes/charles.png" );
 }
+span.icon.item.bag.treasure {
+  background-image: url( "../images/bags/treasure.png" );
+}
+span.icon.item.bag.mysterious {
+  background-image: url( "../images/bags/mysterious.png" );
+}
+span.icon.item.bag.wondrous {
+  background-image: url( "../images/bags/wondrous.png" );
+}
+span.icon.item.bag.champions {
+  background-image: url( "../images/bags/champions.png" );
+}
+span.icon.item.chest.wooden {
+  background-image: url( "../images/chests/wooden.png" );
+}
+span.icon.item.chest.leather {
+  background-image: url( "../images/chests/leather.png" );
+}
+span.icon.item.chest.iron {
+  background-image: url( "../images/chests/iron.png" );
+}
+span.icon.item.chest.gold {
+  background-image: url( "../images/chests/gold.png" );
+}
+span.icon.item.chest.magic {
+  background-image: url( "../images/chests/magic.png" );
+}
+span.icon.item.chest.dwarvish {
+  background-image: url( "../images/chests/dwarvish.png" );
+}
+span.icon.item.chest.primal {
+  background-image: url( "../images/chests/primal.png" );
+}
+span.icon.item.artifact.shinygem {
+  background-image: url( "../images/items/artifacts/shinygem.png" );
+}
+span.icon.item.artifact.elvendew {
+  background-image: url( "../images/items/artifacts/elvendew.png" );
+}
+span.icon.item.artifact.viperessence {
+  background-image: url( "../images/items/artifacts/viperessence.png" );
+}
+span.icon.item.artifact.ironwood {
+  background-image: url( "../images/items/artifacts/ironwood.png" );
+}
+span.icon.item.artifact.burningember {
+  background-image: url( "../images/items/artifacts/burningember.png" );
+}
+span.icon.item.artifact.rainbowdust {
+  background-image: url( "../images/items/artifacts/rainbowdust.png" );
+}
+span.icon.item.artifact.moonshard {
+  background-image: url( "../images/items/artifacts/moonshard.png" );
+}
+span.icon.item.artifact.ironcarapace {
+  background-image: url( "../images/items/artifacts/ironcarapace.png" );
+}
+span.icon.item.artifact.wyvernwing {
+  background-image: url( "../images/items/artifacts/wyvernwing.png" );
+}
+span.icon.item.artifact.frozencore {
+  background-image: url( "../images/items/artifacts/frozencore.png" );
+}
+span.icon.item.artifact.royalbone {
+  background-image: url( "../images/items/artifacts/royalbone.png" );
+}
+span.icon.item.artifact.liquidfire {
+  background-image: url( "../images/items/artifacts/liquidfire.png" );
+}
+span.icon.item.artifact.yggdrasilleaf {
+  background-image: url( "../images/items/artifacts/yggdrasilleaf.png" );
+}
+span.icon.item.artifact.silversteel {
+  background-image: url( "../images/items/artifacts/silversteel.png" );
+}
+span.icon.item.artifact.phoenixfeather {
+  background-image: url( "../images/items/artifacts/phoenixfeather.png" );
+}
+span.icon.item.artifact.goldenthread {
+  background-image: url( "../images/items/artifacts/goldenthread.png" );
+}
+span.icon.item.artifact.demonheart {
+  background-image: url( "../images/items/artifacts/demonheart.png" );
+}
+span.icon.item.artifact.darkenergy {
+  background-image: url( "../images/items/artifacts/darkenergy.png" );
+}
+span.icon.item.artifact.suntear {
+  background-image: url( "../images/items/artifacts/suntear.png" );
+}
+span.icon.item.artifact.dragonscale {
+  background-image: url( "../images/items/artifacts/dragonscale.png" );
+}
+span.icon.item.artifact.adamantium {
+  background-image: url( "../images/items/artifacts/adamantium.png" );
+}
+span.icon.item.artifact.ancientessence {
+  background-image: url( "../images/items/artifacts/ancientessence.png" );
+}
+span.icon.item.artifact.frostfirecrystal {
+  background-image: url( "../images/items/artifacts/frostfirecrystal.png" );
+}
+span.icon.item.artifact.obsidiancoral {
+  background-image: url( "../images/items/artifacts/obsidiancoral.png" );
+}
+span.icon.item.artifact.shardofgaia {
+  background-image: url( "../images/items/artifacts/shardofgaia.png" );
+}
+span.icon.item.artifact.primalhorn {
+  background-image: url( "../images/items/artifacts/primalhorn.png" );
+}
+span.icon.item.artifact.hellfireruby {
+  background-image: url( "../images/items/artifacts/hellfireruby.png" );
+}
+span.icon.item.artifact.aragonite {
+  background-image: url( "../images/items/artifacts/aragonite.png" );
+}
 span.icon.item.swords.i-affinity1 {
   background-image: url( "../images/types/affinity1/swords.png" );
 }

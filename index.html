@@ -12,21 +12,21 @@
     <meta name="Description" content=""/>
     <link rel="stylesheet" type="text/css" href="jquery/css/jquery-ui.min.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="select2/css/select2.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.7.1" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.7.1" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.7.1" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/sh.css?v=2.7.4" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/icons.css?v=2.7.4" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/tooltip.css?v=2.7.4" media="screen"/>
     <script type="text/javascript" src="jquery/js/jquery.min.js"></script>
     <script type="text/javascript" src="jquery/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/cache.js?v=2.7.1"></script>
+    <script type="text/javascript" src="js/cache.js?v=2.7.4"></script>
     <script type="text/javascript" src="select2/js/select2.min.js"></script>
     <script type="text/javascript" src="vue/js/vue.js"></script>
-    <script async type="text/javascript" src="data/supplementaries.js?v=2.7.1"></script>
-    <script async type="text/javascript" src="data/skills.js?v=2.7.1"></script>
-    <script async type="text/javascript" src="data/buildings.js?v=2.7.1"></script>
-    <script async type="text/javascript" src="data/quests.js?v=2.7.1"></script>
-    <script async type="text/javascript" src="data/items.js?v=2.7.1"></script>
-    <script async type="text/javascript" src="data/heroes.js?v=2.7.1"></script>
-    <script type="text/javascript" src="js/main.js?v=2.7.1"></script>
+    <script async type="text/javascript" src="data/supplementaries.js?v=2.7.4"></script>
+    <script async type="text/javascript" src="data/skills.js?v=2.7.4"></script>
+    <script async type="text/javascript" src="data/buildings.js?v=2.7.4"></script>
+    <script async type="text/javascript" src="data/quests.js?v=2.7.4"></script>
+    <script async type="text/javascript" src="data/items.js?v=2.7.4"></script>
+    <script async type="text/javascript" src="data/heroes.js?v=2.7.4"></script>
+    <script type="text/javascript" src="js/main.js?v=2.7.4"></script>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107341279-1"></script>
     <script>
@@ -179,7 +179,7 @@
             <th></th>
             <th></th>
           </tr>
-          <tr>
+          <tr class="data-info">
             <th class="name" colspan="2">
               <div>
                 <span>Name</span>
@@ -214,7 +214,7 @@
               </div>
             </th>
           </tr>
-          <tr>
+          <tr class="data-info">
             <td colspan="2">
               <div>
                 <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
@@ -240,7 +240,7 @@
               </div>
             </td>
           </tr>
-          <tr>
+          <tr class="data-info">
             <th colspan="2">
               <div>
                 <span>Origin</span>
@@ -267,7 +267,7 @@
               </div>
             </th>
           </tr>
-          <tr>
+          <tr class="data-info">
             <td colspan="2">
               <div>
                 <select2 v-model="filters.origin" :options="options.origins" :choicetext="'Choose origin'"/>
@@ -326,7 +326,7 @@
   </script>
   <script type="text/x-template" id="templates-item">
         <tbody>
-          <tr>
+          <tr class="data-info">
             <th rowspan="2">
               <div>
                 <span class="icon medium item" :class="[ item.type.asIconPath(), 'i-' + item.name.asIconPath() ]"/>
@@ -364,7 +364,7 @@
               </div>
             </td>
           </tr>
-          <tr>
+          <tr class="data-info">
             <td>
               <div>
                 <span>{{item.origin}}</span>
@@ -416,20 +416,24 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
             <th></th>
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
-          <tr>
+          <tr class="data-info">
+            <th class="slot"></th>
             <th class="name">Name</th>
             <th class="type">Type</th>
             <th class="level">Level</th>
             <th class="level">CJs Level</th>
           </tr>
-          <tr>
+          <tr class="data-info">
+            <th></th>
             <td>
               <div>
                 <input type="search" choicetext="Type in name" class="name" v-model="filters.name"/>
@@ -460,8 +464,10 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -477,8 +483,10 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
           <tr class="split">
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -489,28 +497,35 @@
     </div>
   </script>
   <script type="text/x-template" id="templates-building">
-      <tr>
-        <th>
-          <span>{{building.name}}</span>
-        </th>
-        <td>
-          <span>{{building.type}}</span>
-        </td>
-        <td>
-          <div>
-            <input type="number" class="lv" v-model.number.lazy="building.lv"/>
-            <span>&nbsp;/&nbsp;</span>
-            <span>{{building.cap}}</span>
-          </div>
-        </td>
-        <td>
-          <div>
-            <input type="number" class="lv" v-model.number.lazy="building.cj.lv"/>
-            <span>&nbsp;/&nbsp;</span>
-            <span>{{building.cj.cap}}</span>
-          </div>
-        </td>
-      </tr>
+          <tr class="data-info">
+            <th>
+              <div>
+                <span class="button float-left" :class="[ edit ? 'apply' : 'edit' ]" @click="edit = !edit"/>
+              </div>
+            </th>
+            <th>
+              <span>{{building.name}}</span>
+            </th>
+            <td>
+              <span>{{building.type}}</span>
+            </td>
+            <td>
+              <div>
+                <input v-if="edit" type="number" class="lv" v-model.number.lazy="building.lv"/>
+                <span v-else>{{building.lv}}</span>
+                <span>&nbsp;/&nbsp;</span>
+                <span>{{building.cap}}</span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <input v-if="edit" type="number" class="lv" v-model.number.lazy="building.cj.lv"/>
+                <span v-else>{{building.cj.lv}}</span>
+                <span>&nbsp;/&nbsp;</span>
+                <span>{{building.cj.cap}}</span>
+              </div>
+            </td>
+          </tr>
   </script>
   <script type="text/x-template" id="templates-heroes">
     <div>
@@ -1260,12 +1275,13 @@
           </tr>
           <tr class="data-info">
             <th>
-              <div v-if="quest.key">
-                <span class="icon key" :class="quest.key"/>
+              <div>
+                <span>Chest</span>
               </div>
             </th>
             <td>
               <div v-if="quest.key">
+                <span class="float-left icon item chest" :class="quest.key.asIconPath()"/>
                 <span>{{quest.key}}</span>
               </div>
             </td>
@@ -1289,12 +1305,13 @@
           </tr>
           <tr class="data-info">
             <th>
-              <div v-if="quest.bag">
-                <span class="icon bag" :class="quest.bag.asIconPath()"/>
+              <div>
+                <span>Bag</span>
               </div>
             </th>
             <td>
               <div v-if="quest.bag">
+                <span class="float-left icon item bag" :class="quest.bag.asIconPath()"/>
                 <span>{{quest.bag}}</span>
               </div>
             </td>
@@ -1318,12 +1335,13 @@
           </tr>
           <tr class="data-info">
             <th>
-              <div v-if="quest.item">
-                <span class="icon quest" :class="[ quest.item.asIconPath() ]"/>
+              <div>
+                <span>Loot</span>
               </div>
             </th>
             <td>
               <div v-if="quest.item">
+                <span class="float-left icon item artifact" :class="[ quest.item.asIconPath() ]"/>
                 <span>{{quest.item}}</span>
               </div>
             </td>

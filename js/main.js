@@ -841,6 +841,11 @@ $( function() {
   Vue.component( 'building', {
     template: '#templates-building',
     props: [ 'building' ],
+    data: function() {
+      return {
+        edit: false
+      };
+    },
     watch: {
       building: { 
         handler: function( building ) {
