@@ -94,7 +94,6 @@ table.shopheroes .select2-container .select2-selection--multiple,
 table.shopheroes .select2-container .select2-selection--single {
   line-height: 1.4rem !important;
   height: 1.4rem !important;
-  font-size: 100% !important;
 }
 table.shopheroes .select2-container .select2-selection--multiple .select2-selection__choice,
 table.shopheroes .select2-container .select2-search--inline .select2-search__field {
@@ -104,12 +103,14 @@ table.shopheroes .select2-container .select2-search--inline .select2-search__fie
 
 table.shopheroes .select2-container .select2-selection--single .select2-selection__arrow,
 table.shopheroes .select2-container .select2-selection--single .select2-selection__clear {
-  min-height: 1.4rem !important;
-  height: 1.4rem !important;
+  height: 1.25rem !important;
+}
+table.shopheroes .select2-container .select2-selection--single .select2-selection__clear {
+  margin-left: 3px;
 }
 table.shopheroes .select2-container .select2-selection--single .select2-selection__rendered {
-  min-height: 1.4rem !important;
-  line-height: 1.4rem !important;
+  height: 1.3rem !important;
+  line-height: 1.2rem !important;
 }
 
 table.shopheroes .select2-container {
