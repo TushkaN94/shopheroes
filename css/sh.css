@@ -46,9 +46,15 @@ table.shopheroes td {
   background-color: #F6F6F6;
 }
 
-table.shopheroes th.slot {
-  max-width: 20px;
-  min-width: 20px;
+table.shopheroes th.team-slot {
+  width: 1.4rem;
+}
+table.shopheroes th.team-icon {
+  width: 2.8rem;
+}
+table.shopheroes th.team-hero {
+  width: 12%;
+  width: calc(100%/6-6rem);
 }
 table.shopheroes th.name {
   min-width: 14rem;
@@ -79,15 +85,18 @@ table.shopheroes.hero th.type {
   width: 11rem;
 }
 
-table.shopheroes.team th.item {
-  min-width: 12%;
-  min-width: calc((100%-25px)/8);
-  width: 12%;
-  width: calc((100%-25px)/8);
+table.shopheroes.team div.team-selector-quest {
+  width: 60% !important;
+  width: calc(70%-100px) !important;
+  display: inline-block;
 }
-table.shopheroes.team th.name {
-  min-width: 110px;
-  width: 110px;
+table.shopheroes.team div.team-selector-tier {
+  width: 25% !important;
+  width: calc(30%-100px) !important;
+  display: inline-block;
+}
+table.shopheroes.team div.team-selector-boss {
+  display: inline-block;
 }
 
 table.shopheroes .select2-container .select2-selection--multiple,
@@ -110,7 +119,11 @@ table.shopheroes .select2-container .select2-selection--single .select2-selectio
 }
 table.shopheroes .select2-container .select2-selection--single .select2-selection__rendered {
   height: 1.3rem !important;
-  line-height: 1.2rem !important;
+  line-height: 1.4rem !important;
+}
+
+table.shopheroes .select2-selection__rendered span {
+  margin-right: 3px;
 }
 
 table.shopheroes .select2-container {
@@ -163,7 +176,7 @@ table.shopheroes .inactive {
   text-decoration: line-through;
 }
 
-table.shopheroes span.button.hidden {
+table.shopheroes .hidden {
   visibility: hidden;
 }
 

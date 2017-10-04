@@ -223,6 +223,18 @@ span.icon.skill.detectsecrets {
 span.icon.skill.magicfind {
   background-image: url( "../images/skills/magicfind.png" );
 }
+span.icon.hero.face.happy {
+  background-image: url( "../images/types/faces/happy.png" );
+}
+span.icon.hero.face.normal {
+  background-image: url( "../images/types/faces/normal.png" );
+}
+span.icon.hero.face.content {
+  background-image: url( "../images/types/faces/content.png" );
+}
+span.icon.hero.face.unhappy {
+  background-image: url( "../images/types/faces/unhappy.png" );
+}
 span.icon.hero.karal {
   background-image: url( "../images/heroes/karal.png" );
 }
@@ -337,88 +349,88 @@ span.icon.item.chest.dwarvish {
 span.icon.item.chest.primal {
   background-image: url( "../images/chests/primal.png" );
 }
-span.icon.item.artifact.shinygem {
+span.icon.artifact.shinygem {
   background-image: url( "../images/items/artifacts/shinygem.png" );
 }
-span.icon.item.artifact.elvendew {
+span.icon.artifact.elvendew {
   background-image: url( "../images/items/artifacts/elvendew.png" );
 }
-span.icon.item.artifact.viperessence {
+span.icon.artifact.viperessence {
   background-image: url( "../images/items/artifacts/viperessence.png" );
 }
-span.icon.item.artifact.ironwood {
+span.icon.artifact.ironwood {
   background-image: url( "../images/items/artifacts/ironwood.png" );
 }
-span.icon.item.artifact.burningember {
+span.icon.artifact.burningember {
   background-image: url( "../images/items/artifacts/burningember.png" );
 }
-span.icon.item.artifact.rainbowdust {
+span.icon.artifact.rainbowdust {
   background-image: url( "../images/items/artifacts/rainbowdust.png" );
 }
-span.icon.item.artifact.moonshard {
+span.icon.artifact.moonshard {
   background-image: url( "../images/items/artifacts/moonshard.png" );
 }
-span.icon.item.artifact.ironcarapace {
+span.icon.artifact.ironcarapace {
   background-image: url( "../images/items/artifacts/ironcarapace.png" );
 }
-span.icon.item.artifact.wyvernwing {
+span.icon.artifact.wyvernwing {
   background-image: url( "../images/items/artifacts/wyvernwing.png" );
 }
-span.icon.item.artifact.frozencore {
+span.icon.artifact.frozencore {
   background-image: url( "../images/items/artifacts/frozencore.png" );
 }
-span.icon.item.artifact.royalbone {
+span.icon.artifact.royalbone {
   background-image: url( "../images/items/artifacts/royalbone.png" );
 }
-span.icon.item.artifact.liquidfire {
+span.icon.artifact.liquidfire {
   background-image: url( "../images/items/artifacts/liquidfire.png" );
 }
-span.icon.item.artifact.yggdrasilleaf {
+span.icon.artifact.yggdrasilleaf {
   background-image: url( "../images/items/artifacts/yggdrasilleaf.png" );
 }
-span.icon.item.artifact.silversteel {
+span.icon.artifact.silversteel {
   background-image: url( "../images/items/artifacts/silversteel.png" );
 }
-span.icon.item.artifact.phoenixfeather {
+span.icon.artifact.phoenixfeather {
   background-image: url( "../images/items/artifacts/phoenixfeather.png" );
 }
-span.icon.item.artifact.goldenthread {
+span.icon.artifact.goldenthread {
   background-image: url( "../images/items/artifacts/goldenthread.png" );
 }
-span.icon.item.artifact.demonheart {
+span.icon.artifact.demonheart {
   background-image: url( "../images/items/artifacts/demonheart.png" );
 }
-span.icon.item.artifact.darkenergy {
+span.icon.artifact.darkenergy {
   background-image: url( "../images/items/artifacts/darkenergy.png" );
 }
-span.icon.item.artifact.suntear {
+span.icon.artifact.suntear {
   background-image: url( "../images/items/artifacts/suntear.png" );
 }
-span.icon.item.artifact.dragonscale {
+span.icon.artifact.dragonscale {
   background-image: url( "../images/items/artifacts/dragonscale.png" );
 }
-span.icon.item.artifact.adamantium {
+span.icon.artifact.adamantium {
   background-image: url( "../images/items/artifacts/adamantium.png" );
 }
-span.icon.item.artifact.ancientessence {
+span.icon.artifact.ancientessence {
   background-image: url( "../images/items/artifacts/ancientessence.png" );
 }
-span.icon.item.artifact.frostfirecrystal {
+span.icon.artifact.frostfirecrystal {
   background-image: url( "../images/items/artifacts/frostfirecrystal.png" );
 }
-span.icon.item.artifact.obsidiancoral {
+span.icon.artifact.obsidiancoral {
   background-image: url( "../images/items/artifacts/obsidiancoral.png" );
 }
-span.icon.item.artifact.shardofgaia {
+span.icon.artifact.shardofgaia {
   background-image: url( "../images/items/artifacts/shardofgaia.png" );
 }
-span.icon.item.artifact.primalhorn {
+span.icon.artifact.primalhorn {
   background-image: url( "../images/items/artifacts/primalhorn.png" );
 }
-span.icon.item.artifact.hellfireruby {
+span.icon.artifact.hellfireruby {
   background-image: url( "../images/items/artifacts/hellfireruby.png" );
 }
-span.icon.item.artifact.aragonite {
+span.icon.artifact.aragonite {
   background-image: url( "../images/items/artifacts/aragonite.png" );
 }
 span.icon.item.swords.i-affinity1 {

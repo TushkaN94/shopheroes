@@ -18,11 +18,11 @@ $( function() {
     return ( Math.round( this, 0 ) ).toLocaleString();
   };
   Number.prototype.fixString = function( pos ) {
-    var base = Math.pow( 10, pos );
+    var base = Math.pow( 10, pos || 0 );
     return ( Math.round( base * this, 0 ) / base ).toFixed( pos ).toLocaleString();
   };
   Number.prototype.pptString = function( pos ) {
-    var base = Math.pow( 10, pos );
+    var base = Math.pow( 10, pos || 0 );
     return ( Math.round( 100 * base * this, 0 ) / base ).toLocaleString() + '%';
   };
   if ( !String.prototype.format ) {
@@ -36,10 +36,11 @@ $( function() {
       return ( lower ? this.toLowerCase() : this ).replace( /(?:^|\s)\S/g, function( a ) { return a.toUpperCase(); } );
     };
   }
-  String.prototype.asIconPath = function() {
-    var res = this.replace( /[\-\'\.\s]+/g, '' );
-    return res.toLowerCase();
-  };
+  if ( !String.prototype.icon ) {
+    String.prototype.icon = function() {
+      return ( this || '' ).replace( /[\-\'\.\s]+/g, '' ).toLowerCase();
+    };
+  }
 
   var cache = $.cache._();
   
@@ -124,15 +125,34 @@ $( function() {
 
   Vue.mixin( {
     methods: {
+      icon: function( str ) {
+        return ( str || '' ).icon();
+      },
+      list_quests: function() {
+        return c_data.quests
+          .map( ( q, i ) => {
+            return { id: q.name, text: q.name, iconType: 'artifact', icon: q.item, sort: -i };
+          } );
+      },
+      list_quest_tiers: function( name ) {
+        var q = c_data.quests.find( q => q.name == name );
+        if ( !q ) {
+          return [];
+        }
+        return q.tiers
+          .map( ( t, i ) => {
+            return { id: i, text: t.name, sort: i };
+          } );
+      },
       list_qualities: function() {
         return $.map( c_data.qualities, ( q, k ) => {
-            return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
+            return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i };
           } );
       },
       list_heroes: function() {
         return c_data.heroes
           .map( h => {
-            return { id: h.name, text: h.name, icon: h.name.replace( /\s+/g, '' ), iconType: 'hero', data: { lv: h.lv } };
+            return { id: h.name, text: h.name, iconType: 'hero', icon: h.name, data: { lv: h.lv } };
           } );
       },
       apply_filter: function( h, f ) {
@@ -366,7 +386,7 @@ $( function() {
 
   Vue.component( 'select2', {
     template: '#templates-select2',
-    props: [ 'options', 'value', 'nosearch', 'choicetext' ],
+    props: [ 'options', 'value', 'nosearch', 'placeholder' ],
     data: function() {
       var matcher = function( params, data ) {
         if ( !params.term ) {
@@ -410,7 +430,7 @@ $( function() {
           allowClear: true,
           data: this.options,
           minimumResultsForSearch: ( !!this.nosearch ? Infinity : 3 ),
-          placeholder: this.choicetext || ' ',
+          placeholder: this.placeholder || ' ',
           matcher: matcher,
           sorter: function( data ) {
             return data.sort( function( a, b ) {
@@ -439,7 +459,6 @@ $( function() {
                 var $data = $( '<span/>' );
                 $data
                   .text( v )
-                  .addClass( 'icon float left' )
                   .appendTo( $result );
               } );
             }
@@ -457,12 +476,12 @@ $( function() {
               return;
             }
             var $result = $( '<span/>' );
-            if ( data.icon ) {
+            if ( data.icon || data.iconType ) {
               var $icon = $( '<span/>' );
               $icon
                 .addClass( 'icon float left' )
-                .addClass( data.icon.asIconPath() )
-                .addClass( data.iconType.asIconPath() )
+                .addClass( ( data.icon || '' ).icon() )
+                .addClass( ( data.iconType || '' ).icon() )
                 .appendTo( $result );
             };
             if ( data.data ) {
@@ -1134,9 +1153,16 @@ $( function() {
     data: function() {
       return {
         edit: false,
+        quest: {
+          name: null,
+          tier: null,
+          boss: false
+        },
         options: {
           qualities: this.list_qualities(),
-          heroes: Array(6)
+          heroes: Array(6),
+          quests: this.list_quests(),
+          tiers: this.list_quest_tiers()
         }
       }
     },
@@ -1151,8 +1177,43 @@ $( function() {
             value: 0
           },
           roster: Array(6),
-          skills: []
+          skills: [],
+          quest: {
+            boss: false,
+            time: 0,
+            m: 0.0,
+            item: null,
+            loot: {
+              min: 0,
+              max: 0
+            },
+            power: {
+              value: 0,
+              hero: 0,
+              text: null
+            }
+          }
         };
+        if ( vm.quest.name ) {
+          var q = c_data.quests.find( q => q.name == vm.quest.name );
+          if ( q ) {
+            var qt = q.tiers[vm.quest.tier];
+            result.quest.time = q.time;
+            result.quest.item = q.item;
+            result.quest.power.value = q.power;
+            if ( qt ) {
+              result.quest.boss = !!qt.boss;
+              if ( qt.loot ) {
+                result.quest.loot.min = qt.loot.min;
+                result.quest.loot.max = qt.loot.max;
+              }
+              result.quest.power = { 
+                value: qt.power || q.power,
+                hero: !!qt.boss && vm.quest.boss ? qt.boss.power : qt.base.power
+              };
+            }
+          }
+        }
         result.roster = vm.team.roster
           .map( ( r, i ) => {
             var hero = c_data.heroes.find( h => r.name && h.name == r.name );
@@ -1188,22 +1249,30 @@ $( function() {
         };
         result.roster = result.roster
           .map( h => {
-            var m_s = 0.1
+            var m_r = 0.0;
+            var m_h = 0.0;
+            var m_e = 0.0;
+            var v_min = 0;
+            var v_max = 0;
+            var m_s = 0.1;
             result.skills
               .filter( s => vm.apply_filter( h.hero, s.filter ) )
               .map( s => {
-                switch ( s.type ) {
-                  case 'Survival':
-                    m_s += s.value;
-                    break;
-                  case 'Equipment':
-                    h.power.m.i += s.value;
-                    break;
-                  case 'Strength':
-                    h.power.m.h += s.value;
-                    break;
-                  default:
-                    break;
+                if ( s.type == 'Survival' ) {
+                  m_s += s.value;
+                } else if ( s.type == 'Equipment' ) {
+                  h.power.m.i += s.value;
+                } else if ( s.type == 'Strength' ) {
+                  h.power.m.h += s.value;
+                }
+                if ( s.name == 'Healer' ) {
+                  m_h = Math.min( m_h + s.value, s.cap );
+                } else if ( s.name == 'Revive' ) {
+                  m_r = Math.min( m_r + s.value, s.cap );
+                } else if ( s.name == 'Detect Secrets' ) {
+                  v_min += s.value;
+                } else if ( s.name == 'Magic Find' ) {
+                  v_max += s.value;
                 }
               } );
             h.power.m.s += m_s * ( result.assigned - 1 );
@@ -1222,24 +1291,96 @@ $( function() {
                   h.power.m.s.fixString(2)
                 );
             result.power.value += ( h.power.value || 0 );
+
+            h.info.hero.map( s => {
+              if ( s.name == 'Energetic' ) {
+                m_e = Math.min( m_e + s.value, s.cap );
+              } else if ( s.name == 'Minimum' ) {
+                v_min += s.value;
+              } else if ( s.name == 'Maximum' ) {
+                v_max += s.value;
+              }
+            } );
+            h.quest = {
+              face: null,
+              chance: .00,
+              time: result.quest.time,
+              m: ( 1.0 - m_h ) * ( 1.0 - m_e ),
+              loot: {
+                min: result.quest.loot.min,
+                max: result.quest.loot.max
+              },
+              power: {
+                value: result.quest.power.hero || 0,
+                info: null
+              }
+            };
+            var m_face = h.power.value / result.quest.power.hero;
+            var p_face = result.quest.power.hero - h.power.value;
+            if ( p_face > 0 ) {
+              h.quest.power.info = 'Required {0} more power'.format( p_face.intString() );
+            }
+            if ( m_face >= 1 ) {
+              h.quest.face = 'happy';
+              h.quest.chance = 0.01;
+            } else if ( m_face >= 0.91 ) {
+              h.quest.face = 'normal';
+              h.quest.chance = 0.25;
+            } else if ( m_face >= 0.75 ) {
+              h.quest.face = 'content';
+              h.quest.chance = 0.45;
+            } else if ( m_face >  0.00 ) {
+              h.quest.face = 'unhappy';
+              h.quest.chance = 0.65;
+            }
+            h.quest.loot.min += v_min;
+            h.quest.loot.max += v_max;
+            h.quest.loot.min = Math.min( h.quest.loot.min, h.quest.loot.max );
+            h.quest.chance *= ( 1.0 - m_r );
+            h.quest.time *= h.quest.m;
             return h;
           } );
         result.power.info = 'Group Bonus: +{0}%'.format( Math.round( 100 * ( result.power.value / result.power.hero - 1 ) ) );
+        var p_team = result.quest.power.value - result.power.value;
+        if ( p_team > 0 ) {
+          result.quest.power.info = 'Required {0} more power'.format( p_team.intString() );
+        }
+        var b = c_data.buildings.find( b => b.name == 'Inn' );
+        if ( b ) {
+          result.quest.m += b.cj.value * b.cj.lv;
+        }
+        var s = result.skills.find( s => s.type == 'Speed' );
+        if ( s ) {
+          result.quest.m += s.value;
+          if ( result.quest.m > s.cap ) {
+            result.quest.m = s.cap;
+          }
+        }
+        result.quest.time *= ( 1 - result.quest.m );
         return result;
       }
     },
     watch: {
-      'team.roster': function( roster ) {
-        var vm = this;
-        vm.options.heroes = roster.map( ( r, i ) => {
-          return vm.list_heroes().filter( h => {
-            var j = roster.findIndex( rr => rr.name == h.text );
-            if ( j < 0 || j == i ) {
-              return true;
-            }
-            return false;
+      'quest.name': {
+        handler: function( name ) {
+          var vm = this;
+          vm.options.tiers = vm.list_quest_tiers( name );
+        }
+      },
+      'team.roster': { 
+        handler: function( roster ) {
+          var vm = this;
+          vm.options.heroes = roster.map( ( r, i ) => {
+            return vm.list_heroes().filter( h => {
+              var j = roster.findIndex( rr => rr.name == h.text );
+              if ( j < 0 || j == i ) {
+                return true;
+              }
+              return false;
+            } );
           } );
-        } );
+        },
+        deep: true
       }
     },
     methods: {
