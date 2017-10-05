@@ -818,11 +818,11 @@ $( function() {
           }
           if ( !!filters.origin ) {
             if ( filters.origin == 'nonblanks' ) {
-              fn_skill = ( o ) => o.origin.length > 0;
+              fn_origin = ( o ) => o.origin.length > 0;
             } else if ( filters.origin == 'blanks' ) {
-              fn_skill = ( o ) => o.origin.length == 0;
+              fn_origin = ( o ) => o.origin.length == 0;
             } else {
-              fn_skill = ( o ) => o.origin == filters.origin;
+              fn_origin = ( o ) => o.origin == filters.origin;
             }
           }
           if ( !!filters.skill ) {
