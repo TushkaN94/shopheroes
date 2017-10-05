@@ -345,7 +345,7 @@ $( function() {
           return s1.priority - s2.priority;
         } );
 
-        if ( result.origin.cj ) {
+        if ( result.origin && result.origin.cj ) {
           result.power.m.b += ( result.origin.cj.value * result.origin.cj.lv || 0 );
         }
         if ( result.optimals == 7 ) {
