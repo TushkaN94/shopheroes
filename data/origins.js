@@ -2,7 +2,7 @@ $( function() {
 
   var cache = $.cache._();
   
-  var buildings = [
+  var origins = [
     {
       name: "Temple",
       type: "Questing",
@@ -148,45 +148,43 @@ $( function() {
     },
     {
       name: "Heroic Package #1",
-      type: "Questing",
-      b: false,
-      m: false,
-      lv: 1,
-      cap: 1,
-      cj: {
-        lv: 0,
-        cap: 0,
-        value: 0.05
-      }
+      type: "Package",
+      m: false
     },
     {
       name: "Heroic Package #2",
-      type: "Questing",
-      b: false,
-      m: false,
-      lv: 1,
-      cap: 1,
-      cj: {
-        lv: 0,
-        cap: 0,
-        value: 0.05
-      }
+      type: "Package",
+      m: false
     },
     {
       name: "Inn",
       type: "City",
-      b: false,
       m: false,
       lv: 1,
       cap: 55,
+      sub: 3,
+      boosts: {
+        55: { value: 0.25, sub: 0.5 }
+      },
       cj: {
         lv: 0,
         cap: 5,
         value: 0.05
       }
+    },
+    {
+      name: "Castle",
+      type: "City",
+      m: false,
+      lv: 1,
+      cap: 50,
+      sub: 3,
+      boosts: {
+        50: { value: 0.25, sub: 0.5 }
+      }
     }
   ];
-  cache.set( "buildings", buildings, true );
+  cache.set( "origins", origins, true );
 
 } );
   

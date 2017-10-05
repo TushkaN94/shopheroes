@@ -48,7 +48,7 @@ $( function() {
       name: "Revive",
       text: "{0} chance to revive injuried companions",
       priority: 3,
-      cap: false,
+      cap: 1.0,
       sign: "%",
       applies: "team",
       leader: false

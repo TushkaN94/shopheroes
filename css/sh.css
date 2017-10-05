@@ -45,17 +45,6 @@ table.shopheroes td {
   text-align: center;
   background-color: #F6F6F6;
 }
-
-table.shopheroes th.team-slot {
-  width: 1.4rem;
-}
-table.shopheroes th.team-icon {
-  width: 2.8rem;
-}
-table.shopheroes th.team-hero {
-  width: 12%;
-  width: calc(100%/6-6rem);
-}
 table.shopheroes th.name {
   min-width: 14rem;
   width: 14rem;
@@ -76,6 +65,26 @@ table.shopheroes th.level {
   min-width: 8rem;
   width: 8rem;
 }
+table.shopheroes th.team-slot {
+  min-width: 1.4rem;
+  width: 1.4rem;
+}
+table.shopheroes th.team-icon {
+  min-width: 2.8rem;
+  width: 2.8rem;
+}
+table.shopheroes th.team-hero {
+  width: 12%;
+  width: calc((100%-6rem)/6);
+}
+table.shopheroes th.hero-name {
+  min-width: 10rem;
+  width: 10rem;
+}
+table.shopheroes th.hero-item {
+  width: 12%;
+  width: calc((100%-10rem)/7);
+}
 
 table.shopheroes.item th.item {
   width: 14rem;
@@ -86,13 +95,8 @@ table.shopheroes.hero th.type {
 }
 
 table.shopheroes.team div.team-selector-quest {
-  width: 60% !important;
-  width: calc(70%-100px) !important;
-  display: inline-block;
-}
-table.shopheroes.team div.team-selector-tier {
-  width: 25% !important;
-  width: calc(30%-100px) !important;
+  width: 85% !important;
+  width: calc(100%-1.5em) !important;
   display: inline-block;
 }
 table.shopheroes.team div.team-selector-boss {

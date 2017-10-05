@@ -81,8 +81,8 @@
       xp: 1282,
       power: 290,
       price: 4150,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Cinco de Mayo Package 2016"
     },
     {
       type: "Armor",
@@ -189,8 +189,8 @@
       xp: 254240,
       power: 1275,
       price: 635000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Warrior Package",
       pre: [ { item: "Arcane Guard", q: "Good", c: 2 } ]
     },
     {
@@ -389,8 +389,8 @@
       xp: 389,
       power: 175,
       price: 1250,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Advanced Shopfare",
       pre: [ { item: "Hand Axe", q: "Common", c: 1 } ]
     },
     {
@@ -433,8 +433,8 @@
       xp: 3728,
       power: 490,
       price: 11000,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Fall Package"
     },
     {
       type: "Axes",
@@ -476,8 +476,8 @@
       xp: 18219,
       power: 1000,
       price: 45500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Halloween Package 2015",
       pre: [ { item: "Halberd", q: "Good", c: 2 } ]
     },
     {
@@ -521,8 +521,8 @@
       xp: 52060,
       power: 1250,
       price: 130000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Fiesta Package",
       pre: [ { item: "Hawk", q: "Good", c: 1 } ]
     },
     {
@@ -786,8 +786,8 @@
       xp: 5771,
       power: 450,
       price: 17000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Warrior Package",
       pre: [ { item: "Plated Boots", q: "Good", c: 2 } ]
     },
     {
@@ -829,8 +829,8 @@
       xp: 54068,
       power: 950,
       price: 135000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Pack of all Trades",
       pre: [ { item: "Explorer Boots", q: "Good", c: 2 } ]
     },
     {
@@ -895,8 +895,8 @@
       xp: 325215,
       power: 1450,
       price: 660000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Spooky Shop Package",
       pre: [ { item: "Knight Riders", q: "Common", c: 2 } ]
     },
     {
@@ -1094,8 +1094,8 @@
       xp: 3389,
       power: 490,
       price: 10000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Spooky Shop Package",
       pre: [ { item: "Long Bow", q: "Great", c: 2 } ]
     },
     {
@@ -1203,8 +1203,8 @@
       xp: 184174,
       power: 1525,
       price: 460000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Ninja Package",
       pre: [ { item: "Transfixer", q: "Good", c: 2 } ]
     },
     {
@@ -1270,8 +1270,8 @@
       xp: 2340457,
       power: 2100,
       price: 4750000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Valentine's Day Package 2016",
       pre: [ { item: "Heart Seeker", q: "Great", c: 2 } ]
     },
     {
@@ -1403,8 +1403,8 @@
       xp: 299,
       power: 218,
       price: 960,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Heroic Package #2"
     },
     {
       type: "Bracers",
@@ -1555,8 +1555,8 @@
       xp: 100898,
       power: 1150,
       price: 315000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Cinco de Mayo Package 2016",
       pre: [ { item: "Life Stealer", q: "Good", c: 2 } ]
     },
     {
@@ -1577,8 +1577,8 @@
       xp: 310470,
       power: 1375,
       price: 630000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Cheerful Package",
       pre: [ { item: "Mage Bracers", q: "Good", c: 2 } ]
     },
     {
@@ -1647,7 +1647,7 @@
       power: 1875,
       price: 2650000,
       rarity: "Exclusive",
-      origin: "Heroic Pack #1",
+      origin: "Heroic Package #1",
       skill: { name: "Support II", q: "Legendary", m: false },
       pre: [ { item: "Alchemist Gloves", q: "Great", c: 2 } ]
     },
@@ -1832,8 +1832,8 @@
       xp: 8304,
       power: 625,
       price: 24500,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Love Package"
     },
     {
       type: "Clothes",
@@ -1875,8 +1875,8 @@
       xp: 58067,
       power: 1100,
       price: 145000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Harvest Package 2015",
       pre: [ { item: "Magician's Cloak", q: "Good", c: 2 } ]
     },
     {
@@ -1931,7 +1931,7 @@
       power: 1450,
       price: 790000,
       rarity: "Exclusive",
-      origin: "Halloween Package",
+      origin: "Halloween Package 2015",
       skill: { name: "Shadowstep", q: "Legendary", m: false },
       pre: [ { item: "Stealth Apparel", q: "Flawless", c: 1 } ]
     },
@@ -2088,8 +2088,8 @@
       xp: 15,
       power: 68,
       price: 260,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Ninja Package"
     },
     {
       type: "Daggers",
@@ -2130,8 +2130,8 @@
       xp: 404,
       power: 260,
       price: 1300,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Celebration Package"
     },
     {
       type: "Daggers",
@@ -2340,7 +2340,7 @@
       power: 2550,
       price: 7100000,
       rarity: "Exclusive",
-      origin: "Cinco De Mayo Package",
+      origin: "Cinco de Mayo Package 2016",
       skill: { name: "Treasure Hunter III", q: "Mythical", m: false },
       pre: [ { item: "Jade Visage", q: "Great", c: 1 } ]
     },
@@ -2387,7 +2387,7 @@
       power: 3025,
       price: 18000000,
       rarity: "Exclusive",
-      origin: "Heroic Pack #1",
+      origin: "Heroic Package #1",
       skill: { name: "Scavenger III", q: "Mythical", m: false },
       pre: [ { item: "Traitorous Blade", q: "Great", c: 2 } ]
     },
@@ -2430,8 +2430,8 @@
       xp: 15,
       power: 58,
       price: 210,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Wizard Package"
     },
     {
       type: "Footwear",
@@ -2614,8 +2614,8 @@
       xp: 273476,
       power: 1450,
       price: 555000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Fall Package",
       pre: [ { item: "Plumed Loafers", q: "Great", c: 2 } ]
     },
     {
@@ -2694,7 +2694,7 @@
       power: 2125,
       price: 8500000,
       rarity: "Exclusive",
-      origin: "Easter Package",
+      origin: "Easter Package 2016",
       skill: { name: "Lucky II", q: "Mythical", m: false },
       pre: [ { item: "Floating Slippers", q: "Flawless", c: 2 } ]
     },
@@ -2937,8 +2937,8 @@
       xp: 211908,
       power: 1375,
       price: 430000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Hollow Package",
       pre: [ { item: "Lord's Gauntlets", q: "Good", c: 2 } ]
     },
     {
@@ -3028,7 +3028,7 @@
       power: 2200,
       price: 9150000,
       rarity: "Exclusive",
-      origin: "Winter Package",
+      origin: "Winter Package 2015",
       skill: { name: "Aura of Protection", q: "Mythical", m: false },
       pre: [ { item: "Phoenix Talon", q: "Flawless", c: 2 } ]
     },
@@ -3215,8 +3215,8 @@
       xp: 19149,
       power: 775,
       price: 56500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Heroic Package #1",
       pre: [ { item: "Pistol", q: "Great", c: 2 } ]
     },
     {
@@ -3281,8 +3281,8 @@
       xp: 132152,
       power: 1325,
       price: 330000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Holiday Package 2015",
       pre: [ { item: "Pocket Pistol", q: "Good", c: 2 } ]
     },
     {
@@ -3302,8 +3302,8 @@
       xp: 253805,
       power: 1600,
       price: 515000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Care Package",
       pre: [ { item: "Double Barrel", q: "Great", c: 1 } ]
     },
     {
@@ -3514,8 +3514,8 @@
       xp: 668,
       power: 215,
       price: 2150,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Halloween Package 2015",
       pre: [ { item: "Hood", q: "Common", c: 1 } ]
     },
     {
@@ -3559,8 +3559,8 @@
       xp: 5253,
       power: 410,
       price: 15500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Lucky Rooster Package",
       pre: [ { item: "Noble Tiara", q: "Great", c: 1 } ]
     },
     {
@@ -3591,8 +3591,8 @@
       xp: 17116,
       power: 625,
       price: 50500,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Winter Package 2015"
     },
     {
       type: "Hats",
@@ -3691,8 +3691,8 @@
       xp: 280901,
       power: 1375,
       price: 570000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Heroic Package #1",
       pre: [ { item: "Elven Coif", q: "Great", c: 1 } ]
     },
     {
@@ -3749,7 +3749,7 @@
       power: 1750,
       price: 920000,
       rarity: "Exclusive",
-      origin: "Thanksgiving Package",
+      origin: "Harvest Package 2015",
       skill: { name: "Protector II", q: "Legendary", m: false },
       pre: [ { item: "Lion's Tail", q: "Flawless", c: 1 } ]
     },
@@ -3947,8 +3947,8 @@
       xp: 9324,
       power: 500,
       price: 41250,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Care Package"
     },
     {
       type: "Helmets",
@@ -4034,8 +4034,8 @@
       xp: 120121,
       power: 1200,
       price: 300000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Eggcellent Package",
       pre: [ { item: "Great Helm", q: "Great", c: 1 } ]
     },
     {
@@ -4056,8 +4056,8 @@
       xp: 157699,
       power: 1375,
       price: 320000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Pack of all Trades",
       pre: [ { item: "Scale Helmet", q: "Great", c: 1 } ]
     },
     {
@@ -4248,8 +4248,8 @@
       xp: 823,
       power: 215,
       price: 2650,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Back to School Package"
     },
     {
       type: "Instruments",
@@ -4376,8 +4376,8 @@
       xp: 142144,
       power: 1200,
       price: 355000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Lucky Rooster Package",
       pre: [ { item: "Steeled Club", q: "Good", c: 2 } ]
     },
     {
@@ -4524,7 +4524,7 @@
       power: 2250,
       price: 13000000,
       rarity: "Exclusive",
-      origin: "Holiday Package",
+      origin: "Holiday Package 2015",
       skill: { name: "Resourceful II", q: "Legendary", m: false },
       pre: [ { item: "Angel Dust", q: "Flawless", c: 2 } ]
     },
@@ -4591,8 +4591,8 @@
       xp: 15,
       power: 68,
       price: 260,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Warrior Package"
     },
     {
       type: "Maces",
@@ -4665,8 +4665,8 @@
       xp: 2406,
       power: 490,
       price: 7100,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Hollow Package",
       pre: [ { item: "Mace", q: "Good", c: 2 } ]
     },
     {
@@ -4743,8 +4743,8 @@
       xp: 153509,
       power: 1190,
       price: 115000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Advanced Shopfare",
       pre: [ { item: "Heavy Mace", q: "Good", c: 2 } ]
     },
     {
@@ -4987,8 +4987,8 @@
       xp: 2457,
       power: 410,
       price: 7250,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Eggcellent Package"
     },
     {
       type: "Pendants",
@@ -5018,8 +5018,8 @@
       xp: 12371,
       power: 625,
       price: 36500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Advanced Shopfare",
       pre: [ { item: "Scarlet Drop", q: "Good", c: 3 } ]
     },
     {
@@ -5117,8 +5117,8 @@
       xp: 211908,
       power: 1375,
       price: 430000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Love Package",
       pre: [ { item: "Obelisk Charm", q: "Great", c: 1 } ]
     },
     {
@@ -5150,8 +5150,8 @@
       xp: 517387,
       power: 1550,
       price: 1050000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Winter Package 2015",
       pre: [ { item: "Fury Club", q: "Great", c: 2 } ]
     },
     {
@@ -5206,7 +5206,7 @@
       power: 2200,
       price: 8500000,
       rarity: "Exclusive",
-      origin: "Summer Sports Package",
+      origin: "Summer Sports 2016",
       skill: { name: "Healer II", q: "Mythical", m: false },
       pre: [ { item: "Cat's Eye", q: "Great", c: 1 } ]
     },
@@ -5337,8 +5337,8 @@
       xp: 1051,
       power: 250,
       price: 3400,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Easter Package 2016",
       pre: [ { item: "Health Vial", q: "Great", c: 2 } ]
     },
     {
@@ -5370,8 +5370,8 @@
       xp: 4753,
       power: 450,
       price: 14000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Snowy Package",
       pre: [ { item: "Healing Potion", q: "Good", c: 1 } ]
     },
     {
@@ -5424,8 +5424,8 @@
       xp: 17818,
       power: 825,
       price: 44500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Wizard Package",
       pre: [ { item: "Healing Potion", q: "Good", c: 2 } ]
     },
     {
@@ -5480,8 +5480,8 @@
       xp: 214372,
       power: 1375,
       price: 435000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Heroic Package #2",
       pre: [ { item: "Health Potion", q: "Great", c: 1 } ]
     },
     {
@@ -5736,8 +5736,8 @@
       xp: 4753,
       power: 450,
       price: 14000,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Cheerful Package"
     },
     {
       type: "Projectiles",
@@ -5788,8 +5788,8 @@
       xp: 17418,
       power: 825,
       price: 43500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Ninja Package",
       pre: [ { item: "Plumed Hat", q: "Good", c: 2 } ]
     },
     {
@@ -5833,8 +5833,8 @@
       xp: 84092,
       power: 1150,
       price: 210000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Valentine's Day Package 2016",
       pre: [ { item: "Shock Darts", q: "Good", c: 1 } ]
     },
     {
@@ -6067,8 +6067,8 @@
       xp: 1097,
       power: 290,
       price: 3550,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Holiday Package 2015"
     },
     {
       type: "Remedies",
@@ -6187,8 +6187,8 @@
       xp: 327718,
       power: 1375,
       price: 665000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Back to School Package",
       pre: [ { item: "Protection Dust", q: "Good", c: 2 } ]
     },
     {
@@ -6198,8 +6198,8 @@
       xp: 358722,
       power: 1450,
       price: 910000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Farmer Package",
       pre: [ { item: "Elven Cure", q: "Good", c: 2 } ]
     },
     {
@@ -6210,7 +6210,7 @@
       power: 1500,
       price: 665000,
       rarity: "Exclusive",
-      origin: "Vacation Package",
+      origin: "Vacation Pack",
       skill: { name: "Stoneskin", q: "Legendary", m: false },
       pre: [ { item: "Anti-Venom", q: "Great", c: 2 } ]
     },
@@ -6466,8 +6466,8 @@
       xp: 5262,
       power: 450,
       price: 15500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Ninja Package",
       pre: [ { item: "Shadow Mark", q: "Good", c: 2 } ]
     },
     {
@@ -6519,8 +6519,8 @@
       xp: 60076,
       power: 950,
       price: 150000,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Heroic Package #1"
     },
     {
       type: "Rings",
@@ -6575,8 +6575,8 @@
       xp: 391783,
       power: 1375,
       price: 795000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Easter Package 2016",
       pre: [ { item: "Fire Band", q: "Flawless", c: 2 } ]
     },
     {
@@ -6645,7 +6645,7 @@
       power: 1875,
       price: 3250000,
       rarity: "Exclusive",
-      origin: "Heroic Pack #2",
+      origin: "Heroic Package #2",
       skill: { name: "Healer II", q: "Legendary", m: false },
       pre: [ { item: "Undead Ring", q: "Great", c: 2 } ]
     },
@@ -6766,8 +6766,8 @@
       xp: 497,
       power: 215,
       price: 1650,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Epic Package",
       pre: [ { item: "Targe", q: "Great", c: 1 } ]
     },
     {
@@ -6809,8 +6809,8 @@
       xp: 1646,
       power: 370,
       price: 4850,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Fiesta Package"
     },
     {
       type: "Shields",
@@ -6876,8 +6876,8 @@
       xp: 15015,
       power: 825,
       price: 37500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Warrior Package",
       pre: [ { item: "Heater Shield", q: "Good", c: 2 } ]
     },
     {
@@ -6962,8 +6962,8 @@
       xp: 152771,
       power: 1375,
       price: 310000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Eggciting Package",
       pre: [ { item: "Tower Shield", q: "Great", c: 1 } ]
     },
     {
@@ -7164,8 +7164,8 @@
       xp: 526,
       power: 300,
       price: 1700,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Harvest Package 2015",
       pre: [ { item: "Wooden Spear", q: "Great", c: 2 } ]
     },
     {
@@ -7185,8 +7185,8 @@
       xp: 1800,
       power: 390,
       price: 5300,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Farmer Package"
     },
     {
       type: "Spears",
@@ -7218,7 +7218,7 @@
       power: 550,
       price: 17000,
       rarity: "Exclusive",
-      origin: "Summer Sports Package",
+      origin: "Summer Sports 2016",
       skill: { name: "Berserker", q: "Epic", m: false },
       pre: [ { item: "Pike", q: "Good", c: 1 } ]
     },
@@ -7317,8 +7317,8 @@
       xp: 86081,
       power: 1525,
       price: 215000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Ancient Package",
       pre: [ { item: "Valkyrie", q: "Good", c: 1 } ]
     },
     {
@@ -7328,8 +7328,8 @@
       xp: 170019,
       power: 1650,
       price: 345000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Advanced Shopfare",
       pre: [ { item: "Bone Spear", q: "Great", c: 1 } ]
     },
     {
@@ -7545,8 +7545,8 @@
       xp: 5771,
       power: 450,
       price: 17000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Valentine's Day Package 2016",
       pre: [ { item: "Love Splash", q: "Good", c: 2 } ]
     },
     {
@@ -7622,8 +7622,8 @@
       xp: 104119,
       power: 1000,
       price: 260000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Heroic Package #2",
       pre: [ { item: "Deflection Seal", q: "Good", c: 2 } ]
     },
     {
@@ -7667,8 +7667,8 @@
       xp: 232219,
       power: 1275,
       price: 580000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Wizard Package",
       pre: [ { item: "Freezing Scroll", q: "Good", c: 2 } ]
     },
     {
@@ -7829,7 +7829,7 @@
       power: 2800,
       price: 36850000,
       rarity: "Exclusive",
-      origin: "Vacation Package",
+      origin: "Vacation Pack",
       skill: { name: "Support II", q: "Mythical", m: false },
       pre: [ { item: "Twilight Seal", q: "Flawless", c: 1 } ]
     },
@@ -7881,7 +7881,7 @@
       power: 215,
       price: 1400,
       rarity: "Exclusive",
-      origin: "Vacation Package",
+      origin: "Vacation Pack",
       skill: { name: "Mage Armor", q: "Epic", m: false }
     },
     {
@@ -7913,8 +7913,8 @@
       xp: 974,
       power: 300,
       price: 3150,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Eggciting Package"
     },
     {
       type: "Staves",
@@ -7956,8 +7956,8 @@
       xp: 4583,
       power: 500,
       price: 13500,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Heroic Package #2"
     },
     {
       type: "Staves",
@@ -8032,8 +8032,8 @@
       xp: 134146,
       power: 1375,
       price: 335000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Snowy Package",
       pre: [ { item: "Forest Wand", q: "Good", c: 2 } ]
     },
     {
@@ -8066,7 +8066,7 @@
       power: 1650,
       price: 565000,
       rarity: "Exclusive",
-      origin: "Summer Sports Package",
+      origin: "Summer Sports 2016",
       skill: { name: "Fireball", q: "Legendary", m: false },
       pre: [ { item: "Fire Rod", q: "Good", c: 2 } ]
     },
@@ -8169,7 +8169,7 @@
       power: 2625,
       price: 10900000,
       rarity: "Exclusive",
-      origin: "Valentine's Package",
+      origin: "Valentine's Day Package 2016",
       skill: { name: "Energetic II", q: "Mythical", m: false },
       pre: [ { item: "Staff Of Ages", q: "Flawless", c: 1 } ]
     },
@@ -8247,8 +8247,8 @@
       xp: 389,
       power: 175,
       price: 1250,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Pack of all Trades",
       pre: [ { item: "Longsword", q: "Good", c: 2 } ]
     },
     {
@@ -8311,8 +8311,8 @@
       xp: 2406,
       power: 490,
       price: 7100,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Ancient Package"
     },
     {
       type: "Swords",
@@ -8432,8 +8432,8 @@
       xp: 278412,
       power: 1800,
       price: 565000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Epic Package",
       pre: [ { item: "Demolisher", q: "Good", c: 2 } ]
     },
     {
@@ -8623,8 +8623,8 @@
       xp: 326,
       power: 180,
       price: 1312,
-      rarity: "Common",
-      origin: ""
+      rarity: "Exclusive",
+      origin: "Heroic Package #1"
     },
     {
       type: "Vests",
@@ -8697,8 +8697,8 @@
       xp: 8304,
       power: 600,
       price: 24500,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Pack of all Trades",
       pre: [ { item: "Boiled Leather", q: "Good", c: 3 } ]
     },
     {
@@ -8774,8 +8774,8 @@
       xp: 108102,
       power: 1275,
       price: 270000,
-      rarity: "Common",
-      origin: "",
+      rarity: "Exclusive",
+      origin: "Celebration Package",
       pre: [ { item: "Plated Leather", q: "Good", c: 2 } ]
     },
     {
@@ -8912,7 +8912,7 @@
       power: 2450,
       price: 12850000,
       rarity: "Exclusive",
-      origin: "Heroic Pack #2",
+      origin: "Heroic Package #2",
       skill: { name: "Magic Find", q: "Mythical", m: false },
       pre: [ { item: "White Crow", q: "Great", c: 2 } ]
     },

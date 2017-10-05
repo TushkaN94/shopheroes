@@ -9,6 +9,7 @@ $( function() {
       key: "Wooden",
       bag: "Treasure",
       item: "Shiny Gem",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -54,6 +55,7 @@ $( function() {
       key: "Wooden",
       bag: "Treasure",
       item: "Elven Dew",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -99,6 +101,7 @@ $( function() {
       key: "Wooden",
       bag: "Treasure",
       item: "Viper Essence",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -144,6 +147,7 @@ $( function() {
       key: "Wooden",
       bag: "Treasure",
       item: "Iron Wood",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -189,6 +193,7 @@ $( function() {
       key: "Leather",
       bag: "Treasure",
       item: "Burning Ember",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -234,6 +239,7 @@ $( function() {
       key: "Leather",
       bag: "Treasure",
       item: "Rainbow Dust",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -279,6 +285,7 @@ $( function() {
       key: "Leather",
       bag: "Treasure",
       item: "Moon Shard",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -324,6 +331,7 @@ $( function() {
       key: "Leather",
       bag: "Treasure",
       item: "Iron Carapace",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -369,6 +377,7 @@ $( function() {
       key: "Iron",
       bag: "Mysterious",
       item: "Wyvern Wing",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -414,6 +423,7 @@ $( function() {
       key: "Iron",
       bag: "Mysterious",
       item: "Frozen Core",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -459,6 +469,7 @@ $( function() {
       key: "Iron",
       bag: "Mysterious",
       item: "Royal Bone",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -504,6 +515,7 @@ $( function() {
       key: "Iron",
       bag: "Mysterious",
       item: "Liquid Fire",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -549,6 +561,7 @@ $( function() {
       key: "Gold",
       bag: "Mysterious",
       item: "Yggdrasil Leaf",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -594,6 +607,7 @@ $( function() {
       key: "Gold",
       bag: "Mysterious",
       item: "Silver Steel",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -639,6 +653,7 @@ $( function() {
       key: "Gold",
       bag: "Mysterious",
       item: "Phoenix Feather",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -684,6 +699,7 @@ $( function() {
       key: "Gold",
       bag: "Mysterious",
       item: "Golden Thread",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -729,6 +745,7 @@ $( function() {
       key: "Magic",
       bag: "Wondrous",
       item: "Demon Heart",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -774,6 +791,7 @@ $( function() {
       key: "Magic",
       bag: "Wondrous",
       item: "Dark Energy",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -819,6 +837,7 @@ $( function() {
       key: "Magic",
       bag: "Wondrous",
       item: "Sun Tear",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -864,6 +883,7 @@ $( function() {
       key: "Magic",
       bag: "Wondrous",
       item: "Dragon Scale",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -909,6 +929,7 @@ $( function() {
       key: "Magic",
       bag: "Wondrous",
       item: "Adamantium",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -954,6 +975,7 @@ $( function() {
       key: "Dwarvish",
       bag: "Wondrous",
       item: "Ancient Essence",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -999,6 +1021,7 @@ $( function() {
       key: "Dwarvish",
       bag: "Wondrous",
       item: "Frostfire Crystal",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -1044,6 +1067,7 @@ $( function() {
       key: "Dwarvish",
       bag: "Wondrous",
       item: "Obsidian Coral",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -1089,6 +1113,7 @@ $( function() {
       key: "Dwarvish",
       bag: "Wondrous",
       item: "Shard Of Gaia",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -1134,6 +1159,7 @@ $( function() {
       key: "Dwarvish",
       bag: "Wondrous",
       item: "Primal Horn",
+      origin: "Inn",
       tiers: [
         {
           name: "I",
@@ -1175,6 +1201,7 @@ $( function() {
     {
       name: "City Raid",
       time: 7200,
+      origin: "Castle",
       tiers: [
         {
           name: "I",
