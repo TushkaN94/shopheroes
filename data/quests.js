@@ -1202,6 +1202,7 @@ $( function() {
       name: "City Raid",
       time: 7200,
       origin: "Castle",
+      item: "Raid Item",
       tiers: [
         {
           name: "I",

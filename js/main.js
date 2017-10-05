@@ -276,11 +276,24 @@ $( function() {
                 };
                 var is = h.items[j].find( s => s.type == i.type );
                 i.a = is ? is.a : 0;
-                i.chance = Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q];
-                if ( i.chance < 0.005 ) {
-                  i.chance = 0;
+                i.chance = {
+                  value: Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q]
                 }
-                i.chance = i.chance || 0;
+                if ( i.chance.value < 0.005 ) {
+                  i.chance.value = 0;
+                }
+                i.chance.value = i.chance.value || 0.0;
+                if ( i.chance.value == 0 ) {
+                  i.chance.icon = 'unbreakable';
+                } else if ( i.chance.value <= 0.03 ) {
+                  i.chance.icon = 'green';
+                } else if ( i.chance.value <= 0.10 ) {
+                  i.chance.icon = 'yellow';
+                } else if ( i.chance.value <= 0.20 ) {
+                  i.chance.icon = 'orange';
+                } else {
+                  i.chance.icon = 'red';
+                }
                 if ( !!i.skill ) {
                   var q1 = c_data.qualities[slot.q];
                   var q2 = c_data.qualities[i.skill.q];
@@ -554,6 +567,11 @@ $( function() {
     destroyed: function() {
       this.detach();
     }
+  } );
+
+  Vue.component( 'chance', {
+    template: '#templates-chance',
+    props:[ 'chance' ]
   } );
 
   Vue.component( 'power', {

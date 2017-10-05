@@ -19,6 +19,36 @@ span.icon.medium {
 span.icon.power {
   background-image: url( "../images/power.png" );
 }
+span.icon.break.optimal {
+  background-image: url( "../images/types/break/optimal.png" );
+}
+span.icon.break.unbreakable {
+  background-image: url( "../images/types/break/unbreakable.png" );
+}
+span.icon.break.green {
+  background-image: url( "../images/types/break/green.png" );
+}
+span.icon.break.yellow {
+  background-image: url( "../images/types/break/yellow.png" );
+}
+span.icon.break.orange {
+  background-image: url( "../images/types/break/orange.png" );
+}
+span.icon.break.red {
+  background-image: url( "../images/types/break/red.png" );
+}
+span.icon.break.critical {
+  background-image: url( "../images/types/break/red.png" );
+}
+span.icon.timers.quest {
+  background-image: url( "../images/types/timers/quest.png" );
+}
+span.icon.timers.resting {
+  background-image: url( "../images/types/timers/resting.png" );
+}
+span.icon.timers.injury {
+  background-image: url( "../images/types/timers/injury.png" );
+}
 span.icon.quality.common {
   background-image: url( "../images/qualities/common.png" );
 }
