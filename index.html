@@ -724,6 +724,7 @@
             <td v-for="j in 7" colspan="2">
               <div v-if="summary.slots[j-1].name">
                 <power :power="summary.slots[j-1].power"/>
+                <span v-if="summary.slots[j-1].optimal" class="icon break optimal"/>
                 <chance :chance="summary.slots[j-1].chance"/>
               </div>
             </td>
