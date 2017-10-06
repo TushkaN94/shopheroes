@@ -468,14 +468,14 @@ $( function() {
               return;
             }
             var $result = $( '<span/>' );
-            if ( data.data ) {
+            /*if ( data.data ) {
               $.each( data.data, function( i, v ) {
                 var $data = $( '<span/>' );
                 $data
                   .text( v )
                   .appendTo( $result );
               } );
-            }
+            }*/
             var $text = $( '<span/>' )
             $text.text( data.text );
             if ( data.custom ) {
@@ -1204,22 +1204,22 @@ $( function() {
             };
           }
         }
-        result.roster = vm.team.roster
-          .map( ( r, i ) => {
-            var hero = c_data.heroes.find( h => r.name && h.name == r.name );
-            if ( hero ) {
-              result.assigned += 1;
-            } else {
-              hero = vm.empty_hero();
-            }
-            h = $.extend( true, {}, hero );
-            $.extend( true, h.slots, vm.get_clone( r.slots ) );
-            h.b = r.b;
-            var res = vm.get_hero( h );
-            res.hero = hero;
-            [].push.apply( result.skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
-            return res;
-          } );
+        for ( var i = 0; i < 6; i++ ) {
+          var r = vm.team.roster[i];
+          var hero = c_data.heroes.find( h => r.name && h.name == r.name );
+          if ( hero ) {
+            result.assigned += 1;
+          } else {
+            hero = vm.empty_hero();
+          }
+          h = $.extend( true, {}, hero );
+          $.extend( true, h.slots, vm.get_clone( r.slots ) );
+          h.b = r.b;
+          var res = vm.get_hero( h );
+          res.hero = hero;
+          [].push.apply( result.skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
+          result.roster[i] = res;
+        };
         result.skills = result.skills
           .reduce( ( i, s ) => {
             var idx = i.findIndex( si => si.name == s.name );

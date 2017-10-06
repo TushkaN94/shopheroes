@@ -75,7 +75,7 @@ table.shopheroes th.team-icon {
 }
 table.shopheroes th.team-hero {
   width: 12%;
-  width: calc((100%-6rem)/6);
+  width: calc((100%-5.5rem)/6);
 }
 table.shopheroes th.hero-name {
   min-width: 10rem;
@@ -83,7 +83,7 @@ table.shopheroes th.hero-name {
 }
 table.shopheroes th.hero-item {
   width: 12%;
-  width: calc((100%-10rem)/7);
+  width: calc((100%-3rem)/7);
 }
 
 table.shopheroes.item th.item {
