@@ -1295,7 +1295,7 @@ $( function() {
               face: null,
               chance: .00,
               rest: {
-                value: result.quest.time.value,
+                value: result.quest.time.value / 2,
                 m: ( 1.0 - m_h ) * ( 1.0 - m_e )
               },
               heal: {
