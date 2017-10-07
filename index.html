@@ -224,7 +224,7 @@
           <tr class="data-info">
             <td colspan="2">
               <div>
-                <input type="search" placeholder="Type in name" class="name" v-model="filters.name"/>
+                <input v-model="filters.name" type="search" placeholder="Type in name" class="name"/>
               </div>
             </td>
             <td>
@@ -234,9 +234,9 @@
             </td>
             <td>
               <div>
-                <input type="number" class="lv" v-model.number="filters.lv.min"/>
+                <input v-model.number="filters.lv.min" type="number" class="lv"/>
                 <span>&nbsp;-&nbsp;</span>
-                <input type="number" class="lv" v-model.number="filters.lv.max"/>
+                <input v-model.number="filters.lv.max" type="number" class="lv"/>
               </div>
             </td>
             <td>
@@ -894,24 +894,42 @@
                 <span class="button remove float-left" @click="remove( team )"/>
               </div>
             </th>
-            <th colspan="3">
-              <div class="team-selector-quest">
-                <select2 v-model="quest.choice" :options="options.quests" :placeholder="'Choose quest'" />
-              </div>
-              <div class="team-selector-boss" :class="{ 'hidden': !summary.quest.boss }">
+            <th>
+              <div v-if="quest.choice && summary.quest.boss">
                 <input type="checkbox" v-model="quest.boss"/>
+              </div>
+            </th>
+            <th colspan="2">
+              <div>
+                <select2 v-model="quest.choice" :options="options.quests" :placeholder="'Choose quest'" />
               </div>
             </th>
             <th colspan="4">
               <div>
                 <power :power="summary.quest.power"/>
-                <span v-if="summary.quest.time.value" class="float-right">
+              </div>
+            </th>
+            <th colspan="3">
+              <div v-if="quest.choice">
+                <span v-if="summary.quest.time.value" class="float-left">
                   <span class="icon timers quest"/>
                   <span>{{summary.quest.time.value.dateString()}}</span>
                 </span>
               </div>
             </th>
-            <th colspan="4" v-for="j in 4"/>
+            <th>
+              <div v-if="quest.choice">
+                <span class="htooltip float-left">
+                  <span class="htooltip-text">{{'Set collective boost {0}'.format( quest.boost.c ? 'disabled' : 'enabled' )}}</span>
+                  <input v-model="quest.boost.c" type="checkbox"/>
+                </span>
+                <span class="htooltip float-left">
+                  <span class="htooltip-text">{{'Set instant x3 boost {0}'.format( quest.boost.i ? 'disabled' : 'enabled' )}}</span>
+                  <input v-model="quest.boost.i" type="checkbox"/>
+                </span>
+              </div>
+            </th>
+            <th colspan="4" v-for="j in 3"/>
           </tr>
           <template v-if="summary.skills">
             <tr v-for="k in get_k( summary.skills.length, 6 )" class="data-info">

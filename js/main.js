@@ -28,7 +28,7 @@ $( function() {
   if ( !String.prototype.format ) {
     String.prototype.format = function() {
       var args = arguments;
-      return this.replace( /{(\d+)}/g, ( m, n ) => { return typeof args[n] != 'undefined' ? args[n] : m; } );
+      return this.replace( /{(\d+)}/g, function( m, n ) { return typeof args[n] != 'undefined' ? args[n] : m; } );
     };
   }
   if ( !String.prototype.capitalize ) {
@@ -130,9 +130,9 @@ $( function() {
       },
       list_quests: function() {
         return c_data.quests
-          .map( ( q, i ) => {
+          .map( function( q, i ) {
             var children = q.tiers
-              .map( ( t, i ) => {
+              .map( function( t, i ) {
                 return { id: q.name + ' ' + t.name, text: q.name + ' ' + t.name, sort: i };
               } );
             return { 
@@ -146,13 +146,13 @@ $( function() {
           } );
       },
       list_qualities: function() {
-        return $.map( c_data.qualities, ( q, k ) => {
+        return $.map( c_data.qualities, function( q, k ) {
             return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i };
           } );
       },
       list_heroes: function() {
         return c_data.heroes
-          .map( h => {
+          .map( function( h ) {
             return { id: h.name, text: h.name, iconType: 'hero', icon: h.name, data: { lv: h.lv } };
           } );
       },
@@ -161,7 +161,7 @@ $( function() {
           return true;
         }
         var res = true;
-        $.map( f, ( v, k ) => {
+        $.map( f, function( v, k ) { 
           res = res && h[k] == v;
         } );
         return res;
@@ -173,8 +173,8 @@ $( function() {
         return JSON.parse( JSON.stringify( o ) );
       },
       get_skill: function( s ) {
-        var ss = c_data.skills.find( ss => ss.name == s.name );
-        var sb = c_data.skills_effects.find( sb => sb.name == ss.base );
+        var ss = c_data.skills.find( function( ss ) { return ss.name == s.name; } );
+        var sb = c_data.skills_effects.find( function( sb ) { return sb.name == ss.base; } );
         var res = $ .extend( true, {}, sb, ss, s );
         return res;
       },
@@ -217,22 +217,22 @@ $( function() {
           result.power.m.b += 0.25;
         }
 
-        result.origin = c_data.origins.find( b => b.name == h.origin );
+        result.origin = c_data.origins.find( function( b ) { return b.name == h.origin; } );
 
         result.power.base = h.power.base;
         result.power.level = c_data.powers.lv[h.lv];
         result.power.m.l = h.power.m;
         
         result.companions = 4 + ( h.lv >= 30 ? 1 : 0 );
-        result.skills.hero = h.skills.map( s => {
+        result.skills.hero = h.skills.map( function( s ) {
           return $.extend( true, vm.get_skill( s ), { active: ( h.lv >= s.lv ) } );
         } );
         result.items = h.items
-          .map( si => {
-            return si.map( t => {
+          .map( function( si ) {
+            return si.map( function( t ) {
               var items = c_data.items
-                .filter( i => i.type == t.type )
-                .map( i => {
+                .filter( function( i ) { return i.type == t.type; } )
+                .map( function( i ) {
                   return {
                     id: i.name,
                     text: i.name,
@@ -258,7 +258,7 @@ $( function() {
               chance: 0.0
             };
             if ( !!slot.item ) {
-              var found = c_data.items.find( i => i.name == slot.item );
+              var found = c_data.items.find( function( i ) { return i.name == slot.item; } );
               if ( !!found ) {
                 $.extend( true, i, found, { q: slot.q } );
                 var lv_difference = Math.abs( i.lv - h.lv );
@@ -274,7 +274,7 @@ $( function() {
                       m_q.fixString(2)
                     )
                 };
-                var is = h.items[j].find( s => s.type == i.type );
+                var is = h.items[j].find( function( s ) { return s.type == i.type; } );
                 i.a = is ? is.a : 0;
                 i.chance = {
                   value: Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q]
@@ -306,16 +306,16 @@ $( function() {
             return i;
           } );
         result.skills.items = result.slots
-          .map( i => {
+          .map( function( i ) {
             var s = i.skill;
             delete i.skill;
             return s;
           } );
 
         [].concat( result.skills.hero, result.skills.items )
-          .filter( s => s && s.active )
-          .map( s => {
-            var idx = result.info[s.applies].findIndex( si => si.name == s.base );
+          .filter( function( s ) { return s && s.active; } )
+          .map( function( s ) {
+            var idx = result.info[s.applies].findIndex( function( si ) { return si.name == s.base; } );
             if ( idx < 0 ) {
               result.info[s.applies].push( {
                 type: s.type,
@@ -334,8 +334,8 @@ $( function() {
             }
           } );
         result.info.hero
-          .filter( s => vm.apply_filter( h, s.filter ) )
-          .map( s => {
+          .filter( function( s ) { return vm.apply_filter( h, s.filter ); } )
+          .map( function( s ) {
             switch ( s.type ) {
               case 'Leader':
                 result.companions += s.value;
@@ -351,12 +351,8 @@ $( function() {
             }
           } );
         
-        result.info.hero.sort( ( s1, s2 ) => {
-          return s1.priority - s2.priority;
-        } );
-        result.info.team.sort( ( s1, s2 ) => {
-          return s1.priority - s2.priority;
-        } );
+        result.info.hero.sort( function( s1, s2 ) { return s1.priority - s2.priority; } );
+        result.info.team.sort( function( s1, s2 ) { return s1.priority - s2.priority; } );
 
         if ( result.origin && result.origin.cj ) {
           result.power.m.b += ( result.origin.cj.value * result.origin.cj.lv || 0 );
@@ -669,7 +665,7 @@ $( function() {
           lv: null,
           type: null
         },
-        filter: () => true,
+        filter: function() { return true; },
         filters: {
           name: null,
           type: null,
@@ -691,7 +687,7 @@ $( function() {
       itemsSorted: function() {
         var m = this.sorters.length;
         var list = this.items
-          .map( ( v, i ) => {
+          .map( function( v, i ) {
             return {
               i: i,
               lv: v.lv,
@@ -700,7 +696,7 @@ $( function() {
           } );
         if ( m > 0 ) {
           list = list
-            .sort( ( o1, o2 ) => {
+            .sort( function( o1, o2 ) {
               for ( var i = 0; i < m; i++ ) {
                 var res = this.sorters[i].fn( o1, o2 );
                 if ( res != 0 ) { 
@@ -711,7 +707,7 @@ $( function() {
             } );
         }
         return list
-          .map( v => {
+          .map( function( v ) {
             return v.i
           } );
       },
@@ -727,10 +723,10 @@ $( function() {
           skills:  [],
           qualities: []
         };
-        options.qualities = $.map( c_data.qualities, ( q, k ) => {
+        options.qualities = $.map( c_data.qualities, function( q, k ) {
           return { id: k, text: k, icon: k, iconType: 'quality', sort: -q.i, data: {} };
         } );
-        c_data.items.map( i => {
+        c_data.items.map( function( i ) {
           if ( ids.types.indexOf( i.type ) < 0 ) {
             ids.types.push( i.type );
             options.types.push( { id: i.type, text: i.type, icon: i.type, iconType: 'item' } );
@@ -743,11 +739,11 @@ $( function() {
         options.origins.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );
         options.origins.push( { id: "blanks", text: 'Blanks', custom: true } );
         
-        options.rarities = c_data.rarities.map( ( o, i ) => {
+        options.rarities = c_data.rarities.map( function( o, i ) {
             return { id: o, text: o, sort: i };
           } );
         
-        options.skills = c_data.skills.map( s => {
+        options.skills = c_data.skills.map( function( s ) {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
           } );
         options.skills.push( { id: "nonblanks", text: 'Non-blanks', custom: true } );         
@@ -773,16 +769,16 @@ $( function() {
         if      ( ord == 'asc'  ) d = 1;
         else if ( ord == 'desc' ) d = -1;
         if ( param == 'lv' ) {
-          fn = ( o1, o2 ) => { 
+          fn = function( o1, o2 ) { 
             return d * ( o1.lv - o2.lv );
           };
         } else if ( param == 'type' ) {
-          fn = ( o1, o2 ) => { 
+          fn = function( o1, o2 ) { 
             return d * o1.type.localeCompare( o2.type );
           };
         }
         if ( e.ctrlKey == true ) {
-          var ix = this.sorters.findIndex( p => p.param == param );
+          var ix = this.sorters.findIndex( function( p ) { return p.param == param; } );
           if ( ix >= 0 ) {
             this.sorters.splice( ix, 1 );
           }
@@ -799,17 +795,15 @@ $( function() {
       items: { 
         handler: function( items ) {
           var custom = items
-            .map( item => {
-              if ( item.skill ) {
+            .map( function( i ) {
+              if ( i.skill ) {
                 return {
                   skill: {
-                    m: item.skill.m
+                    m: i.skill.m
                   }
                 };
               }
-              else {
-                return {};
-              };
+              return {};
             } );
           cache.set( 'items_custom', custom, true );
         },
@@ -818,57 +812,59 @@ $( function() {
       filters: {
         handler: function( filters ) {
           var 
-            fn_name = () => true,
-            fn_origin = () => true,
-            fn_rarity = () => true,
-            fn_type = () => true,
-            fn_skill = () => true,
-            fn_pre = () => true,
-            fn_lv = () => true;
+            fn_name = function() { return true; },
+            fn_origin = function() { return true; },
+            fn_rarity = function() { return true; },
+            fn_type = function() { return true; },
+            fn_skill = function() { return true; },
+            fn_pre = function() { return true; },
+            fn_lv = function() { return true; };
           if ( !!filters.name ) {
-            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = function( o ) { return o.name.toUpperCase().includes( filters.name.toUpperCase() ); };
           }
           if ( !!filters.type ) {
-            fn_type = ( o ) => o.type == filters.type;
+            fn_type = function( o ) { return o.type == filters.type; };
           }
           if ( !!filters.rarity ) {
-            fn_rarity = ( o ) => o.rarity == filters.rarity;
+            fn_rarity = function( o ) { return o.rarity == filters.rarity; };
           }
           if ( !!filters.origin ) {
             if ( filters.origin == 'nonblanks' ) {
-              fn_origin = ( o ) => o.origin.length > 0;
+              fn_origin = function( o ) { return o.origin.length > 0; };
             } else if ( filters.origin == 'blanks' ) {
-              fn_origin = ( o ) => o.origin.length == 0;
+              fn_origin = function( o ) { return o.origin.length == 0; };
             } else {
-              fn_origin = ( o ) => o.origin == filters.origin;
+              fn_origin = function( o ) { return o.origin == filters.origin; };
             }
           }
           if ( !!filters.skill ) {
             if ( filters.skill == 'nonblanks' ) {
-              fn_skill = ( o ) => o.skill;
+              fn_skill = function( o ) { return o.skill; };
             } else {
-              fn_skill = ( o ) => o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase();
+              fn_skill = function( o ) { return o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase() };
             }
           }
           if ( !!filters.pre.name && !!filters.pre.q ) {
-            fn_pre = ( o ) => o.pre && o.pre.some( p => 
-              p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ) &&
-              p.q == filters.pre.q );
+            fn_pre = function( o ) { 
+              return o.pre && o.pre.some( function( p ) { return p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ) && p.q == filters.pre.q; } );
+            };
           } else if ( !!filters.pre.name ) {
-            fn_pre = ( o ) => o.pre && o.pre.some( p => 
-              p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ) );
+            fn_pre = function( o ) { 
+              return o.pre && o.pre.some( function( p ) { return p.item.toUpperCase().includes( filters.pre.name.toUpperCase() ); } );
+            };
           } else if ( !!filters.pre.q ) {
-            fn_pre = ( o ) => o.pre && o.pre.some( p => 
-              p.q == filters.pre.q );
+            fn_pre = function( o ) {
+              return o.pre && o.pre.some( function( p ) { return p.q == filters.pre.q; } );
+            };
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
-            fn_lv = ( o ) => o.lv >= filters.lv.min && o.lv <= filters.lv.max;
+            fn_lv = function( o ) { return o.lv >= filters.lv.min && o.lv <= filters.lv.max; };
           } else if ( !!filters.lv.min ) {
-            fn_lv = ( o ) => o.lv >= filters.lv.min;
+            fn_lv = function( o ) { return o.lv >= filters.lv.min; };
           } else if ( !!filters.lv.max ) {
-            fn_lv = ( o ) => o.lv <= filters.lv.max;
+            fn_lv = function( o ) { return o.lv <= filters.lv.max; };
           }
-          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_skill( o )  && fn_lv( o ) && fn_rarity( o ) && fn_origin( o ) && fn_pre( o );
+          this.filter = function( o ) { return fn_name( o ) && fn_type( o ) && fn_skill( o )  && fn_lv( o ) && fn_rarity( o ) && fn_origin( o ) && fn_pre( o ); };
         },
         deep: true
       }
@@ -904,7 +900,7 @@ $( function() {
     data: function() { 
       return {
         origins: c_data.origins,
-        filter: () => true,
+        filter: function() { return true; },
         filters: {
           name: null,
           type: null
@@ -919,7 +915,7 @@ $( function() {
         var options = {
           types: []
         };
-        c_data.origins.map( b => {
+        c_data.origins.map( function( b ) {
           if ( ids.types.indexOf( b.type ) < 0 ) {
             ids.types.push( b.type );
             options.types.push( { id: b.type, text: b.type } );
@@ -937,7 +933,7 @@ $( function() {
       origins: { 
         handler: function( origins ) {
           var custom = origins
-            .map( b => {
+            .map( function( b ) {
               var res = {
                 m: b.m
               }
@@ -958,15 +954,15 @@ $( function() {
       filters: {
         handler: function( filters ) {
           var 
-            fn_name = () => true,
-            fn_type = () => true;
+            fn_name = function() { return true; },
+            fn_type = function() { return true; };
           if ( !!filters.name ) {
-            fn_name = ( h ) => h.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = function( o ) { return o.name.toUpperCase().includes( filters.name.toUpperCase() ); };
           }
           if ( !!filters.type ) {
-            fn_type = ( h ) => h.type == filters.type;
+            fn_type = function( o ) { return o.type == filters.type; };
           }
-          this.filter = ( h ) => fn_name( h ) && fn_type( h );
+          this.filter = function( o ) { return fn_name( o ) && fn_type( o ); };
         },
         deep: true
       }
@@ -989,7 +985,7 @@ $( function() {
       skills: function() {
         var vm = this;
         return vm.hero.skills
-          .map( s => {
+          .map( function( s ) {
             return $.extend( true, vm.get_skill( s ), { active: s.lv <= vm.hero.lv } );
           } );
       },
@@ -1015,7 +1011,7 @@ $( function() {
     data: function() { 
       return {
         heroes: c_data.heroes,
-        filter: () => true,
+        filter: function() { return true; },
         filters: {
           name: null,
           type: null,
@@ -1046,7 +1042,7 @@ $( function() {
           origins: [],
           skills:  []
         };
-        c_data.heroes.map( h => {
+        c_data.heroes.map( function( h ) {
             options.names.push( h.name );
             if ( ids.types.indexOf( h.type ) < 0 ) {
               ids.types.push( h.type );
@@ -1061,10 +1057,10 @@ $( function() {
               options.sex.push( { id: h.sex, text: h.sex } );
             }
           } );
-        options.origins = c_data.origins.map( b => {
+        options.origins = c_data.origins.map( function( b ) {
             return { id: b.name, text: b.name };
           } );
-        options.skills = c_data.skills.map( s => {
+        options.skills = c_data.skills.map( function( s ) {
             return { id: s.name, text: s.name, icon: s.name.replace( /\s+|\bI+$|-/g, '' ), iconType: 'skill' };
           } );
         return options;
@@ -1079,7 +1075,7 @@ $( function() {
       heroes: { 
         handler: function( heroes ) {
           var custom = heroes
-            .map( h => {
+            .map( function( h ) {
               var res = {
                 lv: h.lv,
                 slots: h.slots
@@ -1093,39 +1089,39 @@ $( function() {
       filters: {
         handler: function( filters ) {
           var 
-            fn_name = () => true,
-            fn_type = () => true,
-            fn_tier = () => true,
-            fn_sex = () => true,
-            fn_origin = () => true,
-            fn_skill = () => true,
-            fn_lv = () => true;
+            fn_name = function() { return true; },
+            fn_type = function() { return true; },
+            fn_tier = function() { return true; },
+            fn_sex = function() { return true; },
+            fn_origin = function() { return true; },
+            fn_skill = function() { return true; },
+            fn_lv = function() { return true; };
           if ( !!filters.name ) {
-            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = function( o ) { return o.name.toUpperCase().includes( filters.name.toUpperCase() ); };
           }
           if ( !!filters.type ) {
-            fn_type = ( o ) => o.type == filters.type;
+            fn_type = function( o ) { return o.type == filters.type; };
           }
           if ( !!filters.tier ) {
-            fn_tier = ( o ) => o.tier == filters.tier;
+            fn_tier = function( o ) { return o.tier == filters.tier; };
           }
           if ( !!filters.sex ) {
-            fn_sex = ( o ) => o.sex == filters.sex;
+            fn_sex = function( o ) { return o.sex == filters.sex; };
           }
           if ( !!filters.origin ) {
-            fn_origin = ( o ) => o.origin == filters.origin;
+            fn_origin = function( o ) { return o.origin == filters.origin; };
           }
           if ( !!filters.skill ) {
-            fn_skill = ( o ) => o.skills.some( s => s.name.toUpperCase() == filters.skill.toUpperCase() );
+            fn_skill = function( o ) { return o.skills.some( function( s ) { return s.name.toUpperCase() == filters.skill.toUpperCase(); } ); };
           }
           if ( !!filters.lv.min && !!filters.lv.max ) {
-            fn_lv = ( o ) => o.lv >= filters.lv.min && o.lv <= filters.lv.max;
+            fn_lv = function( o ) { return o.lv >= filters.lv.min && o.lv <= filters.lv.max; };
           } else if ( !!filters.lv.min ) {
-            fn_lv = ( o ) => o.lv >= filters.lv.min;
+            fn_lv = function( o ) { return o.lv >= filters.lv.min; };
           } else if ( !!filters.lv.max ) {
-            fn_lv = ( o ) => o.lv <= filters.lv.max;
+            fn_lv = function( o ) { return o.lv <= filters.lv.max; };
           }
-          this.filter = ( o ) => fn_name( o ) && fn_type( o ) && fn_tier( o ) && fn_sex( o ) && fn_origin( o ) && fn_skill( o ) && fn_lv( o );
+          this.filter = function( o ) { return fn_name( o ) && fn_type( o ) && fn_tier( o ) && fn_sex( o ) && fn_origin( o ) && fn_skill( o ) && fn_lv( o ); };
         },
         deep: true
       }
@@ -1141,7 +1137,11 @@ $( function() {
         edit: false,
         quest: {
           choice: null,
-          boss: false
+          boss: false,
+          boost: {
+            c: false,
+            i: false
+          }
         },
         options: {
           qualities: this.list_qualities(),
@@ -1167,7 +1167,9 @@ $( function() {
             item: null,
             time: {
               value: 0,
-              m: 0.0
+              m: 0.0,
+              c: 0.0,
+              i: 1.0
             },
             loot: {
               min: 0,
@@ -1184,29 +1186,39 @@ $( function() {
           var names = vm.quest.choice.split( ' ' );
           var tname = names.pop();
           var qname = names.join( ' ' );
-          var q = c_data.quests.find( q => q.name == qname );
-          var qt;
+          var q = c_data.quests.find( function( q ) { return q.name == qname; } );
           if ( q ) {
-            qt = q.tiers.find( t => t.name == tname );
-          };
-          if ( q && qt ) {
-            result.quest.time.value = q.time;
-            result.quest.item = q.item;
-            result.quest.power.value = q.power;
-            result.quest.boss = !!qt.boss;
-            if ( qt.loot ) {
-              result.quest.loot.min = qt.loot.min;
-              result.quest.loot.max = qt.loot.max;
+            var b = c_data.origins.find( function( b ) { return b.name == q.origin; } );
+            if ( b ) {
+              if ( b.cj ) {
+                result.quest.c += b.cj.value * b.cj.lv;
+              }
+              if ( b.boost ) {
+                var bs = b.boost[b.lv];
+                result.quest.time.c += vm.quest.boost.c && bs ? bs.c : 0.0;
+                result.quest.time.i *= vm.quest.boost.i && bs ? Math.pow( bs.i, 3 ) : 1.0;
+              }
             }
-            result.quest.power = { 
-              value: qt.power || q.power,
-              hero: !!qt.boss && vm.quest.boss ? qt.boss.power : qt.base.power
-            };
+            var qt = q.tiers.find( function( t ) { return t.name == tname; } );
+            if ( q && qt ) {
+              result.quest.time.value = q.time;
+              result.quest.item = q.item;
+              result.quest.power.value = q.power;
+              result.quest.boss = !!qt.boss;
+              if ( qt.loot ) {
+                result.quest.loot.min = qt.loot.min;
+                result.quest.loot.max = qt.loot.max;
+              }
+              result.quest.power = { 
+                value: qt.power || q.power,
+                hero: !!qt.boss && vm.quest.boss ? qt.boss.power : qt.base.power
+              };
+            }
           }
         }
         for ( var i = 0; i < 6; i++ ) {
           var r = vm.team.roster[i];
-          var hero = c_data.heroes.find( h => r.name && h.name == r.name );
+          var hero = c_data.heroes.find( function( h ) { return r.name && h.name == r.name; } );
           if ( hero ) {
             result.assigned += 1;
           } else {
@@ -1217,12 +1229,12 @@ $( function() {
           h.b = r.b;
           var res = vm.get_hero( h );
           res.hero = hero;
-          [].push.apply( result.skills, res.info.team.filter( s => s && ( !s.leader || i == 0 ) ) );
+          [].push.apply( result.skills, res.info.team.filter( function( s ) { return s && ( !s.leader || i == 0 ); } ) );
           result.roster[i] = res;
         };
         result.skills = result.skills
-          .reduce( ( i, s ) => {
-            var idx = i.findIndex( si => si.name == s.name );
+          .reduce( function( i, s ) {
+            var idx = i.findIndex( function( si ) { return si.name == s.name; } );
             if ( idx < 0 ) {
               i.push( s );
             } else {
@@ -1230,15 +1242,13 @@ $( function() {
             }
             return i;
           }, [] )
-          .sort( ( s1, s2 ) => {
-            return s1.priority - s2.priority;
-          } );
+          .sort( function( s1, s2 ) { return s1.priority - s2.priority; } );
         result.companions = Math.min( result.roster[0].companions, 6 );
         for ( var i = result.companions; i < 6; i++ ) {
           vm.team.roster.splice( i, 1, vm.empty_hero() );
         };
         result.roster = result.roster
-          .map( h => {
+          .map( function( h ) {
             var m_r = 0.0;
             var m_h = 0.0;
             var m_e = 0.0;
@@ -1246,8 +1256,8 @@ $( function() {
             var v_max = 0;
             var m_s = 0.1;
             result.skills
-              .filter( s => vm.apply_filter( h.hero, s.filter ) )
-              .map( s => {
+              .filter( function( s ) { return vm.apply_filter( h.hero, s.filter ); } )
+              .map( function( s ) {
                 if ( s.type == 'Survival' ) {
                   m_s += s.value;
                 } else if ( s.type == 'Equipment' ) {
@@ -1282,7 +1292,7 @@ $( function() {
                 );
             result.power.value += ( h.power.value || 0 );
 
-            h.info.hero.map( s => {
+            h.info.hero.map( function( s ) {
               if ( s.name == 'Energetic' ) {
                 m_e = Math.min( m_e + s.value, s.cap );
               } else if ( s.name == 'Minimum' ) {
@@ -1342,18 +1352,11 @@ $( function() {
         if ( p_team > 0 ) {
           result.quest.power.info = 'Required {0} more power'.format( p_team.intString() );
         }
-        var b = c_data.origins.find( b => b.name == 'Inn' );
-        if ( b ) {
-          result.quest.m += b.cj.value * b.cj.lv;
-        }
-        var s = result.skills.find( s => s.type == 'Speed' );
+        var s = result.skills.find( function( s ) { return s.type == 'Speed'; } );
         if ( s ) {
-          result.quest.m += s.value;
-          if ( result.quest.m > s.cap ) {
-            result.quest.m = s.cap;
-          }
+          result.quest.time.m += s.value;
         }
-        result.quest.time.value *= ( 1 - result.quest.time.m );
+        result.quest.time.value *= ( 1 - result.quest.time.m ) * ( 1 - result.quest.time.c ) * result.quest.time.i;
         return result;
       }
     },
@@ -1361,9 +1364,9 @@ $( function() {
       'team.roster': { 
         handler: function( roster ) {
           var vm = this;
-          vm.options.heroes = roster.map( ( r, i ) => {
-            return vm.list_heroes().filter( h => {
-              var j = roster.findIndex( rr => rr.name == h.text );
+          vm.options.heroes = roster.map( function( r, i ) {
+            return vm.list_heroes().filter( function( h ) {
+              var j = roster.findIndex( function( rr ) { return rr.name == h.text; } );
               if ( j < 0 || j == i ) {
                 return true;
               }
@@ -1380,7 +1383,7 @@ $( function() {
         var sh = vm.summary.roster[k];
         vm.team.roster[k].slots = vm.get_clone( sh.hero.slots );
         var b = false;
-        vm.summary.roster.map( ( r, i ) => { 
+        vm.summary.roster.map( function( r, i ) { 
           if ( i != k && r.hero && r.hero.origin == sh.hero.origin ) {
             b = b || vm.team.roster[i].b;
           }
@@ -1390,7 +1393,7 @@ $( function() {
       set_boost: function( origin, b ) {
         var vm = this;
         vm.team.roster
-          .map( ( r, i ) => {
+          .map( function( r, i ) {
             if ( r.name && vm.summary.roster[i].hero.origin == origin ) {
               r.b = b;
             }
@@ -1412,7 +1415,7 @@ $( function() {
           skip: 1
         },
         teams: c_data.teams,
-        filter: () => true,
+        filter: function() { return true; },
         filters: {
           name: null
         }
@@ -1435,11 +1438,11 @@ $( function() {
       filters: {
         handler: function( filters ) {
           var 
-            fn_name = () => true;
+            fn_name = function() { return true; };
           if ( !!filters.name ) {
-            fn_name = ( t ) => t.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = function( o ) { return o.name.toUpperCase().includes( filters.name.toUpperCase() ); };
           }
-          this.filter = ( t ) => fn_name( t );
+          this.filter = function( o ) { return fn_name( o ); };
         },
         deep: true
       }
@@ -1507,7 +1510,7 @@ $( function() {
     data: function() { 
       return {
         quests: c_data.quests,
-        filter: () => true,
+        filter: function() { return true; },
         filters: {
           name: null
         }
@@ -1517,11 +1520,11 @@ $( function() {
       filters: {
         handler: function( filters ) {
           var 
-            fn_name = () => true;
+            fn_name = function() { return true; };
           if ( !!filters.name ) {
-            fn_name = ( o ) => o.name.toUpperCase().includes( filters.name.toUpperCase() );
+            fn_name = function( o ) { return o.name.toUpperCase().includes( filters.name.toUpperCase() ); };
           }
-          this.filter = ( o ) => fn_name( o );
+          this.filter = function( o ) { return fn_name( o ); };
         },
         deep: true
       }

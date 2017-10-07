@@ -162,14 +162,13 @@ $( function() {
       m: false,
       lv: 1,
       cap: 55,
-      sub: 3,
-      boosts: {
-        55: { value: 0.25, sub: 0.5 }
-      },
       cj: {
         lv: 0,
         cap: 5,
         value: 0.05
+      },
+      boost: {
+        55: { c: 0.25, i: 0.5 }
       }
     },
     {
@@ -178,9 +177,8 @@ $( function() {
       m: false,
       lv: 1,
       cap: 50,
-      sub: 3,
-      boosts: {
-        50: { value: 0.25, sub: 0.5 }
+      boost: {
+        50: { c: 0.25, i: 0.5 }
       }
     }
   ];
