@@ -3,15 +3,15 @@ $( function() {
 
   Number.prototype.dateString = function() {
     var s = Math.round( this );
-    var d = Math.floor( s / 86400 );
-    var h = Math.floor( s % 86400 / 3600 );
-    var m = Math.floor( s % 86400 % 3600 / 60 );
-    var s = Math.floor( s % 86400 % 3600 % 60 );
-    var res = ''
-      + ( d > 0 ? d + 'd ' : '' )
-      + ( h > 0 ? h + 'h ' : '' )
-      + ( m > 0 ? m + 'm ' : '' )
-      + ( s > 0 ? s + 's ' : '' );
+    var dd = Math.floor( s / 86400 );
+    var hh = Math.floor( s % 86400 / 3600 );
+    var mm = Math.floor( s % 86400 % 3600 / 60 );
+    var ss = Math.floor( s % 86400 % 3600 % 60 );
+    var res = '{0}{1}{2}{3}'.format(
+      dd > 0 ? dd + 'd ' : '',
+      hh > 0 ? hh + 'h ' : '',
+      mm > 0 ? mm + 'm ' : '',
+      ss > 0 ? ss + 's ' : '' );
     return res.trim();
   };
   Number.prototype.intString = function() {
@@ -278,7 +278,7 @@ $( function() {
                 i.a = is ? is.a : 0;
                 i.chance = {
                   value: Math.max( 0.03, 1 - Math.pow( Math.max( 0, 1 - 0.03 * lv_difference - c_data.breaks.a[i.a] ), 0.85 ) ) * c_data.breaks.q[i.q]
-                }
+                };
                 if ( i.chance.value < 0.005 ) {
                   i.chance.value = 0;
                 }
@@ -430,7 +430,7 @@ $( function() {
           if ( !re.test( texts ) ) {
             return false;
           }
-        };
+        }
         return data;
       };
       return {
@@ -472,7 +472,7 @@ $( function() {
                   .appendTo( $result );
               } );
             }*/
-            var $text = $( '<span/>' )
+            var $text = $( '<span/>' );
             $text.text( data.text );
             if ( data.custom ) {
               $text.prepend( 'Contains "' );
@@ -493,7 +493,7 @@ $( function() {
                 .addClass( ( data.icon || '' ).icon() )
                 .addClass( ( data.iconType || '' ).icon() )
                 .appendTo( $result );
-            };
+            }
             if ( data.data ) {
               $.each( data.data, function( i, v ) {
                 var $data = $( '<span/>' );
@@ -503,7 +503,7 @@ $( function() {
                   .appendTo( $result );
               } );
             }
-            var $text = $( '<span/>' )
+            var $text = $( '<span/>' );
             $text.text( data.text );
             if ( data.custom ) {
               $text.prepend( 'Contains "' );
@@ -681,7 +681,7 @@ $( function() {
             max: null
           }
         }
-      }
+      };
     },
     computed: {
       itemsSorted: function() {
@@ -708,7 +708,7 @@ $( function() {
         }
         return list
           .map( function( v ) {
-            return v.i
+            return v.i;
           } );
       },
       options: function() {
@@ -841,7 +841,7 @@ $( function() {
             if ( filters.skill == 'nonblanks' ) {
               fn_skill = function( o ) { return o.skill; };
             } else {
-              fn_skill = function( o ) { return o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase() };
+              fn_skill = function( o ) { return o.skill && o.skill.name.toUpperCase() == filters.skill.toUpperCase(); };
             }
           }
           if ( !!filters.pre.name && !!filters.pre.q ) {
@@ -904,8 +904,8 @@ $( function() {
         filters: {
           name: null,
           type: null
-        },
-      }
+        }
+      };
     },
     computed: {
       options: function() {
@@ -936,14 +936,14 @@ $( function() {
             .map( function( b ) {
               var res = {
                 m: b.m
-              }
+              };
               if ( b.lv ) {
                 res.lv = b.lv;
               }
               if ( b.cj ) {
                 res.cj = {
                   lv: b.cj.lv
-                }
+                };
               }
               return res;
             } );
@@ -999,7 +999,7 @@ $( function() {
     watch: {
       hero: { 
         handler: function( hero ) {
-          hero.lv = Max.min( Math.max( 1, hero.lv ), hero.cap );
+          hero.lv = Math.min( Math.max( 1, hero.lv ), hero.cap );
         },
         deep: true
       }
@@ -1023,8 +1023,8 @@ $( function() {
             min: null,
             max: null
           }
-        },
-      }
+        }
+      };
     },
     computed: {
       options: function() {
@@ -1148,7 +1148,7 @@ $( function() {
           heroes: Array(6),
           quests: this.list_quests()
         }
-      }
+      };
     },
     computed: {
       summary: function() {
@@ -1218,20 +1218,23 @@ $( function() {
         }
         for ( var i = 0; i < 6; i++ ) {
           var r = vm.team.roster[i];
-          var hero = c_data.heroes.find( function( h ) { return r.name && h.name == r.name; } );
+          var hero = null;
+          if ( r.name ) {
+            hero = c_data.heroes.find( function( h ) { return h.name == r.name; } );
+          }
           if ( hero ) {
             result.assigned += 1;
           } else {
             hero = vm.empty_hero();
           }
-          h = $.extend( true, {}, hero );
+          var h = $.extend( true, {}, hero );
           $.extend( true, h.slots, vm.get_clone( r.slots ) );
           h.b = r.b;
           var res = vm.get_hero( h );
           res.hero = hero;
           [].push.apply( result.skills, res.info.team.filter( function( s ) { return s && ( !s.leader || i == 0 ); } ) );
           result.roster[i] = res;
-        };
+        }
         result.skills = result.skills
           .reduce( function( i, s ) {
             var idx = i.findIndex( function( si ) { return si.name == s.name; } );
@@ -1246,7 +1249,7 @@ $( function() {
         result.companions = Math.min( result.roster[0].companions, 6 );
         for ( var i = result.companions; i < 6; i++ ) {
           vm.team.roster.splice( i, 1, vm.empty_hero() );
-        };
+        }
         result.roster = result.roster
           .map( function( h ) {
             var m_r = 0.0;
@@ -1303,7 +1306,7 @@ $( function() {
             } );
             h.quest = {
               face: null,
-              chance: .00,
+              chance: 0.00,
               rest: {
                 value: result.quest.time.value / 2,
                 m: ( 1.0 - m_h ) * ( 1.0 - m_e )
@@ -1343,7 +1346,7 @@ $( function() {
             h.quest.loot.max += v_max;
             h.quest.loot.min = Math.min( h.quest.loot.min, h.quest.loot.max );
             h.quest.chance *= ( 1.0 - m_r );
-            h.quest.heal.value *= h.quest.heal.m
+            h.quest.heal.value *= h.quest.heal.m;
             h.quest.rest.value *= h.quest.rest.m;
             return h;
           } );
@@ -1419,7 +1422,7 @@ $( function() {
         filters: {
           name: null
         }
-      }
+      };
     },
     watch: {
       teams: { 
@@ -1454,13 +1457,13 @@ $( function() {
       add: function() {
         var vm = this;
         var roster = [];
-        for ( i = 0; i < 6; i++ ) {
+        for ( var i = 0; i < 6; i++ ) {
           roster.push( vm.empty_hero() );
         }
         var team = {
           name: 'Team ' + ( vm.teams.length + 1 ),
           roster: roster
-        }
+        };
         vm.teams.push( team );
       },
       remove: function( team ) {
@@ -1514,7 +1517,7 @@ $( function() {
         filters: {
           name: null
         }
-      }
+      };
     },
     watch: {
       filters: {
@@ -1583,9 +1586,13 @@ $( function() {
           cache.set( 'items_custom', res, true );
           c_data.extend( 'items' );
           break;
+        case 'origins':
+          cache.set( 'origins_custom', res, true );
+          c_data.extend( 'origins' );
+          break;
         case 'teams':
           cache.set( 'teams', res, true );
-          c_data.set( 'teams' )
+          c_data.set( 'teams' );
           break;
         default:
           break;

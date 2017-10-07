@@ -236,7 +236,7 @@ $( function() {
       leader: false
     },
     { 
-      name: "Gold",
+      type: "Gold",
       name: "Gold",
       text: "Amount of gold found is increased by {0}",
       priority: 23,
