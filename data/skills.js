@@ -1,7 +1,5 @@
 $( function() {
 
-  var cache = $.cache._();
-  
   var effects = [
     { 
       type: "Break Count",
@@ -246,7 +244,7 @@ $( function() {
       leader: false
     }
   ];
-  cache.set( "skills_effects", effects, true );
+  c_data.set( "skills_effects", effects );
   
   var skills = [
     {
@@ -645,6 +643,6 @@ $( function() {
       value: 0.50
     }
   ];
-  cache.set( "skills", skills, true );
+  c_data.set( "skills", skills );
 
 } );

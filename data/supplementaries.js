@@ -1,14 +1,12 @@
 ﻿$( function() {
 
-  var cache = $.cache._();
-  
   var rarities = [
     "Common",
     "Uncommon",
     "Rare",
     "Exclusive"
   ];
-  cache.set( "rarities", rarities, true );
+  c_data.set( "rarities", rarities );
 
   var breaks = {
     a: { 
@@ -27,7 +25,7 @@
       "Mythical": 0.04
     }
   };
-  cache.set( "breaks", breaks, true );
+  c_data.set( "breaks", breaks );
 
   var qualities = {
     "Common": { 
@@ -59,7 +57,7 @@
       i: 6
     }
   };
-  cache.set( "qualities", qualities, true );
+  c_data.set( "qualities", qualities );
 
   var powers = {
     q: { 
@@ -129,6 +127,6 @@
       55:4725
     }
   };
-  cache.set( "powers", powers, true );
+  c_data.set( "powers", powers );
 
 } );

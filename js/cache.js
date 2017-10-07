@@ -1,48 +1,33 @@
-$( function() {
-  $.cache = ( function(){
-    var instance;
-    var cache;
-    function init() {
-      cache = {};
-      return {
-        set: function( key, val, force ) {
-          if ( !cache.hasOwnProperty( key ) || force ) {
-            if ( window.localStorage ) {
-              window.localStorage.setItem( key, JSON.stringify( val ) );
-              cache[ key ] = JSON.parse( window.localStorage.getItem( key ) );
-            } else {
-              cache[ key ] = val;
-            }
-          }
-          return cache[ key ];
-        },
-        get: function( key ) {
-          if ( !cache.hasOwnProperty( key ) ) {
-            if ( window.localStorage ) {
-              cache[ key ] = JSON.parse( localStorage.getItem( key ) );
-            }
-          }
-          return cache[ key ];
-        },
-        remove: function( key ) {
-          if ( window.localStorage ) {
-            window.localStorage.removeItem( key );
-          }
-          if ( cache.hasOwnProperty( key ) ) {
-            delete cache[key];
-          }
-        }
-      };
-    }
-
-    return {
-      _: function() {
-        if ( !instance ) {
-          instance = init();
-        }
-        return instance;
+var c_data = {
+  qualities: {},
+  powers: {},
+  breaks: {},
+    rarities: [],
+  skills: [],
+  skills_effects: [],
+  origins: [],
+  quests: [],
+  items: [],
+  heroes: [],
+  teams: [],
+  extend: function( key, value ) {
+    var self = this;
+    if ( Array.isArray( value ) ) {
+      for ( var i = 0, m = Math.max( value.length, self[key].length ); i < m; i++ ) {
+        Vue.set( self[key], i, $.extend( true, {}, self[key][i], value[i] ) );
       }
-    };
-  } )();
+    } else {
+      $.extend( true, self[key], value );
+    }
+  },
+  set: function( key, value ) {
+    var self = this;
+    if ( Array.isArray( self[key] ) ) {
+      self[key].splice( 0 );
+      [].push.apply( self[key], value );
+    } else {
+      self[key] = value;
+    }
+  }
+};
 
-} );

@@ -42,87 +42,6 @@ $( function() {
     };
   }
 
-  var cache = $.cache._();
-  
-  var c_data = {
-    qualities: {},
-    rarities: {},
-    powers: {},
-    breaks: {},
-    skills: [],
-    skills_effects: [],
-    origins: [],
-    quests: [],
-    items: [],
-    heroes: [],
-    teams: [],
-    json: function( key ) {
-      var res = '';
-      switch ( key ) {
-        case 'heroes':
-        case 'items':
-        case 'origins':
-          res = JSON.stringify( cache.get( key + '_custom' ) || [] );
-          break;
-        case 'teams':
-          res = JSON.stringify( cache.get( 'teams' ) || [] );
-          break;
-        default:
-          break;
-      }
-      return res;
-    },
-    extend: function( key ) {
-      var self = this;
-      switch ( key ) {
-        case 'heroes':
-        case 'items':
-        case 'origins':
-          $.extend( true, self[key], cache.get( key + '_custom' ) || [] );
-          break;
-        case 'teams':
-          $.extend( true, self[key], cache.get( key ) || [] );
-          break;
-        default:
-          break;
-      }
-    },
-    set: function( key ) {
-      var self = this;
-      var value = cache.get( key );
-      switch ( key ) {
-        case 'origins':
-        case 'quests':
-        case 'teams':
-        case 'items':
-        case 'heroes':
-        case 'teams':
-          self[key].splice( 0 );
-          [].push.apply( self[key], value );
-          break;
-        default:
-          self[key] = value;
-          break;
-      }
-    }
-  };
-
-  c_data.set( 'qualities' );
-  c_data.set( 'rarities' );
-  c_data.set( 'powers' );
-  c_data.set( 'breaks' );
-  c_data.set( 'skills' );
-  c_data.set( 'skills_effects' );
-  c_data.set( 'quests' );
-  c_data.set( 'origins' );
-  c_data.extend( 'origins' );
-  c_data.set( 'items' );
-  c_data.extend( 'items' );
-  c_data.set( 'heroes' );
-  c_data.extend( 'heroes' );
-  c_data.set( 'teams' );
-  c_data.extend( 'teams' );
-
   Vue.mixin( {
     methods: {
       icon: function( str ) {
@@ -805,7 +724,7 @@ $( function() {
               }
               return {};
             } );
-          cache.set( 'items_custom', custom, true );
+          localforage.setItem( 'items', JSON.stringify( custom ) );
         },
         deep: true
       },
@@ -947,7 +866,7 @@ $( function() {
               }
               return res;
             } );
-          cache.set( 'origins_custom', custom, true );
+          localforage.setItem( 'origins', JSON.stringify( custom ) );
         },
         deep: true
       },
@@ -1082,7 +1001,7 @@ $( function() {
               };
               return res;
             } );
-          cache.set( 'heroes_custom', custom, true );
+          localforage.setItem( 'heroes', JSON.stringify( custom ) );
         },
         deep: true
       },
@@ -1434,7 +1353,7 @@ $( function() {
           } else {
             vm.history.skip -= 1;
           }
-          cache.set( 'teams', teams, true );
+          localforage.setItem( 'teams', JSON.stringify( teams ) );
         },
         deep: true
       },
@@ -1548,55 +1467,32 @@ $( function() {
       allowClear: false,
       minimumResultsForSearch: Infinity,
       placeholder: 'Choose data type'
+    } )
+    .on( 'change', function() {
+      $json.val( '' );
     } );
 
   $( '#tabs-data-clean' )
     .on( 'click', function() {
       var type = $data.val();
-      switch ( type ) {
-        case 'heroes':
-          c_data.heroes.splice(0);
-          break;
-        case 'items':
-          c_data.items.splice(0);
-          break;
-        case 'teams':
-          c_data.teams.splice(0);
-          break;
-      }
+      localforage.removeItem( type );
     } );
 
   $( '#tabs-data-get' )
     .on( 'click', function() {
       var type = $data.val();
-      var res = c_data.json( type );
-      $json.val( res );
+      localforage.getItem( type )
+        .then( function( value ) {
+          $json.val( value );
+        } );
     } );
 
   $( '#tabs-data-set' )
     .on( 'click', function() {
       var type = $data.val();
-      var res = JSON.parse( $json.val() );
-      switch ( type ) {
-        case 'heroes':
-          cache.set( 'heroes_custom', res, true );
-          c_data.extend( 'heroes' );
-          break;
-        case 'items':
-          cache.set( 'items_custom', res, true );
-          c_data.extend( 'items' );
-          break;
-        case 'origins':
-          cache.set( 'origins_custom', res, true );
-          c_data.extend( 'origins' );
-          break;
-        case 'teams':
-          cache.set( 'teams', res, true );
-          c_data.set( 'teams' );
-          break;
-        default:
-          break;
-      }
+      var value = $json.val();
+      localforage.setItem( type, value );
+      c_data.extend( type, JSON.parse( value ) );
       $json.val( '' );
     } );
 

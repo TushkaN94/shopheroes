@@ -1,5 +1,4 @@
 $( function() {
-  var cache = $.cache._();
 
   var quests = [
     {
@@ -1225,6 +1224,6 @@ $( function() {
         ]
     }
   ];
-  cache.set( "quests", quests, true );
+  c_data.set( "quests", quests );
 
 } );

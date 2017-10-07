@@ -1,5 +1,4 @@
 ﻿$( function() {
-  var cache = $.cache._();
 
   var items = [
     {
@@ -8941,6 +8940,11 @@
       pre: [ { item: "Pirate Armor", q: "Great", c: 2 } ]
     }
   ];
-  cache.set( 'items', items, true );
+  c_data.set( "items", items );
+  localforage.getItem( "items" )
+    .then( function( value ) {
+      c_data.extend( "items", JSON.parse( value ) );
+    } );
+  //c_data.extend( "items", cache.get( "items" ) );
 
 } );

@@ -1,7 +1,5 @@
 $( function() {
 
-  var cache = $.cache._();
-  
   var origins = [
     {
       name: "Temple",
@@ -182,7 +180,12 @@ $( function() {
       }
     }
   ];
-  cache.set( "origins", origins, true );
+  c_data.set( "origins", origins );
+  localforage.getItem( "origins" )
+    .then( function( value ) {
+      c_data.extend( "origins", JSON.parse( value ) );
+    } );
+  //c_data.extend( "origins", cache.get( "origins" ) );
 
 } );
   

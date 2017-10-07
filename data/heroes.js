@@ -1,5 +1,4 @@
 $( function() {
-  var cache = $.cache._();
 
   var heroes = [
     {
@@ -948,6 +947,11 @@ $( function() {
       ]
     }
   ];
-  cache.set( "heroes", heroes, true );
+  c_data.set( "heroes", heroes );
+  localforage.getItem( "heroes" )
+    .then( function( value ) {
+      c_data.extend( "heroes", JSON.parse( value ) );
+    } );
+  //c_data.extend( "heroes", cache.get( "heroes" ) );
 
 } );
