@@ -145,9 +145,9 @@
   </script>
   <script type="text/x-template" id="templates-chance">
     <span v-if="chance" class="float-right htooltip">
-      <span class="htooltip-text" v-if="!!chance.info">{{chance.info}}</span>
-      <span>{{chance.value.pptString(1)}}</span>  
-      <span class="icon break" :class="chance.icon"/>
+      <span class="htooltip-text">{{info}}</span>
+      <span>{{chance.value.pptString(2)}}</span>  
+      <span class="icon break" :class="icon"/>
     </span>
   </script>
   <script type="text/x-template" id="templates-power">

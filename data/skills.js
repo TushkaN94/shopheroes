@@ -188,7 +188,7 @@ $( function() {
       name: "Fastidious",
       text: "Chance of breaking equipment is decreased by {0}",
       priority: 12,
-      cap: false,
+      cap: 1.0,
       sign: "%",
       applies: "hero",
       leader: false
@@ -198,7 +198,7 @@ $( function() {
       name: "Supplier",
       text: "Chance of breaking companions equipment is decreased by {0}",
       priority: 12,
-      cap: false,
+      cap: 1.0,
       sign: "%",
       applies: "team",
       leader: false
