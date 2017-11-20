@@ -1063,6 +1063,7 @@ $( function() {
     data: function() {
       return {
         edit: false,
+        small: false,
         quest: {
           choice: null,
           boss: false,
@@ -1073,7 +1074,6 @@ $( function() {
         },
         options: {
           qualities: this.list_qualities(),
-          heroes: Array(6),
           quests: this.list_quests()
         }
       };
@@ -1298,23 +1298,6 @@ $( function() {
         return result;
       }
     },
-    watch: {
-      'team.roster': { 
-        handler: function( roster ) {
-          var vm = this;
-          vm.options.heroes = roster.map( function( r, i ) {
-            return vm.list_heroes().filter( function( h ) {
-              var j = roster.findIndex( function( rr ) { return rr.name == h.text; } );
-              if ( j < 0 || j == i ) {
-                return true;
-              }
-              return false;
-            } );
-          } );
-        },
-        deep: true
-      }
-    },
     methods: {
       set_roster: function( k ) {
         var vm = this;
@@ -1339,6 +1322,20 @@ $( function() {
       },
       remove: function( team ) {
         this.$parent.remove( team );
+      },
+      get_heroes: function( name ) {
+        var vm = this;
+        return vm.list_heroes().filter( function( h ) {
+          if ( h.text == name ) {
+            return true;
+          } else {
+            var j = vm.team.roster.findIndex( function( rr ) { return rr.name == h.text; } );
+            if ( j < 0 ) {
+              return true;
+            }
+          }
+          return false;
+        } );
       }
     }
   } );
