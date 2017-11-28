@@ -3818,7 +3818,7 @@
       price: 12950000,
       rarity: "Exclusive",
       origin: "Ninja Package",
-      skill: { name: "Arch Wizard II", q: "Epic", m: false },
+      skill: { name: "Treasure Hunter III", q: "Legendary", m: false },
       pre: [ { item: "Dark Visage", q: "Flawless", c: 3 } ]
     },
     {
@@ -6198,7 +6198,7 @@
       power: 1450,
       price: 910000,
       rarity: "Exclusive",
-      origin: "Farmer Package",
+      origin: "Harvest Package 2016",
       pre: [ { item: "Elven Cure", q: "Good", c: 2 } ]
     },
     {
@@ -7077,7 +7077,7 @@
       power: 2400,
       price: 11450000,
       rarity: "Exclusive",
-      origin: "Farmer Package",
+      origin: "Harvest Package 2016",
       skill: { name: "Treasure Hunter II", q: "Mythical", m: false },
       pre: [ { item: "Ember Shield", q: "Great", c: 2 } ]
     },
@@ -7185,7 +7185,7 @@
       power: 390,
       price: 5300,
       rarity: "Exclusive",
-      origin: "Farmer Package"
+      origin: "Harvest Package 2016"
     },
     {
       type: "Spears",
@@ -8843,7 +8843,7 @@
       price: 1750000,
       rarity: "Exclusive",
       origin: "Ninja Package",
-      skill: { name: "Wise II", q: "Legendary", m: false },
+      skill: { name: "Amazon II", q: "Legendary", m: false },
       pre: [ { item: "Bear Armor", q: "Great", c: 3 } ]
     },
     {
@@ -8938,6 +8938,76 @@
       origin: "Primal Chest",
       skill: { name: "Resourceful III", q: "Mythical", m: false },
       pre: [ { item: "Pirate Armor", q: "Great", c: 2 } ]
+    },
+    {
+      type: "Spears",
+      name: "Maple Spear",
+      lv: 7,
+      xp: 30,
+      power: 215,
+      price: 1300,
+      rarity: "Exclusive",
+      origin: "Maple Package 2017",
+      skill: { name: "Healer I", q: "Epic", m: false }
+    },
+    {
+      type: "Staves",
+      name: "Maple Staff",
+      lv: 34,
+      xp: 211735,
+      power: 1800,
+      price: 1650000,
+      rarity: "Exclusive",
+      origin: "Maple Package 2017",
+      skill: { name: "Energetic I", q: "Legendary", m: false },
+      pre: [ { item: "Blood Staff", q: "Good", c: 1 } ]
+    },
+    {
+      type: "Potions",
+      name: "Maple Potion",
+      lv: 46,
+      xp: 0,
+      power: 2250,
+      price: 8600000,
+      rarity: "Exclusive",
+      origin: "Maple Package 2017",
+      skill: { name: "Speed Runner II", q: "Mythical", m: false },
+      pre: [ { item: "Golden Potion", q: "Flawless", c: 1 } ]
+    },
+    {
+      type: "Daggers",
+      name: "Carver",
+      lv: 14,
+      xp: 0,
+      power: 550,
+      price: 13500,
+      rarity: "Exclusive",
+      origin: "Harvest Package 2017",
+      skill: { name: "Gangster I", q: "Epic", m: false }
+    },
+    {
+      type: "Bows",
+      name: "Harvester Bow",
+      lv: 32,
+      xp: 0,
+      power: 1650,
+      price: 670000,
+      rarity: "Exclusive",
+      origin: "Harvest Package 2017",
+      skill: { name: "Scavenger I", q: "Legendary", m: false },
+      pre: [ { item: "Wind Striker", q: "Good", c: 1 } ]
+    },
+    {
+      type: "Instruments",
+      name: "Harvest Flute",
+      lv: 48,
+      xp: 0,
+      power: 2400,
+      price: 14700000,
+      rarity: "Exclusive",
+      origin: "Harvest Package 2017",
+      skill: { name: "Scavenger III", q: "Mythical", m: false },
+      pre: [ { item: "Golden String", q: "Flawless", c: 1 } ]
     }
   ];
   c_data.set( "items", items );

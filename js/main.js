@@ -1496,7 +1496,7 @@ $( function() {
       var type = $data.val();
       localforage.getItem( type )
         .then( function( value ) {
-          $json.val( value );
+          $json.val( JSON.stringify( JSON.parse( value ), null, 2 ) );
         } );
     } );
 
