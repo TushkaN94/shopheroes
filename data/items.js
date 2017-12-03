@@ -6199,6 +6199,7 @@
       price: 910000,
       rarity: "Exclusive",
       origin: "Harvest Package 2016",
+      skill: { name: "Energetic II", q: "Legendary", m: false },
       pre: [ { item: "Elven Cure", q: "Good", c: 2 } ]
     },
     {
@@ -7185,7 +7186,8 @@
       power: 390,
       price: 5300,
       rarity: "Exclusive",
-      origin: "Harvest Package 2016"
+      origin: "Harvest Package 2016",
+      skill: { name: "Bros-in-arms I", q: "Epic", m: false },
     },
     {
       type: "Spears",
